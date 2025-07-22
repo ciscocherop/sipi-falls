@@ -1,0 +1,262 @@
+/* Responsive Styles extracted from style.css */
+
+/* Home Page - Hero Section (Slideshow and Overlay) */
+@media (max-width: 768px) {
+  .herosection {
+    height: 50vh;
+  }
+  .slide {
+    background-size: cover;
+  }
+  .overlay-content h5 {
+    font-size: 1.5rem;
+  }
+  .overlay-content h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Footer (All Pages), Quick Facts (Travel Guide), Activities Section (Travel Guide) */
+@media (max-width: 767px) {
+  /* Footer - All Pages */
+  .footer-section .row > div {
+    margin-bottom: 2rem;
+  }
+  #back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+  }
+  /* Travel Guide - Quick Facts Section */
+  .quick-facts {
+    padding: 40px 0;
+  }
+  .quick-facts h6 {
+    font-size: 1rem;
+  }
+  .quick-facts p {
+    font-size: 0.9rem;
+  }
+  /* Travel Guide - Activities Section */
+  .activities-section h2 {
+    font-size: 2rem;
+  }
+  .activity-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .activity-card img {
+    margin-bottom: 1rem;
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+  }
+  .activity-card h5 {
+    font-size: 1.1rem;
+  }
+  .activity-card p {
+    font-size: 0.9rem;
+  }
+}
+
+/* About Page - Video Section */
+@media (max-width: 768px) {
+  .video-wrapper {
+    padding: 1.5rem 1rem;
+  }
+  .video-container {
+    padding-bottom: 75%;
+  }
+}
+
+/* Home Page & About Page - Timeline Section */
+@media (max-width: 768px) {
+  .timeline {
+    margin-left: 0.5rem;
+    padding-left: 0.5rem;
+  }
+  .timeline-content {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+/* --- Custom Additions for index.html Mobile Responsiveness --- */
+@media (max-width: 575px) {
+  /* Hero overlay text and padding */
+  .overlay-content {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  .overlay-content h5,
+  .overlay-content h1 {
+    font-size: 1.2rem !important;
+    line-height: 1.3;
+    text-align: left !important;
+  }
+  .herosection {
+    height: 40vh;
+    min-height: 220px;
+  }
+  /* Card images in events section */
+  .event-img {
+    height: 120px !important;
+  }
+  /* Testimonial images */
+  .testimonial-img {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  /* Cards padding */
+  .card {
+    padding: 1rem !important;
+  }
+  /* Footer quick links and newsletter */
+  .footer-section .row > div {
+    margin-bottom: 1.2rem;
+  }
+  .footer-section .footer-quick-links ul {
+    text-align: left;
+  }
+}
+
+/* --- Custom Additions for travelguide.html Mobile Responsiveness --- */
+@media (max-width: 575px) {
+  /* Hero Section */
+  .hero-section-travel .bg-dark {
+    padding: 1rem !important;
+  }
+  .hero-section-travel h1 {
+    font-size: 1.5rem !important;
+  }
+  .hero-section-travel p.lead {
+    font-size: 1rem !important;
+  }
+  .hero-section-travel .btn {
+    font-size: 1rem !important;
+    padding: 0.5rem 1.2rem !important;
+  }
+  /* Quick Facts Section */
+  .quick-facts i {
+    font-size: 2rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .quick-facts h5 {
+    font-size: 1rem !important;
+  }
+  .quick-facts p {
+    font-size: 0.9rem !important;
+  }
+  /* Activities Section */
+  .activity-card {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: unset !important;
+    text-align: center !important;
+    padding: 0.5rem !important;
+  }
+  .activity-card img.activity-img-cover {
+    width: 100% !important;
+    max-width: 150px !important;
+    height: auto !important;
+    margin: 0 auto 1rem auto !important;
+    display: block !important;
+  }
+  .activity-card h5 {
+    font-size: 1.1rem !important;
+  }
+  .activity-card p {
+    font-size: 0.9rem !important;
+  }
+  /* Map Section */
+  #map iframe {
+    height: 220px !important;
+  }
+}
+
+/* --- Custom Additions for about.html and contact.html Mobile Responsiveness --- */
+@media (max-width: 575px) {
+  /* About Page Header Section */
+  .header-section h1 {
+    font-size: 1.5rem !important;
+    padding: 0.5rem 0 !important;
+  }
+  .header-section .lead {
+    font-size: 1rem !important;
+  }
+  .header-section {
+    padding: 2rem 0 !important;
+  }
+  /* About Page Tour Guide Images */
+  .card .rounded-circle {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  /* About Page Timeline */
+  .timeline-content h3 {
+    font-size: 1.1rem !important;
+  }
+  .timeline-content p {
+    font-size: 0.95rem !important;
+  }
+  /* About Page Video Section */
+  .video-wrapper {
+    padding: 1rem 0.5rem !important;
+  }
+  .video-container {
+    padding-bottom: 65% !important;
+  }
+  /* About/Contact General Card and Container Padding */
+  .container, .card, .video-wrapper {
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+  }
+  .card {
+    padding: 1rem !important;
+  }
+  /* Contact Page Contact Image */
+  .contact-image img {
+    min-height: 120px !important;
+    max-height: 180px !important;
+    border-radius: 1rem 1rem 0 0 !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  /* Contact Page Form Card */
+  .card form {
+    padding: 0.5rem !important;
+  }
+  /* Contact Page FAQ Cards */
+  .card .fa-2x {
+    font-size: 1.3rem !important;
+  }
+  .card h5 {
+    font-size: 1rem !important;
+  }
+  .card p, .card label, .card input, .card textarea, .card select {
+    font-size: 0.95rem !important;
+  }
+}
+
+/* --- Navbar vertical stacking for mobile/tablet --- */
+@media (max-width: 991.98px) {
+  .navbar-nav {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+    align-items: flex-start !important;
+    width: 100%;
+  }
+  .navbar-nav .nav-item {
+    width: 100%;
+  }
+  .navbar-nav .nav-link {
+    width: 100%;
+    text-align: left;
+    padding-left: 1rem;
+  }
+}

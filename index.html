@@ -3,126 +3,290 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sipi-falls</title>
+  <title>Sipi Falls</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="custom.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="icon" href="images/logo.png.jpg" type="image/x-icon">
+  <link rel="icon" href="images/logo.png" type="image/x-icon">
 </head>
 <body>
+  <!-- Navbar -->
   <header>
-    <nav class="navbar navbar-expand-lg">
-      <div class="logo" style="margin-left: 20px;">
-        <img src="images/logo.png.jpg" alt="my logo" class="navbar-logo" width="70px" height="50px"><br>
-        <span class="text-white">Sipi-Falls</span>
-      </div>
-      <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm py-3" style="background: linear-gradient(90deg, #228B22 60%, #06c433 100%);">
+      <div class="container">
+        <a class="navbar-brand d-flex flex-column align-items-start w-auto me-4" href="index.html">
+          <span class="text-white fw-bold" style="font-size: 2.2rem; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
+          <span class="text-white fw-semibold" style="font-size: 1.1rem; font-family: 'Montserrat', sans-serif; opacity: 0.85;">Keep Sipping!!</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link text-white" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="travel.html">Travel-Guide</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="gallery.html">Gallery</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="about.html">About-Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-white" href="contact.html">Contact-Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn btn-primary" href="booking.html">Book Now</a>
-            </li>
-          </ul>
+          <ul class="navbar-nav ms-auto gap-2 gap-lg-4 align-items-center">
+            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="index.html" style="background:rgba(255,255,255,0.12);">Home</a></li>
+            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="pages/travelguide.html">Travel Guide</a></li>
+            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="pages/about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="pages/contact.html">Contact Us</a></li>
         </div>
       </div>
     </nav>
   </header>
-  <!--text in the banner-->
-  <section class="ff">
-    <div class="container text-center text-white text-heading d-flex align-items-center justify-content-center" style="height: 100vh;">
-      <div>
-        <h5 class="text-uppercase" style="letter-spacing: 10px; line-height: 1.5;">In Nature, Nothing is perfect,</h5>
-        <h1>And Everything Is Perfect</h1>
-      </div>
-    </div>
-  </section>
-  <!--brief description about the waterfalls-->
-  <section class="description p-5">
-    <div class="fs-5">
-      <h2 class="text-center text-white mt-10 mb-20 fs-3"> Where The Waters Meets Wilderness:The Story Of Sipi Falls!!</h2>
-      <p class="text-white" style="font-size: 1.2rem;">
-        Welcome to Sipi falls Kapchorwa, the most beautiful place in Uganda. 
-        Sipi falls is a series of three waterfalls in Eastern Uganda in the
-        district of Kapchorwa, northeast of Sironko and Mbale. 
-        The waterfalls lie on the edge of Mount Elgon National
-        Park near the Kenyan border. The Sipi falls area is the starting point for many 
-        hikes up Mt. Elgon. The most popular route starts in Budadiri and follows
-        the Sasa trail to the summit and then descends down the Sipi trail back into the
-        Sipi falls. The Sipi falls area is known for its cool climate as it is located
-        on the slopes of Mount Elgon. The Sipi falls area is also known for the 
-        production of Arabica coffee. The Sipi falls area is also known for its 
-        caves and caves paintings. The Sipi falls area is also known for its birdlife.
-        The Sipi falls area is also known for its abseiling and rock climbing. 
-        The Sipi falls area is also known for its cultural experiences.
-      </p>
-    </div>
-  </section>
-  <!--cards section-->
-  <section class="discover-section p-5">
-    <div class="container">
-      <h2 class="text-center mb-5 custom-color">Adventure Awaits! ! !</h2>
-      <h4 class="text-center mb-5">FROM ABSEILING,DISCOVER THE THRILLS AND SPILLS OF SIPI FALLS</h4>
-      <div class="row">
-        <div class="col-md-4">
-          <div class="card">
-            <img src="images/Facebook/abseil 1.jpg" alt="image" class="card-img-top">
-            <div class="card-body ">
-              <h5 class="card-title text-center"> Abseil Down the mighty Falls</h5>
-              <p class="card-text"> 
-                Feel the thrill of descending the waterfalls.
-                Only for adrenaline seekers!!
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="images/Facebook/clicf 1.jpg" alt="image" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Conquer the Cliffs</h5>
-              <p class="card-text"> Challenge yourself with an exciting rock climbing adventure. 
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card">
-            <img src="images/Facebook/menpool.jpg" alt="image" class="card-img-top">
-            <div class="card-body">
-              <h5 class="card-title text-center">Swim in Nature's Pool</h5>
-              <p class=" card-text"> Experience the refreshing deep waters of sipi falls following
-                 in its river.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <br><br>
-  </section>
-  <!--footer section-->
-  <footer>
 
-  </footer>
-     
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Hero Section -->
+<section class="herosection position-relative reveal">
+  <div class="slideshow-container">
+    <!-- Add your images here with corrected paths -->
+    <div class="slide" style="background-image: url('images/BANNER.jpg');"></div>
+    <div class="slide" style="background-image: url('images/abseil8.jpg');"></div>
+    <div class="slide" style="background-image: url('images/xx.jpg');"> <!-- Corrected to .jpg assuming it's a typo -->
+    </div>
+    <div class="slide" style="background-image: url('images/sipi.webp');"></div>
+    <div class="slide" style="background-image: url('images/dwn.jpg');"></div>
+    <div class="slide" style="background-image: url('images/f16.jpg');"></div>
+    <div class="slide" style="background-image: url('images/splash.jpg');"></div>
+    <div class="slide" style="background-image: url('images/f16.jpg');"></div>
+  </div>
+  <div class="overlay-content position-absolute top-50 start-0 translate-middle-y ps-5">
+    <h5 class="text-white fw-bold display-3" style="letter-spacing: 2px;">
+      In Nature, Nothing is perfect,
+    </h5>
+    <h1 class="text-white text-center fs-1 fw-bold display-3" style="letter-spacing: 2px;">
+      And Everything Is Perfect.
+    </h1>
+  </div>
+</section>
+
+  <!-- Description Section -->
+  <section class="intro py-5 reveal" style="background-color: #f5f6f9; padding-top: 4rem !important; padding-bottom: 4rem !important;">
+    <div class="container">
+      <h2 class="text-center mb-4 display-5 fw-bold" style="color:#228B22; letter-spacing: 1px;">Where Waters Roar and Wild Hearts Soar!</h2>
+      <div class="row justify-content-center align-items-stretch g-4">
+        <!-- Timeline Card (Left) -->
+        <div class="col-12 col-md-6 d-flex">
+          <div class="card shadow-lg rounded-4 w-100 p-4 position-relative" style="background: #fff; box-shadow: 0 0 30px 0 #fff6, 0 2px 16px 0 #e0e0e0;">
+            <h3 class="mb-4 text-success">Why Visit Sipi Falls?</h3>
+            <ul class="timeline list-unstyled ps-0 mb-0">
+              <li class="timeline-event mb-4">
+                <div class="timeline-dot bg-success"></div>
+                <span class="timeline-content">Experience the breathtaking triple waterfall</span>
+              </li>
+              <li class="timeline-event mb-4">
+                <div class="timeline-dot bg-success"></div>
+                <span class="timeline-content">Hike through scenic mountain trails</span>
+              </li>
+              <li class="timeline-event mb-4">
+                <div class="timeline-dot bg-success"></div>
+                <span class="timeline-content">Engage with the local Sabiny culture</span>
+              </li>
+              <li class="timeline-event">
+                <div class="timeline-dot bg-success"></div>
+                <span class="timeline-content">Enjoy the best Thrills at the falls that heal your spine</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- About Card (Right) -->
+        <div class="col-12 col-md-6 d-flex">
+          <div class="card shadow-lg rounded-4 w-100 p-4" style="background: #fff; box-shadow: 0 0 30px 0 #fff6, 0 2px 16px 0 #e0e0e0;">
+            <h3 class="mb-4 text-success text-center">About Sipi Falls</h3>
+            <p>
+              Sipi Falls is a series of three stunning waterfalls nestled in the foothills
+              of Mount Elgon in Kapchorwa District, Uganda. Known for its lush greenery and cool climate,
+              Sipi offers a peaceful retreat with panoramic views, unforgettable hikes, and rich cultural experiences.
+              Kapchorwa’s untamed treasure—three thundering waterfalls crashing through Eastern Uganda’s rugged cliffs.
+              Nestled on the edge of Mount Elgon National Park near Kenya, this is where nature’s raw power meets adventure’s call.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="pages/about.html" class="btn btn-success btn-lg px-4 shadow-sm">Learn More About the Falls</a>
+      </div>
+    </div>
+  </section>
+
+<!-- events section -->
+<section class="container-fluid py-5 reveal" style="background: linear-gradient(135deg, #e6f9ec 0%, #d1e7dd 100%);">
+  <div class="container">
+    <h2 class="text-success fw-bold text-center mb-5 display-5" style="letter-spacing: 1px;">Things to Do at the Falls</h2>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="images/hiking.jpg" class="card-img-top event-img" alt="Hiking at Sipi Falls" style="height: 200px; object-fit: cover;">
+          <div class="card-body" style="background-color: #f5f6f9;">
+            <h5 class="card-title">Hiking</h5>
+            <p class="card-text">
+              Explore the trails to all three waterfalls with breathtaking views and encounters with nature.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="images/abseil5.jpg" class="card-img-top event-img" alt="Abseiling adventure" style="height: 200px; object-fit: cover;">
+          <div class="card-body" style="background-color: #f5f6f9;">
+            <h5 class="card-title">Abseiling</h5>
+            <p class="card-text">
+              Try out the thrilling adventure of descending beside the Sipi cliff waterfall — perfect for adrenaline lovers.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="images/rawcofi.jpg" class="card-img-top event-img" alt="Coffee tour in Sipi" style="height: 200px; object-fit: cover;">
+          <div class="card-body" style="background-color: #f5f6f9;">
+            <h5 class="card-title">Coffee Tours</h5>
+            <p class="card-text">
+              Visit local coffee farms, roast your own coffee, and taste freshly brewed coffee right from the source.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card h-100 shadow-sm">
+          <img src="images/naturewalk.jpg" class="card-img-top event-img" alt="Nature Walk in Sipi" style="height: 200px; object-fit: cover;">
+          <div class="card-body" style="background-color: #f9f9f9;">
+            <h5 class="card-title">Nature Walks</h5>
+            <p class="card-text">
+              Enjoy calming walks through lush banana plantations, forested trails, and friendly village paths.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center mt-5">
+      <a href="pages/travelguide.html" class="btn btn-success btn-lg px-4 shadow-sm">Start Your Adventure</a>
+    </div>
+  </div>
+</section>
+ 
+<!-- testimonal section  -->
+<section class="container-fluid py-5 reveal" style="background: #f5f6f9;">
+  <div class="container">
+    <h2 class="text-center mb-4 text-success fw-bold">Hear From Our Adventurers</h2>
+    <div class="row text-center justify-content-center g-4">
+      <!-- Testimonial 1 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-4 p-4" style="background: #fff;">
+          <img src="images/rock climbing.jpg" alt="Sarah" class="testimonial-img mb-3 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;">
+          <h5 class="fw-bold">Sarah K.</h5>
+          <div class="mb-2 text-warning">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="fst-italic mb-0">"Sipi Falls is pure magic. The view, the hike, and the local hospitality were unforgettable!"</p>
+        </div>
+      </div>
+      <!-- Testimonial 2 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-4 p-4" style="background: #fff;">
+          <img src="images/mosesg.jpg" alt="Leo" class="testimonial-img mb-3 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;">
+          <h5 class="fw-bold">Leo M.</h5>
+          <div class="mb-2 text-warning">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="fst-italic mb-0">"The coffee tour was my favorite part. I never knew how amazing fresh Ugandan coffee could be!"</p>
+        </div>
+      </div>
+      <!-- Testimonial 3 -->
+      <div class="col-md-4 mb-4">
+        <div class="card h-100 shadow-sm border-0 rounded-4 p-4" style="background: #fff;">
+          <img src="images/group.jpg" alt="Rita" class="testimonial-img mb-3 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;">
+          <h5 class="fw-bold">Rita T.</h5>
+          <div class="mb-2 text-warning">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+          </div>
+          <p class="fst-italic mb-0">"If you're ever in Uganda, don’t miss Sipi. Best decision of my trip!"</p>
+        </div>
+      </div>
+    </div>
+    <!-- Slider will be added here in the future -->
+  </div>
+</section>
+
+<!-- footer section -->
+<footer class="footer-section py-0 mt-5 position-relative">
+  <div class="container py-5">
+    <div class="row g-5 align-items-start">
+      <!-- Brand & Slogan -->
+      <div class="col-md-3 mb-4 mb-md-0">
+        <a href="index.html" class="d-flex align-items-center text-decoration-none mb-3">
+          <img src="images/logo.png" alt="Sipi Falls Logo" class="navbar-logo me-2" width="60" height="45">
+          <span class="text-white fw-bold fs-4">Sipi Falls</span>
+        </a>
+        <p class="text-white small mb-2">Keep Sipping!!</p>
+        <p class="text-white small mb-0">Discover Uganda’s natural wonder. Adventure, culture, and breathtaking views await.</p>
+      </div>
+      <!-- Quick Links -->
+      <div class="col-md-2 mb-4 mb-md-0 footer-quick-links">
+        <h6 class="text-white fw-bold mb-3">Quick Links</h6>
+        <ul class="list-unstyled">
+          <li><a href="index.html" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="pages/travelguide.html" class="text-white text-decoration-none">Travel Guide</a></li>
+          <li><a href="pages/about.html" class="text-white text-decoration-none">About Us</a></li>
+          <li><a href="pages/travelguide.html" class="text-white text-decoration-none">Contact Us</a></li>
+        </ul>
+      </div>
+      <!-- Contact Info -->
+      <div class="col-md-3 mb-4 mb-md-0">
+        <h6 class="text-white fw-bold mb-3">Contact</h6>
+        <ul class="list-unstyled text-white small mb-2">
+          <li><i class="fas fa-envelope me-2"></i> info@sipifalls.com</li>
+          <li><i class="fas fa-phone me-2"></i> +256 703558174</li>
+          <li><i class="fas fa-map-marker-alt me-2"></i> Kapchorwa, Uganda</li>
+        </ul>
+        <div class="d-flex gap-2">
+          <a href="#" class="text-white" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="text-white" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-white" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <!-- Newsletter Signup -->
+      <div class="col-md-4">
+        <h6 class="text-white fw-bold mb-3">Stay Updated</h6>
+        <form id="newsletter-form">
+          <div class="input-group mb-2">
+            <input type="email" class="form-control bg-dark text-white border-light" placeholder="Your Email" aria-label="Email" required>
+            <button class="btn btn-primary" type="submit">Sign Up</button>
+          </div>
+          <div id="newsletter-success" class="text-success small mt-1 d-none">Thank you for subscribing!</div>
+        </form>
+        <div class="mt-3">
+          <a href="#privacy" class="text-white text-decoration-none small me-3">Privacy Policy</a>
+          <a href="#terms" class="text-white text-decoration-none small">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+    <hr class="my-4" style="border-top: 2px solid #e0e8df;">
+    <div class="text-center text-white mt-4 small">
+      <span id="copyright">© 2025 Sipi Falls. All Rights Reserved.</span>
+    </div>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="btn btn-success position-fixed" style="bottom: 30px; right: 30px; z-index: 1050; display: none;" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+  </div>
+</footer>
+<!-- End Modern Footer -->
+
+<!-- Bootstrap JS and custom JS -->
+<script src="js/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+

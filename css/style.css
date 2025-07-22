@@ -1,0 +1,464 @@
+/* =====================
+   NAVBAR (All Pages)
+   ===================== */
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+.nav-link {
+  color: #fff !important;
+  text-decoration: none;
+  transition: color 0.2s;
+  font-weight: 500;
+}
+:root {
+  --primary-green: #228B22;
+  --accent-green: #6FCF97;
+}
+.nav-link:hover,
+.nav-link:focus {
+  color: #228B22 !important;
+  background-color: #fff !important;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+.nav-link.home,
+.nav-link.active {
+  background-color: #fff !important;
+  color: #228B22 !important;
+  border-radius: 4px;
+  transition: background 0.2s, color 0.2s;
+}
+
+/* =====================
+   HOME PAGE (index.html)
+   ===================== */
+/* Hero Section */
+.herosection {
+  height: 100vh;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
+.slideshow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 2s ease-in-out;
+  animation: kenburns 20s infinite;
+}
+.slide.active {
+  opacity: 1;
+}
+@keyframes kenburns {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(-2%, 2%); }
+  100% { transform: scale(1) translate(0, 0); }
+}
+.overlay-content {
+  z-index: 1;
+  color: white;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+.herosection h5,
+.herosection h1 {
+  font-family: cursive;
+}
+/* Why Visit Sipi Falls Timeline (Home) */
+.timeline {
+  position: relative;
+  margin-left: 1.5rem;
+  padding-left: 1.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 4px;
+  background: #d1e7dd;
+  border-radius: 2px;
+}
+.timeline-event {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  min-height: 40px;
+}
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-left: -1.25rem;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #198754;
+  z-index: 1;
+}
+.timeline-content {
+  font-size: 1.25rem;
+  color: #222;
+  font-weight: 500;
+}
+.intro .card.position-relative {
+  padding: 2.5rem !important;
+}
+.intro .card .mb-4.text-success.text-center + p {
+  font-size: 1.18rem;
+  line-height: 1.7;
+}
+.intro {
+  border-bottom: 4px solid #d1e7dd;
+}
+.container .card .card-title {
+  text-align: center;
+  font-size: 1.35rem;
+  color: #228B22;
+}
+.container .card .card-text {
+  font-size: 1.13rem;
+  line-height: 1.7;
+  background-color: #f5f6f9;
+}
+.container .card .card-body {
+  background-color: #e6f9ec !important;
+  padding: 1rem 1.25rem !important;
+  border-radius: 0 0 1rem 1rem;
+}
+
+/* =====================
+   TRAVEL GUIDE PAGE (travelguide.html)
+   ===================== */
+.hero-section-travel {
+  background-image: url('../images/water.jpg');
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+
+}
+.quick-facts i {
+  color: #06c433;
+}
+.quick-facts h6 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+.quick-facts p {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+.quick-facts .row {
+  transition: all 0.3s ease;
+}
+.quick-facts .col-md-3:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.quick-fact-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(34,139,34,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+  padding: 1.5rem 1rem;
+  margin-bottom: 1.2rem;
+}
+.quick-fact-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 6px 24px rgba(34,139,34,0.15);
+}
+.quick-fact-card .fa-3x {
+  transition: color 0.2s;
+}
+.quick-fact-card:hover .fa-3x {
+  color: #6FCF97;
+}
+/* Activities Section (Travel Guide) */
+.activities-section {
+  background: linear-gradient(to bottom, #f8f9fa, rgba(6, 196, 51, 0.05));
+  padding: 4rem 0;
+}
+.activities-section h2 {
+  font-family: 'Lobster', cursive;
+  font-size: 2.5rem;
+  color: #228B22;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+.activity-card {
+  height: 250px;
+  min-height: 250px;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.activity-img-cover {
+  width: 250px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+#HKdes{
+  border-left: 7px  solid #228B22;
+  border-radius: 3px;
+  margin-right: 3px;
+}
+.activity-card h5 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  color: #228B22;
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.activity-card p {
+  font-family: 'Montserrat', sans-serif;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* =====================
+   ABOUT PAGE (about.html)
+   ===================== */
+.header-section {
+  background: linear-gradient(to bottom, #f8f9fa,#228B22);
+  color: white;
+  padding: 4rem 0;
+}
+.header-section h1 {
+  font-size: 3rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+/* Video Section (About) */
+.video-section {
+  padding: 4rem 0;
+  background: #e9ecef;
+}
+.video-wrapper {
+  transition: all 0.3s ease;
+}
+.video-container {
+  transition: all 0.3s ease;
+}
+.video-container video {
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+/* Timeline (About) - shares .timeline styles with Home */
+.timeline {
+  position: relative;
+  margin-left: 1.5rem;
+  padding-left: 1.5rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 4px;
+  background: #d1e7dd;
+  border-radius: 2px;
+}
+.timeline-event {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  min-height: 40px;
+}
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 1rem;
+  margin-left: -1.25rem;
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px #198754;
+  z-index: 1;
+  background: #228B22;
+}
+.timeline-content {
+  font-size: 1.15rem;
+  color: #222;
+  font-weight: 500;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1rem 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =====================
+   CONTACT PAGE (contact.html)
+   ===================== */
+/* (Add your contact page-specific styles here if needed) */
+
+/* =====================
+   FOOTER (All Pages)
+   ===================== */
+.footer-section {
+  background: linear-gradient(90deg, #228B22 60%, #06c433 100%);
+  color: #fff;
+  position: relative;
+  font-size: 1rem;
+}
+.footer-section a.text-white,
+.footer-section a.text-white-50 {
+  transition: color 0.2s;
+}
+.footer-section a.text-white:hover,
+.footer-section a.text-white-50:hover {
+  color: #6FCF97 !important;
+}
+.footer-section h6 {
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+}
+.footer-section ul {
+  padding-left: 0;
+}
+.footer-section li {
+  margin-bottom: 0.5rem;
+}
+.footer-section .input-group .form-control {
+  background-color: #222;
+  color: #fff;
+  border: 1px solid #06c433;
+}
+.footer-section .input-group .form-control:focus {
+  background-color: #fff;
+  color: #228B22;
+  border-color: #06c433;
+}
+.footer-section .btn-primary {
+  background: #06c433;
+  border: none;
+  color: #fff;
+  transition: background 0.2s, color 0.2s;
+}
+.footer-section .btn-primary:hover {
+  background: #fff;
+  color: #06c433;
+  border: 1px solid #06c433;
+}
+.footer-section .social-links a,
+.footer-section .d-flex.gap-2 a {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  color: #fff;
+  transition: color 0.2s, transform 0.2s;
+}
+.footer-section .social-links a:last-child,
+.footer-section .d-flex.gap-2 a:last-child {
+  margin-right: 0;
+}
+.footer-section .social-links a:hover,
+.footer-section .d-flex.gap-2 a:hover {
+  color: #6FCF97;
+  transform: scale(1.15);
+}
+.footer-section .form-control::placeholder {
+  color: #bbb;
+  opacity: 1;
+}
+.footer-section .form-control:focus {
+  box-shadow: 0 0 0 2px #06c43333;
+}
+.footer-section .navbar-logo {
+  border-radius: 8px;
+  background: #fff;
+  padding: 2px;
+}
+.footer-section .small {
+  font-size: 0.97rem;
+}
+#back-to-top {
+  display: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  box-shadow: 0 2px 8px rgba(34,139,34,0.15);
+  font-size: 1.3rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+#back-to-top:active {
+  background: #fff;
+  color: #06c433;
+}
+.footer-section .footer-quick-links {
+  text-align: center;
+}
+.footer-section .footer-quick-links ul {
+  display: inline-block;
+  text-align: left;
+}
+.footer-section, .footer-section ul, .footer-section li, .footer-section a, .footer-section p, .footer-section h6, .footer-section span {
+  font-size: 1.22rem;
+}
+.footer-section .footer-quick-links h6 {
+  font-size: 1.35rem;
+}
+
+/* =====================
+   SHARED UTILITIES & OVERRIDES
+   ===================== */
+.text-success {
+  color: #228B22 !important;
+}
+.bg-success {
+  background-color: #228B22 !important;
+}
+.btn-success {
+  background-color: #228B22 !important;
+  border-color: #228B22 !important;
+}
+.btn-success:hover, .btn-success:focus {
+  background-color: #1e7a1e !important;
+  border-color: #1e7a1e !important;
+}
+.border-success {
+  border-color: #228B22 !important;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+/* Quick Facts Card Enhancements */
+
+
+
