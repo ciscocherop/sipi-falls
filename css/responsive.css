@@ -1,5 +1,10 @@
-/* Responsive Styles extracted from style.css */
-
+/* dark mode */
+@media(prefers-color-scheme: dark) {
+  body{
+    background-color: #111;
+  color: white;
+  }
+}
 /* Home Page - Hero Section (Slideshow and Overlay) */
 @media (max-width: 768px) {
   .herosection {

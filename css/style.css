@@ -1,3 +1,9 @@
+/* darkmode */
+body {
+  background-color: white;
+  color: black;
+}
+
 /* =====================
    NAVBAR (All Pages)
    ===================== */
@@ -314,12 +320,45 @@
   padding: 1rem 1.5rem;
   margin-bottom: 0.5rem;
 }
+/* Team Card and Counter Styles from about.html */
+.team-card {
+  transition: box-shadow 0.3s;
+  cursor: pointer;
+}
+.team-card:hover {
+  box-shadow: 0 8px 32px rgba(34,139,34,0.18);
+}
+.team-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(214, 250, 214, 0.92);
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: 2;
+  border-radius: 1.2rem;
+  font-size: 1.2rem;
+}
+.team-card:hover .team-overlay {
+  opacity: 1;
+}
+.counter {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  font-family: 'Montserrat', sans-serif;
+}
 
 /* =====================
    CONTACT PAGE (contact.html)
    ===================== */
 /* (Add your contact page-specific styles here if needed) */
-
+/* Remove default blue focus and add green glow for inputs/textareas */
+.form-control:focus, .form-select:focus, .input-group-text:focus, textarea:focus {
+  box-shadow: 0 0 0 0.2rem var(--accent-green) !important;
+  border-color: #228B22 !important;
+  outline: none !important;
+}
 /* =====================
    FOOTER (All Pages)
    ===================== */

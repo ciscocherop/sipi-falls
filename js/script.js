@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
   const slides = document.querySelectorAll('.slide');
   let currentSlide = 0;
@@ -72,57 +73,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // AJAX Newsletter Form Submission
 document.addEventListener('DOMContentLoaded', () => {
+    // Newsletter Signup Interactivity
     const newsletterForm = document.getElementById('newsletter-form');
     const newsletterSuccess = document.getElementById('newsletter-success');
 
     if (newsletterForm) {
-        newsletterForm.addEventListener('submit', async function (event) {
-            event.preventDefault(); // Stop the default page reload
-
+        newsletterForm.addEventListener('submit', function (event) {
+            event.preventDefault();
             const emailInput = newsletterForm.querySelector('input[type="email"]');
-            const email = emailInput.value;
-            const submitButton = newsletterForm.querySelector('button[type="submit"]');
-            const originalButtonText = submitButton.innerHTML;
-
-            // Basic client-side validation
+            const email = emailInput.value.trim();
             if (!email || !email.includes('@')) {
-                alert('Please enter a valid email address.');
+                newsletterSuccess.textContent = 'Please enter a valid email address.';
+                newsletterSuccess.classList.remove('d-none');
+                newsletterSuccess.classList.add('text-danger');
+                setTimeout(() => newsletterSuccess.classList.add('d-none'), 2500);
                 return;
             }
+            newsletterSuccess.textContent = 'Thank you for subscribing!';
+            newsletterSuccess.classList.remove('d-none', 'text-danger');
+            newsletterSuccess.classList.add('text-success');
+            emailInput.value = '';
+            setTimeout(() => newsletterSuccess.classList.add('d-none'), 2500);
+        });
+    }
 
-            // Disable button to prevent multiple submissions
-            submitButton.disabled = true;
-            submitButton.innerHTML = 'Signing Up...';
-            newsletterSuccess.classList.add('d-none'); // Hide previous messages
-
-            try {
-                // This is where you will put your actual backend API endpoint
-                const response = await fetch('/api/subscribe', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({ email: email }),
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    newsletterSuccess.textContent = 'Thank you for subscribing!';
-                    newsletterSuccess.classList.remove('d-none');
-                    emailInput.value = ''; // Clear the input
-                } else {
-                    // Display error message from the server
-                    alert(result.message || 'An error occurred. Please try again.');
+    // Booking Form Validation
+    const bookingForm = document.querySelector('form[action="submit-booking.php"]');
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', function (event) {
+            if (!bookingForm.checkValidity()) {
+                event.preventDefault();
+                bookingForm.classList.add('was-validated');
+                // Optionally, scroll to first invalid field
+                const firstInvalid = bookingForm.querySelector(':invalid');
+                if (firstInvalid) {
+                    firstInvalid.focus();
                 }
-
-            } catch (error) {
-                console.error('Submission error:', error);
-                alert('Could not connect to the server. Please try again later.');
-            } finally {
-                // Re-enable the button
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
             }
         });
     }
@@ -174,5 +160,23 @@ document.addEventListener('DOMContentLoaded', function () {
         new bootstrap.Tooltip(card);
       }
     }
+  });
+});
+// Animated Counters for About Us Page
+document.addEventListener('DOMContentLoaded', function() {
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute('data-target');
+      const count = +counter.innerText;
+      const increment = Math.ceil(target / 100);
+      if(count < target) {
+        counter.innerText = count + increment > target ? target : count + increment;
+        setTimeout(updateCount, 20);
+      } else {
+        counter.innerText = target;
+      }
+    };
+    updateCount();
   });
 });
