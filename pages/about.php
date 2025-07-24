@@ -12,31 +12,11 @@
 </head>
 <body>
   <!-- Navbar -->
-  <header>
-    <nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3" style="background: linear-gradient(90deg, #228B22 60%, #06c433 100%); border-bottom: 2px solid #fff;">
-      <div class="container">
-        <a class="navbar-brand d-flex flex-column align-items-start w-auto me-4" href="index.html">
-          <span class="text-white fw-bold" style="font-size: 2.2rem; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
-          <span class="text-white fw-semibold" style="font-size: 1.1rem; font-family: 'Montserrat', sans-serif; opacity: 0.85;">Keep Sipping!!</span>
-        </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto gap-2 gap-lg-4 align-items-center">
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/travelguide.html">Travel Guide</a></li>
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/about.html">About_Us</a></li>
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/contact.html">Contact_Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <?php include '../includes/navbar.php'; ?>
  
 <section class="header-section reveal">
     <div class="container">
-      <h1>Every waterfall has a story — and ours begins at Sipi !</h1>
+      <h1>Every waterfall has a story — <br><span style="margin-left: 40%;">and ours begins at Sipi !</span></h1>
       <hr style="border-top: 5px solid #228B22; width: 60%; margin: 1rem auto;">
       <p class="lead">Discover the soul of Sipi Falls through our story, team, and commitment to nature and community.
         We’re here to guide you through the wonders of this magical place, from misty hikes and coffee tours to vibrant 
@@ -46,7 +26,7 @@
   </section>
 
   <!-- Story Section -->
-  <section class="py-5">
+  <section class="py-5 reveal">
     <div class="container">
       <div class="row g-4">
         <div class="col-md-6">
@@ -85,7 +65,7 @@
   </section>
 
   <!-- Timeline Section -->
-  <section class="sipi-timeline py-5">
+  <section class="sipi-timeline py-5 reveal">
     <div class="container">
       <h2 style="color: #228B22; ">Unique Facts: The Tripple Falls</h2>
       <div style="background: #f5f6f9; border-radius: 1.2rem; padding: 2.5rem 1.5rem; margin-bottom: 2rem;">
@@ -130,7 +110,7 @@
   </section>
 
   <!-- Community Improvement & Sustainability with Animated Counters (Two-Column Card) -->
-  <section class="py-5 bg-light">
+  <section class="py-5 bg-light reveal">
     <div class="container" >
       <div class="row justify-content-center">
         <div class="col-lg-10">
@@ -165,7 +145,7 @@
   </section>
 
   <!-- Tour Guide Team with Hover Overlay -->
-  <section class="py-5">
+  <section class="py-5 reveal">
     <div class="container">
       <h2 class="mb-5" style="color: #228B22;">Meet Our Tour Guides</h2>
       <div class="row g-4 justify-content-center">
@@ -234,11 +214,11 @@
 </section>
 
   <!-- Call to Action -->
-  <section class="cta-section">
+  <section class="cta-section reveal">
     <div class="container">
       <div style="background: #fff; border-radius: 1.2rem; box-shadow: 0 2px 16px rgba(34,139,34,0.10); padding: 2.5rem 2rem; max-width: 900px; margin: 0 auto; text-align: center;">
         <h2 style="color: #228B22; font-family: 'Montserrat', sans-serif; font-weight: 700; letter-spacing: 1px; margin-bottom: 1.5rem;">Ready to Explore Sipi Falls?</h2>
-        <p style="font-size: 1.13rem; color: #222; line-height: 1.7;">Plan your adventure today! Visit our <a href="../pages/contact.html" class="btn btn-lg btn-success" style="margin-left: 0.5rem;">Contact Us</a> page to book your personalized tour.</p>
+        <p style="font-size: 1.13rem; color: #222; line-height: 1.7;">Plan your adventure today! Visit our <a href="../pages/contact.php" class="btn btn-lg btn-success" style="margin-left: 0.5rem;">Contact Us</a> page to book your personalized tour.</p>
       </div>
     </div>
   </section>

@@ -359,6 +359,25 @@ body {
   border-color: #228B22 !important;
   outline: none !important;
 }
+.welcome-section .col-md-10.col-lg-8 {
+  background: rgba(255, 255, 255, 0.10);
+  box-shadow: 0 8px 32px 0 rgba(34,139,34,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 1.5rem;
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.welcome-section {
+ background-image: url(../images/f15.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 4rem 0;
+  color: #fff;
+}
+.welcome-section{
+  min-height: 60vh;
+}
 /* =====================
    FOOTER (All Pages)
    ===================== */

@@ -12,27 +12,7 @@
 </head>
 <body>
   <!-- Navbar (reuse from index.html) -->
-  <header>
-    <nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3" style="background: linear-gradient(90deg, #228B22 60%, #06c433 100%);">
-      <div class="container">
-        <a class="navbar-brand d-flex flex-column align-items-start w-auto me-4" href="index.html">
-          <span class="text-white fw-bold" style="font-size: 2.2rem; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
-          <span class="text-white fw-semibold" style="font-size: 1.1rem; font-family: 'Montserrat', sans-serif; opacity: 0.85;">Keep Sipping!!</span>
-        </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto gap-2 gap-lg-4 align-items-center">
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../index.html">Home</a></li>
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/travelguide.html">Travel Guide</a></li>
-            <li class="nav-item"><a class="nav-link  text-white px-3 rounded-pill fw-semibold" href="../pages/about.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link  text-white px-3 rounded-pill fw-semibold" href="../pages/contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <?php include '../includes/navbar.php'; ?>
 
   <!-- Hero Section -->
   <section class="hero-section-travel reveal text-center text-light d-flex align-items-center justify-content-center"  >
@@ -44,8 +24,8 @@
 </section>
 
   <!-- Quick Facts / At-a-Glance -->
-   <section class="py-3"  style="background: linear-gradient(135deg, #e6f9ec 0%, #d1e7dd 100%);">
-   <section class="quick-facts reveal container my-5" >
+   <section class="py-3 reveal"  style="background: linear-gradient(135deg, #e6f9ec 0%, #d1e7dd 100%);">
+   <section class="quick-facts  container my-5" >
   <h2 class="text-center mb-2" style="color: #228B22; font-family: 'Lobster', cursive; font-size: 2.7rem; font-style: italic; letter-spacing: 1px;">Essential Tips for Your Trip</h2>
   <p class="text-center mb-4" style="font-size: 1.15rem; color: #228B22;">Get the most out of your Sipi Falls adventure with these quick, practical tips!</p>
   <div class="row text-center gy-4 fs-6 ">
@@ -138,9 +118,9 @@
 
   <!-- Activities at Sipi Falls (Two per Row, Compact) -->
   <section class="activities-section reveal py-5" id="activities" style="background: #f4f8f3;">
-  <div class="container" style="border-radius: 1rem; box-shadow: 0 2px 16px rgba(34,139,34,0.07); padding: 2rem 1rem; background: transparent;">
+  <div class="container-fluid " style="border-radius: 1rem; box-shadow: 0 2px 16px rgba(34,139,34,0.07); padding: 2rem 1rem; background: transparent; ">
     <h2 class="text-center mb-5 custom-color animate__animated animate__fadeInUp">Activities at Sipi Falls</h2>
-    <div class="row g-4">
+    <div class="row g-4 mx-3">
       <div class="col-md-6 mb-4">
         <div class="activity-card d-flex align-items-stretch p-0 shadow" style="height: 250px; border-radius: 0.5rem; overflow: hidden; border: 1.5px solid #e0e8df; background: #fff;">
           <img src="../images/naturewalk.jpg" 
@@ -255,69 +235,7 @@
   <!-- End Interactive Map Section -->
 
   <!-- Modern Footer Section -->
-  <footer class="footer-section py-0 mt-5 position-relative">
-    <div class="container py-5">
-      <div class="row g-5 align-items-start">
-        <!-- Brand & Slogan -->
-        <div class="col-md-3 mb-4 mb-md-0">
-          <a href="../index.html" class="d-flex align-items-center text-decoration-none mb-3">
-            <img src="../images/logo.png" alt="Sipi Falls Logo" class="navbar-logo me-2" width="60" height="45">
-            <span class="text-white fw-bold fs-4">Sipi Falls</span>
-          </a>
-          <p class="text-white small mb-2">Keep Sipping!!</p>
-          <p class="text-white small mb-0">Discover Uganda’s natural wonder. Adventure, culture, and breathtaking views await.</p>
-        </div>
-        <!-- Quick Links -->
-        <div class="col-md-2 mb-4 mb-md-0 footer-quick-links">
-          <h6 class="text-white fw-bold mb-3">Quick Links</h6>
-          <ul class="list-unstyled">
-            <li><a href="../index.html" class="text-white text-decoration-none">Home</a></li>
-            <li><a href="../pages/travelguide.html" class="text-white text-decoration-none">Travel Guide</a></li>
-            <li><a href="../pages/about.html" class="text-white text-decoration-none">About Us</a></li>
-            <li><a href="../pages/contact.html" class="text-white text-decoration-none">Contact Us</a></li>
-          </ul>
-        </div>
-        <!-- Contact Info -->
-        <div class="col-md-3 mb-4 mb-md-0">
-          <h6 class="text-white fw-bold mb-3">Contact</h6>
-          <ul class="list-unstyled text-white small mb-2">
-            <li><i class="fas fa-envelope me-2"></i> info@sipifalls.com</li>
-            <li><i class="fas fa-phone me-2"></i> +256 703558174</li>
-            <li><i class="fas fa-map-marker-alt me-2"></i> Kapchorwa, Uganda</li>
-          </ul>
-          <div class="d-flex gap-2">
-            <a href="#" class="text-white" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" class="text-white" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" class="text-white" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" class="text-white" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-        <!-- Newsletter Signup -->
-        <div class="col-md-4">
-          <h6 class="text-white fw-bold mb-3">Stay Updated</h6>
-          <form id="newsletter-form">
-            <div class="input-group mb-2">
-              <input type="email" class="form-control bg-dark text-white border-light" placeholder="Your Email" aria-label="Email" required>
-              <button class="btn btn-primary" type="submit">Sign Up</button>
-            </div>
-            <div id="newsletter-success" class="text-success small mt-1 d-none">Thank you for subscribing!</div>
-          </form>
-          <div class="mt-3">
-            <a href="#privacy" class="text-white text-decoration-none small me-3">Privacy Policy</a>
-            <a href="#terms" class="text-white text-decoration-none small">Terms of Service</a>
-          </div>
-        </div>
-      </div>
-      <hr class="my-4" style="border-top: 2px solid #e0e8df;">
-      <div class="text-center text-white mt-4 small">
-        <span id="copyright">© 2025 Sipi Falls. All Rights Reserved.</span>
-      </div>
-      <!-- Back to Top Button -->
-      <button id="back-to-top" class="btn btn-success position-fixed" style="bottom: 30px; right: 30px; z-index: 1050; display: none;" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
-      </button>
-    </div>
-  </footer>
+  <?php include '../includes/footer.php'; ?>
   <!-- End Modern Footer -->
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
