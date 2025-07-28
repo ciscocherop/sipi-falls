@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+require_once('../includes/db.php'); // Adjust path based on your file structure
 
 $sql = "Select *from bookings";
 // Execute the query

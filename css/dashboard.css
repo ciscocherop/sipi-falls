@@ -1,0 +1,33 @@
+
+/* Dashboard CSS for Sipi Falls Admin Panel */
+   body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ffffff;
+}
+
+.sidebar {
+  height: 100vh;
+  background-color: #228B22;
+  color: white;
+}
+
+.viewings .card{
+  border-left: 4px solid #228B22 !important;
+}
+
+
+/* responsive  css */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+  }
+
+  .main-content {
+    padding: 20px;
+  }
+  body {
+  background-color: yellow !important;
+}
+
+}

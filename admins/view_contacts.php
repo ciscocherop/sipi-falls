@@ -1,5 +1,5 @@
 <?php
-include('db.php');
+require_once('../includes/db.php'); // Adjust path based on your file structure
 
 $sql = "SELECT * FROM contact_messages";
 // Execute the query    
@@ -30,8 +30,8 @@ $result = $conn->query($sql);
         // Output data of each row
         while($row = $result->fetch_assoc()) {
             echo "<tr>
-                    <td>" . htmlspecialchars($row["firstname"]) . "</td>
-                    <td>" . htmlspecialchars($row["lastname"]) . "</td>
+                    <td>" . htmlspecialchars($row["first_name"]) . "</td>
+                    <td>" . htmlspecialchars($row["last_name"]) . "</td>
                     <td>" . htmlspecialchars($row["email"]) . "</td>
                     <td>" . htmlspecialchars($row["subject"]) . "</td>
                     <td>" . htmlspecialchars($row["message"]) . "</td>
