@@ -40,20 +40,20 @@
       <div class="col-lg-7">
         <div class="card shadow rounded-4 p-5 border-2">
           <h2 class="mb-4 text-success text-center fs-2">Let's Get Intouch</h2>
-          <form action="submit-contact.php" method="POST">
+          <form action="../includes/process_contact.php" method="POST">
             <div class="mb-3 row g-2">
               <div class="col-12 col-md-6">
                 <label for="name" class="form-label">First Name</label>
                 <div class="input-group">
                   <span class="input-group-text bg-white"><i class="fas fa-user"></i></span>
-                  <input type="text" class="form-control" id="name" name="name" required placeholder="Enter your first name">
+                  <input type="text" class="form-control" id="name" name="firstname" required placeholder="Enter your first name">
                 </div>
               </div>
               <div class="col-12 col-md-6">
                 <label for="last-name" class="form-label">Last Name</label>
                 <div class="input-group">
                   <span class="input-group-text bg-white"><i class="fas fa-user"></i></span>
-                  <input type="text" class="form-control" id="last-name" name="last-name" required placeholder="Enter your last name">
+                  <input type="text" class="form-control" id="last-name" name="lastname" required placeholder="Enter your last name">
                 </div>
               </div>
             </div>
@@ -83,10 +83,10 @@
       <div class="col-lg-8">
         <div class="card shadow rounded-4 p-5 border-2">
           <h2 class="mb-4 text-success text-center fs-2">Book Your Adventure</h2>
-          <form action="submit-booking.php" method="POST">
+          <form action="../includes/process-booking.php" method="POST">
             <div class="mb-3">
               <label for="full-name" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="full-name" name="full-name" required placeholder="Enter your full name">
+              <input type="text" class="form-control" id="full-name" name="fullname" required placeholder="Enter your full name">
             </div>
             <div class="mb-3">
               <label for="email-booking" class="form-label">Email Address</label>
@@ -99,16 +99,16 @@
             <div class="mb-3 row g-2">
               <div class="col-md-6">
                 <label for="adults" class="form-label">Number of Adults</label>
-                <input type="number" class="form-control" id="adults" name="adults" min="1" required placeholder="Adults">
+                <input type="number" class="form-control" id="adults" name="num_adults" min="1" required placeholder="Adults">
               </div>
               <div class="col-md-6">
                 <label for="children" class="form-label">Number of Children</label>
-                <input type="number" class="form-control" id="children" name="children" min="0" placeholder="Children">
+                <input type="number" class="form-control" id="children" name="num_children" min="0" placeholder="Children">
               </div>
             </div>
             <div class="mb-3">
               <label for="activities" class="form-label">Preferred Activities</label>
-              <select id="activities" name="activities" class="form-select" required>
+              <select id="activities" name="preferred_activities" class="form-select" required>
                 <option value="" disabled selected>Select an activity</option>
                 <option value="hiking">Hiking the Waterfalls</option>
                 <option value="abseiling">Abseiling</option>

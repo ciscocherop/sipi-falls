@@ -38,12 +38,11 @@
       <!-- Newsletter Signup -->
       <div class="col-md-4">
         <h6 class="text-white fw-bold mb-3">Stay Updated</h6>
-        <form id="newsletter-form">
+        <form id="newsletter-form" action="../includes/subscribe_newsletter.php" method="POST">
           <div class="input-group mb-2">
-            <input type="email" class="form-control bg-dark text-white border-light" placeholder="Your Email" aria-label="Email" required>
+            <input type="email" class="form-control bg-dark text-white border-light" name="email" placeholder="Your Email" aria-label="Email" required>
             <button class="btn btn-primary" type="submit">Sign Up</button>
           </div>
-          <div id="newsletter-success" class="text-success small mt-1 d-none">Thank you for subscribing!</div>
         </form>
         <div class="mt-3">
           <a href="#privacy" class="text-white text-decoration-none small me-3">Privacy Policy</a>
