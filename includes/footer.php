@@ -1,5 +1,5 @@
-<footer class="footer-section py-0 mt-5 position-relative">
-  <div class="container py-5">
+<footer class="footer-section py-0  position-relative">
+  <div class="container py-3">
     <div class="row g-5 align-items-start">
       <!-- Brand & Slogan -->
       <div class="col-md-3 mb-4 mb-md-0">

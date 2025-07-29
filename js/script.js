@@ -180,3 +180,162 @@ document.addEventListener('DOMContentLoaded', function() {
     updateCount();
   });
 });
+
+//deleting bookings
+document.addEventListener('DOMContentLoaded', function () {
+  // Select all delete buttons
+  // and the alert container for success messages
+  const deleteButtons = document.querySelectorAll('.delete-booking');
+  const alertContainer = document.getElementById('alertContainer');
+
+  deleteButtons.forEach(button => {// Add click event listener to each button
+    button.addEventListener('click', function (event) {
+      event.preventDefault();// Prevent default anchor click behavior for buttons
+
+      const bookingId = this.getAttribute('data-id');// Get the booking ID from the button's data attribute
+
+      if (!bookingId) {// If no booking ID is found, log an error and exit
+        console.error("No booking ID found.");
+        return;
+      }
+      // Confirm deletion with the user
+      if (confirm('Are you sure you want to delete this booking?')) {
+        fetch(`delete_booking.php?id=${bookingId}`, {// Send a GET request to delete the booking
+          method: 'GET'// Use GET method for deletion
+        })
+        .then(response => response.text())// Parse the response as text
+        .then(data => {
+          if (data.trim() === 'success') { // .trim() just in case
+            // Show alert in placeholder
+            alertContainer.innerHTML = `
+              <div class="alert alert-success text-center" id="deleteMsg">
+                Booking deleted successfully.
+              </div>
+            `;
+
+            // Fade out after 3 seconds
+            setTimeout(() => {
+              const msg = document.getElementById('deleteMsg');
+              if (msg) {
+                msg.style.transition = "opacity 0.5s ease";
+                msg.style.opacity = "0";
+                setTimeout(() => msg.remove(), 500);
+              }
+            }, 3000);
+
+            // Remove the row from the table
+            this.closest('tr').remove();
+          } else {
+            alert('Error deleting booking. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Something went wrong. Please try again.');
+        });
+      }
+    });
+  });
+});
+
+// Handle delete contact action
+document.addEventListener('DOMContentLoaded', function () {
+  const deleteContactButtons = document.querySelectorAll('.delete-contact');
+  const alertContainer = document.getElementById('alertContainer');
+
+  deleteContactButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const contactId = this.getAttribute('data-id');
+
+      if (!contactId) {
+        console.error("No contact ID found.");
+        return;
+      }
+
+      if (confirm('Are you sure you want to delete this contact?')) {
+        fetch(`delete_contacts.php?id=${contactId}`, {
+          method: 'GET'
+        })
+        .then(response => response.text())
+        .then(data => {
+          if (data.trim() === 'success') {
+            alertContainer.innerHTML = `
+              <div class="alert alert-success text-center" id="deleteMsg">
+                Contact deleted successfully.
+              </div>
+            `;
+
+            setTimeout(() => {
+              const msg = document.getElementById('deleteMsg');
+              if (msg) {
+                msg.style.transition = "opacity 0.5s ease";
+                msg.style.opacity = "0";
+                setTimeout(() => msg.remove(), 500);
+              }
+            }, 3000);
+
+            this.closest('tr').remove();
+          } else {
+            alert('Error deleting contact. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Something went wrong. Please try again.');
+        });
+      }
+    });
+  });
+});
+
+// Handle delete subscriber action
+document.addEventListener('DOMContentLoaded', function () {
+  const deleteSubscriberButtons = document.querySelectorAll('.delete-subscriber');
+  const alertContainer = document.getElementById('alertContainer');
+
+  deleteSubscriberButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.preventDefault();
+      const subscriberEmail = this.getAttribute('data-email');
+
+      if (!subscriberEmail) {
+        console.error("No subscriber email found.");
+        return;
+      }
+
+      if (confirm('Are you sure you want to delete this subscriber?')) {
+        fetch(`delete_subscriber.php?email=${encodeURIComponent(subscriberEmail)}`, {
+          method: 'GET'
+        })
+        .then(response => response.text())
+        .then(data => {
+          if (data.trim() === 'success') {
+            alertContainer.innerHTML = `
+              <div class="alert alert-success text-center" id="deleteMsg">
+                Subscriber deleted successfully.
+              </div>
+            `;
+
+            setTimeout(() => {
+              const msg = document.getElementById('deleteMsg');
+              if (msg) {
+                msg.style.transition = "opacity 0.5s ease";
+                msg.style.opacity = "0";
+                setTimeout(() => msg.remove(), 500);
+              }
+            }, 3000);
+
+            this.closest('tr').remove();
+          } else {
+            alert('Error deleting subscriber. Please try again.');
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Something went wrong. Please try again.');
+        });
+      }
+    });
+  });
+});

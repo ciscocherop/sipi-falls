@@ -50,9 +50,12 @@ if(!$message_result){
   <link rel="stylesheet" href="../css/dashboard.css">
 </head>
 <body>
+  <?php
+  include('../includes/navbar.php'); // Include the navbar for the admin dashboard
+?>
   <div class="d-flex">
     <!-- Sidebar -->
-    <nav class="sidebar text-white p-3" style="background-color: #228B22 !important; width: 250px;">
+    <nav class="sidebar text-white p-3 ">
       <h4 class="text-center mb-4">Admin Panel</h4>
       <ul class="nav flex-column">
         <li class="nav-item"><a href="dashboard.php" class="nav-link text-white">Dashboard</a></li>
@@ -99,8 +102,11 @@ if(!$message_result){
       </div>
     </div>
   </div>
-
+<?php
+include('../includes/footer.php'); // Include the footer
+?>
   <!-- Bootstrap JS (Optional for dropdowns or modal later) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
