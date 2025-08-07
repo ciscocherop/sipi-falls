@@ -1,56 +1,65 @@
 /* darkmode */
 body {
-  background-color: white;
-  color: black;
+  margin: 0; /* Remove default margin */
+  min-height: 100vh; /* Ensure body has height for scrolling */
+  background-color: var(--neutral-offwhite); /* #F5F6F9 */
+  color: var(--neutral-gray); /* #333333 */
+}
+
+header {
+  position: relative; /* Ensure header doesn’t restrict sticky */
 }
 
 /* =====================
    NAVBAR (All Pages)
    ===================== */
-.navbar-nav {
-  display: flex;
-  flex-direction: row;
-  gap: 2rem;
-  flex-wrap: nowrap;
-  white-space: nowrap;
+:root {
+  --primary-green: #228B22;
+  --secondary-teal: #6FCF97;
+  --accent-gold: #E8B923;
+  --neutral-gray: #333333;
+  --neutral-offwhite: #F5F6F9;
+  --highlight-coral: #FF6F61;
 }
+
 .nav-link {
   color: #fff !important;
   text-decoration: none;
-  transition: color 0.2s;
-  font-weight: 500;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
 }
-:root {
-  --primary-green: #228B22;
-  --accent-green: #6FCF97;
-}
+
 .nav-link:hover,
 .nav-link:focus {
-  color: #228B22 !important;
-  background-color: #fff !important;
-  text-decoration: none;
+  background-color: var(--accent-gold) !important; /* Gold for hover */
+  color: var(--neutral-gray) !important; /* Dark gray for readability */
+  transform: scale(1.05);
   border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
 }
-.nav-link.home,
+
 .nav-link.active {
-  background-color: #fff !important;
-  color: #228B22 !important;
+  background-color: var(--accent-gold) !important;
+  color: var(--neutral-gray) !important;
   border-radius: 4px;
-  transition: background 0.2s, color 0.2s;
+}
+.navbar.sticky-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000; /* Keep above other elements */
 }
 
 /* =====================
    HOME PAGE (index.html)
    ===================== */
-/* Hero Section */
+
+
 .herosection {
   height: 100vh;
-  background-color: #000;
+  background-color: var(--primary-green); /* Fallback */
   overflow: hidden;
   position: relative;
   width: 100%;
 }
+
 .slideshow-container {
   position: absolute;
   top: 0;
@@ -59,36 +68,38 @@ body {
   height: 100%;
   z-index: 0;
 }
+
 .slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  object-fit: cover; /* Changed to cover for better quality */
   opacity: 0;
-  transition: opacity 2s ease-in-out;
-  animation: kenburns 20s infinite;
+  transition: opacity 1s ease-in-out; /* Faster transition */
+  animation: kenburns 8s infinite; /* Faster animation */
 }
+
 .slide.active {
   opacity: 1;
 }
+
 @keyframes kenburns {
   0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(-2%, 2%); }
+  50% { transform: scale(1.05) translate(-1%, 1%); } /* Subtler zoom */
   100% { transform: scale(1) translate(0, 0); }
 }
+
 .overlay-content {
   z-index: 1;
-  color: white;
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  padding: 2rem;
+  max-width: 90%;
 }
-.herosection h5,
-.herosection h1 {
-  font-family: cursive;
-}
+
+
+
+
 /* Why Visit Sipi Falls Timeline (Home) */
 .timeline {
   position: relative;
@@ -126,140 +137,189 @@ body {
   color: #222;
   font-weight: 500;
 }
-.intro .card.position-relative {
+/* .intro .card.position-relative {
   padding: 2.5rem !important;
-}
-.intro .card .mb-4.text-success.text-center + p {
-  font-size: 1.18rem;
-  line-height: 1.7;
-}
-.intro {
-  border-bottom: 4px solid #d1e7dd;
-}
-.container .card .card-title {
-  text-align: center;
-  font-size: 1.35rem;
-  color: #228B22;
+} */
+
+
+.container .card .card-img-top {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  object-fit: cover;
+  border-radius: 1rem 1rem 0 0;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 .container .card .card-text {
-  font-size: 1.13rem;
-  line-height: 1.7;
-  background-color: #f5f6f9;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--neutral-gray);
 }
+
 .container .card .card-body {
-  background-color: #e6f9ec !important;
+  background-color: var(--neutral-offwhite) !important;
   padding: 1rem 1.25rem !important;
   border-radius: 0 0 1rem 1rem;
+  flex-grow: 1;
+}
+
+.clickable-btn {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.clickable-btn:hover {
+  background-color: var(--secondary-teal) !important;
+  color: #fff !important;
+  border-color: var(--accent-gold) !important;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+/* testimonal */
+
+.testimonial-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-img {
+  border: 2px solid var(--secondary-teal); /* Add subtle border for polish */
 }
 
 /* =====================
    TRAVEL GUIDE PAGE (travelguide.html)
    ===================== */
+
 .hero-section-travel {
   background-image: url('../images/water.jpg');
-  height: 100vh;
+  height: 80vh; /* Reduced for mobile */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
+}
 
+.quick-fact-card .tooltip {
+  background-color: #E8B923 !important;
+  color: white !important;
+  font-weight: bold;
 }
-.quick-facts i {
-  color: #06c433;
+
+
+.quick-facts .text-success {
+  color: var(--primary-green) !important;
 }
-.quick-facts h6 {
+
+.quick-facts h5 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+  color: var(--primary-green);
 }
+
 .quick-facts p {
   font-family: 'Montserrat', sans-serif;
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: 1.6;
+  color: var(--neutral-gray);
 }
-.quick-facts .row {
-  transition: all 0.3s ease;
-}
-.quick-facts .col-md-3:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+
 .quick-fact-card {
-  background: #fff;
+  background: var(--neutral-offwhite);
   border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(34,139,34,0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
-  cursor: pointer;
-  position: relative;
-  padding: 1.5rem 1rem;
-  margin-bottom: 1.2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 1.5rem;
 }
+
 .quick-fact-card:hover {
-  transform: translateY(-6px) scale(1.03);
-  box-shadow: 0 6px 24px rgba(34,139,34,0.15);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
+
 .quick-fact-card .fa-3x {
-  transition: color 0.2s;
+  transition: color 0.3s ease;
 }
+
 .quick-fact-card:hover .fa-3x {
-  color: #6FCF97;
+  color: var(--secondary-teal);
 }
 /* Activities Section (Travel Guide) */
 .activities-section {
-  background: linear-gradient(to bottom, #f8f9fa, rgba(6, 196, 51, 0.05));
-  padding: 4rem 0;
+  background: linear-gradient(to bottom, var(--neutral-offwhite), rgba(111, 207, 151, 0.05));
+  padding: 3rem 0;
 }
-.activities-section h2 {
-  font-family: 'Lobster', cursive;
-  font-size: 2.5rem;
-  color: #228B22;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-}
+
 .activity-card {
-  height: 250px;
-  min-height: 250px;
-  border-radius: 0.5rem;
+   height: 200px;
+  border-radius: 1rem;
+  border: 2px solid var(--secondary-teal);
+  background: var(--neutral-offwhite);
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
 }
 .activity-img-cover {
-  width: 250px;
+width: 40%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0;
-  display: block;
+  flex-shrink: 0;
 }
-#HKdes{
-  border-left: 7px  solid #228B22;
-  border-radius: 3px;
-  margin-right: 3px;
-}
+
 .activity-card h5 {
-  font-family: 'Montserrat', sans-serif;
+font-family: 'Montserrat', sans-serif;
   font-weight: 600;
-  color: #228B22;
-  font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+  color: var(--primary-green)
 }
-.activity-card p {
-  font-family: 'Montserrat', sans-serif;
-  color: #666;
+.activity-desc {
+   font-family: 'Montserrat', sans-serif;
   font-size: 0.95rem;
   line-height: 1.5;
+  color: var(--neutral-gray);
+  border-left: 4px solid var(--primary-green);
+  padding-left: 1rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+/* map section */
+
+
+.map-section {
+  background: linear-gradient(to bottom, var(--neutral-offwhite), rgba(111, 207, 151, 0.05));
+  padding: 3rem 0;
+}
+
+.map-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  color: var(--primary-green);
+}
+
+.map-iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: 1rem;
+  box-shadow: 0 2px 16px rgba(34, 139, 34, 0.07);
 }
 
 /* =====================
    ABOUT PAGE (about.html)
    ===================== */
-.header-section {
-  background: linear-gradient(to bottom, #f8f9fa,#228B22);
-  color: white;
-  padding: 4rem 0;
-}
-.header-section h1 {
-  font-size: 3rem;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
+
 /* Video Section (About) */
 .video-section {
   padding: 4rem 0;
@@ -278,7 +338,7 @@ body {
   transform: translateZ(0);
 }
 /* Timeline (About) - shares .timeline styles with Home */
-.timeline {
+/* .timeline {
   position: relative;
   margin-left: 1.5rem;
   padding-left: 1.5rem;
@@ -319,7 +379,7 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   padding: 1rem 1.5rem;
   margin-bottom: 0.5rem;
-}
+} */
 /* Team Card and Counter Styles from about.html */
 .team-card {
   transition: box-shadow 0.3s;
@@ -349,142 +409,111 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
+
 /* =====================
    CONTACT PAGE (contact.html)
    ===================== */
 /* (Add your contact page-specific styles here if needed) */
-/* Remove default blue focus and add green glow for inputs/textareas */
-.form-control:focus, .form-select:focus, .input-group-text:focus, textarea:focus {
-  box-shadow: 0 0 0 0.2rem var(--accent-green) !important;
-  border-color: #228B22 !important;
-  outline: none !important;
+ /* Custom border color on hover/focus for accordion buttons */
+ 
+.accordion-button:focus,
+.accordion-button:hover {
+  border-color: var(--primary-green) !important;
+  box-shadow: 0 0 0 0.25rem rgba(34, 139, 34, 0.25) !important; /* Optional glow */
+  background-color: rgba(34, 139, 34, 0.05); /* Slight background tint on hover */
+  color: var(--primary-green) !important;
 }
-.welcome-section .col-md-10.col-lg-8 {
-  background: rgba(255, 255, 255, 0.10);
-  box-shadow: 0 8px 32px 0 rgba(34,139,34,0.18);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.5rem;
-  border: 1.5px solid rgba(255,255,255,0.25);
+
+/* Optional: icon color change on hover */
+.accordion-button:hover i {
+  color: var(--primary-green);
 }
-.welcome-section {
- background-image: url(../images/f15.jpg);
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 4rem 0;
-  color: #fff;
-}
-.welcome-section{
-  min-height: 60vh;
-}
+
 /* =====================
    FOOTER (All Pages)
    ===================== */
+
 .footer-section {
-  background: linear-gradient(90deg, #228B22 60%, #06c433 100%);
-  color: #fff;
-  position: relative;
-  font-size: 1rem;
+  background: linear-gradient(90deg, var(--primary-green) 60%, var(--secondary-teal) 100%);
+  color: var(--neutral-offwhite);
+  font-family: 'Montserrat', sans-serif;
 }
-.footer-section a.text-white,
-.footer-section a.text-white-50 {
+
+.footer-section a {
+  color: var(--neutral-offwhite);
+  text-decoration: none;
   transition: color 0.2s;
 }
-.footer-section a.text-white:hover,
-.footer-section a.text-white-50:hover {
-  color: #6FCF97 !important;
+
+.footer-section a:hover {
+  color: var(--accent-gold) !important;
 }
+
 .footer-section h6 {
+  font-size: 1.2rem;
   letter-spacing: 1px;
-  font-size: 1.1rem;
 }
+
 .footer-section ul {
   padding-left: 0;
+  list-style: none;
 }
+
 .footer-section li {
   margin-bottom: 0.5rem;
 }
-.footer-section .input-group .form-control {
+
+.footer-section .form-control {
   background-color: #222;
-  color: #fff;
-  border: 1px solid #06c433;
+  color: var(--neutral-offwhite);
+  border: 1px solid var(--secondary-teal);
 }
-.footer-section .input-group .form-control:focus {
+
+.footer-section .form-control:focus {
   background-color: #fff;
-  color: #228B22;
-  border-color: #06c433;
+  color: var(--primary-green);
+  border-color: var(--secondary-teal);
+  box-shadow: 0 0 0 2px rgba(111, 207, 151, 0.2);
 }
-.footer-section .btn-primary {
-  background: #06c433;
-  border: none;
-  color: #fff;
-  transition: background 0.2s, color 0.2s;
-}
-.footer-section .btn-primary:hover {
-  background: #fff;
-  color: #06c433;
-  border: 1px solid #06c433;
-}
-.footer-section .social-links a,
-.footer-section .d-flex.gap-2 a {
-  font-size: 1.3rem;
-  margin-right: 0.5rem;
-  color: #fff;
-  transition: color 0.2s, transform 0.2s;
-}
-.footer-section .social-links a:last-child,
-.footer-section .d-flex.gap-2 a:last-child {
-  margin-right: 0;
-}
-.footer-section .social-links a:hover,
-.footer-section .d-flex.gap-2 a:hover {
-  color: #6FCF97;
-  transform: scale(1.15);
-}
+
 .footer-section .form-control::placeholder {
   color: #bbb;
-  opacity: 1;
 }
-.footer-section .form-control:focus {
-  box-shadow: 0 0 0 2px #06c43333;
+
+
+
+.footer-section .social-link {
+  font-size: 1.3rem;
+  margin-right: 0.5rem;
+  transition: color 0.2s, transform 0.2s;
 }
+
+.footer-section .social-link:hover {
+  color: var(--accent-gold);
+  transform: scale(1.15);
+}
+
 .footer-section .navbar-logo {
   border-radius: 8px;
   background: #fff;
   padding: 2px;
 }
+
 .footer-section .small {
-  font-size: 0.97rem;
+  font-size: 0.9rem;
 }
+
 #back-to-top {
-  display: none;
   border-radius: 50%;
   width: 48px;
   height: 48px;
-  box-shadow: 0 2px 8px rgba(34,139,34,0.15);
-  font-size: 1.3rem;
+  display: flex;
   align-items: center;
   justify-content: center;
   padding: 0;
 }
-#back-to-top:active {
-  background: #fff;
-  color: #06c433;
-}
-.footer-section .footer-quick-links {
-  text-align: center;
-}
-.footer-section .footer-quick-links ul {
-  display: inline-block;
-  text-align: left;
-}
-.footer-section, .footer-section ul, .footer-section li, .footer-section a, .footer-section p, .footer-section h6, .footer-section span {
-  font-size: 1.22rem;
-}
-.footer-section .footer-quick-links h6 {
-  font-size: 1.35rem;
-}
+
+
 
 /* =====================
    SHARED UTILITIES & OVERRIDES

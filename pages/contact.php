@@ -16,99 +16,142 @@
   <!-- Navbar -->
   <?php include '../includes/navbar.php'; ?>
 
-  <!-- Warm Welcome Message -->
-  <section class="welcome-section   container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-md-10 col-lg-8 ">
-        <h1 class="display-4 ms-3">Ready for Sipi? Let’s Begin the <span style="margin-left: 70%;">Journey!</span></h1>
-        <p class="p-4 fs-4">We’re thrilled you’re interested in exploring Sipi Falls! Our team is here to assist you with <br>
-          any questions or to help plan your unforgettable adventure. Feel free to reach out—we can’t wait to welcome you! <br>
-          For any kind of inquiries, please use the contact form below or book your adventure directly through our booking form.
-        </p>
+  <!-- CONTACT HERO SECTION -->
+  <section class="welcome-section container-fluid reveal" style="background-image: url('../images/f15.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;  color: #fff;">
+    <div class="container py-5 px-3 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+      <div class="p-3 p-md-5 rounded-4" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(111,207,151,0.3)); backdrop-filter: blur(5px);">
+        <div class="glass-card text-center p-5" role="region" aria-label="Welcome message for Sipi Falls contact">
+          <h2 class="display-5 fw-bold mb-4 text-light" style="font-family: 'Montserrat', sans-serif;">
+            Ready for Sipi? Let’s Begin the <span style="color: var(--accent-gold);">Journey!</span>
+          </h2>
+          <p class="lead mb-4 text-light" style="font-family: 'Montserrat', sans-serif;">
+            Thrilled to explore Sipi Falls? Our Sabiny team is ready to plan your adventure. Contact us or book now!
+          </p>
+          <div class="d-flex justify-content-center flex-wrap gap-3">
+            <a href="#contact-form" class="btn btn-lg clickable-btn shadow-sm"
+              style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--secondary-teal);">
+              <i class="fas fa-envelope me-2" style="color: var(--primary-green);"></i> Contact Us
+            </a>
+            <a href="#booking-form" class="btn btn-lg clickable-btn shadow-sm"
+              style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--accent-teal);">
+              <i class="fas fa-calendar-check me-2" style="color: var(--primary-green);"></i> Book Now
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
   </section>
 
+ 
+
   <!-- Contact Form -->
-  <section class="container p-5" style="background: #228B22; border-radius: 1.5rem;">
+  <section id="contact-form" class="container-fluid p-5 reveal" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%); border-radius: 1.5rem;">
     <div class="row justify-content-center align-items-center g-4">
+      
       <!-- Image Column -->
-      <div class="col-lg-5 mb-4 mb-lg-0 p-0 contact-image">
-        <img src="../images/group.jpg" alt="Contact Sipi Falls" class="img-fluid h-100 w-100 d-block" style="object-fit: cover; min-height: 320px; max-height: 400px; border-top-left-radius: 1.5rem; border-bottom-left-radius: 1.5rem; border-top-right-radius: 0; border-bottom-right-radius: 0;">
+      <div class="col-lg-5 mb-4 mb-lg-0 contact-image">
+        <img src="../images/group.jpg" alt="Group of Sabiny guides at Sipi Falls" class="img-fluid h-100 w-100 d-block" style="object-fit: cover; height: 100%; border-radius: 1.5rem;" loading="lazy">
       </div>
+
       <!-- Form Column -->
       <div class="col-lg-7">
-        <div class="card shadow rounded-4 p-5 border-2">
-          <h2 class="mb-4 text-success text-center fs-2">Let's Get Intouch</h2>
-          <form action="../includes/process_contact.php" method="POST">
+        <div class="card shadow rounded-4 p-5" style="border: 2px solid var(--secondary-teal); background: var(--neutral-offwhite);">
+          <h2 class="mb-3 text-center" style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2.5rem;">
+            Let's Get In Touch
+          </h2>
+          <p class="text-center mb-4" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif; font-size: 1.1rem;">
+            Questions? Comments? We're here to help you plan the perfect Sipi adventure.
+          </p>
+
+          <form action="../includes/process_contact.php" method="POST" role="form" aria-label="Contact form for Sipi Falls inquiries">
             <div class="mb-3 row g-2">
+              <!-- First Name -->
               <div class="col-12 col-md-6">
-                <label for="name" class="form-label">First Name</label>
+                <label for="name" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">First Name</label>
                 <div class="input-group">
-                  <span class="input-group-text bg-white"><i class="fas fa-user"></i></span>
-                  <input type="text" class="form-control" id="name" name="firstname" required placeholder="Enter your first name">
+                  <span class="input-group-text bg-white" style="border-color: var(--secondary-teal);" aria-hidden="true">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <input type="text" class="form-control" id="name" name="firstname" required placeholder="Enter your first name" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
                 </div>
               </div>
+
+              <!-- Last Name -->
               <div class="col-12 col-md-6">
-                <label for="last-name" class="form-label">Last Name</label>
+                <label for="last-name" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Last Name</label>
                 <div class="input-group">
-                  <span class="input-group-text bg-white"><i class="fas fa-user"></i></span>
-                  <input type="text" class="form-control" id="last-name" name="lastname" required placeholder="Enter your last name">
+                  <span class="input-group-text bg-white" style="border-color: var(--secondary-teal);" aria-hidden="true">
+                    <i class="fas fa-user"></i>
+                  </span>
+                  <input type="text" class="form-control" id="last-name" name="lastname" required placeholder="Enter your last name" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
                 </div>
               </div>
             </div>
 
+            <!-- Email -->
             <div class="mb-3">
-              <label for="email" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email" name="email" required>
+              <label for="email" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Email Address</label>
+              <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
             </div>
+
+            <!-- Subject -->
             <div class="mb-3">
-              <label for="subject" class="form-label">Subject</label>
-              <input type="text" class="form-control" id="subject" name="subject" required>
+              <label for="subject" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Subject</label>
+              <input type="text" class="form-control" id="subject" name="subject" required placeholder="Enter the subject" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
             </div>
+
+            <!-- Message -->
             <div class="mb-3">
-              <label for="message" class="form-label">Your Message</label>
-              <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+              <label for="message" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Your Message</label>
+              <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Type your message" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);"></textarea>
             </div>
-            <button type="submit" class="btn btn-success w-100">Send Message</button>
+
+            <!-- Feedback -->
+            <div id="form-feedback" class="mb-3 text-center d-none" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;"></div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-lg clickable-btn shadow-sm w-100" style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--secondary-teal); font-family: 'Montserrat', sans-serif;">
+              <i class="fas fa-paper-plane me-2" style="color: var(--primary-green);"></i> Submit Inquiry
+            </button>
           </form>
         </div>
       </div>
     </div>
   </section>
 
+
   <!-- Booking Form -->
-  <section class="container py-5">
+  <section id="booking-form" class="container-fluid py-5 reveal" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%);">
     <div class="row justify-content-center">
       <div class="col-lg-8">
-        <div class="card shadow rounded-4 p-5 border-2">
-          <h2 class="mb-4 text-success text-center fs-2">Book Your Adventure</h2>
-          <form action="../includes/process-booking.php" method="POST">
+        <div class="card shadow rounded-4 p-5" style="border: 2px solid var(--secondary-teal); background: var(--neutral-offwhite);">
+          <img src="../images/waterfall-icon.png" alt="Sipi Falls adventure icon" style="width: 60px; height: 60px; margin: 0 auto 1rem; display: block;" loading="lazy">
+          <h2 class="mb-4 text-center" style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2.5rem;">Book Your Adventure</h2>
+          <form action="../includes/process-booking.php" method="POST" role="form" aria-label="Booking form for Sipi Falls adventure">
             <div class="mb-3">
-              <label for="full-name" class="form-label">Full Name</label>
-              <input type="text" class="form-control" id="full-name" name="fullname" required placeholder="Enter your full name">
+              <label for="full-name" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Full Name</label>
+              <input type="text" class="form-control" id="full-name" name="fullname" required placeholder="Enter your full name" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
             </div>
             <div class="mb-3">
-              <label for="email-booking" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email-booking" name="email-booking" required placeholder="Enter your email address">
+              <label for="email-booking" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Email Address</label>
+              <input type="email" class="form-control" id="email-booking" name="email-booking" required placeholder="Enter your email address" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
             </div>
             <div class="mb-3">
-              <label for="travel-date" class="form-label">Preferred Travel Date</label>
-              <input type="date" class="form-control" id="travel-date" name="travel-date" required>
+              <label for="travel-date" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Preferred Travel Date</label>
+              <input type="date" class="form-control" id="travel-date" name="travel-date" required style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
             </div>
             <div class="mb-3 row g-2">
               <div class="col-md-6">
-                <label for="adults" class="form-label">Number of Adults</label>
-                <input type="number" class="form-control" id="adults" name="num_adults" min="1" required placeholder="Adults">
+                <label for="adults" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Number of Adults</label>
+                <input type="number" class="form-control" id="adults" name="num_adults" min="1" required placeholder="Enter number of adults" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
               </div>
               <div class="col-md-6">
-                <label for="children" class="form-label">Number of Children</label>
-                <input type="number" class="form-control" id="children" name="num_children" min="0" placeholder="Children">
+                <label for="children" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Number of Children</label>
+                <input type="number" class="form-control" id="children" name="num_children" min="0" placeholder="Enter number of children" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
               </div>
             </div>
             <div class="mb-3">
-              <label for="activities" class="form-label">Preferred Activities</label>
-              <select id="activities" name="preferred_activities" class="form-select" required>
+              <label for="activities" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Preferred Activities</label>
+              <select id="activities" name="preferred_activities" class="form-select" required style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
                 <option value="" disabled selected>Select an activity</option>
                 <option value="hiking">Hiking the Waterfalls</option>
                 <option value="abseiling">Abseiling</option>
@@ -120,20 +163,21 @@
               </select>
             </div>
             <div class="mb-3">
-              <label for="budget" class="form-label">Budget Range (Optional)</label>
-              <select id="budget" name="budget" class="form-select">
-                <option value="">Select Range</option>
+              <label for="budget" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Budget Range (Optional)</label>
+              <select id="budget" name="budget" class="form-select" style="font-family: 'Montserrat', sans-serif; color: var(--neutral-gray);">
+                <option value="">Select budget range</option>
                 <option value="50-100">$50 - $100</option>
                 <option value="100-200">$100 - $200</option>
                 <option value="200+">$200+</option>
               </select>
             </div>
             <div class="form-check mb-4">
-              <input class="form-check-input" type="checkbox" id="agree" name="agree">
-              <label class="form-check-label" for="agree">I agree to receive updates</label>
+              <input class="form-check-input" type="checkbox" id="agree" name="agree" aria-label="Agree to receive booking updates and newsletters">
+              <label class="form-check-label" for="agree" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">I agree to receive booking updates and newsletters</label>
             </div>
-            <button type="submit" class="btn btn-success w-100 py-2">
-              Submit Booking <i class="fas fa-arrow-right ms-2"></i>
+            <div id="booking-feedback" class="mb-3 text-center" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif; display: none;"></div>
+            <button type="submit" class="btn btn-lg clickable-btn shadow-sm w-100 py-2" style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--secondary-teal); font-family: 'Montserrat', sans-serif;">
+              Plan My Adventure <i class="fas fa-arrow-right ms-2" aria-hidden="true"></i>
             </button>
           </form>
         </div>
@@ -141,62 +185,85 @@
     </div>
   </section>
 
-  <!-- FAQs -->
-  <section class="container py-5">
-    <h2 class="text-center mb-5 text-success">Frequently Asked Questions</h2>
-    <div class="row g-4 justify-content-center">
-      <!-- Best time to visit -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow rounded-4 p-4 text-center">
-          <div class="mb-3">
-            <i class="fas fa-calendar-alt fa-2x text-success"></i>
+<!-- FAQs Section with Accordion -->
+  <section class="container py-5 reveal">
+    <h2 class="text-center mb-5 fw-bold" style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">
+      Frequently Asked Questions
+    </h2>
+
+    <div class="accordion accordion-flush" id="faqAccordion">
+      <!-- Question 1 -->
+      <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+        <h2 class="accordion-header" id="faqHeadingOne">
+          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseOne" aria-expanded="false" aria-controls="faqCollapseOne" style="color: var(--primary-green); background: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">
+            <i class="fas fa-calendar-alt me-2 text-success"></i> What’s the best time to visit Sipi Falls?
+          </button>
+        </h2>
+        <div id="faqCollapseOne" class="accordion-collapse collapse" aria-labelledby="faqHeadingOne" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted" style="font-family: 'Montserrat', sans-serif;">
+            The best times are during the dry seasons—June to August and December to February—for clear views and safe trails.
           </div>
-          <h5 class="mb-3">What’s the best time to visit Sipi Falls?</h5>
-          <p>The best times are during the dry seasons, June to August and December to February, for clear views and safe trails.</p>
         </div>
       </div>
-      <!-- Guides included -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow rounded-4 p-4 text-center">
-          <div class="mb-3">
-            <i class="fas fa-user-tie fa-2x text-success"></i>
+
+      <!-- Question 2 -->
+      <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+        <h2 class="accordion-header" id="faqHeadingTwo">
+          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseTwo" aria-expanded="false" aria-controls="faqCollapseTwo" style="color: var(--primary-green); background: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">
+            <i class="fas fa-user-tie me-2 text-success"></i> Are guides included in the booking?
+          </button>
+        </h2>
+        <div id="faqCollapseTwo" class="accordion-collapse collapse" aria-labelledby="faqHeadingTwo" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted" style="font-family: 'Montserrat', sans-serif;">
+            Yes! All activities include professional Sabiny guides to ensure your safety and unforgettable experience.
           </div>
-          <h5 class="mb-3">Are guides included in the booking?</h5>
-          <p>Yes, professional guides are included with all activity bookings to ensure your safety and enjoyment.</p>
         </div>
       </div>
-      <!-- What to pack -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow rounded-4 p-4 text-center">
-          <div class="mb-3">
-            <i class="fas fa-hiking fa-2x text-success"></i>
+
+      <!-- Question 3 -->
+      <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+        <h2 class="accordion-header" id="faqHeadingThree">
+          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseThree" aria-expanded="false" aria-controls="faqCollapseThree" style="color: var(--primary-green); background: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">
+            <i class="fas fa-hiking me-2 text-success"></i> What should I pack for the activities?
+          </button>
+        </h2>
+        <div id="faqCollapseThree" class="accordion-collapse collapse" aria-labelledby="faqHeadingThree" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted" style="font-family: 'Montserrat', sans-serif;">
+            Pack comfy hiking shoes, a rain jacket, sunscreen, bug repellent, a reusable water bottle, and a camera for magical moments!
           </div>
-          <h5 class="mb-3">What should I pack for the activities?</h5>
-          <p>Pack sturdy hiking shoes, a rain jacket, sunscreen, insect repellent, a reusable water bottle, and a camera.</p>
         </div>
       </div>
-      <!-- How to cancel -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow rounded-4 p-4 text-center">
-          <div class="mb-3">
-            <i class="fas fa-times-circle fa-2x text-success"></i>
+
+      <!-- Question 4 -->
+      <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+        <h2 class="accordion-header" id="faqHeadingFour">
+          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFour" aria-expanded="false" aria-controls="faqCollapseFour" style="color: var(--primary-green); background: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">
+            <i class="fas fa-times-circle me-2 text-success"></i> How do I cancel a booking?
+          </button>
+        </h2>
+        <div id="faqCollapseFour" class="accordion-collapse collapse" aria-labelledby="faqHeadingFour" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted" style="font-family: 'Montserrat', sans-serif;">
+            You can cancel free of charge up to 48 hours before your trip—just contact us via email or phone.
           </div>
-          <h5 class="mb-3">How do I cancel a booking?</h5>
-          <p>You can cancel free of charge up to 48 hours before your trip by contacting us via email or phone.</p>
         </div>
       </div>
-      <!-- Age limit -->
-      <div class="col-md-6 col-lg-4">
-        <div class="card h-100 shadow rounded-4 p-4 text-center">
-          <div class="mb-3">
-            <i class="fas fa-child fa-2x text-success"></i>
+
+      <!-- Question 5 -->
+      <div class="accordion-item border-0 mb-3 rounded-4 shadow-sm">
+        <h2 class="accordion-header" id="faqHeadingFive">
+          <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#faqCollapseFive" aria-expanded="false" aria-controls="faqCollapseFive" style="color: var(--primary-green); background: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">
+            <i class="fas fa-child me-2 text-success"></i> Is there an age limit for activities?
+          </button>
+        </h2>
+        <div id="faqCollapseFive" class="accordion-collapse collapse" aria-labelledby="faqHeadingFive" data-bs-parent="#faqAccordion">
+          <div class="accordion-body text-muted" style="font-family: 'Montserrat', sans-serif;">
+            Most Sipi adventures are perfect for ages 12 and up, but reach out if you’re unsure about any activity!
           </div>
-          <h5 class="mb-3">Is there an age limit for activities?</h5>
-          <p>Most activities are suitable for ages 12 and up, but please contact us for specific restrictions.</p>
         </div>
       </div>
     </div>
   </section>
+
 
   <!-- Footer -->
   <?php include '../includes/footer.php'; ?>

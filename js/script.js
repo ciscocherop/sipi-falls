@@ -1,48 +1,106 @@
+//navigation for the active links
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname;
 
-document.addEventListener('DOMContentLoaded', function () {
+  navLinks.forEach(link => {
+    // Normalize paths to handle relative URLs
+    const linkPath = new URL(link.href, window.location.origin).pathname;
+    if (linkPath === currentPath) {
+      link.classList.add('active');
+      link.setAttribute('aria-current', 'page');
+    }
+  });
+});
+
+// Image Slider Logic
+document.addEventListener('DOMContentLoaded', () => {
   const slides = document.querySelectorAll('.slide');
   let currentSlide = 0;
 
-  if (slides.length > 0) {
-    // Set the first slide as active immediately
-    slides[currentSlide].classList.add('active');
+  // Show first slide immediately
+  slides[0].classList.add('active');
 
-    setInterval(() => {
-      // Remove active class from the current slide
-      slides[currentSlide].classList.remove('active');
-
-      // Move to the next slide
-      currentSlide = (currentSlide + 1) % slides.length;
-
-      // Add active class to the new current slide
-      slides[currentSlide].classList.add('active');
-    }, 5000); // Change slide every 5 seconds
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('active', i === index);
+    });
   }
+
+  setInterval(() => {
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
+  }, 8000); // Matches 8s animation
 });
+
 // Back to Top Button Logic
 document.addEventListener('DOMContentLoaded', () => {
-  const backToTopButton = document.getElementById('back-to-top');
+  // Back to Top Button
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+  });
+  backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
-  if (backToTopButton) {
-    // Show or hide the button based on scroll position
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 300) { // Show button after scrolling 300px
-        backToTopButton.style.display = 'block';
-      } else {
-        backToTopButton.style.display = 'none';
-      }
-    });
-
-    // Smooth scroll to top on click
-    backToTopButton.addEventListener('click', () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+  // Newsletter Form Feedback
+  const form = document.getElementById('newsletter-form');
+  const feedback = document.getElementById('newsletter-feedback');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
       });
-    });
-  }
+      const result = await response.json();
+      feedback.textContent = result.message || 'Subscribed successfully!';
+      feedback.style.color = 'var(--secondary-teal)';
+      feedback.style.display = 'block';
+      form.reset();
+    } catch (error) {
+      feedback.textContent = 'Error subscribing. Please try again.';
+      feedback.style.color = 'var(--highlight-coral)';
+      feedback.style.display = 'block';
+    }
+  });
 });
 
+// Extra Tips Modal Content for Travel Guide
+// Only runs on travelguide.html
+if (document.getElementById('extraTipsModal')) {
+  document.addEventListener('DOMContentLoaded', function () {
+    const tips = [
+      'Carry some cash – ATMs are limited in the Sipi area.',
+      'Start hikes early in the morning for the best weather and fewer crowds.',
+      'Hire a local guide for safety and to learn hidden stories about the falls.',
+      'Bring a waterproof bag for your electronics and valuables.',
+      'Respect local customs – ask before taking photos of people.',
+      'Try the local coffee – it’s some of the best in Uganda!',
+      'Wear layers – weather can change quickly in the mountains.',
+      'Stay on marked trails to protect the environment and for your safety.',
+      'Book your accommodation in advance during peak season.',
+      'Don’t forget insect repellent and sunscreen!'
+    ];
+    const tipsList = document.getElementById('extra-tips-list');
+    const modal = document.getElementById('extraTipsModal');
+    if (tipsList && modal) {
+      modal.addEventListener('show.bs.modal', function () {
+        // Clear previous tips (if any)
+        tipsList.innerHTML = '';
+        // Add each tip as a list item
+        tips.forEach(tip => {
+          const li = document.createElement('li');
+          li.innerHTML = `<i class="fas fa-leaf text-success me-2"></i> ${tip}`;
+          li.classList.add('mb-2');
+          tipsList.appendChild(li);
+        });
+      });
+    }
+  });
+}
+// Intersection Observer for Reveal Animations
 document.addEventListener("DOMContentLoaded", function() {
   const reveals = document.querySelectorAll('.reveal');
 
@@ -114,54 +172,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Extra Tips Modal Content for Travel Guide
-// Only runs on travelguide.html
-if (document.getElementById('extraTipsModal')) {
-  document.addEventListener('DOMContentLoaded', function () {
-    const tips = [
-      'Carry some cash – ATMs are limited in the Sipi area.',
-      'Start hikes early in the morning for the best weather and fewer crowds.',
-      'Hire a local guide for safety and to learn hidden stories about the falls.',
-      'Bring a waterproof bag for your electronics and valuables.',
-      'Respect local customs – ask before taking photos of people.',
-      'Try the local coffee – it’s some of the best in Uganda!',
-      'Wear layers – weather can change quickly in the mountains.',
-      'Stay on marked trails to protect the environment and for your safety.',
-      'Book your accommodation in advance during peak season.',
-      'Don’t forget insect repellent and sunscreen!'
-    ];
-    const tipsList = document.getElementById('extra-tips-list');
-    const modal = document.getElementById('extraTipsModal');
-    if (tipsList && modal) {
-      modal.addEventListener('show.bs.modal', function () {
-        // Clear previous tips (if any)
-        tipsList.innerHTML = '';
-        // Add each tip as a list item
-        tips.forEach(tip => {
-          const li = document.createElement('li');
-          li.innerHTML = `<i class="fas fa-leaf text-success me-2"></i> ${tip}`;
-          li.classList.add('mb-2');
-          tipsList.appendChild(li);
-        });
-      });
-    }
-  });
-}
-
-// Enable tooltips for Quick Facts cards (Bootstrap 5)
-document.addEventListener('DOMContentLoaded', function () {
-  const factCards = document.querySelectorAll('.quick-fact-card');
-  factCards.forEach(card => {
-    const tip = card.getAttribute('data-tip');
-    if (tip) {
-      card.setAttribute('title', tip);
-      // Initialize Bootstrap tooltip
-      if (window.bootstrap && bootstrap.Tooltip) {
-        new bootstrap.Tooltip(card);
-      }
-    }
-  });
-});
 // Animated Counters for About Us Page
 document.addEventListener('DOMContentLoaded', function() {
   const counters = document.querySelectorAll('.counter');

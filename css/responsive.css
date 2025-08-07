@@ -21,51 +21,39 @@
   }
 }
 
-/* Footer (All Pages), Quick Facts (Travel Guide), Activities Section (Travel Guide) */
+/* Footer (All Pages) */
+/* Responsive */
 @media (max-width: 767px) {
-  /* Footer - All Pages */
-  .footer-section .row > div {
-    margin-bottom: 2rem;
+  .footer-section .container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
-  #back-to-top {
-    right: 16px;
-    bottom: 16px;
-    width: 40px;
-    height: 40px;
+  .footer-section h6 {
     font-size: 1.1rem;
   }
-  /* Travel Guide - Quick Facts Section */
-  .quick-facts {
-    padding: 40px 0;
+  .footer-section .small {
+    font-size: 0.85rem;
   }
-  .quick-facts h6 {
-    font-size: 1rem;
-  }
-  .quick-facts p {
-    font-size: 0.9rem;
-  }
-  /* Travel Guide - Activities Section */
-  .activities-section h2 {
-    font-size: 2rem;
-  }
-  .activity-card {
-    flex-direction: column;
-    text-align: center;
-  }
-  .activity-card img {
-    margin-bottom: 1rem;
-    width: 100%;
-    max-width: 150px;
-    height: auto;
-  }
-  .activity-card h5 {
+  .footer-section .social-link {
     font-size: 1.1rem;
-  }
-  .activity-card p {
-    font-size: 0.9rem;
   }
 }
 
+/* Travel Guide - Quick Facts Section */
+@media (max-width: 767px) {
+  .hero-section-travel {
+    height: 60vh; /* Further reduced for mobile */
+  }
+  .hero-section-travel .display-4 {
+    font-size: 2rem;
+  }
+  .hero-section-travel .lead {
+    font-size: 1.1rem;
+  }
+  .hero-section-travel .p-4 {
+    padding: 2rem !important;
+  }
+}
 /* About Page - Video Section */
 @media (max-width: 768px) {
   .video-wrapper {
@@ -89,46 +77,39 @@
 }
 
 /* --- Custom Additions for index.html Mobile Responsiveness --- */
-@media (max-width: 575px) {
-  /* Hero overlay text and padding */
+/* Responsive */
+@media (max-width: 767px) {
+  .herosection {
+    height: 50vh; /* Taller for mobile */
+    min-height: 300px;
+  }
   .overlay-content {
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-    left: 0;
-    right: 0;
-    width: 100%;
+    padding: 1.5rem !important;
+    width: 90%;
+    max-width: none;
   }
   .overlay-content h5,
   .overlay-content h1 {
-    font-size: 1.2rem !important;
-    line-height: 1.3;
-    text-align: left !important;
-  }
-  .herosection {
-    height: 40vh;
-    min-height: 220px;
-  }
-  /* Card images in events section */
-  .event-img {
-    height: 120px !important;
-  }
-  /* Testimonial images */
-  .testimonial-img {
-    width: 70px !important;
-    height: 70px !important;
-  }
-  /* Cards padding */
-  .card {
-    padding: 1rem !important;
-  }
-  /* Footer quick links and newsletter */
-  .footer-section .row > div {
-    margin-bottom: 1.2rem;
-  }
-  .footer-section .footer-quick-links ul {
-    text-align: left;
+    font-size: 1.8rem !important; /* Larger for readability */
+    line-height: 1.4;
+    text-align: center !important;
   }
 }
+  /* Card images in events section */
+  @media (max-width: 767px) {
+  .container .card .card-title {
+    font-size: 1.3rem;
+  }
+  .container .card .card-text {
+    font-size: 1.1rem;
+  }
+  .container .card .card-body {
+    padding: 1.25rem !important;
+  }
+}
+  
+ 
+
 
 /* --- Custom Additions for travelguide.html Mobile Responsiveness --- */
 @media (max-width: 575px) {
@@ -179,9 +160,18 @@
     font-size: 0.9rem !important;
   }
   /* Map Section */
-  #map iframe {
-    height: 220px !important;
+  /* Responsive */
+@media (max-width: 767px) {
+  .map-section {
+    padding: 2rem 0;
   }
+  .map-section h2 {
+    font-size: 2rem;
+  }
+  .map-iframe {
+    height: 350px;
+  }
+}
 }
 
 /* --- Custom Additions for about.html and contact.html Mobile Responsiveness --- */
