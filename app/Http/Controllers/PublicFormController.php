@@ -25,7 +25,6 @@ class PublicFormController extends Controller
             'num_adults'           => ['required', 'integer', 'min:1'],
             'num_children'         => ['nullable', 'integer', 'min:0'],
             'preferred_activities' => ['required', 'string'],
-            'budget'               => ['nullable', 'string', 'max:255'],
         ]);
 
         $email = $validated['email-booking'];
@@ -38,7 +37,7 @@ class PublicFormController extends Controller
             'num_adults'           => (int) $validated['num_adults'],
             'num_children'         => (int) ($validated['num_children'] ?? 0),
             'preferred_activities' => $validated['preferred_activities'],
-            'budget'               => $validated['budget'] ?? null,
+            'budget'               => null,
         ]);
 
         $msg = "Booking confirmed! We've sent a confirmation email to {$email}. Our team will contact you soon!";

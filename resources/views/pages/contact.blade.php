@@ -50,7 +50,30 @@
             Questions? Comments? We're here to help you plan the perfect Sipi adventure.
           </p>
 
-          <form action="../includes/process_contact.php" method="POST" role="form" aria-label="Contact form for Sipi Falls inquiries">
+          <!-- Success/Error Messages -->
+          @if(session('status') === 'success' && session('msg'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle me-2"></i>
+              {{ session('msg') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+
+          @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-exclamation-circle me-2"></i>
+              <strong>Please fix the following errors:</strong>
+              <ul class="mb-0 mt-2">
+                @foreach($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+
+          <form action="{{ route('contact.submit') }}" method="POST" role="form" aria-label="Contact form for Sipi Falls inquiries">
+            @csrf
             <div class="mb-3 row g-2">
               <!-- First Name -->
               <div class="col-12 col-md-6">
@@ -113,7 +136,31 @@
       <div class="col-lg-8">
         <div class="card shadow rounded-4 p-5" style="border: 2px solid var(--secondary-teal); background: var(--neutral-offwhite);">
           <h2 class="mb-4 text-center" style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2.5rem;">Book Your Adventure</h2>
-          <form action="../includes/process-booking.php" method="POST" role="form" aria-label="Booking form for Sipi Falls adventure">
+          
+          <!-- Success/Error Messages for Booking -->
+          @if(session('status') === 'success' && session('form') === 'booking' && session('msg'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="fas fa-check-circle me-2"></i>
+              {{ session('msg') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+
+          @if($errors->any())
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="fas fa-exclamation-circle me-2"></i>
+              <strong>Please fix the following errors:</strong>
+              <ul class="mb-0 mt-2">
+                @foreach($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                @endforeach
+              </ul>
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+
+          <form action="{{ route('booking.submit') }}" method="POST" role="form" aria-label="Booking form for Sipi Falls adventure">
+            @csrf
             <div class="row g-3">
               <div class="col-md-6">
                 <label for="full-name" class="form-label" style="color: var(--neutral-gray); font-family: 'Montserrat', sans-serif;">Full Name</label>
@@ -260,3 +307,23 @@
 
 
   @endsection
+
+@push('scripts')
+<script>
+  // Auto-hide success messages after 5 seconds
+  document.addEventListener('DOMContentLoaded', function() {
+    const alerts = document.querySelectorAll('.alert-success');
+    
+    alerts.forEach(function(alert) {
+      // Scroll to the alert so user can see it
+      alert.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      
+      // Auto-hide after 5 seconds
+      setTimeout(function() {
+        const bsAlert = new bootstrap.Alert(alert);
+        bsAlert.close();
+      }, 5000);
+    });
+  });
+</script>
+@endpush

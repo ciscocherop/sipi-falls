@@ -38,7 +38,8 @@
       <!-- Newsletter Signup -->
       <div class="col-md-4">
         <h6 class="fw-bold mb-3" style="color: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">Stay Updated</h6>
-        <form id="newsletter-form" action="../includes/subscribe_newsletter.php" method="POST">
+        <form id="newsletter-form" action="{{ route('newsletter.submit') }}" method="POST">
+          @csrf
           <div class="input-group mb-2">
             <label for="newsletter-email" class="visually-hidden">Email</label>
             <input type="email" id="newsletter-email" class="form-control" name="email" placeholder="Your Email" aria-label="Email" required>
