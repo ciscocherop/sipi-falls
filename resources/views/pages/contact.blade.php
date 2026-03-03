@@ -1,24 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sipi Falls</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/responsive.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <link rel="icon" href="images/logo.png" type="image/x-icon">
-   <style>
-  </style>
-</head>
-<body>
-  <!-- Navbar -->
-  @include('partials.navbar')
+@extends('layouts.app')
 
+@section('title', 'Contact Us - Sipi Falls')
+
+@section('content')
 
   <!-- CONTACT HERO SECTION -->
-  <section class="welcome-section container-fluid reveal" style="background-image: url('../images/f15.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;  color: #fff;">
+  <section class="welcome-section container-fluid reveal" style="background-image: url('{{ asset('images/f15.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat;  color: #fff;">
     <div class="container py-5 px-3 d-flex justify-content-center align-items-center" style="min-height: 100vh;">
       <div class="p-3 p-md-5 rounded-4" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(111,207,151,0.3)); backdrop-filter: blur(5px);">
         <div class="glass-card text-center p-5" role="region" aria-label="Welcome message for Sipi Falls contact">
@@ -50,7 +37,7 @@
       
       <!-- Image Column -->
       <div class="col-lg-5 mb-4 mb-lg-0 contact-image">
-        <img src="../images/group.jpg" alt="Group of Sabiny guides at Sipi Falls" class="img-fluid h-100 w-100 d-block" style="object-fit: cover; height: 100%; border-radius: 1.5rem;" loading="lazy">
+        <img src="{{ asset('images/group.jpg') }}" alt="Group of Sabiny guides at Sipi Falls" class="img-fluid h-100 w-100 d-block" style="object-fit: cover; height: 100%; border-radius: 1.5rem;" loading="lazy">
       </div>
 
       <!-- Form Column -->
@@ -272,11 +259,4 @@
   </section>
 
 
-  <!-- Footer -->
-   @include('partials.footer')
-  
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
- <script src="../js/script.js"></script>
-</body>
-</html>
+  @endsection

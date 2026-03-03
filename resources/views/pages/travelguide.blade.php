@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sipi Falls Travel Guide</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/style.css" />
-  <link rel="stylesheet" href="../css/responsive.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <link rel="icon" href="../images/logo.png" type="image/x-icon" />
-</head>
-<body>
+@extends('layouts.app')
 
-  <!-- Navbar -->
-  @include('partials.navbar')
+@section('title', 'Travel Guide - Sipi Falls')
 
+@section('content')
 
   <!-- Hero Section -->
   <section class="hero-section-travel reveal text-center text-light d-flex align-items-center justify-content-center">
@@ -112,7 +100,7 @@
         <!-- Activity 1: Hiking -->
         <div class="col-md-6 mb-4">
           <div class="activity-card d-flex shadow">
-            <img src="../images/naturewalk.jpg" class="activity-img-cover" alt="Hiking the Waterfalls" loading="lazy">
+            <img src="{{ asset('images/naturewalk.jpg') }}" class="activity-img-cover" alt="Hiking the Waterfalls" loading="lazy">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
                 <h5 class="text-center fw-bold">Hiking the Waterfalls</h5>
@@ -128,7 +116,7 @@
          <!-- Activity 2: Abseiling -->
         <div class="col-md-6 mb-4">
           <div class="activity-card d-flex shadow">
-            <img src="../images/abseil3.jpg" class="activity-img-cover" alt="Abseiling" loading="lazy">
+            <img src="{{ asset('images/abseil3.jpg') }}" class="activity-img-cover" alt="Abseiling" loading="lazy">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
                 <h5 class="text-center fw-bold">Abseiling</h5>
@@ -144,7 +132,7 @@
           <!-- Activity 3: Coffee Tours -->
         <div class="col-md-6 mb-4">
           <div class="activity-card d-flex shadow">
-            <img src="../images/cofi.jpg" class="activity-img-cover" alt="Coffee Tour" loading="lazy">
+            <img src="{{ asset('images/cofi.jpg') }}" class="activity-img-cover" alt="Coffee Tour" loading="lazy">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
                 <h5 class="text-center fw-bold">Coffee Tours</h5>
@@ -160,7 +148,7 @@
         <!-- Activity 3: Coffee Tours -->
         <div class="col-md-6 mb-4">
           <div class="activity-card d-flex shadow">
-            <img src="../images/cofi.jpg" class="activity-img-cover" alt="Coffee Tour" loading="lazy">
+            <img src="{{ asset('images/cofi.jpg') }}" class="activity-img-cover" alt="Coffee Tour" loading="lazy">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
                 <h5 class="text-center fw-bold">Coffee Tours</h5>
@@ -176,7 +164,7 @@
         <!-- Activity 5: Cave Adventures -->
         <div class="col-md-6 mb-4">
           <div class="activity-card d-flex shadow">
-            <img src="../images/clif2.jpg" class="activity-img-cover" alt="Cave Adventures" loading="lazy">
+            <img src="{{ asset('images/clif2.jpg') }}" class="activity-img-cover" alt="Cave Adventures" loading="lazy">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
                 <h5 class="text-center fw-bold">Cave Adventures</h5>
@@ -192,7 +180,7 @@
         <!-- Activity 6: Rock Climbing -->
         <div class="col-md-6 mb-4">
           <div class="activity-card d-flex shadow">
-            <img src="../images/rock climbing.jpg" class="activity-img-cover" alt="Rock Climbing" loading="lazy">
+            <img src="{{ asset('images/rock climbing.jpg') }}" class="activity-img-cover" alt="Rock Climbing" loading="lazy">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
                 <h5 class="text-center fw-bold">Rock Climbing</h5>
@@ -234,11 +222,5 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  @include (partials.footer)
+  @endsection
 
-  <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="../js/script.js"></script>
-</body>
-</html>

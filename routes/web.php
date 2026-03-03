@@ -5,19 +5,19 @@ use App\Http\Controllers\PublicFormController;
 
 // Public pages
 Route::get('/', function () {
-    return view('index1');
+    return view('pages.index');
 })->name('home');
 
 Route::get('/about', function () {
-    return view('about');
+    return view('pages.about');
 })->name('about');
 
 Route::get('/contact', function () {
-    return view('contact');
+    return view('pages.contact');
 })->name('contact');
 
 Route::get('/travelguide', function () {
-    return view('travelguide');
+    return view('pages.travelguide');
 })->name('travelguide');
 
 // Form submissions
