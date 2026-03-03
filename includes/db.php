@@ -2,7 +2,7 @@
 $host = 'localhost'; // Database host
 $username = 'root'; // Database username
 $password = ""; // Database password
-$dbname = 'sipi-falls'; // Database name
+$dbname = 'sipifalls'; // Database name
 
 // Create connection
 $conn = new mysqli($host, $username, $password, $dbname);

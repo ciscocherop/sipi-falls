@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $sql = "INSERT INTO newsletter_subscribers (email) VALUES ('$email')";
     if ($conn->query($sql) === TRUE) {
         $conn->close();
-        header("Location: ../pages/index.php?status= you for subscribing!");
+        header("Location: ../pages/in.php?status= you for subscribing!");
         exit();
     } else {
         echo "Error: " . $conn->error;

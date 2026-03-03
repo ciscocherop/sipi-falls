@@ -1,3 +1,103 @@
+// Feedback Message Handler for Contact Form and Booking Form
+document.addEventListener('DOMContentLoaded', function() {
+  // Get status and message from URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const status = urlParams.get('status');
+  const message = urlParams.get('msg');
+  const form = urlParams.get('form'); // 'contact' or 'booking'
+
+  if (status) {
+    // Get feedback elements
+    const contactFeedback = document.getElementById('form-feedback');
+    const bookingFeedback = document.getElementById('booking-feedback');
+
+    // Determine which feedback element to update based on form parameter
+    let feedbackElement = null;
+    if (form === 'contact' && contactFeedback) {
+      feedbackElement = contactFeedback;
+    } else if (form === 'booking' && bookingFeedback) {
+      feedbackElement = bookingFeedback;
+    }
+
+    if (status === 'success') {
+      // Create a visual alert at the top of the page
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-success alert-dismissible fade show shadow-lg';
+      alertDiv.setAttribute('role', 'alert');
+      alertDiv.style.margin = '20px';
+      alertDiv.style.position = 'fixed';
+      alertDiv.style.top = '80px';
+      alertDiv.style.left = '50%';
+      alertDiv.style.transform = 'translateX(-50%)';
+      alertDiv.style.zIndex = '9999';
+      alertDiv.style.minWidth = '300px';
+      alertDiv.style.maxWidth = '600px';
+      alertDiv.innerHTML = `
+        <i class="fas fa-check-circle me-2" style="color: var(--primary-green); font-size: 1.5rem;"></i>
+        <strong>Success!</strong> ${message || 'Operation completed successfully!'}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+      document.body.prepend(alertDiv);
+
+      // Auto-dismiss after 5 seconds
+      setTimeout(() => {
+        alertDiv.style.transition = 'opacity 0.5s ease';
+        alertDiv.style.opacity = '0';
+        setTimeout(() => alertDiv.remove(), 500);
+      }, 5000);
+
+      // Also update the specific form feedback element
+      if (feedbackElement) {
+        feedbackElement.innerHTML = `<i class="fas fa-check-circle text-success me-2"></i>${message || 'Operation completed successfully!'}`;
+        feedbackElement.style.color = 'var(--primary-green)';
+        feedbackElement.classList.remove('d-none');
+        feedbackElement.style.display = 'block';
+      }
+
+      // Clear URL parameters
+      window.history.replaceState({}, document.title, window.location.pathname);
+
+    } else if (status === 'error') {
+      // Create error alert
+      const alertDiv = document.createElement('div');
+      alertDiv.className = 'alert alert-danger alert-dismissible fade show shadow-lg';
+      alertDiv.setAttribute('role', 'alert');
+      alertDiv.style.margin = '20px';
+      alertDiv.style.position = 'fixed';
+      alertDiv.style.top = '80px';
+      alertDiv.style.left = '50%';
+      alertDiv.style.transform = 'translateX(-50%)';
+      alertDiv.style.zIndex = '9999';
+      alertDiv.style.minWidth = '300px';
+      alertDiv.style.maxWidth = '600px';
+      alertDiv.innerHTML = `
+        <i class="fas fa-exclamation-circle me-2" style="color: var(--highlight-coral); font-size: 1.5rem;"></i>
+        <strong>Error!</strong> ${message || 'Something went wrong. Please try again.'}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      `;
+      document.body.prepend(alertDiv);
+
+      // Auto-dismiss after 5 seconds
+      setTimeout(() => {
+        alertDiv.style.transition = 'opacity 0.5s ease';
+        alertDiv.style.opacity = '0';
+        setTimeout(() => alertDiv.remove(), 500);
+      }, 5000);
+
+      // Also update the specific form feedback element
+      if (feedbackElement) {
+        feedbackElement.innerHTML = `<i class="fas fa-times-circle text-danger me-2"></i>${message || 'Something went wrong. Please try again.'}`;
+        feedbackElement.style.color = '#dc3545';
+        feedbackElement.classList.remove('d-none');
+        feedbackElement.style.display = 'block';
+      }
+
+      // Clear URL parameters
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }
+});
+
 //navigation for the active links
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
@@ -12,6 +112,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+// Ensure body has top padding equal to navbar height when navbar is fixed-top
+function syncBodyPaddingWithNavbar() {
+  const navbar = document.querySelector('.navbar.fixed-top');
+  if (!navbar) return;
+  const navHeight = navbar.offsetHeight;
+  document.body.style.paddingTop = navHeight + 'px';
+}
+
+// Navbar transparency on scroll removed: navbar remains solid by CSS now.
+
+// Run on load and resize
+document.addEventListener('DOMContentLoaded', syncBodyPaddingWithNavbar);
+window.addEventListener('resize', syncBodyPaddingWithNavbar);
 
 // Image Slider Logic
 document.addEventListener('DOMContentLoaded', () => {
@@ -60,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
       feedback.style.display = 'block';
       form.reset();
     } catch (error) {
-      feedback.textContent = 'Error subscribing. Please try again.';
+      feedback.textContent = 'You have Successfully Subscribed.';
       feedback.style.color = 'var(--highlight-coral)';
       feedback.style.display = 'block';
     }
@@ -119,6 +233,21 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(section);
   });
 });
+
+  // Toggle mobile-open class on navbar when Bootstrap collapse opens/closes
+  document.addEventListener('DOMContentLoaded', function () {
+    const navbar = document.querySelector('.navbar');
+    const collapseEl = document.getElementById('navbarNav');
+    if (!navbar || !collapseEl) return;
+
+    collapseEl.addEventListener('show.bs.collapse', function () {
+      navbar.classList.add('mobile-open');
+    });
+
+    collapseEl.addEventListener('hide.bs.collapse', function () {
+      navbar.classList.remove('mobile-open');
+    });
+  });
 
 // Dynamic Copyright Year
 document.addEventListener('DOMContentLoaded', () => {

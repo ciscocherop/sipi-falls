@@ -7,13 +7,21 @@
 
 .sidebar {
   width: 200px;
- background: linear-gradient(to bottom, #99faa1,#228B22);
+ background: linear-gradient(to bottom, #99faa1,#4CAF50);
   color: white;
   height: 100vh;
 }
 
 .viewings .card{
-  border-left: 4px solid #228B22 !important;
+  border-left: 4px solid #4CAF50 !important;
+}
+
+
+/* Reduce top margin for forms in admin/dashboard pages so they sit closer to headings */
+.main-content form,
+.viewings form,
+.container.form-container form {
+  margin-top: 0.5rem !important; /* previously larger spacing, reduce for compact layout */
 }
 
 

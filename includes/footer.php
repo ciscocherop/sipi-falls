@@ -7,7 +7,7 @@
           <img src="../images/logo.png" alt="Sipi Falls Logo" class="navbar-logo me-2" style="width: 60px; height: 45px; border-radius: 8px; background: #fff; padding: 2px;">
           <span class="fw-bold fs-4" style="color: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
         </a>
-        <p class="small mb-2" style="color: var(--neutral-offwhite);">Keep Sipping!!</p>
+  <p class="small mb-2 slogan" style="color: var(--neutral-offwhite);">Keep Sipping!!</p>
         <p class="small mb-0" style="color: var(--neutral-offwhite);">Discover Uganda’s natural wonder. Adventure, culture, and breathtaking views await.</p>
       </div>
       <!-- Quick Links -->

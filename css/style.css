@@ -1,6 +1,7 @@
 /* darkmode */
 body {
   margin: 0; /* Remove default margin */
+  padding: 0; /* Reset padding */
   min-height: 100vh; /* Ensure body has height for scrolling */
   background-color: var(--neutral-offwhite); /* #F5F6F9 */
   color: var(--neutral-gray); /* #333333 */
@@ -18,7 +19,7 @@ header {
   --secondary-teal: #6FCF97;
   --accent-gold: #E8B923;
   --neutral-gray: #333333;
-  --neutral-offwhite: #F5F6F9;
+  --neutral-offwhite: #ffffff; /* white background so hero rounded corners reveal white */
   --highlight-coral: #FF6F61;
 }
 
@@ -31,20 +32,153 @@ header {
 .nav-link:hover,
 .nav-link:focus {
   background-color: var(--accent-gold) !important; /* Gold for hover */
-  color: var(--neutral-gray) !important; /* Dark gray for readability */
+  color: var(--primary-green) !important; /* Keep text green for visibility */
   transform: scale(1.05);
   border-radius: 4px;
 }
 
 .nav-link.active {
   background-color: var(--accent-gold) !important;
-  color: var(--neutral-gray) !important;
+  color: var(--primary-green) !important; /* Keep active link green */
   border-radius: 4px;
 }
-.navbar.sticky-top {
-  position: sticky;
-  top: 0;
-  z-index: 1000; /* Keep above other elements */
+.navbar {
+  /* Keep navbar in normal document flow (static) so it doesn't stick or change on scroll */
+  position: static !important;
+  top: auto !important;
+  z-index: 1000; /* Keep above other elements when needed */
+  /* Remove any transitions/animations that could alter the navbar on scroll */
+  transition: none !important;
+  /* Apply a subtle top-left rounding site-wide to match hero inset styling */
+  border-top-left-radius: 50px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* When navbar is fixed, ensure content does not get hidden under it by
+   applying padding to the body. We also add a small default to handle
+   cases where JS is disabled. */
+.navbar.fixed-top {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  right: 0;
+  width: 100%;
+  margin: 0 !important;
+  padding: 0 !important; /* ensure no internal offset pushes it down */
+  z-index: 1050; /* higher than default to sit above content */
+}
+
+/* On scroll: gentle light-green overlay to match brand and keep contrast.
+   We replace the previous white/transparent look with a soft green tint. */
+/* scrolled-transparent/scrolled-semi behavior removed - navbar is controlled by .navbar and .navbar.fixed-top */
+
+/* Smooth transition for background and blur */
+.navbar.fixed-top,
+.navbar {
+  transition: background-color 220ms ease, backdrop-filter 220ms ease, box-shadow 220ms ease;
+}
+
+/* Brand text helper when we want the text to be white on green backgrounds */
+.navbar .navbar-brand-text {
+  color: #fff !important;
+}
+
+/* On small screens, keep navbar solid for better contrast under hamburger menu */
+@media (max-width: 768px) {
+  /* Removed mobile transparent overrides - navbar remains solid */
+
+  /* When mobile menu is opened, use brand green background so the menu matches the site */
+  .navbar.mobile-open {
+    background-color: var(--primary-green) !important; /* brand green overlay */
+    background-image: none !important;
+    backdrop-filter: none !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+  }
+
+  /* ensure nav links and brand are white when the mobile menu is open */
+  .navbar.mobile-open .nav-link,
+  .navbar.mobile-open .navbar-brand {
+    color: #fff !important;
+  }
+
+  /* Make the inline SVG toggler lines white when menu is open */
+  .navbar.mobile-open .navbar-toggler-icon svg {
+    stroke: #fff !important;
+  }
+
+  /* Ensure the brand and toggler icon are white on mobile (closed or open)
+     since the navbar background is solid green */
+  .navbar .navbar-brand,
+  .navbar .navbar-toggler-icon {
+    color: #fff !important;
+  }
+
+  /* Hide the slogan on mobile to save space */
+  .navbar .slogan {
+    display: none !important;
+  }
+
+  /* Hide the image next to the "Let's Get In Touch" form on small screens */
+  .contact-image {
+    display: none !important;
+  }
+
+  /* Hide most input labels on mobile to reduce vertical space; keep checkbox labels for accessibility */
+  #contact-form label.form-label,
+  #booking-form label.form-label {
+    display: none !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0 0 0 0) !important;
+    white-space: nowrap !important;
+  }
+
+  /* Keep labels associated with .form-check visible (checkbox/consent) */
+  #contact-form .form-check-label,
+  #booking-form .form-check-label {
+    display: inline-block !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    clip: auto !important;
+    white-space: normal !important;
+    color: var(--neutral-gray) !important;
+  }
+
+  /* Also hide any footer slogan entries on mobile */
+  footer .slogan {
+    display: none !important;
+  }
+
+  /* Reduce navbar vertical padding on mobile */
+  .navbar.fixed-top,
+  .navbar {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  /* Removed scrolled-state selectors; navbar remains solid and controlled by .navbar */
+
+  /* Mobile menu open state: links and brand colors handled above (white on green). */
+  .navbar.mobile-open .nav-link,
+  .navbar.mobile-open .navbar-brand {
+    color: #fff !important;
+  }
+
+  .navbar.mobile-open .navbar-toggler-icon svg {
+    stroke: #fff !important;
+  }
+}
+
+/* Default body padding fallback (will be overridden by JS to match navbar height) */
+body {
+  padding-top: 70px; /* default navbar height fallback */
+  transition: padding-top 160ms ease-in-out;
 }
 
 /* =====================
@@ -58,6 +192,64 @@ header {
   overflow: hidden;
   position: relative;
   width: 100%;
+}
+
+/* Round the top-left corner of the hero banner */
+.herosection .slideshow-container,
+.herosection .slide {
+  border-top-left-radius: 50px; /* increased radius for a larger rounded corner */
+  border-bottom-right-radius: 50px; /* also round the bottom-right corner */
+}
+
+/* Our Story: blur background image and add overlay for legible text */
+.history-section {
+  position: relative;
+  overflow: hidden;
+  color: #ffffff; /* ensure default text is light */
+}
+
+.history-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit; /* reuse the background-image from the element */
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px) brightness(0.45); /* blur and darken the background */
+  transform: scale(1.03); /* avoid edge artifacts from blur */
+  z-index: 0;
+}
+
+.history-section > * {
+  position: relative;
+  z-index: 1; /* keep textual content above the overlay */
+}
+
+.history-section h2,
+.history-section p {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6); /* improve readability */
+  color: #ffffff !important; /* force high contrast */
+}
+
+
+/* Place navbar visually inside the hero but inset so the rounded corner is visible */
+.hero-navbar {
+  position: absolute;
+  top: 12px; /* small gap from top */
+  left: 12px; /* inset from left so rounded corner shows */
+  right: 12px;
+  background: var(--primary-green) !important;
+  /* Only round the top-left corner so the nav visually follows the hero banner's curve.
+     We inset the navbar 12px; with the hero at 48px radius, 36px on the navbar matches visually. */
+  border-top-left-radius: 50px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+}
+
+/* Make sure the navbar doesn't overlap the hero content too much */
+.overlay-content {
+  z-index: 1;
 }
 
 .slideshow-container {
@@ -95,6 +287,76 @@ header {
   z-index: 1;
   padding: 2rem;
   max-width: 90%;
+}
+
+/* Booking form: occupy ~90% of the page and reduce vertical height */
+#booking-form .row.justify-content-center > .col-lg-8,
+#booking-form .col-lg-8 {
+  width: 90% !important;
+  max-width: 90% !important;
+  margin: 0 auto !important;
+}
+
+#booking-form .card {
+  padding: 0.75rem !important; /* further reduce padding to make form more compact */
+  max-height: 720px; /* constrain height so form doesn't dominate the page */
+  overflow: auto; /* allow scrolling within card if content exceeds max-height */
+}
+
+#booking-form .card h2 {
+  font-size: 2rem !important; /* slightly smaller heading to save vertical space */
+}
+
+#booking-form .form-control,
+#booking-form .form-select {
+  padding: 0.45rem 0.6rem !important; /* reduce input padding to shrink height */
+}
+
+/* Reduce textarea padding for a denser message box in contact and booking forms */
+#contact-form textarea.form-control,
+#booking-form textarea.form-control {
+  padding: 0.5rem 0.6rem !important;
+  line-height: 1.3 !important;
+  min-height: 120px; /* keep message box usable but not oversized */
+}
+
+#booking-form .btn {
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Booking submit button: narrower and placed beside checkbox */
+.booking-submit {
+  width: 45% !important;
+  min-width: 140px;
+}
+
+/* Tighten the form-check spacing inside booking form */
+#booking-form .form-check {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 768px) {
+  .booking-submit {
+    width: 100% !important; /* full width on small screens */
+  }
+}
+
+@media (max-width: 768px) {
+  /* On small screens use full width and slightly larger padding for touch targets */
+  #booking-form .col-lg-8,
+  #booking-form .row.justify-content-center > .col-lg-8 {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #booking-form .card {
+    padding: 1rem !important;
+    max-height: none;
+    overflow: visible;
+  }
 }
 
 
@@ -545,7 +807,107 @@ font-family: 'Montserrat', sans-serif;
   transform: none;
 }
 
+/* Remove Bootstrap's default blue focus/hover glow on form controls
+   and provide a subtle theme-consistent focus instead. This targets
+   inputs, textareas, selects, and Bootstrap's .form-control/.form-select. */
+.form-control,
+.form-select,
+.input-group .form-control {
+  box-shadow: none !important; /* remove default focus glow */
+  outline: none !important; /* remove native outline */
+}
+
+/* When focused, apply a thin border in theme color or keep original border */
+.form-control:focus,
+.form-select:focus,
+.input-group .form-control:focus {
+  border-color: var(--secondary-teal) !important;
+  box-shadow: 0 0 0 0.15rem rgba(111, 207, 151, 0.18) !important; /* subtle teal ring */
+}
+
+/* Remove iOS/Chrome autofill yellow background while preserving text color */
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px var(--neutral-offwhite) inset !important;
+  box-shadow: 0 0 0px 1000px var(--neutral-offwhite) inset !important;
+  -webkit-text-fill-color: var(--neutral-gray) !important;
+}
+
+/* Accessibility: Keep visible focus for keyboard users on interactive elements */
+button:focus,
+.btn:focus,
+.nav-link:focus {
+  outline: 3px solid rgba(34,139,34,0.15);
+  outline-offset: 2px;
+}
+
 /* Quick Facts Card Enhancements */
+
+/* Feedback Message Styles for Contact & Booking Forms */
+#form-feedback,
+#booking-feedback {
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  display: none;
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#form-feedback:not(.d-none),
+#booking-feedback:not(.d-none) {
+  display: block !important;
+}
+
+/* Success Message Styling */
+#form-feedback.success,
+#booking-feedback.success {
+  background-color: #d4edda;
+  color: #155724;
+  border-left: 5px solid var(--primary-green);
+}
+
+/* Error Message Styling */
+#form-feedback.error,
+#booking-feedback.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border-left: 5px solid var(--highlight-coral);
+}
+
+/* Fixed Alert Styles */
+.alert-success {
+  background-color: #d4edda;
+  border-color: var(--primary-green);
+  color: #155724;
+}
+
+.alert-success .btn-close {
+  filter: invert(0.5);
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: var(--highlight-coral);
+  color: #721c24;
+}
+
+.alert-danger .btn-close {
+  filter: invert(0.5);
+}
+
+
 
 
 

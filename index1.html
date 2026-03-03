@@ -12,28 +12,7 @@
   <link rel="icon" href="images/logo.png" type="image/x-icon">
 </head>
 <body>
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar navbar-expand-lg sticky-top shadow-sm py-3" style="background: linear-gradient(90deg, #228B22 60%, #6FCF97 100%);">
-      <div class="container">
-        <a class="navbar-brand d-flex flex-column align-items-start w-auto me-4" href="../index.php">
-          <span class="text-white fw-bold" style="font-size: 2.2rem; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
-          <span class="text-white fw-semibold" style="font-size: 1.1rem; font-family: 'Montserrat', sans-serif; opacity: 0.85;">Keep Sipping!!</span>
-        </a>
-        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon" style="filter: brightness(1.2);"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto gap-2 gap-lg-4 align-items-center">
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../index.html" aria-current="page">Home</a></li>
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/travelguide.html">Travel Guide</a></li>
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/about.html">About Us</a></li>
-            <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/contact.html">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <!-- Navbar removed from header and will be placed inside the hero so the hero's rounded corner shows outside the navbar -->
 
 
   <!-- Hero Section -->
@@ -47,6 +26,34 @@
       <img class="slide" src="images/f16.jpg" alt="Nature trail at Sipi Falls" loading="lazy">
       <img class="slide" src="images/splash.jpg" alt="Water splashing at Sipi Falls" loading="lazy">
     </div>
+    <!-- Navbar placed inside hero so rounded corner appears outside the navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm py-3 hero-navbar" style="background: var(--primary-green);">
+      <div class="container">
+        <a class="navbar-brand d-flex flex-column align-items-start w-auto me-4" href="../index1.html">
+          <span class="fw-bold navbar-brand-text" style="font-size: 2.2rem; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
+          <span class="fw-semibold slogan" style="font-size: 1.1rem; font-family: 'Montserrat', sans-serif; opacity: 0.85;">Keep Sipping!!</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon" style="display:inline-block; width:1.5em; height:1.5em;">
+            <svg viewBox="0 0 30 30" width="24" height="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+              <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <line x1="4" y1="7" x2="26" y2="7"></line>
+                <line x1="4" y1="15" x2="26" y2="15"></line>
+                <line x1="4" y1="23" x2="26" y2="23"></line>
+              </g>
+            </svg>
+          </span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto gap-2 gap-lg-4 align-items-center">
+            <li class="nav-item"><a class="nav-link px-3 rounded-pill fw-semibold" href="./index1.html" aria-current="page">Home</a></li>
+            <li class="nav-item"><a class="nav-link px-3 rounded-pill fw-semibold" href="./pages/travelguide.html">Travel Guide</a></li>
+            <li class="nav-item"><a class="nav-link px-3 rounded-pill fw-semibold" href="./pages/about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link px-3 rounded-pill fw-semibold" href="./pages/contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
     <div class="overlay-content position-absolute top-50 start-50 translate-middle text-center">
       <h5 class="fw-bold display-3" style="color: var(--accent-gold); font-family: 'Montserrat', sans-serif; letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);">In Nature, Nothing is perfect,</h5>
       <h1 class="fs-1 fw-bold display-3" style="color: var(--secondary-teal); font-family: 'Montserrat', sans-serif; letter-spacing: 2px; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);">And Everything Is Perfect.</h1>
@@ -142,7 +149,7 @@
     </div>
   </section>
 
- 
+
   <!-- testimonal section  -->
   <section class="container-fluid py-4 reveal" style="background: var(--neutral-offwhite);">
     <div class="container">
@@ -207,10 +214,10 @@
         <!-- Brand & Slogan -->
         <div class="col-md-3 mb-4 mb-md-0">
           <a href="../index.php" class="d-flex align-items-center text-decoration-none mb-3">
-            <img src="../images/logo.png" alt="Sipi Falls Logo" class="navbar-logo me-2" style="width: 60px; height: 45px; border-radius: 8px; background: #fff; padding: 2px;">
+            <!-- <img src="../images/logo.png" alt="Sipi Falls Logo" class="navbar-logo me-2" style="width: 60px; height: 45px; border-radius: 8px; background: #fff; padding: 2px;"> -->
             <span class="fw-bold fs-4" style="color: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
           </a>
-          <p class="small mb-2" style="color: var(--neutral-offwhite);">Keep Sipping!!</p>
+          <p class="small mb-2 slogan" style="color: var(--neutral-offwhite);">Keep Sipping!!</p>
           <p class="small mb-0" style="color: var(--neutral-offwhite);">Discover Uganda’s natural wonder. Adventure, culture, and breathtaking views await.</p>
         </div>
         <!-- Quick Links -->
