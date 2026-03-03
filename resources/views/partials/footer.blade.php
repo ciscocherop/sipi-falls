@@ -3,8 +3,8 @@
     <div class="row g-4 align-items-start">
       <!-- Brand & Slogan -->
       <div class="col-md-3 mb-4 mb-md-0">
-        <a href="../index.php" class="d-flex align-items-center text-decoration-none mb-3">
-          <img src="../images/logo.png" alt="Sipi Falls Logo" class="navbar-logo me-2" style="width: 60px; height: 45px; border-radius: 8px; background: #fff; padding: 2px;">
+        <a href="{{ route('home') }}" class="d-flex align-items-center text-decoration-none mb-3">
+          <img src="{{ asset('images/logo.png') }}" alt="Sipi Falls Logo" class="navbar-logo me-2" style="width: 60px; height: 45px; border-radius: 8px; background: #fff; padding: 2px;">
           <span class="fw-bold fs-4" style="color: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
         </a>
   <p class="small mb-2 slogan" style="color: var(--neutral-offwhite);">Keep Sipping!!</p>
@@ -14,10 +14,10 @@
       <div class="col-md-2 mb-4 mb-md-0">
         <h6 class="fw-bold mb-3" style="color: var(--neutral-offwhite); font-family: 'Montserrat', sans-serif;">Quick Links</h6>
         <ul class="list-unstyled">
-          <li><a href="../index.php" class="text-decoration-none" style="color: var(--neutral-offwhite);">Home</a></li>
-          <li><a href="../pages/travelguide.php" class="text-decoration-none" style="color: var(--neutral-offwhite);">Travel Guide</a></li>
-          <li><a href="../pages/about.php" class="text-decoration-none" style="color: var(--neutral-offwhite);">About Us</a></li>
-          <li><a href="../pages/contact.php" class="text-decoration-none" style="color: var(--neutral-offwhite);">Contact Us</a></li>
+          <li><a href="{{ route('home') }}" class="text-decoration-none" style="color: var(--neutral-offwhite);">Home</a></li>
+          <li><a href="{{ route('travelguide') }}" class="text-decoration-none" style="color: var(--neutral-offwhite);">Travel Guide</a></li>
+          <li><a href="{{ route('about') }}" class="text-decoration-none" style="color: var(--neutral-offwhite);">About Us</a></li>
+          <li><a href="{{ route('contact') }}" class="text-decoration-none" style="color: var(--neutral-offwhite);">Contact Us</a></li>
         </ul>
       </div>
       <!-- Contact Info -->

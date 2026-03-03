@@ -19,10 +19,10 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto gap-2 gap-lg-4 align-items-center">
-          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../index.html" aria-current="page">Home</a></li>
-          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/travelguide.html">Travel Guide</a></li>
-          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/about.html">About Us</a></li>
-          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="../pages/contact.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="{{ route('home') }}" aria-current="page">Home</a></li>
+          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="{{ route('travelguide') }}">Travel Guide</a></li>
+          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="{{ route('about') }}">About Us</a></li>
+          <li class="nav-item"><a class="nav-link text-white px-3 rounded-pill fw-semibold" href="{{ route('contact') }}">Contact Us</a></li>
         </ul>
       </div>
     </div>
