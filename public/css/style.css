@@ -1,64 +1,29 @@
-/* darkmode */
-body {
-  margin: 0; /* Remove default margin */
-  padding: 0; /* Reset padding */
-  min-height: 100vh; /* Ensure body has height for scrolling */
-  background-color: var(--neutral-offwhite); /* #F5F6F9 */
-  color: var(--neutral-gray); /* #333333 */
-}
-
-header {
-  position: relative; /* Ensure header doesn’t restrict sticky */
-}
-
 /* =====================
-   NAVBAR (All Pages)
+   MINIMAL ESSENTIAL CSS
+   Only includes styles that cannot be done with inline styles or Tailwind
    ===================== */
+
+/* CSS Variables */
 :root {
   --primary-green: #228B22;
   --secondary-teal: #6FCF97;
   --accent-gold: #E8B923;
   --neutral-gray: #333333;
-  --neutral-offwhite: #ffffff; /* white background so hero rounded corners reveal white */
-  --highlight-coral: #FF6F61;
+  --neutral-offwhite: #ffffff;
 }
 
-.nav-link {
-  color: #fff !important;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s, transform 0.2s;
+/* Body Base Styles */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: var(--neutral-offwhite);
+  color: var(--neutral-gray);
+  padding-top: 70px;
+  transition: padding-top 160ms ease-in-out;
 }
 
-.nav-link:hover,
-.nav-link:focus {
-  background-color: var(--accent-gold) !important; /* Gold for hover */
-  color: var(--primary-green) !important; /* Keep text green for visibility */
-  transform: scale(1.05);
-  border-radius: 4px;
-}
-
-.nav-link.active {
-  background-color: var(--accent-gold) !important;
-  color: var(--primary-green) !important; /* Keep active link green */
-  border-radius: 4px;
-}
-.navbar {
-  /* Keep navbar in normal document flow (static) so it doesn't stick or change on scroll */
-  position: static !important;
-  top: auto !important;
-  z-index: 1000; /* Keep above other elements when needed */
-  /* Remove any transitions/animations that could alter the navbar on scroll */
-  transition: none !important;
-  /* Apply a subtle top-left rounding site-wide to match hero inset styling */
-  border-top-left-radius: 50px !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
-/* When navbar is fixed, ensure content does not get hidden under it by
-   applying padding to the body. We also add a small default to handle
-   cases where JS is disabled. */
+/* Navbar Fixed Positioning */
 .navbar.fixed-top {
   position: fixed !important;
   top: 0 !important;
@@ -66,211 +31,53 @@ header {
   right: 0;
   width: 100%;
   margin: 0 !important;
-  padding: 0 !important; /* ensure no internal offset pushes it down */
-  z-index: 1050; /* higher than default to sit above content */
+  padding: 0 !important;
+  z-index: 1050;
 }
 
-/* On scroll: gentle light-green overlay to match brand and keep contrast.
-   We replace the previous white/transparent look with a soft green tint. */
-/* scrolled-transparent/scrolled-semi behavior removed - navbar is controlled by .navbar and .navbar.fixed-top */
-
-/* Smooth transition for background and blur */
-.navbar.fixed-top,
-.navbar {
-  transition: background-color 220ms ease, backdrop-filter 220ms ease, box-shadow 220ms ease;
+/* Navbar Collapse - Force Visibility When Open */
+.navbar-collapse {
+  transition: none !important;
 }
 
-/* Brand text helper when we want the text to be white on green backgrounds */
-.navbar .navbar-brand-text {
-  color: #fff !important;
-}
-
-/* On small screens, keep navbar solid for better contrast under hamburger menu */
-@media (max-width: 768px) {
-  /* Removed mobile transparent overrides - navbar remains solid */
-
-  /* When mobile menu is opened, use brand green background so the menu matches the site */
-  .navbar.mobile-open {
-    background-color: var(--primary-green) !important; /* brand green overlay */
-    background-image: none !important;
-    backdrop-filter: none !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
-  }
-
-  /* ensure nav links and brand are white when the mobile menu is open */
-  .navbar.mobile-open .nav-link,
-  .navbar.mobile-open .navbar-brand {
-    color: #fff !important;
-  }
-
-  /* Make the inline SVG toggler lines white when menu is open */
-  .navbar.mobile-open .navbar-toggler-icon svg {
-    stroke: #fff !important;
-  }
-
-  /* Ensure the brand and toggler icon are white on mobile (closed or open)
-     since the navbar background is solid green */
-  .navbar .navbar-brand,
-  .navbar .navbar-toggler-icon {
-    color: #fff !important;
-  }
-
-  /* Hide the slogan on mobile to save space */
-  .navbar .slogan {
-    display: none !important;
-  }
-
-  /* Hide the image next to the "Let's Get In Touch" form on small screens */
-  .contact-image {
-    display: none !important;
-  }
-
-  /* Hide most input labels on mobile to reduce vertical space; keep checkbox labels for accessibility */
-  #contact-form label.form-label,
-  #booking-form label.form-label {
-    display: none !important;
-    height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: hidden !important;
-    clip: rect(0 0 0 0) !important;
-    white-space: nowrap !important;
-  }
-
-  /* Keep labels associated with .form-check visible (checkbox/consent) */
-  #contact-form .form-check-label,
-  #booking-form .form-check-label {
-    display: inline-block !important;
+/* Force navbar to show on desktop/large screens */
+@media (min-width: 992px) {
+  .navbar-collapse {
+    display: flex !important;
     height: auto !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow: visible !important;
-    clip: auto !important;
-    white-space: normal !important;
-    color: var(--neutral-gray) !important;
-  }
-
-  /* Also hide any footer slogan entries on mobile */
-  footer .slogan {
-    display: none !important;
-  }
-
-  /* Reduce navbar vertical padding on mobile */
-  .navbar.fixed-top,
-  .navbar {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-  }
-
-  /* Removed scrolled-state selectors; navbar remains solid and controlled by .navbar */
-
-  /* Mobile menu open state: links and brand colors handled above (white on green). */
-  .navbar.mobile-open .nav-link,
-  .navbar.mobile-open .navbar-brand {
-    color: #fff !important;
-  }
-
-  .navbar.mobile-open .navbar-toggler-icon svg {
-    stroke: #fff !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 }
 
-/* Default body padding fallback (will be overridden by JS to match navbar height) */
-body {
-  padding-top: 70px; /* default navbar height fallback */
-  transition: padding-top 160ms ease-in-out;
+.navbar-collapse.show {
+  display: block !important;
+  height: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
-/* =====================
-   HOME PAGE (index.html)
-   ===================== */
-
-
-.herosection {
-  height: 100vh;
-  background-color: var(--primary-green); /* Fallback */
-  overflow: hidden;
-  position: relative;
-  width: 100%;
+.navbar-collapse.collapsing {
+  display: block !important;
+  height: auto !important;
+  transition: none !important;
 }
 
-/* Round the top-left corner of the hero banner */
-.herosection .slideshow-container,
-.herosection .slide {
-  border-top-left-radius: 50px; /* increased radius for a larger rounded corner */
-  border-bottom-right-radius: 50px; /* also round the bottom-right corner */
+.navbar-toggler {
+  transition: none !important;
 }
 
-/* Our Story: blur background image and add overlay for legible text */
-.history-section {
-  position: relative;
-  overflow: hidden;
-  color: #ffffff; /* ensure default text is light */
-}
-
-.history-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit; /* reuse the background-image from the element */
-  background-size: cover;
-  background-position: center;
-  filter: blur(6px) brightness(0.45); /* blur and darken the background */
-  transform: scale(1.03); /* avoid edge artifacts from blur */
-  z-index: 0;
-}
-
-.history-section > * {
-  position: relative;
-  z-index: 1; /* keep textual content above the overlay */
-}
-
-.history-section h2,
-.history-section p {
-  text-shadow: 0 2px 10px rgba(0,0,0,0.6); /* improve readability */
-  color: #ffffff !important; /* force high contrast */
-}
-
-
-/* Place navbar visually inside the hero but inset so the rounded corner is visible */
-.hero-navbar {
-  position: absolute;
-  top: 12px; /* small gap from top */
-  left: 12px; /* inset from left so rounded corner shows */
-  right: 12px;
-  background: var(--primary-green) !important;
-  /* Only round the top-left corner so the nav visually follows the hero banner's curve.
-     We inset the navbar 12px; with the hero at 48px radius, 36px on the navbar matches visually. */
-  border-top-left-radius: 50px !important;
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-}
-
-/* Make sure the navbar doesn't overlap the hero content too much */
-.overlay-content {
-  z-index: 1;
-}
-
-.slideshow-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-}
-
+/* Slideshow & Kenburns Animation (Home Page Hero) */
 .slide {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Changed to cover for better quality */
+  object-fit: cover;
   opacity: 0;
-  transition: opacity 1s ease-in-out; /* Faster transition */
-  animation: kenburns 8s infinite; /* Faster animation */
+  transition: opacity 1s ease-in-out;
+  animation: kenburns 8s infinite;
 }
 
 .slide.active {
@@ -278,154 +85,109 @@ body {
 }
 
 @keyframes kenburns {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.05) translate(-1%, 1%); } /* Subtler zoom */
-  100% { transform: scale(1) translate(0, 0); }
-}
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
 
-.overlay-content {
-  z-index: 1;
-  padding: 2rem;
-  max-width: 90%;
-}
+  50% {
+    transform: scale(1.05) translate(-1%, 1%);
+  }
 
-/* Booking form: occupy ~90% of the page and reduce vertical height */
-#booking-form .row.justify-content-center > .col-lg-8,
-#booking-form .col-lg-8 {
-  width: 90% !important;
-  max-width: 90% !important;
-  margin: 0 auto !important;
-}
-
-#booking-form .card {
-  padding: 0.75rem !important; /* further reduce padding to make form more compact */
-  max-height: 720px; /* constrain height so form doesn't dominate the page */
-  overflow: auto; /* allow scrolling within card if content exceeds max-height */
-}
-
-#booking-form .card h2 {
-  font-size: 2rem !important; /* slightly smaller heading to save vertical space */
-}
-
-#booking-form .form-control,
-#booking-form .form-select {
-  padding: 0.45rem 0.6rem !important; /* reduce input padding to shrink height */
-}
-
-/* Reduce textarea padding for a denser message box in contact and booking forms */
-#contact-form textarea.form-control,
-#booking-form textarea.form-control {
-  padding: 0.5rem 0.6rem !important;
-  line-height: 1.3 !important;
-  min-height: 120px; /* keep message box usable but not oversized */
-}
-
-#booking-form .btn {
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
-}
-
-/* Booking submit button: narrower and placed beside checkbox */
-.booking-submit {
-  width: 45% !important;
-  min-width: 140px;
-}
-
-/* Tighten the form-check spacing inside booking form */
-#booking-form .form-check {
-  margin-bottom: 0 !important;
-}
-
-@media (max-width: 768px) {
-  .booking-submit {
-    width: 100% !important; /* full width on small screens */
+  100% {
+    transform: scale(1) translate(0, 0);
   }
 }
 
-@media (max-width: 768px) {
-  /* On small screens use full width and slightly larger padding for touch targets */
-  #booking-form .col-lg-8,
-  #booking-form .row.justify-content-center > .col-lg-8 {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 1rem !important;
-    padding-right: 1rem !important;
-  }
-
-  #booking-form .card {
-    padding: 1rem !important;
-    max-height: none;
-    overflow: visible;
-  }
-}
-
-
-
-
-/* Why Visit Sipi Falls Timeline (Home) */
-.timeline {
+/* History Section Blur Effect (About Page) */
+.history-section {
   position: relative;
-  margin-left: 1.5rem;
-  padding-left: 1.5rem;
+  overflow: hidden;
+  color: #ffffff;
 }
-.timeline::before {
-  content: '';
+
+.history-section::before {
+  content: "";
   position: absolute;
-  left: 0.5rem;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 4px;
-  background: #d1e7dd;
-  border-radius: 2px;
+  inset: 0;
+  background: inherit;
+  background-size: cover;
+  background-position: center;
+  filter: blur(6px) brightness(0.45);
+  transform: scale(1.03);
+  z-index: 0;
 }
-.timeline-event {
+
+.history-section>* {
   position: relative;
-  display: flex;
-  align-items: flex-start;
-  min-height: 40px;
-}
-.timeline-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  margin-right: 1rem;
-  margin-left: -1.25rem;
-  border: 3px solid #fff;
-  box-shadow: 0 0 0 2px #198754;
   z-index: 1;
 }
-.timeline-content {
-  font-size: 1.25rem;
-  color: #222;
-  font-weight: 500;
-}
-/* .intro .card.position-relative {
-  padding: 2.5rem !important;
-} */
 
-
-.container .card .card-img-top {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  object-fit: cover;
-  border-radius: 1rem 1rem 0 0;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-.container .card .card-text {
-  font-size: 1.1rem;
-  line-height: 1.2;
-  color: var(--neutral-gray);
+.history-section h2,
+.history-section p {
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+  color: #ffffff !important;
 }
 
-.container .card .card-body {
-  background-color: var(--neutral-offwhite) !important;
-  padding: 1rem 1.25rem !important;
-  border-radius: 0 0 1rem 1rem;
-  flex-grow: 1;
+/* Accordion - Force Visibility When Open */
+.accordion-collapse {
+  transition: none !important;
 }
 
+.accordion-collapse.show {
+  display: block !important;
+  height: auto !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.accordion-collapse.collapsing {
+  display: block !important;
+  height: auto !important;
+  transition: none !important;
+}
+
+.accordion-body {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+.accordion-button {
+  transition: none !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: rgba(34, 139, 34, 0.05) !important;
+  color: #228B22 !important;
+}
+
+.accordion-button:focus,
+.accordion-button:hover {
+  border-color: var(--primary-green) !important;
+  box-shadow: 0 0 0 0.25rem rgba(34, 139, 34, 0.25) !important;
+  background-color: rgba(34, 139, 34, 0.05);
+  color: var(--primary-green) !important;
+}
+
+.accordion-button:hover i {
+  color: var(--primary-green);
+}
+
+/* Testimonial Cards (Home Page) */
+.testimonial-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.testimonial-img {
+  border: 2px solid var(--secondary-teal);
+}
+
+/* Clickable Button Hover Effect */
 .clickable-btn {
   cursor: pointer;
   transition: all 0.3s ease;
@@ -438,333 +200,41 @@ body {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
-/* testimonal */
 
-.testimonial-card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.testimonial-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-}
-
-.testimonial-img {
-  border: 2px solid var(--secondary-teal); /* Add subtle border for polish */
-}
-
-/* =====================
-   TRAVEL GUIDE PAGE (travelguide.html)
-   ===================== */
-
-.hero-section-travel {
-  background-image: url('../images/water.jpg');
-  height: 80vh; /* Reduced for mobile */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  width: 100%;
-}
-
-.quick-fact-card .tooltip {
-  background-color: #E8B923 !important;
-  color: white !important;
-  font-weight: bold;
-}
-
-
-.quick-facts .text-success {
-  color: var(--primary-green) !important;
-}
-
-.quick-facts h5 {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 1.25rem;
-  color: var(--primary-green);
-}
-
-.quick-facts p {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--neutral-gray);
-}
-
-.quick-fact-card {
-  background: var(--neutral-offwhite);
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 1.5rem;
-}
-
-.quick-fact-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
-}
-
-.quick-fact-card .fa-3x {
-  transition: color 0.3s ease;
-}
-
-.quick-fact-card:hover .fa-3x {
-  color: var(--secondary-teal);
-}
-/* Activities Section (Travel Guide) */
-.activities-section {
-  background: linear-gradient(to bottom, var(--neutral-offwhite), rgba(111, 207, 151, 0.05));
-  padding: 3rem 0;
-}
-
-.activity-card {
-   height: 200px;
-  border-radius: 1rem;
-  border: 2px solid var(--secondary-teal);
-  background: var(--neutral-offwhite);
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.activity-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
-}
-.activity-img-cover {
-width: 40%;
-  height: 100%;
-  object-fit: cover;
-  flex-shrink: 0;
-}
-
-.activity-card h5 {
-font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  font-size: 1.2rem;
-  color: var(--primary-green)
-}
-.activity-desc {
-   font-family: 'Montserrat', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  color: var(--neutral-gray);
-  border-left: 4px solid var(--primary-green);
-  padding-left: 1rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-}
-/* map section */
-
-
-.map-section {
-  background: linear-gradient(to bottom, var(--neutral-offwhite), rgba(111, 207, 151, 0.05));
-  padding: 3rem 0;
-}
-
-.map-section h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5rem;
-  color: var(--primary-green);
-}
-
-.map-iframe {
-  width: 100%;
-  height: 450px;
-  border: 0;
-  border-radius: 1rem;
-  box-shadow: 0 2px 16px rgba(34, 139, 34, 0.07);
-}
-
-/* =====================
-   ABOUT PAGE (about.html)
-   ===================== */
-
-/* Video Section (About) */
-.video-section {
-  padding: 4rem 0;
-  background: #e9ecef;
-}
-.video-wrapper {
-  transition: all 0.3s ease;
-}
-.video-container {
-  transition: all 0.3s ease;
-}
-.video-container video {
-  -webkit-transform: translateZ(0);
-  -moz-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-}
-/* Timeline (About) - shares .timeline styles with Home */
-/* .timeline {
-  position: relative;
-  margin-left: 1.5rem;
-  padding-left: 1.5rem;
-}
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 0.5rem;
-  top: 0.5rem;
-  bottom: 0.5rem;
-  width: 4px;
-  background: #d1e7dd;
-  border-radius: 2px;
-}
-.timeline-event {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  min-height: 40px;
-}
-.timeline-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  margin-right: 1rem;
-  margin-left: -1.25rem;
-  border: 3px solid #fff;
-  box-shadow: 0 0 0 2px #198754;
-  z-index: 1;
-  background: #228B22;
-}
-.timeline-content {
-  font-size: 1.15rem;
-  color: #222;
-  font-weight: 500;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  padding: 1rem 1.5rem;
-  margin-bottom: 0.5rem;
-} */
-/* Team Card and Counter Styles from about.html */
-.team-card {
-  transition: box-shadow 0.3s;
-  cursor: pointer;
-}
-.team-card:hover {
-  box-shadow: 0 8px 32px rgba(34,139,34,0.18);
-}
-.team-overlay {
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(214, 250, 214, 0.92);
-  color: #fff;
+/* Reveal Animation (Scroll Effects) */
+.reveal {
   opacity: 0;
-  transition: opacity 0.4s;
-  z-index: 2;
-  border-radius: 1.2rem;
-  font-size: 1.2rem;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.team-card:hover .team-overlay {
+
+.reveal.active {
   opacity: 1;
-}
-.counter {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  font-family: 'Montserrat', sans-serif;
+  transform: none;
 }
 
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar .slogan {
+    display: none !important;
+  }
 
-/* =====================
-   CONTACT PAGE (contact.html)
-   ===================== */
-/* (Add your contact page-specific styles here if needed) */
- /* Custom border color on hover/focus for accordion buttons */
- 
-.accordion-button:focus,
-.accordion-button:hover {
-  border-color: var(--primary-green) !important;
-  box-shadow: 0 0 0 0.25rem rgba(34, 139, 34, 0.25) !important; /* Optional glow */
-  background-color: rgba(34, 139, 34, 0.05); /* Slight background tint on hover */
-  color: var(--primary-green) !important;
+  .contact-image {
+    display: none !important;
+  }
+
+  footer .slogan {
+    display: none !important;
+  }
+
+  .navbar.fixed-top,
+  .navbar {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
 }
 
-/* Optional: icon color change on hover */
-.accordion-button:hover i {
-  color: var(--primary-green);
-}
-
-/* =====================
-   FOOTER (All Pages)
-   ===================== */
-
-.footer-section {
-  background: linear-gradient(90deg, var(--primary-green) 60%, var(--secondary-teal) 100%);
-  color: var(--neutral-offwhite);
-  font-family: 'Montserrat', sans-serif;
-}
-
-.footer-section a {
-  color: var(--neutral-offwhite);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-section a:hover {
-  color: var(--accent-gold) !important;
-}
-
-.footer-section h6 {
-  font-size: 1.2rem;
-  letter-spacing: 1px;
-}
-
-.footer-section ul {
-  padding-left: 0;
-  list-style: none;
-}
-
-.footer-section li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-section .form-control {
-  background-color: #222;
-  color: var(--neutral-offwhite);
-  border: 1px solid var(--secondary-teal);
-}
-
-.footer-section .form-control:focus {
-  background-color: #fff;
-  color: var(--primary-green);
-  border-color: var(--secondary-teal);
-  box-shadow: 0 0 0 2px rgba(111, 207, 151, 0.2);
-}
-
-.footer-section .form-control::placeholder {
-  color: #bbb;
-}
-
-
-
-.footer-section .social-link {
-  font-size: 1.3rem;
-  margin-right: 0.5rem;
-  transition: color 0.2s, transform 0.2s;
-}
-
-.footer-section .social-link:hover {
-  color: var(--accent-gold);
-  transform: scale(1.15);
-}
-
-.footer-section .navbar-logo {
-  border-radius: 8px;
-  background: #fff;
-  padding: 2px;
-}
-
-.footer-section .small {
-  font-size: 0.9rem;
-}
-
+/* Back to Top Button */
 #back-to-top {
   border-radius: 50%;
   width: 48px;
@@ -774,140 +244,3 @@ font-family: 'Montserrat', sans-serif;
   justify-content: center;
   padding: 0;
 }
-
-
-
-/* =====================
-   SHARED UTILITIES & OVERRIDES
-   ===================== */
-.text-success {
-  color: #228B22 !important;
-}
-.bg-success {
-  background-color: #228B22 !important;
-}
-.btn-success {
-  background-color: #228B22 !important;
-  border-color: #228B22 !important;
-}
-.btn-success:hover, .btn-success:focus {
-  background-color: #1e7a1e !important;
-  border-color: #1e7a1e !important;
-}
-.border-success {
-  border-color: #228B22 !important;
-}
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-.reveal.active {
-  opacity: 1;
-  transform: none;
-}
-
-/* Remove Bootstrap's default blue focus/hover glow on form controls
-   and provide a subtle theme-consistent focus instead. This targets
-   inputs, textareas, selects, and Bootstrap's .form-control/.form-select. */
-.form-control,
-.form-select,
-.input-group .form-control {
-  box-shadow: none !important; /* remove default focus glow */
-  outline: none !important; /* remove native outline */
-}
-
-/* When focused, apply a thin border in theme color or keep original border */
-.form-control:focus,
-.form-select:focus,
-.input-group .form-control:focus {
-  border-color: var(--secondary-teal) !important;
-  box-shadow: 0 0 0 0.15rem rgba(111, 207, 151, 0.18) !important; /* subtle teal ring */
-}
-
-/* Remove iOS/Chrome autofill yellow background while preserving text color */
-input:-webkit-autofill,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px var(--neutral-offwhite) inset !important;
-  box-shadow: 0 0 0px 1000px var(--neutral-offwhite) inset !important;
-  -webkit-text-fill-color: var(--neutral-gray) !important;
-}
-
-/* Accessibility: Keep visible focus for keyboard users on interactive elements */
-button:focus,
-.btn:focus,
-.nav-link:focus {
-  outline: 3px solid rgba(34,139,34,0.15);
-  outline-offset: 2px;
-}
-
-/* Quick Facts Card Enhancements */
-
-/* Feedback Message Styles for Contact & Booking Forms */
-#form-feedback,
-#booking-feedback {
-  padding: 15px 20px;
-  border-radius: 8px;
-  font-weight: 500;
-  display: none;
-  animation: slideDown 0.4s ease;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-#form-feedback:not(.d-none),
-#booking-feedback:not(.d-none) {
-  display: block !important;
-}
-
-/* Success Message Styling */
-#form-feedback.success,
-#booking-feedback.success {
-  background-color: #d4edda;
-  color: #155724;
-  border-left: 5px solid var(--primary-green);
-}
-
-/* Error Message Styling */
-#form-feedback.error,
-#booking-feedback.error {
-  background-color: #f8d7da;
-  color: #721c24;
-  border-left: 5px solid var(--highlight-coral);
-}
-
-/* Fixed Alert Styles */
-.alert-success {
-  background-color: #d4edda;
-  border-color: var(--primary-green);
-  color: #155724;
-}
-
-.alert-success .btn-close {
-  filter: invert(0.5);
-}
-
-.alert-danger {
-  background-color: #f8d7da;
-  border-color: var(--highlight-coral);
-  color: #721c24;
-}
-
-.alert-danger .btn-close {
-  filter: invert(0.5);
-}
-
-
-
-
-

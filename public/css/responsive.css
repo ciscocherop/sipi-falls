@@ -1,257 +1,45 @@
-/* dark mode */
-@media(prefers-color-scheme: dark) {
-  body{
-    background-color: #111;
-  color: white;
-  }
-}
-/* Home Page - Hero Section (Slideshow and Overlay) */
+/* =====================
+   MINIMAL RESPONSIVE CSS
+   Only includes responsive adjustments that can't be done with Bootstrap or inline styles
+   ===================== */
+
+/* Mobile Hero Section Adjustments */
 @media (max-width: 768px) {
-  .herosection {
-    height: 50vh;
-  }
-  .slide {
-    background-size: cover;
-  }
-  .overlay-content h5 {
-    font-size: 1.5rem;
-  }
-  .overlay-content h1 {
-    font-size: 2.5rem;
-  }
-}
 
-/* Footer (All Pages) */
-/* Responsive */
-@media (max-width: 767px) {
-  .footer-section .container {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  .footer-section h6 {
-    font-size: 1.1rem;
-  }
-  .footer-section .small {
-    font-size: 0.85rem;
-  }
-  .footer-section .social-link {
-    font-size: 1.1rem;
-  }
-}
-
-/* Travel Guide - Quick Facts Section */
-@media (max-width: 767px) {
-  .hero-section-travel {
-    height: 60vh; /* Further reduced for mobile */
-  }
-  .hero-section-travel .display-4 {
-    font-size: 2rem;
-  }
-  .hero-section-travel .lead {
-    font-size: 1.1rem;
-  }
-  .hero-section-travel .p-4 {
-    padding: 2rem !important;
-  }
-}
-/* About Page - Video Section */
-@media (max-width: 768px) {
-  .video-wrapper {
-    padding: 1.5rem 1rem;
-  }
-  .video-container {
-    padding-bottom: 75%;
-  }
-}
-
-/* Home Page & About Page - Timeline Section */
-@media (max-width: 768px) {
-  .timeline {
-    margin-left: 0.5rem;
-    padding-left: 0.5rem;
-  }
-  .timeline-content {
-    font-size: 1rem;
-    padding: 0.75rem 1rem;
-  }
-}
-
-/* --- Custom Additions for index.html Mobile Responsiveness --- */
-/* Responsive */
-@media (max-width: 767px) {
-  .herosection {
-    height: 50vh; /* Taller for mobile */
-    min-height: 300px;
-  }
-  .overlay-content {
-    padding: 1.5rem !important;
-    width: 90%;
-    max-width: none;
-  }
   .overlay-content h5,
   .overlay-content h1 {
-    font-size: 1.8rem !important; /* Larger for readability */
+    font-size: 1.8rem !important;
     line-height: 1.4;
     text-align: center !important;
   }
 }
-  /* Card images in events section */
-  @media (max-width: 767px) {
-  .container .card .card-title {
-    font-size: 1.3rem;
-  }
-  .container .card .card-text {
-    font-size: 1.1rem;
-  }
-  .container .card .card-body {
-    padding: 1.25rem !important;
-  }
-}
-  
- 
 
-
-/* --- Custom Additions for travelguide.html Mobile Responsiveness --- */
-@media (max-width: 575px) {
-  /* Hero Section */
-  .hero-section-travel .bg-dark {
-    padding: 1rem !important;
-  }
-  .hero-section-travel h1 {
-    font-size: 1.5rem !important;
-  }
-  .hero-section-travel p.lead {
-    font-size: 1rem !important;
-  }
-  .hero-section-travel .btn {
-    font-size: 1rem !important;
-    padding: 0.5rem 1.2rem !important;
-  }
-  /* Quick Facts Section */
-  .quick-facts i {
-    font-size: 2rem !important;
-    margin-bottom: 0.5rem !important;
-  }
-  .quick-facts h5 {
-    font-size: 1rem !important;
-  }
-  .quick-facts p {
-    font-size: 0.9rem !important;
-  }
-  /* Activities Section */
-  .activity-card {
-    flex-direction: column !important;
-    height: auto !important;
-    min-height: unset !important;
-    text-align: center !important;
-    padding: 0.5rem !important;
-  }
-  .activity-card img.activity-img-cover {
-    width: 100% !important;
-    max-width: 150px !important;
-    height: auto !important;
-    margin: 0 auto 1rem auto !important;
-    display: block !important;
-  }
-  .activity-card h5 {
-    font-size: 1.1rem !important;
-  }
-  .activity-card p {
-    font-size: 0.9rem !important;
-  }
-  /* Map Section */
-  /* Responsive */
-@media (max-width: 767px) {
-  .map-section {
-    padding: 2rem 0;
-  }
-  .map-section h2 {
-    font-size: 2rem;
-  }
-  .map-iframe {
-    height: 350px;
-  }
-}
-}
-
-/* --- Custom Additions for about.html and contact.html Mobile Responsiveness --- */
-@media (max-width: 575px) {
-  /* About Page Header Section */
-  .header-section h1 {
-    font-size: 1.5rem !important;
-    padding: 0.5rem 0 !important;
-  }
-  .header-section .lead {
-    font-size: 1rem !important;
-  }
-  .header-section {
-    padding: 2rem 0 !important;
-  }
-  /* About Page Tour Guide Images */
-  .card .rounded-circle {
-    width: 70px !important;
-    height: 70px !important;
-  }
-  /* About Page Timeline */
-  .timeline-content h3 {
-    font-size: 1.1rem !important;
-  }
-  .timeline-content p {
-    font-size: 0.95rem !important;
-  }
-  /* About Page Video Section */
-  .video-wrapper {
-    padding: 1rem 0.5rem !important;
-  }
-  .video-container {
-    padding-bottom: 65% !important;
-  }
-  /* About/Contact General Card and Container Padding */
-  .container, .card, .video-wrapper {
-    padding-left: 0.5rem !important;
-    padding-right: 0.5rem !important;
-  }
-  .card {
-    padding: 1rem !important;
-  }
-  /* Contact Page Contact Image */
-  .contact-image img {
-    min-height: 120px !important;
-    max-height: 180px !important;
-    border-radius: 1rem 1rem 0 0 !important;
-    width: 100% !important;
-    object-fit: cover !important;
-  }
-  /* Contact Page Form Card */
-  .card form {
-    padding: 0.5rem !important;
-  }
-  /* Contact Page FAQ Cards */
-  .card .fa-2x {
-    font-size: 1.3rem !important;
-  }
-  .card h5 {
-    font-size: 1rem !important;
-  }
-  .card p, .card label, .card input, .card textarea, .card select {
-    font-size: 0.95rem !important;
-  }
-}
-
-/* --- Navbar vertical stacking for mobile/tablet --- */
+/* Navbar Mobile Stacking */
 @media (max-width: 991.98px) {
+
+  /* Add background and padding to collapsed navbar */
+  .navbar-collapse {
+    background: linear-gradient(90deg, #228B22 60%, #6FCF97 100%);
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+  }
+
   .navbar-nav {
     flex-direction: column !important;
     gap: 0.5rem !important;
     align-items: flex-start !important;
     width: 100%;
   }
+
   .navbar-nav .nav-item {
     width: 100%;
   }
+
   .navbar-nav .nav-link {
     width: 100%;
     text-align: left;
-    padding-left: 1rem;
+    padding: 0.75rem 1rem !important;
+    display: block;
   }
 }
