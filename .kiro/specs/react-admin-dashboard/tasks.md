@@ -101,7 +101,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Integrate Sidebar and Header components
     - _Requirements: 12.1, 12.7, 9.1_
 
-  - [ ] 3.2 Create Sidebar component
+  - [x] 3.2 Create Sidebar component
     - Create `resources/js/Components/Admin/Sidebar.jsx`
     - Define navigation items array (Dashboard, Contact Messages, Bookings, Newsletter, Content)
     - Implement active route highlighting using Inertia's usePage hook
@@ -120,7 +120,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add test to `resources/js/__tests__/properties/NavigationTest.js`
     - Verify current page navigation item has active state
 
-  - [ ] 3.5 Create Header component
+  - [x] 3.5 Create Header component
     - Create `resources/js/Components/Admin/Header.jsx`
     - Display page title/breadcrumb
     - Display logged-in user name
@@ -134,7 +134,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add test to `resources/js/__tests__/properties/NavigationTest.js`
     - Verify breadcrumb reflects current page location
 
-  - [ ] 3.7 Create Button component
+  - [x] 3.7 Create Button component
     - Create `resources/js/Components/Admin/Button.jsx`
     - Implement variants (primary, secondary, danger, success)
     - Implement sizes (sm, md, lg)
@@ -166,7 +166,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add label and error display
     - _Requirements: 6.5, 6.6_
 
-  - [ ] 3.12 Create Table component
+  - [x] 3.12 Create Table component
     - Create `resources/js/Components/Admin/Table.jsx`
     - Accept columns and data as props
     - Implement sortable columns
@@ -240,7 +240,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add optional text label
     - _Requirements: 10.6_
 
-  - [ ] 3.23 Create StatCard component
+  - [x] 3.23 Create StatCard component
     - Create `resources/js/Components/Admin/StatCard.jsx`
     - Display title, value, and icon
     - Add optional trend indicator (up/down arrow with percentage)
@@ -314,7 +314,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
 
 
 - [ ] 6. Build Contact Messages CRUD
-  - [ ] 6.1 Update ContactMessage model
+  - [x] 6.1 Update ContactMessage model
     - Update `app/Models/ContactMessage.php`
     - Add `is_read` to fillable array
     - Add `is_read` to casts array as boolean
@@ -324,7 +324,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add `getFullNameAttribute()` accessor
     - _Requirements: 2.4, 6.1_
 
-  - [ ] 6.2 Create ContactMessageController
+  - [x] 6.2 Create ContactMessageController
     - Create `app/Http/Controllers/Admin/ContactMessageController.php`
     - Implement `index()` method with search, status filter, and pagination
     - Implement `show($id)` method to display full message details
@@ -346,7 +346,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add test to `tests/Feature/Admin/ContactMessageControllerTest.php`
     - Verify all filtered results have the selected status value
 
-  - [ ] 6.3 Create ContactMessages Index page
+  - [x] 6.3 Create ContactMessages Index page
     - Create `resources/js/Pages/Admin/ContactMessages/Index.jsx`
     - Use AdminLayout wrapper
     - Display SearchFilter component for searching by name, email, subject
@@ -401,7 +401,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Verify date fields match format YYYY-MM-DD HH:MM:SS
 
 - [ ] 7. Build Bookings CRUD
-  - [ ] 7.1 Update Booking model
+  - [x] 7.1 Update Booking model
     - Update `app/Models/Booking.php`
     - Add `status` to fillable array
     - Add `status` to casts array
@@ -410,7 +410,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add `getTotalGuestsAttribute()` accessor
     - _Requirements: 3.4, 6.2_
 
-  - [ ] 7.2 Create BookingController
+  - [x] 7.2 Create BookingController
     - Create `app/Http/Controllers/Admin/BookingController.php`
     - Implement `index()` method with search, status filter, and pagination
     - Implement `show($id)` method to display full booking details
@@ -447,7 +447,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add test to `tests/Feature/Admin/BookingControllerTest.php`
     - Verify past dates fail validation when not allowed
 
-  - [ ] 7.3 Create Bookings Index page
+  - [x] 7.3 Create Bookings Index page
     - Create `resources/js/Pages/Admin/Bookings/Index.jsx`
     - Use AdminLayout wrapper
     - Display SearchFilter component for searching by name, email
@@ -513,14 +513,14 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
   - Ask the user if questions arise
 
 - [ ] 9. Build Newsletter Subscribers CRUD
-  - [ ] 9.1 Update NewsletterSubscriber model
+  - [x] 9.1 Update NewsletterSubscriber model
     - Update `app/Models/NewsletterSubscriber.php`
     - Add `status` to fillable array
     - Add `scopeActive()` query scope
     - Add `scopeSearch($search)` query scope for filtering by email
     - _Requirements: 4.3, 6.3_
 
-  - [ ] 9.2 Create NewsletterSubscriberController
+  - [x] 9.2 Create NewsletterSubscriberController
     - Create `app/Http/Controllers/Admin/NewsletterSubscriberController.php`
     - Implement `index()` method with search and pagination
     - Implement `create()` method to show create form
@@ -531,7 +531,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Return Inertia responses with appropriate data
     - _Requirements: 4.1, 4.3, 4.4, 4.5, 6.3, 8.3, 11.4_
 
-  - [ ] 9.3 Create NewsletterSubscribers Index page
+  - [x] 9.3 Create NewsletterSubscribers Index page
     - Create `resources/js/Pages/Admin/NewsletterSubscribers/Index.jsx`
     - Use AdminLayout wrapper
     - Display SearchFilter component for searching by email
@@ -553,7 +553,7 @@ The implementation uses Laravel 11 with React 18 and Inertia.js, targeting a beg
     - Add "Cancel" button
     - _Requirements: 11.4, 11.5, 11.6, 13.2_
 
-  - [ ] 9.5 Add newsletter subscribers routes
+  - [x] 9.5 Add newsletter subscribers routes
     - Add routes to `routes/web.php` for newsletter subscribers CRUD
     - Apply `auth` and `admin` middleware
     - Routes: index, create, store, toggleStatus, destroy, export

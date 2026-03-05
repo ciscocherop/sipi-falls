@@ -21,7 +21,7 @@ return new class extends Migration
         DB::table('users')->insert([
             'name' => 'Admin User',
             'email' => 'admin@sipifalls.com',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('sipifalls123'),
             'is_admin' => true,
             'created_at' => now(),
             'updated_at' => now(),

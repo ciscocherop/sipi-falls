@@ -41,7 +41,17 @@ class DashboardController extends Controller
         // Fetch 5 most recent contact messages and bookings
         $recentContactMessages = ContactMessage::latest()
             ->take(5)
-            ->get(['id', 'fullname', 'email', 'subject', 'created_at', 'is_read']);
+            ->get(['id', 'first_name', 'last_name', 'email', 'subject', 'created_at', 'is_read'])
+            ->map(function ($message) {
+                return [
+                    'id' => $message->id,
+                    'fullname' => $message->first_name . ' ' . $message->last_name,
+                    'email' => $message->email,
+                    'subject' => $message->subject,
+                    'created_at' => $message->created_at,
+                    'is_read' => $message->is_read,
+                ];
+            });
 
         $recentBookingsList = Booking::latest()
             ->take(5)
