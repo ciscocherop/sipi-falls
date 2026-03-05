@@ -4,68 +4,21 @@
 @source '../../storage/framework/views/*.php';
 @source '../**/*.blade.php';
 @source '../**/*.js';
+@source '../**/*.jsx';
 
-@theme {
-    /* Sipi Falls Custom Color Palette */
-    --color-primary-green: #228B22;
-    --color-secondary-teal: #6FCF97;
-    --color-accent-gold: #E8B923;
-    --color-accent-coral: #FF6F61;
-    --color-neutral-gray: #333333;
-    --color-neutral-offwhite: #ffffff;
-    --color-neutral-light: #F5F6F9;
+:root {
+    --primary-green: #228B22;
+    --secondary-teal: #6FCF97;
+    --accent-gold: #E8B923;
+    --accent-coral: #FF6F61;
+    --neutral-gray: #333333;
+    --neutral-offwhite: #ffffff;
+    --neutral-light: #F5F6F9;
 
-    /* Semantic Colors */
-    --color-success: #22C55E;
-    --color-warning: #F59E0B;
-    --color-error: #EF4444;
-    --color-info: #3B82F6;
-
-    /* Typography */
-    --font-sans: 'Montserrat', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
-    --font-body: ui-sans-serif, system-ui, sans-serif;
-
-    /* Custom Spacing */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2rem;
-    --spacing-xl: 3rem;
-    --spacing-2xl: 4rem;
-    --spacing-3xl: 6rem;
-
-    /* Border Radius */
-    --radius-sm: 0.25rem;
-    --radius-md: 0.5rem;
-    --radius-lg: 1rem;
-    --radius-xl: 1.5rem;
-
-    /* Shadows */
-    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
-    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-    --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    --shadow-3xl: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --error: #EF4444;
+    --info: #3B82F6;
 }
 
-/* Custom Keyframes for Hero Section */
-@keyframes kenburns {
-    0% {
-        transform: scale(1) translate(0, 0);
-    }
-
-    50% {
-        transform: scale(1.05) translate(-1%, 1%);
-    }
-
-    100% {
-        transform: scale(1) translate(0, 0);
-    }
-}
-
-/* Slideshow Active State */
-.slide.active {
-    opacity: 1 !important;
-}
+/* your keyframes etc below */
