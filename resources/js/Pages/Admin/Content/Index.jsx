@@ -25,6 +25,8 @@ function Index({ pages }) {
                                     {key === 'contact' && '📞'}
                                     {key === 'about' && 'ℹ️'}
                                     {key === 'travelguide' && '🗺️'}
+                                    {key === 'tourguides' && '👨‍🏫'}
+                                    {key === 'testimonials' && '⭐'}
                                 </span>
                                 <h3 className="text-xl font-semibold" style={{ color: 'var(--neutral-dark)' }}>
                                     {name}
@@ -34,6 +36,8 @@ function Index({ pages }) {
                                 {key === 'contact' && 'Update contact details, phone, email, and address'}
                                 {key === 'about' && 'Edit the about page content and description'}
                                 {key === 'travelguide' && 'Manage travel tips and visitor information'}
+                                {key === 'tourguides' && 'Manage tour guides that appear on the About page'}
+                                {key === 'testimonials' && 'Manage customer testimonials that appear on the Home page'}
                             </p>
                             <Link href={`/admin/content/${key}/edit`}>
                                 <Button variant="primary" className="w-full">

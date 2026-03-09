@@ -7,11 +7,13 @@ use App\Http\Controllers\Admin\DashboardController;
 
 // Public pages
 Route::get('/', function () {
-    return view('pages.index');
+    $testimonials = \App\Models\Testimonial::active()->ordered()->limit(3)->get();
+    return view('pages.index', compact('testimonials'));
 })->name('home');
 
 Route::get('/about', function () {
-    return view('pages.about');
+    $tourGuides = \App\Models\TourGuide::active()->ordered()->get();
+    return view('pages.about', compact('tourGuides'));
 })->name('about');
 
 Route::get('/contact', function () {
@@ -59,19 +61,13 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/content/{page}/edit', [App\Http\Controllers\Admin\ContentController::class, 'edit'])->name('admin.content.edit');
     Route::post('/content/{page}', [App\Http\Controllers\Admin\ContentController::class, 'update'])->name('admin.content.update');
     
-    // Tour Guides
-    Route::get('/tour-guides', [App\Http\Controllers\Admin\TourGuideController::class, 'index'])->name('admin.tour-guides.index');
-    Route::get('/tour-guides/create', [App\Http\Controllers\Admin\TourGuideController::class, 'create'])->name('admin.tour-guides.create');
-    Route::post('/tour-guides', [App\Http\Controllers\Admin\TourGuideController::class, 'store'])->name('admin.tour-guides.store');
-    Route::get('/tour-guides/{id}/edit', [App\Http\Controllers\Admin\TourGuideController::class, 'edit'])->name('admin.tour-guides.edit');
-    Route::post('/tour-guides/{id}', [App\Http\Controllers\Admin\TourGuideController::class, 'update'])->name('admin.tour-guides.update');
-    Route::delete('/tour-guides/{id}', [App\Http\Controllers\Admin\TourGuideController::class, 'destroy'])->name('admin.tour-guides.destroy');
+    // Content Management - Tour Guides
+    Route::post('/content/tour-guides', [App\Http\Controllers\Admin\ContentController::class, 'storeTourGuide'])->name('admin.content.tour-guides.store');
+    Route::post('/content/tour-guides/{id}', [App\Http\Controllers\Admin\ContentController::class, 'updateTourGuide'])->name('admin.content.tour-guides.update');
+    Route::delete('/content/tour-guides/{id}/delete', [App\Http\Controllers\Admin\ContentController::class, 'destroyTourGuide'])->name('admin.content.tour-guides.destroy');
     
-    // Testimonials
-    Route::get('/testimonials', [App\Http\Controllers\Admin\TestimonialController::class, 'index'])->name('admin.testimonials.index');
-    Route::get('/testimonials/create', [App\Http\Controllers\Admin\TestimonialController::class, 'create'])->name('admin.testimonials.create');
-    Route::post('/testimonials', [App\Http\Controllers\Admin\TestimonialController::class, 'store'])->name('admin.testimonials.store');
-    Route::get('/testimonials/{id}/edit', [App\Http\Controllers\Admin\TestimonialController::class, 'edit'])->name('admin.testimonials.edit');
-    Route::post('/testimonials/{id}', [App\Http\Controllers\Admin\TestimonialController::class, 'update'])->name('admin.testimonials.update');
-    Route::delete('/testimonials/{id}', [App\Http\Controllers\Admin\TestimonialController::class, 'destroy'])->name('admin.testimonials.destroy');
+    // Content Management - Testimonials
+    Route::post('/content/testimonials', [App\Http\Controllers\Admin\ContentController::class, 'storeTestimonial'])->name('admin.content.testimonials.store');
+    Route::post('/content/testimonials/{id}', [App\Http\Controllers\Admin\ContentController::class, 'updateTestimonial'])->name('admin.content.testimonials.update');
+    Route::delete('/content/testimonials/{id}/delete', [App\Http\Controllers\Admin\ContentController::class, 'destroyTestimonial'])->name('admin.content.testimonials.destroy');
 });

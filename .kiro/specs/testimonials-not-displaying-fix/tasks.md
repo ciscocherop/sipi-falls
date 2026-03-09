@@ -1,0 +1,86 @@
+# Implementation Plan
+
+- [x] 1. Write bug condition exploration test
+  - **Property 1: Fault Condition** - Empty Testimonials Component Renders Nothing
+  - **CRITICAL**: This test MUST FAIL on unfixed code - failure confirms the bug exists
+  - **DO NOT attempt to fix the test or the code when it fails**
+  - **NOTE**: This test encodes the expected behavior - it will validate the fix when it passes after implementation
+  - **GOAL**: Surface counterexamples that demonstrate the bug exists
+  - **Manual Testing Approach**: Navigate to `/admin/content/testimonials` with the empty component and verify no UI renders
+  - Test that navigating to `/admin/content/testimonials` renders a complete admin interface including:
+    - Header with page title
+    - "Add Testimonial" button
+    - Table displaying testimonials with columns for name/country, rating, status, and actions
+  - Verify Inertia props are passed correctly from backend (testimonials array, pageName, page)
+  - Run test on UNFIXED code (empty Testimonials.jsx component)
+  - **EXPECTED OUTCOME**: Test FAILS - blank white page with no UI elements (this is correct - it proves the bug exists)
+  - Document counterexamples found:
+    - Empty component file results in no rendering
+    - Backend data is available but not displayed
+    - No table, buttons, or UI elements present
+  - Mark task complete when test is run and failure is documented
+  - _Requirements: 2.1, 2.2, 2.3_
+
+- [x] 2. Write preservation property tests (BEFORE implementing fix)
+  - **Property 2: Preservation** - Existing Admin Functionality Unchanged
+  - **IMPORTANT**: Follow observation-first methodology
+  - Observe behavior on UNFIXED code for non-buggy inputs (routes other than `/admin/content/testimonials`)
+  - Test that navigation to other admin routes produces unchanged behavior:
+    - Tour guides page at `/admin/content/tourguides` displays correctly
+    - Bookings page at `/admin/bookings` displays correctly
+    - Contact messages page at `/admin/contact-messages` displays correctly
+    - Newsletter subscribers page at `/admin/newsletter-subscribers` displays correctly
+  - Verify backend `ContentController::edit('testimonials')` still fetches data using `Testimonial::ordered()->get()`
+  - Verify public-facing testimonials display on homepage remains unaffected (if implemented)
+  - Run tests on UNFIXED code
+  - **EXPECTED OUTCOME**: Tests PASS (this confirms baseline behavior to preserve)
+  - Mark task complete when tests are run and passing on unfixed code
+  - _Requirements: 3.1, 3.2, 3.3, 3.4_
+
+- [x] 3. Implement Testimonials.jsx component following TourGuides.jsx pattern
+
+  - [x] 3.1 Implement the complete React component
+    - Import required dependencies (AdminLayout, Table, Button, useState)
+    - Define Testimonials function component accepting props: `{ pageName, testimonials = [] }`
+    - Add defensive array check: `const safeTestimonials = Array.isArray(testimonials) ? testimonials : []`
+    - Initialize state for add/edit modals using useState
+    - Define table columns configuration (name/country, rating, message, status, actions)
+    - Implement delete handler with confirmation dialog and Inertia DELETE request
+    - Render component structure: AdminLayout wrapper, header section, table section, empty state
+    - Add conditional rendering: show table if data exists, otherwise show empty state with "Add Your First Testimonial" button
+    - Export component as default export
+    - _Bug_Condition: isBugCondition(input) where input.route == '/admin/content/testimonials' AND componentImplementation('Testimonials.jsx') == EMPTY_
+    - _Expected_Behavior: Component renders complete admin interface with header, "Add Testimonial" button, and table displaying testimonials with columns for name/country, rating, status, and actions_
+    - _Preservation: Tour guides page, backend data fetching, public-facing testimonials, and other admin sections remain unchanged_
+    - _Requirements: 2.1, 2.2, 2.3, 3.1, 3.2, 3.3, 3.4_
+
+  - [x] 3.2 Verify bug condition exploration test now passes
+    - **Property 1: Expected Behavior** - Testimonials Component Renders Data
+    - **IMPORTANT**: Re-run the SAME test from task 1 - do NOT write a new test
+    - The test from task 1 encodes the expected behavior
+    - When this test passes, it confirms the expected behavior is satisfied
+    - Navigate to `/admin/content/testimonials` and verify:
+      - Page renders with header, "Add Testimonial" button, and table
+      - Table displays testimonials data with correct columns
+      - Empty state shows when no testimonials exist
+    - **EXPECTED OUTCOME**: Test PASSES (confirms bug is fixed)
+    - _Requirements: 2.1, 2.2, 2.3_
+
+  - [x] 3.3 Verify preservation tests still pass
+    - **Property 2: Preservation** - Existing Admin Functionality Unchanged
+    - **IMPORTANT**: Re-run the SAME tests from task 2 - do NOT write new tests
+    - Navigate to other admin pages and verify they still work correctly:
+      - Tour guides page displays and functions correctly
+      - Bookings, contact messages, newsletter pages unchanged
+      - Backend data fetching logic unchanged
+    - Verify public-facing testimonials display remains unaffected
+    - **EXPECTED OUTCOME**: Tests PASS (confirms no regressions)
+    - Confirm all tests still pass after fix (no regressions)
+
+- [x] 4. Checkpoint - Ensure all tests pass
+  - Manually navigate to `/admin/content/testimonials` and verify complete rendering
+  - Manually navigate to `/admin/content/tourguides` and verify it still works
+  - Manually navigate to other admin sections and verify no regressions
+  - Verify empty state displays correctly when no testimonials exist
+  - Verify table displays correctly when testimonials exist
+  - Ask the user if questions arise

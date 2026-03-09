@@ -101,4 +101,72 @@
         </div>
     </div>
 </section>
+
+  <!-- Tour Guide Team with Hover Overlay -->
+  <section class="py-5 reveal" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%);">
+    <div class="container-fluid" style="padding-left: 1.5rem; padding-right: 1.5rem;">
+      <h2 class="text-center mb-5 fw-bold" style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Meet Our Tour Guides</h2>
+      <div class="row g-4 justify-content-center">
+        @forelse($tourGuides as $guide)
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm rounded-4 text-center p-3 team-card position-relative overflow-hidden" style="border: none; background: var(--neutral-offwhite); box-shadow: 0 2px 16px rgba(34,139,34,0.10);">
+            @if($guide->photo)
+            <img src="{{ asset($guide->photo) }}" alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls" class="rounded-circle mx-auto mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--primary-green);" loading="lazy">
+            @else
+            <img src="{{ asset('images/tourguide1.jpg') }}" alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls" class="rounded-circle mx-auto mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--primary-green);" loading="lazy">
+            @endif
+            <h4 style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.5rem; margin-bottom: 0.5rem;">{{ $guide->name }}</h4>
+            <p class="text-muted small mb-2">{{ $guide->title }} • {{ $guide->years_experience }} years experience</p>
+            <p style="font-size: 1rem; color: var(--neutral-gray); line-height: 1.6; margin-bottom: 1rem;">{{ $guide->bio }}</p>
+            @if($guide->phone || $guide->email)
+            <div class="team-overlay d-flex flex-column justify-content-center align-items-center" tabindex="0" aria-label="Connect with {{ $guide->name }}">
+              <span class="fw-bold mb-2" style="color: var(--neutral-gray);">Connect:</span>
+              <div>
+                @if($guide->phone)
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $guide->phone) }}" class="fs-4 me-3" style="color: var(--secondary-teal);" aria-label="{{ $guide->name }}'s WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                @endif
+                @if($guide->email)
+                <a href="mailto:{{ $guide->email }}" class="fs-4" style="color: var(--secondary-teal);" aria-label="{{ $guide->name }}'s Email"><i class="fas fa-envelope"></i></a>
+                @endif
+              </div>
+            </div>
+            @endif
+            <div class="text-center mt-2">
+              <a href="{{ route('travelguide') }}#book-tour" class="btn clickable-btn shadow-sm" role="button" aria-label="Book a tour with {{ $guide->name }}"
+                style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--secondary-teal); font-size: 0.9rem;">
+                Book with {{ $guide->name }}
+              </a>
+            </div>
+          </div>
+        </div>
+        @empty
+        <div class="col-12 text-center">
+          <p style="color: var(--neutral-gray); font-size: 1.1rem;">No tour guides available at the moment.</p>
+        </div>
+        @endforelse
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section class="video-section reveal" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%);">
+    <div class="container-fluid" style="padding-left: 1.5rem; padding-right: 1.5rem;">
+      <div class="video-wrapper" style="background: var(--neutral-offwhite); border-radius: 1.2rem; box-shadow: 0 2px 16px rgba(34,139,34,0.10); padding: 2.5rem 2rem; max-width: 900px; margin: 0 auto;" role="region" aria-label="Video showcasing Sipi Falls">
+        <h2 style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2.5rem; letter-spacing: 1px; margin-bottom: 1.5rem;">Watch Our Story</h2>
+        <p style="font-size: 1.13rem; color: var(--neutral-gray); line-height: 1.7; margin-bottom: 1rem;">Experience the magic of Sipi Falls through this captivating video.</p>
+        <div class="video-container" style="position: relative; width: 100%; max-width: 100%; height: 0; padding-bottom: 56.25%; border-radius: 0.7rem; overflow: hidden; background: var(--neutral-gray);">
+          <video src="../images/banner.mp4" controls autoplay muted loop poster="../images/banner.jpg" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" aria-label="Video tour of Sipi Falls' waterfalls and Sabiny culture">
+            <p>Your browser does not support the video tag. View a <a href="../images/sipi-falls-still.jpg" style="color: var(--accent-gold);">still image</a> of Sipi Falls instead.</p>
+          </video>
+        </div>
+        <div class="text-center mt-3">
+          <a href="../pages/travelguide.html#activities" class="btn btn-lg clickable-btn shadow-sm" role="button" aria-label="Explore activities at Sipi Falls"
+            style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--secondary-teal);">
+            Explore Activities
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
 @endsection

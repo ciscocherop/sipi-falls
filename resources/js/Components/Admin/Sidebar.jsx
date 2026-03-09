@@ -26,16 +26,6 @@ function Sidebar({ isOpen, onClose }) {
             icon: '📧'
         },
         {
-            name: 'Tour Guides',
-            href: '/admin/tour-guides',
-            icon: '👨‍🏫'
-        },
-        {
-            name: 'Testimonials',
-            href: '/admin/testimonials',
-            icon: '⭐'
-        },
-        {
             name: 'Content',
             href: '/admin/content',
             icon: '📝'

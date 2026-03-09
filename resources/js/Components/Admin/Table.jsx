@@ -1,5 +1,3 @@
-import React from 'react';
-
 function Table({ columns, data, onRowClick, emptyMessage = 'No data available' }) {
     if (!data || data.length === 0) {
         return (

@@ -286,29 +286,37 @@
             Hear From Our Adventurers
         </h2>
         <div class="row text-center justify-content-center g-4">
-            <!-- Testimonial 1 -->
+            @forelse($testimonials as $testimonial)
+            <!-- Testimonial Card -->
             <div class="col-md-4">
                 <div class="card h-80 shadow-lg border-0 rounded-4 p-4 testimonial-card" style="background: #ffffff;">
-                    <img src="{{ asset('images/rock climbing.jpg') }}" alt="Sarah hiking at Sipi Falls" class="testimonial-img mb-2 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;" loading="lazy">
-                    <h5 class="fw-bold" style="color: #228B22;">Sarah K.</h5>
-                    <div class="mb-2 text-warning" role="img" aria-label="4.5 star rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star-half-alt"></i>
+                    @if($testimonial->photo)
+                    <img src="{{ asset($testimonial->photo) }}" alt="{{ $testimonial->name }} at Sipi Falls" class="testimonial-img mb-2 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;" loading="lazy">
+                    @else
+                    <img src="{{ asset('images/group.jpg') }}" alt="{{ $testimonial->name }} at Sipi Falls" class="testimonial-img mb-2 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;" loading="lazy">
+                    @endif
+                    <h5 class="fw-bold" style="color: #228B22;">{{ $testimonial->name }}</h5>
+                    <p class="text-muted small mb-2">{{ $testimonial->country }}</p>
+                    <div class="mb-2 text-warning" role="img" aria-label="{{ $testimonial->rating }} star rating">
+                        @for($i = 1; $i <= 5; $i++)
+                            @if($i <= $testimonial->rating)
+                                <i class="fas fa-star"></i>
+                            @else
+                                <i class="far fa-star"></i>
+                            @endif
+                        @endfor
                     </div>
                     <p class="fst-italic mb-0" style="color: #333333; font-size: 1.2rem;">
-                        "Sipi Falls is pure magic. The view, the hike, and the local hospitality were unforgettable!"
+                        "{{ $testimonial->message }}"
                     </p>
                 </div>
             </div>
-            
-            <!-- Testimonial 2 -->
+            @empty
+            <!-- Default Testimonial if none in database -->
             <div class="col-md-4">
                 <div class="card h-80 shadow-lg border-0 rounded-4 p-4 testimonial-card" style="background: #ffffff;">
-                    <img src="{{ asset('images/mosesg.jpg') }}" alt="Leo on a coffee tour at Sipi Falls" class="testimonial-img mb-2 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;" loading="lazy">
-                    <h5 class="fw-bold" style="color: #228B22;">Leo M.</h5>
+                    <img src="{{ asset('images/group.jpg') }}" alt="Visitor at Sipi Falls" class="testimonial-img mb-2 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;" loading="lazy">
+                    <h5 class="fw-bold" style="color: #228B22;">Our Visitors</h5>
                     <div class="mb-2 text-warning" role="img" aria-label="5 star rating">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -317,31 +325,14 @@
                         <i class="fas fa-star"></i>
                     </div>
                     <p class="fst-italic mb-0" style="color: #333333; font-size: 1.2rem;">
-                        "The coffee tour was my favorite part. I never knew how amazing fresh Ugandan coffee could be!"
+                        "Add testimonials from the admin panel to showcase visitor experiences!"
                     </p>
                 </div>
             </div>
-            
-            <!-- Testimonial 3 -->
-            <div class="col-md-4">
-                <div class="card h-80 shadow-lg border-0 rounded-4 p-4 testimonial-card" style="background: #ffffff;">
-                    <img src="{{ asset('images/group.jpg') }}" alt="Rita with a group at Sipi Falls" class="testimonial-img mb-2 rounded-circle mx-auto d-block" style="width: 120px; height: 120px; object-fit: cover;" loading="lazy">
-                    <h5 class="fw-bold" style="color: #228B22;">Rita T.</h5>
-                    <div class="mb-2 text-warning" role="img" aria-label="4 star rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
-                    </div>
-                    <p class="fst-italic mb-0" style="color: #333333; font-size: 1.2rem;">
-                        "If you're ever in Uganda, don't miss Sipi. Best decision of my trip!"
-                    </p>
-                </div>
-            </div>
+            @endforelse
         </div>
         <div class="text-center mt-3">
-            <a href="#" class="btn btn-lg px-4 shadow-sm clickable-btn" role="button" aria-label="Read more reviews about Sipi Falls" style="background-color: #E8B923; color: #333333; border: 2px solid #6FCF97;">
+            <a href="{{ route('about') }}" class="btn btn-lg px-4 shadow-sm clickable-btn" role="button" aria-label="Read more reviews about Sipi Falls" style="background-color: #E8B923; color: #333333; border: 2px solid #6FCF97;">
                 Read More Reviews
             </a>
         </div>
