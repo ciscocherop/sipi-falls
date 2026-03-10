@@ -9,10 +9,10 @@ function Dashboard({ stats, chartData, recentActivity }) {
                 {/* Welcome Card */}
                 <div className="bg-white rounded-lg shadow p-6">
                     <h2 className="text-xl font-semibold mb-2" style={{ color: 'var(--neutral-gray)' }}>
-                        Welcome to Sipi Falls Admin Dashboard! 🎉
+                        Sipi Falls Admin Dashboard! 🎉
                     </h2>
                     <p className="text-gray-600">
-                        Here's an overview of your site's activity and performance.
+                        An overview of the site's activity and performance.
                     </p>
                 </div>
 
