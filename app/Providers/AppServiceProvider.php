@@ -19,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Share contact information with all views
+        view()->composer('*', function ($view) {
+            $contactContent = \App\Models\SiteContent::where('page', 'contact')
+                ->pluck('value', 'key');
+            $view->with('contactContent', $contactContent);
+        });
     }
 }

@@ -52,7 +52,11 @@ class NewsletterSubscriberController extends Controller
 
     public function compose()
     {
-        return Inertia::render('Admin/NewsletterSubscribers/Compose');
+        $activeCount = NewsletterSubscriber::active()->count();
+        
+        return Inertia::render('Admin/NewsletterSubscribers/Compose', [
+            'activeCount' => $activeCount
+        ]);
     }
 
     public function send(Request $request)

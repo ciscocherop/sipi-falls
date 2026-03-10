@@ -103,21 +103,23 @@
 </section>
 
   <!-- Tour Guide Team with Hover Overlay -->
-  <section class="py-5 reveal" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%);">
+  <section class="py-4" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%); padding-top: 2rem !important; padding-bottom: 6rem !important;">
     <div class="container-fluid" style="padding-left: 1.5rem; padding-right: 1.5rem;">
-      <h2 class="text-center mb-5 fw-bold" style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Meet Our Tour Guides</h2>
+      <h2 class="text-center mb-3 fw-bold" style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Meet Our Tour Guides</h2>
+      
+      <!-- Static grid for all guides -->
       <div class="row g-4 justify-content-center">
         @forelse($tourGuides as $guide)
         <div class="col-md-4">
-          <div class="card h-100 shadow-sm rounded-4 text-center p-3 team-card position-relative overflow-hidden" style="border: none; background: var(--neutral-offwhite); box-shadow: 0 2px 16px rgba(34,139,34,0.10);">
+          <div class="card h-100 shadow-sm rounded-4 text-center p-1 team-card position-relative overflow-hidden" style="border: none; background: var(--neutral-offwhite); box-shadow: 0 2px 16px rgba(34,139,34,0.10);">
             @if($guide->photo)
-            <img src="{{ asset($guide->photo) }}" alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls" class="rounded-circle mx-auto mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--primary-green);" loading="lazy">
+            <img src="{{ asset($guide->photo) }}" alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls" class="rounded-circle mx-auto mb-2" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--primary-green);" loading="lazy">
             @else
-            <img src="{{ asset('images/tourguide1.jpg') }}" alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls" class="rounded-circle mx-auto mb-3" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--primary-green);" loading="lazy">
+            <img src="{{ asset('images/tourguide1.jpg') }}" alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls" class="rounded-circle mx-auto mb-2" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid var(--primary-green);" loading="lazy">
             @endif
-            <h4 style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.5rem; margin-bottom: 0.5rem;">{{ $guide->name }}</h4>
-            <p class="text-muted small mb-2">{{ $guide->title }} • {{ $guide->years_experience }} years experience</p>
-            <p style="font-size: 1rem; color: var(--neutral-gray); line-height: 1.6; margin-bottom: 1rem;">{{ $guide->bio }}</p>
+            <h4 style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.5rem; margin-bottom: 0.3rem;">{{ $guide->name }}</h4>
+            <p class="text-muted small mb-1">{{ $guide->title }} • {{ $guide->years_experience }} years experience</p>
+            <p style="font-size: 1rem; color: var(--neutral-gray); line-height: 1.6; margin-bottom: 0.5rem; white-space: normal; word-wrap: break-word;">{{ $guide->bio }}</p>
             @if($guide->phone || $guide->email)
             <div class="team-overlay d-flex flex-column justify-content-center align-items-center" tabindex="0" aria-label="Connect with {{ $guide->name }}">
               <span class="fw-bold mb-2" style="color: var(--neutral-gray);">Connect:</span>
@@ -131,7 +133,7 @@
               </div>
             </div>
             @endif
-            <div class="text-center mt-2">
+            <div class="text-center mt-1">
               <a href="{{ route('travelguide') }}#book-tour" class="btn clickable-btn shadow-sm" role="button" aria-label="Book a tour with {{ $guide->name }}"
                 style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--secondary-teal); font-size: 0.9rem;">
                 Book with {{ $guide->name }}
@@ -149,7 +151,7 @@
   </section>
 
   <!-- Video Section -->
-  <section class="video-section reveal" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%);">
+  <section class="video-section reveal py-5" style="background: linear-gradient(135deg, var(--neutral-offwhite) 0%, #d1e7dd 100%); position: relative; z-index: 1;">
     <div class="container-fluid" style="padding-left: 1.5rem; padding-right: 1.5rem;">
       <div class="video-wrapper" style="background: var(--neutral-offwhite); border-radius: 1.2rem; box-shadow: 0 2px 16px rgba(34,139,34,0.10); padding: 2.5rem 2rem; max-width: 900px; margin: 0 auto;" role="region" aria-label="Video showcasing Sipi Falls">
         <h2 style="color: var(--primary-green); font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 2.5rem; letter-spacing: 1px; margin-bottom: 1.5rem;">Watch Our Story</h2>

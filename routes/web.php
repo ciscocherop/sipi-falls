@@ -12,7 +12,7 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/about', function () {
-    $tourGuides = \App\Models\TourGuide::active()->ordered()->get();
+    $tourGuides = \App\Models\TourGuide::ordered()->get();
     return view('pages.about', compact('tourGuides'));
 })->name('about');
 
@@ -21,7 +21,8 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::get('/travelguide', function () {
-    return view('pages.travelguide');
+    $content = \App\Models\SiteContent::where('page', 'travelguide')->pluck('value', 'key');
+    return view('pages.travelguide', compact('content'));
 })->name('travelguide');
 
 // Form submissions

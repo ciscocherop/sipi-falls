@@ -13,7 +13,6 @@ class ContentController extends Controller
     {
         $pages = [
             'contact' => 'Contact Information',
-            'about' => 'About Page',
             'travelguide' => 'Travel Guide',
             'tourguides' => 'Tour Guides',
             'testimonials' => 'Testimonials'

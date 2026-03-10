@@ -35,7 +35,7 @@
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
             <i class="fas fa-calendar fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
             <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">When to Visit</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">The best time to visit Sipi Falls is during the dry seasons — January to March and August to September. You'll enjoy clear views and safer trails!</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_when_to_visit'] ?? 'The best time to visit Sipi Falls is during the dry seasons — January to March and August to September.' }}</p>
           </div>
           <!-- What to Wear -->
           <div class="col-md-4 col-lg-4" 
@@ -45,7 +45,7 @@
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
             <i class="fas fa-shoe-prints fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
             <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">What to Wear</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">Pack sturdy hiking shoes with good grip — Sipi's trails can be slippery! Don't forget a rain jacket for sudden showers.</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_what_to_wear'] ?? 'Pack sturdy hiking shoes with good grip — Sipi\'s trails can be slippery!' }}</p>
           </div>
            <!-- What to Pack -->
           <div class="col-md-4 col-lg-4" 
@@ -55,7 +55,7 @@
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
             <i class="fas fa-suitcase-rolling fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
             <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">What to Pack</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">Bring a reusable water bottle, sunscreen, insect repellent, and a small backpack for your hikes. A camera is a must for the views!</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_what_to_pack'] ?? 'Bring a reusable water bottle, sunscreen, insect repellent, and a small backpack for your hikes.' }}</p>
           </div>
               <!-- Getting There -->
           <div class="col-md-4 col-lg-4" 
@@ -65,7 +65,7 @@
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
             <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
             <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">Getting There</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">Sipi Falls is a 4.5-hour drive from Kampala. Hire a 4WD vehicle for the rugged roads, or book a local tour guide from Mbale.</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_getting_there'] ?? 'Sipi Falls is a 4.5-hour drive from Kampala. Hire a 4WD vehicle for the rugged roads.' }}</p>
           </div>
             <!-- Where to Stay -->
           <div class="col-md-4 col-lg-4" 
@@ -75,7 +75,7 @@
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
             <i class="fas fa-hotel fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
             <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">Where to Stay</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">Choose from budget guesthouses or scenic lodges like Sipi River Lodge and top-class resorts. Book early during peak season for the best views!</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_where_to_stay'] ?? 'Choose from budget guesthouses or scenic lodges like Sipi River Lodge and top-class resorts.' }}</p>
           </div>
               <!-- Stay Safe -->
           <div class="col-md-4 col-lg-4" 
@@ -85,7 +85,7 @@
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
             <i class="fas fa-heartbeat fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
             <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">Stay Safe</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">Stick to marked trails, avoid hiking alone, and stay hydrated! The falls can be slippery — watch your step!</p>
+            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_stay_safe'] ?? 'Stick to marked trails, avoid hiking alone, and stay hydrated! The falls can be slippery — watch your step!' }}</p>
           </div>
         </div>
 
@@ -126,112 +126,107 @@
       </h2>
 
       <div class="row g-4 mx-3">
-        <!-- Activity 1: Hiking -->
+        <!-- Activity 1 -->
         <div class="col-md-6 mb-4">
           <div class="d-flex shadow" 
                style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset('images/naturewalk.jpg') }}" alt="Hiking the Waterfalls" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
+            <img src="{{ asset($content['travelguide_activity_1_image'] ?? 'images/naturewalk.jpg') }}" alt="{{ $content['travelguide_activity_1_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">Hiking the Waterfalls</h5>
+                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_1_title'] ?? 'Hiking the Waterfalls' }}</h5>
                 <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  Explore scenic trails to all three waterfalls, with breathtaking views and lush landscapes.
-                  The beauty about hiking here is that you can choose your own pace and enjoy the serene environment.
+                  {{ $content['travelguide_activity_1_description'] ?? 'Explore scenic trails to all three waterfalls.' }}
                 </p>
               </div>
             </div>
           </div>
         </div>
-         <!-- Activity 2: Abseiling -->
+         <!-- Activity 2 -->
         <div class="col-md-6 mb-4">
           <div class="d-flex shadow" 
                style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset('images/abseil3.jpg') }}" alt="Abseiling" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
+            <img src="{{ asset($content['travelguide_activity_2_image'] ?? 'images/abseil3.jpg') }}" alt="{{ $content['travelguide_activity_2_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">Abseiling</h5>
+                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_2_title'] ?? 'Abseiling' }}</h5>
                 <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  Descend a 100m cliff beside the main waterfall for an adrenaline rush with professional guides.
-                  Experience the thrill of abseiling while enjoying stunning views of the falls and surrounding landscape.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-          <!-- Activity 3: Coffee Tours -->
-        <div class="col-md-6 mb-4">
-          <div class="d-flex shadow" 
-               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset('images/cofi.jpg') }}" alt="Coffee Tour" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
-            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
-              <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">Coffee Tours</h5>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  Visit local farms, learn about coffee growing, and taste freshly brewed Sipi coffee.
-                  Discover the rich coffee culture of the region and enjoy a unique experience with local farmers.
+                  {{ $content['travelguide_activity_2_description'] ?? 'Descend a 100m cliff beside the main waterfall.' }}
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Activity 4: Coffee Tours (duplicate) -->
+          <!-- Activity 3 -->
         <div class="col-md-6 mb-4">
           <div class="d-flex shadow" 
                style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset('images/cofi.jpg') }}" alt="Coffee Tour" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
+            <img src="{{ asset($content['travelguide_activity_3_image'] ?? 'images/cofi.jpg') }}" alt="{{ $content['travelguide_activity_3_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">Coffee Tours</h5>
+                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_3_title'] ?? 'Coffee Tours' }}</h5>
                 <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  Visit local farms, learn about coffee growing, and taste freshly brewed Sipi coffee.
-                  Discover the rich coffee culture of the region and enjoy a unique experience with local farmers.
+                  {{ $content['travelguide_activity_3_description'] ?? 'Visit local farms and taste freshly brewed Sipi coffee.' }}
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Activity 5: Cave Adventures -->
+        <!-- Activity 4 -->
         <div class="col-md-6 mb-4">
           <div class="d-flex shadow" 
                style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset('images/clif2.jpg') }}" alt="Cave Adventures" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
+            <img src="{{ asset($content['travelguide_activity_4_image'] ?? 'images/chamelon.jpg') }}" alt="{{ $content['travelguide_activity_4_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">Cave Adventures</h5>
+                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_4_title'] ?? 'Bird Watching' }}</h5>
                 <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  The ancient caves echo stories of the past — a thrilling blend of mystery, history, and raw natural beauty.
-                  With guided tours, you'll discover underground streams and breathtaking views from the rock itself.
+                  {{ $content['travelguide_activity_4_description'] ?? 'Discover over 300 bird species in the Mount Elgon region.' }}
                 </p>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Activity 6: Rock Climbing -->
+        <!-- Activity 5 -->
         <div class="col-md-6 mb-4">
           <div class="d-flex shadow" 
                style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset('images/rock climbing.jpg') }}" alt="Rock Climbing" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
+            <img src="{{ asset($content['travelguide_activity_5_image'] ?? 'images/clif2.jpg') }}" alt="{{ $content['travelguide_activity_5_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
             <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
               <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">Rock Climbing</h5>
+                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_5_title'] ?? 'Cave Adventures' }}</h5>
                 <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  Challenge yourself on rugged cliffs with guided rock climbing adventures, offering panoramic views from the top.
+                  {{ $content['travelguide_activity_5_description'] ?? 'The ancient caves echo stories of the past.' }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity 6 -->
+        <div class="col-md-6 mb-4">
+          <div class="d-flex shadow" 
+               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
+            <img src="{{ asset($content['travelguide_activity_6_image'] ?? 'images/rock climbing.jpg') }}" alt="{{ $content['travelguide_activity_6_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
+            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
+              <div>
+                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_6_title'] ?? 'Rock Climbing' }}</h5>
+                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                  {{ $content['travelguide_activity_6_description'] ?? 'Challenge yourself on rugged cliffs with guided rock climbing adventures.' }}
                 </p>
               </div>
             </div>

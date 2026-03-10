@@ -74,10 +74,10 @@
         
         <div class="footer">
             <p><strong>Sipi Falls Tourism</strong></p>
-            <p>Kapchorwa, Uganda</p>
+            <p>{{ $contactInfo['contact_address'] ?? 'Kapchorwa, Uganda' }}</p>
             <p>
-                <a href="mailto:info@sipifalls.com">info@sipifalls.com</a> | 
-                <a href="tel:+256123456789">+256 123 456 789</a>
+                <a href="mailto:{{ $contactInfo['contact_email'] ?? 'info@sipifalls.com' }}">{{ $contactInfo['contact_email'] ?? 'info@sipifalls.com' }}</a> | 
+                <a href="tel:{{ str_replace(' ', '', $contactInfo['contact_phone'] ?? '+256703558174') }}">{{ $contactInfo['contact_phone'] ?? '+256 703558174' }}</a>
             </p>
             
             <div class="unsubscribe">

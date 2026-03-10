@@ -21,7 +21,11 @@ class NewsletterBroadcast extends Mailable
 
     public function build()
     {
+        $contactInfo = \App\Models\SiteContent::where('page', 'contact')
+            ->pluck('value', 'key');
+
         return $this->subject($this->subject)
-                    ->view('emails.newsletter-broadcast');
+                    ->view('emails.newsletter-broadcast')
+                    ->with('contactInfo', $contactInfo);
     }
 }

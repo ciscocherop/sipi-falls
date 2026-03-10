@@ -46,9 +46,9 @@
       <div class="col-md-3 mb-4 mb-md-0">
         <h6 class="fw-bold mb-3" style="color: #ffffff; font-family: 'Montserrat', sans-serif; font-size: 1.2rem; letter-spacing: 1px;">Contact</h6>
         <ul class="list-unstyled small mb-2" style="color: #ffffff; padding-left: 0;">
-          <li style="margin-bottom: 0.5rem;"><i class="fas fa-envelope me-2"></i> info@sipifalls.com</li>
-          <li style="margin-bottom: 0.5rem;"><i class="fas fa-phone me-2"></i> +256 703558174</li>
-          <li style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt me-2"></i> Kapchorwa, Uganda</li>
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-envelope me-2"></i> {{ $contactContent['contact_email'] ?? 'info@sipifalls.com' }}</li>
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-phone me-2"></i> {{ $contactContent['contact_phone'] ?? '+256 703558174' }}</li>
+          <li style="margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt me-2"></i> {{ $contactContent['contact_address'] ?? 'Kapchorwa, Uganda' }}</li>
         </ul>
         <div class="d-flex gap-2">
           <a href="https://facebook.com" aria-label="Facebook" 
