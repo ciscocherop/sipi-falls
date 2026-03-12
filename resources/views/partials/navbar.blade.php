@@ -10,17 +10,18 @@
         </a>
         
         <!-- Mobile Menu Toggle -->
-        <button onclick="document.getElementById('navbarNav').classList.toggle('hidden')" class="lg:hidden text-white p-2" 
-                type="button" 
-                aria-label="Toggle navigation">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <button onclick="toggleMobileMenu()" class="lg:hidden text-white p-2" type="button" aria-label="Toggle navigation">
+          <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           </svg>
         </button>
         
         <!-- Navigation Links -->
         <div id="navbarNav" class="hidden lg:block">
-          <ul class="flex flex-row items-center gap-8">
+          <ul class="flex flex-row items-center gap-8 lg:flex-row flex-col">
             <li>
               <a href="{{ route('home') }}" 
                  class="font-semibold"
@@ -65,13 +66,35 @@
 </header>
 
 <script>
-// Navbar scroll effect - darkens background after 80px scroll
+// Navbar scroll effect
 window.addEventListener('scroll', function() {
   const navbar = document.getElementById('mainNavbar');
   if (window.scrollY > 80) {
-    navbar.style.backgroundColor = 'rgba(10, 26, 10, 0.9)';
+    navbar.style.backgroundColor = 'rgba(10, 26, 10, 0.95)';
   } else {
     navbar.style.backgroundColor = 'rgba(10, 26, 10, 0.7)';
   }
 });
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+  const menu = document.getElementById('navbarNav');
+  const menuIcon = document.getElementById('menuIcon');
+  const closeIcon = document.getElementById('closeIcon');
+  const isOpen = menu.style.display === 'flex';
+  
+  if (isOpen) {
+    menu.style.display = 'none';
+    menuIcon.classList.remove('hidden');
+    closeIcon.classList.add('hidden');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  } else {
+    menu.style.display = 'flex';
+    menuIcon.classList.add('hidden');
+    closeIcon.classList.remove('hidden');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+  }
+}
 </script>

@@ -303,90 +303,149 @@
         <h2 class="text-center mb-4 fw-bold" style="color: var(--primary-green); font-family: var(--font-display); font-size: 2.5rem;">
             Hear From Our Adventurers
         </h2>
-        <div class="row text-center justify-content-center g-4 reveal-children">
-            @forelse($testimonials as $testimonial)
-            <!-- Testimonial Card -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-lg border-0 p-4 testimonial-card" style="background: #ffffff; border-left: 4px solid var(--accent-gold, #E8B923); border-radius: 0.5rem; text-align: left; padding: 2rem;">
-                    <!-- Decorative Quote Mark -->
-                    <div style="font-size: 4rem; line-height: 0.5; color: var(--accent-gold, #E8B923); font-family: Georgia, serif; margin-bottom: 1rem;">"</div>
-                    
-                    <!-- Quote Text -->
-                    <p class="mb-0" style="color: var(--neutral-gray); font-size: 1rem; line-height: 1.8; font-style: italic;">
-                        {{ $testimonial->message }}
-                    </p>
-                    
-                    <!-- Star Rating -->
-                    <div class="mb-2 text-warning mt-3" role="img" aria-label="{{ $testimonial->rating }} star rating" style="text-align: left;">
-                        @for($i = 1; $i <= 5; $i++)
-                            @if($i <= $testimonial->rating)
+        
+        <!-- Testimonial Carousel Container -->
+        <div style="position: relative; max-width: 1200px; margin: 0 auto;">
+            <!-- Previous Arrow -->
+            <button onclick="moveTestimonialCarousel(-1)" 
+                    class="testimonial-arrow testimonial-arrow-prev" 
+                    aria-label="Previous testimonials"
+                    style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); background: var(--primary-green); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+                    onmouseover="this.style.background='var(--accent-gold)'; this.style.transform='translateY(-50%) scale(1.1)';"
+                    onmouseout="this.style.background='var(--primary-green)'; this.style.transform='translateY(-50%) scale(1)';">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            
+            <!-- Carousel Track -->
+            <div class="testimonial-carousel-track" style="overflow: hidden;">
+                <div class="testimonial-carousel-inner" style="display: flex; transition: transform 0.5s ease;">
+                    @forelse($testimonials as $testimonial)
+                    <!-- Testimonial Card -->
+                    <div class="testimonial-slide" style="min-width: 50%; padding: 0 15px; box-sizing: border-box;">
+                        <div class="card h-100 shadow-lg border-0 p-4 testimonial-card" style="background: #ffffff; border-left: 4px solid var(--accent-gold, #E8B923); border-radius: 0.5rem; text-align: left; padding: 2rem;">
+                            <!-- Decorative Quote Mark -->
+                            <div style="font-size: 4rem; line-height: 0.5; color: var(--accent-gold, #E8B923); font-family: Georgia, serif; margin-bottom: 1rem;">"</div>
+                            
+                            <!-- Quote Text -->
+                            <p class="mb-0" style="color: var(--neutral-gray); font-size: 1rem; line-height: 1.8; font-style: italic;">
+                                {{ $testimonial->message }}
+                            </p>
+                            
+                            <!-- Star Rating -->
+                            <div class="mb-2 text-warning mt-3" role="img" aria-label="{{ $testimonial->rating }} star rating" style="text-align: left;">
+                                @for($i = 1; $i <= 5; $i++)
+                                    @if($i <= $testimonial->rating)
+                                        <i class="fas fa-star"></i>
+                                    @else
+                                        <i class="far fa-star"></i>
+                                    @endif
+                                @endfor
+                            </div>
+                            
+                            <!-- Avatar + Name Row -->
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem;">
+                                @php
+                                    // Get initials from name
+                                    $nameParts = explode(' ', $testimonial->name);
+                                    $initials = '';
+                                    foreach($nameParts as $part) {
+                                        $initials .= strtoupper(substr($part, 0, 1));
+                                        if(strlen($initials) >= 2) break;
+                                    }
+                                    // Generate color based on name
+                                    $colors = ['#1a6b1a', '#c9951a', '#2d8b2d', '#e8b923', '#228B22'];
+                                    $colorIndex = ord($testimonial->name[0]) % count($colors);
+                                    $bgColor = $colors[$colorIndex];
+                                @endphp
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: {{ $bgColor }}; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem; font-family: var(--font-body); flex-shrink: 0;">
+                                    {{ $initials }}
+                                </div>
+                                <div>
+                                    <div style="font-weight: 700; color: var(--primary-green); font-family: var(--font-body);">{{ $testimonial->name }}</div>
+                                    <div style="font-size: 0.8rem; color: #888; font-family: var(--font-body);">{{ $testimonial->country }}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @empty
+                    <!-- Default Testimonial if none in database -->
+                    <div class="testimonial-slide" style="min-width: 50%; padding: 0 15px; box-sizing: border-box;">
+                        <div class="card h-100 shadow-lg border-0 p-4 testimonial-card" style="background: #ffffff; border-left: 4px solid var(--accent-gold, #E8B923); border-radius: 0.5rem; text-align: left; padding: 2rem;">
+                            <!-- Decorative Quote Mark -->
+                            <div style="font-size: 4rem; line-height: 0.5; color: var(--accent-gold, #E8B923); font-family: Georgia, serif; margin-bottom: 1rem;">"</div>
+                            
+                            <!-- Quote Text -->
+                            <p class="mb-0" style="color: var(--neutral-gray); font-size: 1rem; line-height: 1.8; font-style: italic;">
+                                Add testimonials from the admin panel to showcase visitor experiences!
+                            </p>
+                            
+                            <!-- Star Rating -->
+                            <div class="mb-2 text-warning mt-3" role="img" aria-label="5 star rating" style="text-align: left;">
                                 <i class="fas fa-star"></i>
-                            @else
-                                <i class="far fa-star"></i>
-                            @endif
-                        @endfor
-                    </div>
-                    
-                    <!-- Avatar + Name Row -->
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem;">
-                        @if($testimonial->photo)
-                        <img src="{{ asset($testimonial->photo) }}" alt="{{ $testimonial->name }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" loading="lazy">
-                        @else
-                        <img src="{{ asset('images/group.jpg') }}" alt="{{ $testimonial->name }}" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" loading="lazy">
-                        @endif
-                        <div>
-                            <div style="font-weight: 700; color: var(--primary-green); font-family: var(--font-body);">{{ $testimonial->name }}</div>
-                            <div style="font-size: 0.8rem; color: #888; font-family: var(--font-body);">{{ $testimonial->country }}</div>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            
+                            <!-- Avatar + Name Row -->
+                            <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem;">
+                                <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-green); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem; font-family: var(--font-body); flex-shrink: 0;">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 700; color: var(--primary-green); font-family: var(--font-body);">Our Visitors</div>
+                                    <div style="font-size: 0.8rem; color: #888; font-family: var(--font-body);">Worldwide</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                    @endforelse
                 </div>
             </div>
-            @empty
-            <!-- Default Testimonial if none in database -->
-            <div class="col-md-4">
-                <div class="card h-100 shadow-lg border-0 p-4 testimonial-card" style="background: #ffffff; border-left: 4px solid var(--accent-gold, #E8B923); border-radius: 0.5rem; text-align: left; padding: 2rem;">
-                    <!-- Decorative Quote Mark -->
-                    <div style="font-size: 4rem; line-height: 0.5; color: var(--accent-gold, #E8B923); font-family: Georgia, serif; margin-bottom: 1rem;">"</div>
-                    
-                    <!-- Quote Text -->
-                    <p class="mb-0" style="color: var(--neutral-gray); font-size: 1rem; line-height: 1.8; font-style: italic;">
-                        Add testimonials from the admin panel to showcase visitor experiences!
-                    </p>
-                    
-                    <!-- Star Rating -->
-                    <div class="mb-2 text-warning mt-3" role="img" aria-label="5 star rating" style="text-align: left;">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    
-                    <!-- Avatar + Name Row -->
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem;">
-                        <img src="{{ asset('images/group.jpg') }}" alt="Visitor" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;" loading="lazy">
-                        <div>
-                            <div style="font-weight: 700; color: var(--primary-green); font-family: var(--font-body);">Our Visitors</div>
-                            <div style="font-size: 0.8rem; color: #888; font-family: var(--font-body);">Worldwide</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            @endforelse
-        </div>
-        <div class="text-center mt-3">
-            <button onclick="openTestimonialsModal()" 
-                    class="btn btn-lg px-4 shadow-sm clickable-btn" 
-                    role="button" 
-                    aria-label="Read more reviews about Sipi Falls" 
-                    style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.75rem 2.5rem; font-family: var(--font-body); font-weight: 600; border-radius: 0.25rem; transition: all 0.3s; cursor: pointer;"
-                    onmouseover="this.style.backgroundColor='var(--primary-green)'; this.style.color='white';"
-                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--primary-green)';">
-                Read More Reviews
+            
+            <!-- Next Arrow -->
+            <button onclick="moveTestimonialCarousel(1)" 
+                    class="testimonial-arrow testimonial-arrow-next" 
+                    aria-label="Next testimonials"
+                    style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); background: var(--primary-green); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
+                    onmouseover="this.style.background='var(--accent-gold)'; this.style.transform='translateY(-50%) scale(1.1)';"
+                    onmouseout="this.style.background='var(--primary-green)'; this.style.transform='translateY(-50%) scale(1)';">
+                <i class="fas fa-chevron-right"></i>
             </button>
         </div>
     </div>
 </section>
+
+<script>
+let testimonialCurrentIndex = 0;
+const testimonialSlidesPerView = 2;
+
+function moveTestimonialCarousel(direction) {
+    const track = document.querySelector('.testimonial-carousel-inner');
+    const slides = document.querySelectorAll('.testimonial-slide');
+    const totalSlides = slides.length;
+    
+    if (totalSlides === 0) return;
+    
+    // Calculate max index (how many "pages" of 2 cards we have)
+    const maxIndex = Math.ceil(totalSlides / testimonialSlidesPerView) - 1;
+    
+    // Update index
+    testimonialCurrentIndex += direction;
+    
+    // Loop around
+    if (testimonialCurrentIndex < 0) {
+        testimonialCurrentIndex = maxIndex;
+    } else if (testimonialCurrentIndex > maxIndex) {
+        testimonialCurrentIndex = 0;
+    }
+    
+    // Calculate transform (move by 100% to show next 2 cards)
+    const translateX = -(testimonialCurrentIndex * 100);
+    track.style.transform = `translateX(${translateX}%)`;
+}
+</script>
 
 <!-- Testimonials Modal -->
 <div id="testimonialsModal" class="modal fade" tabindex="-1" aria-labelledby="testimonialsModalLabel" aria-hidden="true" style="display: none;">

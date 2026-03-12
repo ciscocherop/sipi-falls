@@ -110,7 +110,7 @@
       <!-- Horizontal profile strips -->
       <div style="max-width: 1000px; margin: 0 auto;">
         @forelse($tourGuides as $guide)
-        <div style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem 2rem; border-left: 4px solid var(--accent-gold); background: var(--neutral-offwhite); margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-radius: 0.375rem;">
+        <div class="tour-guide-card" style="display: flex; align-items: center; gap: 2rem; padding: 1.5rem 2rem; border-left: 4px solid var(--accent-gold); background: var(--neutral-offwhite); margin-bottom: 1.5rem; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border-radius: 0.375rem; flex-wrap: wrap;">
           <!-- Photo left -->
           <div style="flex-shrink: 0;">
             @if($guide->photo)

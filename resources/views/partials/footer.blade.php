@@ -114,7 +114,7 @@
     <hr class="my-8" style="margin: 2rem 0; border: none; border-top: 1px solid rgba(255, 255, 255, 0.1);">
     
     <div class="text-center" style="background: rgba(0, 0, 0, 0.25); padding: 0.75rem; text-align: center; color: rgba(255, 255, 255, 0.5); font-size: 0.8rem; font-family: var(--font-body);">
-      <span id="copyright">© 2025 Sipi Falls. All Rights Reserved.</span>
+      <span id="copyright">© 2026 Sipi Falls. All Rights Reserved.</span>
     </div>
     
     <!-- Back to Top Button -->
