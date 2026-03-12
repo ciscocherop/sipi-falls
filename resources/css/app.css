@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+
 @import 'tailwindcss';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
@@ -7,18 +9,192 @@
 @source '../**/*.jsx';
 
 :root {
-    --primary-green: #228B22;
-    --secondary-teal: #6FCF97;
-    --accent-gold: #E8B923;
-    --accent-coral: #FF6F61;
-    --neutral-gray: #333333;
-    --neutral-offwhite: #ffffff;
-    --neutral-light: #F5F6F9;
+    /* ============ FONTS ============ */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Montserrat', sans-serif;
 
+    /* ============ FONT SCALE ============ */
+    --text-xs: 0.75rem;
+    /* 12px — labels, captions */
+    --text-sm: 0.875rem;
+    /* 14px — small body */
+    --text-base: 1rem;
+    /* 16px — body text */
+    --text-lg: 1.125rem;
+    /* 18px — large body */
+    --text-xl: 1.25rem;
+    /* 20px — small headings */
+    --text-2xl: 1.5rem;
+    /* 24px — subheadings */
+    --text-3xl: 2rem;
+    /* 32px — section headings */
+    --text-4xl: 2.75rem;
+    /* 44px — page headings */
+    --text-5xl: 3.75rem;
+    /* 60px — hero headings */
+
+    /* ============ FONT WEIGHTS ============ */
+    --weight-light: 300;
+    --weight-regular: 400;
+    --weight-medium: 500;
+    --weight-bold: 700;
+
+    /* ============ BRAND COLORS ============ */
+    --primary-green: #1a6b1a;
+    /* deep forest green */
+    --primary-green-hover: #2d8b2d;
+    /* slightly lighter for hovers */
+    --accent-gold: #c9951a;
+    /* rich aged gold */
+    --accent-gold-light: #e8b923;
+    /* lighter gold for highlights */
+
+    /* ============ NEUTRALS ============ */
+    --neutral-dark: #1a1a1a;
+    /* near black — hero text */
+    --neutral-gray: #4a4a4a;
+    /* body text */
+    --neutral-mid: #8a8a8a;
+    /* captions, meta */
+    --neutral-light: #f5f5f0;
+    /* warm off-white sections */
+    --neutral-offwhite: #fafaf8;
+    /* page background */
+    --neutral-white: #ffffff;
+    /* pure white cards */
+
+    /* ============ SEMANTIC COLORS ============ */
     --success: #22C55E;
     --warning: #F59E0B;
     --error: #EF4444;
     --info: #3B82F6;
+
+    /* ============ SPECIAL ============ */
+    --dark-footer: #0d1f0d;
+    /* deep forest footer */
+
+    /* ============ SPACING SCALE ============ */
+    --space-xs: 0.25rem;
+    /* 4px */
+    --space-sm: 0.5rem;
+    /* 8px */
+    --space-md: 1rem;
+    /* 16px */
+    --space-lg: 1.5rem;
+    /* 24px */
+    --space-xl: 2rem;
+    /* 32px */
+    --space-2xl: 3rem;
+    /* 48px */
+    --space-3xl: 4rem;
+    /* 64px */
+
+    /* ============ BORDER RADIUS ============ */
+    --radius-sm: 0.25rem;
+    /* 4px — buttons */
+    --radius-md: 0.5rem;
+    /* 8px — cards */
+    --radius-lg: 1rem;
+    /* 16px — images */
+    --radius-full: 9999px;
+    /* pills/circles */
+
+    /* ============ SHADOWS ============ */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.14);
+}
+
+/* ============ SCROLL REVEAL ANIMATIONS ============ */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Staggered children animation */
+.reveal-children>* {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal-children.visible>*:nth-child(1) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.1s;
+}
+
+.reveal-children.visible>*:nth-child(2) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.2s;
+}
+
+.reveal-children.visible>*:nth-child(3) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.3s;
+}
+
+.reveal-children.visible>*:nth-child(4) {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+/* Fade from left */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Fade from right */
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ============ ACTIVITY CARDS HOVER ============ */
+.activity-card:hover .activity-img {
+    transform: scale(1.08);
+}
+
+.activity-card:hover .activity-overlay {
+    background: rgba(0, 0, 0, 0.3) !important;
+}
+
+.activity-card:hover .activity-number {
+    opacity: 0.06 !important;
+}
+
+.activity-card:hover .activity-body {
+    transform: translateY(0) !important;
+}
+
+/* ============ PARALLAX SECTIONS ============ */
+.parallax-section {
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* your keyframes etc below */

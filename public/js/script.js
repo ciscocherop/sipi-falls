@@ -1,5 +1,5 @@
 // Feedback Message Handler for Contact Form and Booking Form
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   // Get status and message from URL parameters
   const urlParams = new URLSearchParams(window.location.search);
   const status = urlParams.get('status');
@@ -206,7 +206,7 @@ if (document.getElementById('extraTipsModal')) {
         // Add each tip as a list item
         tips.forEach(tip => {
           const li = document.createElement('li');
-          li.innerHTML = `<i class="fas fa-leaf text-success me-2"></i> ${tip}`;
+          li.innerHTML = `<i class="fas fa-leaf me-2" style="color: var(--accent-gold);"></i> ${tip}`;
           li.classList.add('mb-2');
           tipsList.appendChild(li);
         });
@@ -215,12 +215,12 @@ if (document.getElementById('extraTipsModal')) {
   });
 }
 // Intersection Observer for Reveal Animations
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const reveals = document.querySelectorAll('.reveal');
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
+      if (entry.isIntersecting) {
         entry.target.classList.add('active');
         observer.unobserve(entry.target); // Remove if you want animation only once
       }
@@ -234,82 +234,82 @@ document.addEventListener("DOMContentLoaded", function() {
   });
 });
 
-  // Toggle mobile-open class on navbar when Bootstrap collapse opens/closes
-  document.addEventListener('DOMContentLoaded', function () {
-    const navbar = document.querySelector('.navbar');
-    const collapseEl = document.getElementById('navbarNav');
-    if (!navbar || !collapseEl) return;
+// Toggle mobile-open class on navbar when Bootstrap collapse opens/closes
+document.addEventListener('DOMContentLoaded', function () {
+  const navbar = document.querySelector('.navbar');
+  const collapseEl = document.getElementById('navbarNav');
+  if (!navbar || !collapseEl) return;
 
-    collapseEl.addEventListener('show.bs.collapse', function () {
-      navbar.classList.add('mobile-open');
-    });
-
-    collapseEl.addEventListener('hide.bs.collapse', function () {
-      navbar.classList.remove('mobile-open');
-    });
+  collapseEl.addEventListener('show.bs.collapse', function () {
+    navbar.classList.add('mobile-open');
   });
+
+  collapseEl.addEventListener('hide.bs.collapse', function () {
+    navbar.classList.remove('mobile-open');
+  });
+});
 
 // Dynamic Copyright Year
 document.addEventListener('DOMContentLoaded', () => {
-    const copyrightSpan = document.getElementById('copyright');
-    if (copyrightSpan) {
-        const currentYear = new Date().getFullYear();
-        copyrightSpan.textContent = `© ${currentYear} Sipi Falls. All Rights Reserved.`;
-    }
+  const copyrightSpan = document.getElementById('copyright');
+  if (copyrightSpan) {
+    const currentYear = new Date().getFullYear();
+    copyrightSpan.textContent = `© ${currentYear} Sipi Falls. All Rights Reserved.`;
+  }
 });
 
 // AJAX Newsletter Form Submission
 document.addEventListener('DOMContentLoaded', () => {
-    // Newsletter Signup Interactivity
-    const newsletterForm = document.getElementById('newsletter-form');
-    const newsletterSuccess = document.getElementById('newsletter-success');
+  // Newsletter Signup Interactivity
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterSuccess = document.getElementById('newsletter-success');
 
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-            const emailInput = newsletterForm.querySelector('input[type="email"]');
-            const email = emailInput.value.trim();
-            if (!email || !email.includes('@')) {
-                newsletterSuccess.textContent = 'Please enter a valid email address.';
-                newsletterSuccess.classList.remove('d-none');
-                newsletterSuccess.classList.add('text-danger');
-                setTimeout(() => newsletterSuccess.classList.add('d-none'), 2500);
-                return;
-            }
-            newsletterSuccess.textContent = 'Thank you for subscribing!';
-            newsletterSuccess.classList.remove('d-none', 'text-danger');
-            newsletterSuccess.classList.add('text-success');
-            emailInput.value = '';
-            setTimeout(() => newsletterSuccess.classList.add('d-none'), 2500);
-        });
-    }
+  if (newsletterForm) {
+    newsletterForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const emailInput = newsletterForm.querySelector('input[type="email"]');
+      const email = emailInput.value.trim();
+      if (!email || !email.includes('@')) {
+        newsletterSuccess.textContent = 'Please enter a valid email address.';
+        newsletterSuccess.classList.remove('d-none');
+        newsletterSuccess.classList.add('text-danger');
+        setTimeout(() => newsletterSuccess.classList.add('d-none'), 2500);
+        return;
+      }
+      newsletterSuccess.textContent = 'Thank you for subscribing!';
+      newsletterSuccess.classList.remove('d-none', 'text-danger');
+      newsletterSuccess.classList.add('text-success');
+      emailInput.value = '';
+      setTimeout(() => newsletterSuccess.classList.add('d-none'), 2500);
+    });
+  }
 
-    // Booking Form Validation
-    const bookingForm = document.querySelector('form[action="submit-booking.php"]');
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function (event) {
-            if (!bookingForm.checkValidity()) {
-                event.preventDefault();
-                bookingForm.classList.add('was-validated');
-                // Optionally, scroll to first invalid field
-                const firstInvalid = bookingForm.querySelector(':invalid');
-                if (firstInvalid) {
-                    firstInvalid.focus();
-                }
-            }
-        });
-    }
+  // Booking Form Validation
+  const bookingForm = document.querySelector('form[action="submit-booking.php"]');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', function (event) {
+      if (!bookingForm.checkValidity()) {
+        event.preventDefault();
+        bookingForm.classList.add('was-validated');
+        // Optionally, scroll to first invalid field
+        const firstInvalid = bookingForm.querySelector(':invalid');
+        if (firstInvalid) {
+          firstInvalid.focus();
+        }
+      }
+    });
+  }
 });
 
 // Animated Counters for About Us Page
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
   const counters = document.querySelectorAll('.counter');
   counters.forEach(counter => {
     const updateCount = () => {
       const target = +counter.getAttribute('data-target');
       const count = +counter.innerText;
       const increment = Math.ceil(target / 100);
-      if(count < target) {
+      if (count < target) {
         counter.innerText = count + increment > target ? target : count + increment;
         setTimeout(updateCount, 20);
       } else {
@@ -342,36 +342,36 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`delete_booking.php?id=${bookingId}`, {// Send a GET request to delete the booking
           method: 'GET'// Use GET method for deletion
         })
-        .then(response => response.text())// Parse the response as text
-        .then(data => {
-          if (data.trim() === 'success') { // .trim() just in case
-            // Show alert in placeholder
-            alertContainer.innerHTML = `
+          .then(response => response.text())// Parse the response as text
+          .then(data => {
+            if (data.trim() === 'success') { // .trim() just in case
+              // Show alert in placeholder
+              alertContainer.innerHTML = `
               <div class="alert alert-success text-center" id="deleteMsg">
                 Booking deleted successfully.
               </div>
             `;
 
-            // Fade out after 3 seconds
-            setTimeout(() => {
-              const msg = document.getElementById('deleteMsg');
-              if (msg) {
-                msg.style.transition = "opacity 0.5s ease";
-                msg.style.opacity = "0";
-                setTimeout(() => msg.remove(), 500);
-              }
-            }, 3000);
+              // Fade out after 3 seconds
+              setTimeout(() => {
+                const msg = document.getElementById('deleteMsg');
+                if (msg) {
+                  msg.style.transition = "opacity 0.5s ease";
+                  msg.style.opacity = "0";
+                  setTimeout(() => msg.remove(), 500);
+                }
+              }, 3000);
 
-            // Remove the row from the table
-            this.closest('tr').remove();
-          } else {
-            alert('Error deleting booking. Please try again.');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Something went wrong. Please try again.');
-        });
+              // Remove the row from the table
+              this.closest('tr').remove();
+            } else {
+              alert('Error deleting booking. Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again.');
+          });
       }
     });
   });
@@ -396,33 +396,33 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`delete_contacts.php?id=${contactId}`, {
           method: 'GET'
         })
-        .then(response => response.text())
-        .then(data => {
-          if (data.trim() === 'success') {
-            alertContainer.innerHTML = `
+          .then(response => response.text())
+          .then(data => {
+            if (data.trim() === 'success') {
+              alertContainer.innerHTML = `
               <div class="alert alert-success text-center" id="deleteMsg">
                 Contact deleted successfully.
               </div>
             `;
 
-            setTimeout(() => {
-              const msg = document.getElementById('deleteMsg');
-              if (msg) {
-                msg.style.transition = "opacity 0.5s ease";
-                msg.style.opacity = "0";
-                setTimeout(() => msg.remove(), 500);
-              }
-            }, 3000);
+              setTimeout(() => {
+                const msg = document.getElementById('deleteMsg');
+                if (msg) {
+                  msg.style.transition = "opacity 0.5s ease";
+                  msg.style.opacity = "0";
+                  setTimeout(() => msg.remove(), 500);
+                }
+              }, 3000);
 
-            this.closest('tr').remove();
-          } else {
-            alert('Error deleting contact. Please try again.');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Something went wrong. Please try again.');
-        });
+              this.closest('tr').remove();
+            } else {
+              alert('Error deleting contact. Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again.');
+          });
       }
     });
   });
@@ -447,33 +447,33 @@ document.addEventListener('DOMContentLoaded', function () {
         fetch(`delete_subscriber.php?email=${encodeURIComponent(subscriberEmail)}`, {
           method: 'GET'
         })
-        .then(response => response.text())
-        .then(data => {
-          if (data.trim() === 'success') {
-            alertContainer.innerHTML = `
+          .then(response => response.text())
+          .then(data => {
+            if (data.trim() === 'success') {
+              alertContainer.innerHTML = `
               <div class="alert alert-success text-center" id="deleteMsg">
                 Subscriber deleted successfully.
               </div>
             `;
 
-            setTimeout(() => {
-              const msg = document.getElementById('deleteMsg');
-              if (msg) {
-                msg.style.transition = "opacity 0.5s ease";
-                msg.style.opacity = "0";
-                setTimeout(() => msg.remove(), 500);
-              }
-            }, 3000);
+              setTimeout(() => {
+                const msg = document.getElementById('deleteMsg');
+                if (msg) {
+                  msg.style.transition = "opacity 0.5s ease";
+                  msg.style.opacity = "0";
+                  setTimeout(() => msg.remove(), 500);
+                }
+              }, 3000);
 
-            this.closest('tr').remove();
-          } else {
-            alert('Error deleting subscriber. Please try again.');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Something went wrong. Please try again.');
-        });
+              this.closest('tr').remove();
+            } else {
+              alert('Error deleting subscriber. Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert('Something went wrong. Please try again.');
+          });
       }
     });
   });

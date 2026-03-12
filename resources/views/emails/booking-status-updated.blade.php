@@ -4,19 +4,22 @@
     <meta charset="utf-8">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #333;
+            color: var(--neutral-gray);
             max-width: 600px;
             margin: 0 auto;
             padding: 20px;
         }
         .header {
-            background-color: #228B22;
+            background-color: var(--primary-green);
             color: white;
             padding: 20px;
             text-align: center;
             border-radius: 5px 5px 0 0;
+        }
+        .header h1 {
+            font-family: var(--font-display);
         }
         .content {
             background-color: #f9f9f9;
@@ -47,7 +50,10 @@
             background-color: white;
             padding: 20px;
             margin: 20px 0;
-            border-left: 4px solid #228B22;
+            border-left: 4px solid var(--primary-green);
+        }
+        .booking-details h3 {
+            font-family: var(--font-display);
         }
         .detail-row {
             margin: 10px 0;
@@ -72,7 +78,7 @@
     </div>
 
     <div class="content">
-        <h2>Booking Status Update</h2>
+        <h2 style="font-family: var(--font-display);">Booking Status Update</h2>
         
         <p>Hello {{ $booking->fullname }},</p>
 
@@ -118,7 +124,7 @@
         </div>
 
         @if($booking->status === 'confirmed')
-            <h3>What's Next?</h3>
+            <h3 style="font-family: var(--font-display);">What's Next?</h3>
             <ul>
                 <li>We'll contact you 2 days before your visit with final details</li>
                 <li>Please arrive 15 minutes before your scheduled time</li>

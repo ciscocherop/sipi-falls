@@ -1,66 +1,77 @@
 <header>
-  <!-- Navbar - Simple Bootstrap with inline styles -->
-  <nav class="navbar navbar-expand-lg fixed-top shadow-lg py-3" 
-       style="background: linear-gradient(90deg, #228B22 60%, #6FCF97 100%); border-top-left-radius: 50px; z-index: 1050;">
-    <div class="container">
-      <!-- Brand Logo -->
-      <a class="navbar-brand d-flex flex-column align-items-start text-decoration-none" href="{{ route('home') }}">
-        <span class="text-white fw-bold" style="font-size: 2.2rem; letter-spacing: 2px; font-family: 'Montserrat', sans-serif;">Sipi Falls</span>
-        <span class="text-white fw-semibold" style="font-size: 1.1rem; font-family: 'Montserrat', sans-serif; opacity: 0.85;">Keep Sipping!!</span>
-      </a>
-      
-      <!-- Mobile Menu Toggle -->
-      <button class="navbar-toggler border-0" 
-              type="button" 
-              data-bs-toggle="collapse" 
-              data-bs-target="#navbarNav" 
-              aria-controls="navbarNav" 
-              aria-expanded="false" 
-              aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon" style="background-image: url('data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 30 30\'%3e%3cpath stroke=\'rgba%28255, 255, 255, 1%29\' stroke-linecap=\'round\' stroke-miterlimit=\'10\' stroke-width=\'2\' d=\'M4 7h22M4 15h22M4 23h22\'/%3e%3c/svg%3e');"></span>
-      </button>
-      
-      <!-- Navigation Links -->
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto gap-2 gap-lg-4 align-items-center">
-          <li class="nav-item">
-            <a class="nav-link text-white px-3 rounded-pill fw-semibold text-decoration-none" 
-               href="{{ route('home') }}" 
-               style="transition: all 0.2s; font-family: 'Montserrat', sans-serif;"
-               onmouseover="this.style.backgroundColor='#E8B923'; this.style.color='#228B22'; this.style.transform='scale(1.05)';"
-               onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.transform='scale(1)';">
-               Home
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-3 rounded-pill fw-semibold text-decoration-none" 
-               href="{{ route('travelguide') }}"
-               style="transition: all 0.2s; font-family: 'Montserrat', sans-serif;"
-               onmouseover="this.style.backgroundColor='#E8B923'; this.style.color='#228B22'; this.style.transform='scale(1.05)';"
-               onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.transform='scale(1)';">
-               Travel Guide
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-3 rounded-pill fw-semibold text-decoration-none" 
-               href="{{ route('about') }}"
-               style="transition: all 0.2s; font-family: 'Montserrat', sans-serif;"
-               onmouseover="this.style.backgroundColor='#E8B923'; this.style.color='#228B22'; this.style.transform='scale(1.05)';"
-               onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.transform='scale(1)';">
-               About Us
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-white px-3 rounded-pill fw-semibold text-decoration-none" 
-               href="{{ route('contact') }}"
-               style="transition: all 0.2s; font-family: 'Montserrat', sans-serif;"
-               onmouseover="this.style.backgroundColor='#E8B923'; this.style.color='#228B22'; this.style.transform='scale(1.05)';"
-               onmouseout="this.style.backgroundColor='transparent'; this.style.color='white'; this.style.transform='scale(1)';">
-               Contact Us
-            </a>
-          </li>
-        </ul>
+  <!-- Glassmorphism Floating Navbar -->
+  <nav id="mainNavbar" class="fixed top-0 left-0 right-0 z-50 bg-[#0a1a0a]/70 backdrop-blur-md border-b border-white/10 transition-all duration-300">
+    <div class="container mx-auto px-4">
+      <div class="flex items-center justify-between py-4">
+        <!-- Brand Logo -->
+        <a href="{{ route('home') }}" class="flex flex-col items-start text-decoration-none">
+          <span class="text-white font-bold text-2xl tracking-wide" style="font-family: var(--font-display);">Sipi Falls</span>
+          <span class="text-xs uppercase tracking-widest font-semibold" style="color: var(--accent-gold); font-family: var(--font-body);">Keep Sipping</span>
+        </a>
+        
+        <!-- Mobile Menu Toggle -->
+        <button onclick="document.getElementById('navbarNav').classList.toggle('hidden')" class="lg:hidden text-white p-2" 
+                type="button" 
+                aria-label="Toggle navigation">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+        
+        <!-- Navigation Links -->
+        <div id="navbarNav" class="hidden lg:block">
+          <ul class="flex flex-row items-center gap-8">
+            <li>
+              <a href="{{ route('home') }}" 
+                 class="font-semibold"
+                 style="color: rgba(255, 255, 255, 0.8); font-family: var(--font-body); text-decoration: none; transition: color 0.3s;"
+                 onmouseover="this.style.color='var(--accent-gold)'"
+                 onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="{{ route('travelguide') }}" 
+                 class="font-semibold"
+                 style="color: rgba(255, 255, 255, 0.8); font-family: var(--font-body); text-decoration: none; transition: color 0.3s;"
+                 onmouseover="this.style.color='var(--accent-gold)'"
+                 onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">
+                Travel Guide
+              </a>
+            </li>
+            <li>
+              <a href="{{ route('about') }}" 
+                 class="font-semibold"
+                 style="color: rgba(255, 255, 255, 0.8); font-family: var(--font-body); text-decoration: none; transition: color 0.3s;"
+                 onmouseover="this.style.color='var(--accent-gold)'"
+                 onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">
+                About Us
+              </a>
+            </li>
+            <li>
+              <a href="{{ route('contact') }}" 
+                 class="font-semibold"
+                 style="color: rgba(255, 255, 255, 0.8); font-family: var(--font-body); text-decoration: none; transition: color 0.3s;"
+                 onmouseover="this.style.color='var(--accent-gold)'"
+                 onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </nav>
 </header>
+
+<script>
+// Navbar scroll effect - darkens background after 80px scroll
+window.addEventListener('scroll', function() {
+  const navbar = document.getElementById('mainNavbar');
+  if (window.scrollY > 80) {
+    navbar.style.backgroundColor = 'rgba(10, 26, 10, 0.9)';
+  } else {
+    navbar.style.backgroundColor = 'rgba(10, 26, 10, 0.7)';
+  }
+});
+</script>

@@ -6,86 +6,87 @@
 
   <!-- Hero Section -->
   <section class="reveal text-center text-light d-flex align-items-center justify-content-center" 
-           style="background-image: url('{{ asset('images/water.jpg') }}'); height: 80vh; background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%;">
-    <div class="p-4 p-md-5 rounded-4" style="background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(111,207,151,0.3)); backdrop-filter: blur(5px);">
-      <h1 class="display-4 fw-bold" style="color: #ffffff; font-family: 'Montserrat', sans-serif;">Your Travel Guide to Sipi Falls</h1>
-      <p class="lead" style="color: #ffffff; font-family: 'Montserrat', sans-serif;">Everything you need to know before you explore Uganda's most breathtaking natural wonder.</p>
+           style="position: relative; background-image: url('{{ asset('images/water.jpg') }}'); height: 80vh; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; width: 100%;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.2) 100%); z-index: 1;"></div>
+    <div class="p-4 p-md-5" style="position: relative; z-index: 2;">
+      <h1 class="display-3 fw-bold" style="color: #ffffff; font-family: var(--font-display); letter-spacing: 0.02em;">Your Travel Guide to Sipi Falls</h1>
+      <p class="lead" style="color: #ffffff; font-family: var(--font-body);">Everything you need to know before you explore Uganda's most breathtaking natural wonder.</p>
       <a href="#travel-tips" class="btn btn-lg mt-3" role="button" aria-label="Explore the Sipi Falls travel guide"
-         style="background-color: #E8B923; color: #333333; border: 2px solid #6FCF97; cursor: pointer; transition: all 0.3s ease; font-family: 'Montserrat', sans-serif;"
-         onmouseover="this.style.backgroundColor='#6FCF97'; this.style.color='#fff'; this.style.borderColor='#E8B923'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.3)';"
-         onmouseout="this.style.backgroundColor='#E8B923'; this.style.color='#333333'; this.style.borderColor='#6FCF97'; this.style.transform='scale(1)'; this.style.boxShadow='none';">
+         style="background-color: transparent; color: white; border: 2px solid white; padding: 0.85rem 2.5rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.3s;"
+         onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-gray)';"
+         onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='white'; this.style.color='white';">
         Explore the Guide
       </a>
     </div>
   </section>
 
   <!-- Quick Facts Section -->
-  <section class="py-3 reveal" style="background: linear-gradient(135deg, #e6f9ec 0%, #d1e7dd 100%);">
-    <section class="quick-facts container my-5">
-      <section id="travel-tips" class="quick-facts container py-4 reveal" style="background: linear-gradient(135deg, #ffffff 0%, #d1e7dd 100%);">
-        <h2 class="text-center mb-2" style="color: #228B22; font-family: 'Montserrat', sans-serif; font-size: 2.5rem;">Essential Tips for Your Trip</h2>
-        <p class="text-center mb-4" style="font-size: 1.2rem; color: #333333;">Get the most out of your Sipi Falls adventure with these quick, practical tips!</p>
+  <section class="py-2 reveal" style="background: var(--neutral-light);">
+    <section class="quick-facts container my-3">
+      <section id="travel-tips" class="quick-facts container py-3 reveal" style="background: var(--neutral-light);">
+        <h2 class="text-center mb-2" style="color: var(--primary-green); font-family: var(--font-display); font-size: 2.5rem;">Essential Tips for Your Trip</h2>
+        <p class="text-center mb-4" style="font-size: 1.2rem; color: var(--neutral-gray);">Get the most out of your Sipi Falls adventure with these quick, practical tips!</p>
         
         <div class="row text-center gy-4">
          <!-- When to Visit -->
           <div class="col-md-4 col-lg-4" 
-               style="background: #ffffff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
+               style="background: #ffffff; border-radius: 0.375rem; border-top: 3px solid var(--accent-gold); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
                data-bs-toggle="tooltip" data-bs-placement="top" title="Best weather, fewer crowds, the rainbow appears most at the Waterfalls!"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
-            <i class="fas fa-calendar fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
-            <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">When to Visit</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_when_to_visit'] ?? 'The best time to visit Sipi Falls is during the dry seasons — January to March and August to September.' }}</p>
+            <i class="fas fa-calendar fa-3x mb-3" style="color: var(--accent-gold); transition: color 0.3s ease;"></i>
+            <h5 class="fw-bold" style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: var(--primary-green);">When to Visit</h5>
+            <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--neutral-gray);">{{ $content['travelguide_when_to_visit'] ?? 'The best time to visit Sipi Falls is during the dry seasons — January to March and August to September.' }}</p>
           </div>
           <!-- What to Wear -->
           <div class="col-md-4 col-lg-4" 
-               style="background: #ffffff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
+               style="background: #ffffff; border-radius: 0.375rem; border-top: 3px solid var(--accent-gold); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
                data-bs-toggle="tooltip" data-bs-placement="top" title="Boots would also work and a rain jacket are a must for the trails!"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
-            <i class="fas fa-shoe-prints fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
-            <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">What to Wear</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_what_to_wear'] ?? 'Pack sturdy hiking shoes with good grip — Sipi\'s trails can be slippery!' }}</p>
+            <i class="fas fa-shoe-prints fa-3x mb-3" style="color: var(--accent-gold); transition: color 0.3s ease;"></i>
+            <h5 class="fw-bold" style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: var(--primary-green);">What to Wear</h5>
+            <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--neutral-gray);">{{ $content['travelguide_what_to_wear'] ?? 'Pack sturdy hiking shoes with good grip — Sipi\'s trails can be slippery!' }}</p>
           </div>
            <!-- What to Pack -->
           <div class="col-md-4 col-lg-4" 
-               style="background: #ffffff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
+               style="background: #ffffff; border-radius: 0.375rem; border-top: 3px solid var(--accent-gold); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
                data-bs-toggle="tooltip" data-bs-placement="top" title="Don't forget your camera and insect repellent!"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
-            <i class="fas fa-suitcase-rolling fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
-            <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">What to Pack</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_what_to_pack'] ?? 'Bring a reusable water bottle, sunscreen, insect repellent, and a small backpack for your hikes.' }}</p>
+            <i class="fas fa-suitcase-rolling fa-3x mb-3" style="color: var(--accent-gold); transition: color 0.3s ease;"></i>
+            <h5 class="fw-bold" style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: var(--primary-green);">What to Pack</h5>
+            <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--neutral-gray);">{{ $content['travelguide_what_to_pack'] ?? 'Bring a reusable water bottle, sunscreen, insect repellent, and a small backpack for your hikes.' }}</p>
           </div>
               <!-- Getting There -->
           <div class="col-md-4 col-lg-4" 
-               style="background: #ffffff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
+               style="background: #ffffff; border-radius: 0.375rem; border-top: 3px solid var(--accent-gold); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
                data-bs-toggle="tooltip" data-bs-placement="top" title="A 4WD is best for the rugged roads. Local guides know the way!"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
-            <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
-            <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">Getting There</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_getting_there'] ?? 'Sipi Falls is a 4.5-hour drive from Kampala. Hire a 4WD vehicle for the rugged roads.' }}</p>
+            <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: var(--accent-gold); transition: color 0.3s ease;"></i>
+            <h5 class="fw-bold" style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: var(--primary-green);">Getting There</h5>
+            <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--neutral-gray);">{{ $content['travelguide_getting_there'] ?? 'Sipi Falls is a 4.5-hour drive from Kampala. Hire a 4WD vehicle for the rugged roads.' }}</p>
           </div>
             <!-- Where to Stay -->
           <div class="col-md-4 col-lg-4" 
-               style="background: #ffffff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
+               style="background: #ffffff; border-radius: 0.375rem; border-top: 3px solid var(--accent-gold); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
                data-bs-toggle="tooltip" data-bs-placement="top" title="Book early for the best views, especially in peak season!"
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
-            <i class="fas fa-hotel fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
-            <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">Where to Stay</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_where_to_stay'] ?? 'Choose from budget guesthouses or scenic lodges like Sipi River Lodge and top-class resorts.' }}</p>
+            <i class="fas fa-hotel fa-3x mb-3" style="color: var(--accent-gold); transition: color 0.3s ease;"></i>
+            <h5 class="fw-bold" style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: var(--primary-green);">Where to Stay</h5>
+            <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--neutral-gray);">{{ $content['travelguide_where_to_stay'] ?? 'Choose from budget guesthouses or scenic lodges like Sipi River Lodge and top-class resorts.' }}</p>
           </div>
               <!-- Stay Safe -->
           <div class="col-md-4 col-lg-4" 
-               style="background: #ffffff; border-radius: 1rem; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
+               style="background: #ffffff; border-radius: 0.375rem; border-top: 3px solid var(--accent-gold); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; padding: 1.5rem;"
                data-bs-toggle="tooltip" data-bs-placement="top" title="Stay on marked trails and don't hike alone for safety."
                onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 12px rgba(0, 0, 0, 0.1)';">
-            <i class="fas fa-heartbeat fa-3x mb-3" style="color: #228B22; transition: color 0.3s ease;"></i>
-            <h5 class="fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.25rem; color: #228B22;">Stay Safe</h5>
-            <p style="font-family: 'Montserrat', sans-serif; font-size: 1rem; line-height: 1.6; color: #333333;">{{ $content['travelguide_stay_safe'] ?? 'Stick to marked trails, avoid hiking alone, and stay hydrated! The falls can be slippery — watch your step!' }}</p>
+            <i class="fas fa-heartbeat fa-3x mb-3" style="color: var(--accent-gold); transition: color 0.3s ease;"></i>
+            <h5 class="fw-bold" style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: var(--primary-green);">Stay Safe</h5>
+            <p style="font-family: var(--font-body); font-size: 1rem; line-height: 1.6; color: var(--neutral-gray);">{{ $content['travelguide_stay_safe'] ?? 'Stick to marked trails, avoid hiking alone, and stay hydrated! The falls can be slippery — watch your step!' }}</p>
           </div>
         </div>
 
@@ -93,9 +94,9 @@
         <div class="text-center mt-4">
           <button type="button" class="btn btn-lg px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#extraTipsModal"
                   aria-label="View extra travel tips for Sipi Falls"
-                  style="background-color: #E8B923; color: #333333; border: 2px solid #6FCF97; cursor: pointer; transition: all 0.3s ease; font-family: 'Montserrat', sans-serif;"
-                  onmouseover="this.style.backgroundColor='#6FCF97'; this.style.color='#fff'; this.style.borderColor='#E8B923'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.3)';"
-                  onmouseout="this.style.backgroundColor='#E8B923'; this.style.color='#333333'; this.style.borderColor='#6FCF97'; this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                  style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.75rem 2.5rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; border-radius: 0.25rem; transition: all 0.3s; cursor: pointer;"
+                  onmouseover="this.style.backgroundColor='var(--primary-green)'; this.style.color='white';"
+                  onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--primary-green)';">
             Extra Tips
           </button>
         </div>
@@ -106,129 +107,106 @@
   <!-- Extra Tips Modal -->
   <div class="modal fade" id="extraTipsModal" tabindex="-1" aria-labelledby="extraTipsModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" style="background: #ffffff;">
-        <div class="modal-header">
-          <h5 class="modal-title" id="extraTipsModalLabel" style="color: #228B22; font-family: 'Montserrat', sans-serif;">Extra Tips for Sipi Falls</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal-content" style="background: var(--neutral-offwhite); border-top: 4px solid var(--accent-gold); border-radius: 0.375rem;">
+        <div class="modal-header" style="background-color: var(--primary-green); border-radius: 0.25rem 0.25rem 0 0;">
+          <h5 class="modal-title" id="extraTipsModalLabel" style="color: var(--neutral-offwhite); font-family: var(--font-body);">Extra Tips for Sipi Falls</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
         </div>
         <div class="modal-body">
-          <ul id="extra-tips-list" class="list-unstyled mb-0" style="color: #333333; font-family: 'Montserrat', sans-serif; font-size: 1rem;" role="list"></ul>
+          <ul id="extra-tips-list" class="list-unstyled mb-0" style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 1rem; line-height: 2;" role="list"></ul>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Activities Section -->
-  <section class="reveal py-5" id="activities" style="background: linear-gradient(to bottom, #ffffff, rgba(111, 207, 151, 0.05)); padding: 3rem 0;">
-    <div class="container" style="border-radius: 1rem; box-shadow: 0 2px 16px rgba(34,139,34,0.07); padding: 2rem 1rem; background: transparent;">
-      <h2 class="text-center mb-5" style="color: #228B22; font-family: 'Montserrat', sans-serif;">
+  <section class="reveal py-5" id="activities" style="background: var(--neutral-offwhite); padding: 3rem 0;">
+    <div class="container" style="padding: 2rem 1rem; background: transparent;">
+      <h2 class="text-center mb-5" style="color: var(--primary-green); font-family: var(--font-display);">
         Activities at Sipi Falls
       </h2>
 
-      <div class="row g-4 mx-3">
+      <div class="row g-0">
         <!-- Activity 1 -->
-        <div class="col-md-6 mb-4">
-          <div class="d-flex shadow" 
-               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset($content['travelguide_activity_1_image'] ?? 'images/naturewalk.jpg') }}" alt="{{ $content['travelguide_activity_1_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
-            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
-              <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_1_title'] ?? 'Hiking the Waterfalls' }}</h5>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  {{ $content['travelguide_activity_1_description'] ?? 'Explore scenic trails to all three waterfalls.' }}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-         <!-- Activity 2 -->
-        <div class="col-md-6 mb-4">
-          <div class="d-flex shadow" 
-               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset($content['travelguide_activity_2_image'] ?? 'images/abseil3.jpg') }}" alt="{{ $content['travelguide_activity_2_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
-            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
-              <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_2_title'] ?? 'Abseiling' }}</h5>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  {{ $content['travelguide_activity_2_description'] ?? 'Descend a 100m cliff beside the main waterfall.' }}
-                </p>
-              </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+            <img src="{{ asset($content['travelguide_activity_1_image'] ?? 'images/naturewalk.jpg') }}" alt="{{ $content['travelguide_activity_1_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
+            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
+            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">1</div>
+            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
+              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
+              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_1_title'] ?? 'Hiking the Waterfalls' }}</h5>
+              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_1_description'] ?? 'Explore scenic trails to all three waterfalls.' }}</p>
             </div>
           </div>
         </div>
 
-          <!-- Activity 3 -->
-        <div class="col-md-6 mb-4">
-          <div class="d-flex shadow" 
-               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset($content['travelguide_activity_3_image'] ?? 'images/cofi.jpg') }}" alt="{{ $content['travelguide_activity_3_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
-            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
-              <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_3_title'] ?? 'Coffee Tours' }}</h5>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  {{ $content['travelguide_activity_3_description'] ?? 'Visit local farms and taste freshly brewed Sipi coffee.' }}
-                </p>
-              </div>
+        <!-- Activity 2 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+            <img src="{{ asset($content['travelguide_activity_2_image'] ?? 'images/abseil3.jpg') }}" alt="{{ $content['travelguide_activity_2_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
+            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
+            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">2</div>
+            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
+              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
+              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_2_title'] ?? 'Abseiling' }}</h5>
+              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_2_description'] ?? 'Descend a 100m cliff beside the main waterfall.' }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Activity 3 -->
+        <div class="col-md-4 col-lg-2">
+          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+            <img src="{{ asset($content['travelguide_activity_3_image'] ?? 'images/cofi.jpg') }}" alt="{{ $content['travelguide_activity_3_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
+            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
+            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">3</div>
+            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
+              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
+              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_3_title'] ?? 'Coffee Tours' }}</h5>
+              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_3_description'] ?? 'Visit local farms and taste freshly brewed Sipi coffee.' }}</p>
             </div>
           </div>
         </div>
 
         <!-- Activity 4 -->
-        <div class="col-md-6 mb-4">
-          <div class="d-flex shadow" 
-               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset($content['travelguide_activity_4_image'] ?? 'images/chamelon.jpg') }}" alt="{{ $content['travelguide_activity_4_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
-            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
-              <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_4_title'] ?? 'Bird Watching' }}</h5>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  {{ $content['travelguide_activity_4_description'] ?? 'Discover over 300 bird species in the Mount Elgon region.' }}
-                </p>
-              </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+            <img src="{{ asset($content['travelguide_activity_4_image'] ?? 'images/chamelon.jpg') }}" alt="{{ $content['travelguide_activity_4_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
+            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
+            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">4</div>
+            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
+              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
+              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_4_title'] ?? 'Bird Watching' }}</h5>
+              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_4_description'] ?? 'Discover over 300 bird species in the Mount Elgon region.' }}</p>
             </div>
           </div>
         </div>
 
         <!-- Activity 5 -->
-        <div class="col-md-6 mb-4">
-          <div class="d-flex shadow" 
-               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset($content['travelguide_activity_5_image'] ?? 'images/clif2.jpg') }}" alt="{{ $content['travelguide_activity_5_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
-            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
-              <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_5_title'] ?? 'Cave Adventures' }}</h5>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  {{ $content['travelguide_activity_5_description'] ?? 'The ancient caves echo stories of the past.' }}
-                </p>
-              </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+            <img src="{{ asset($content['travelguide_activity_5_image'] ?? 'images/clif2.jpg') }}" alt="{{ $content['travelguide_activity_5_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
+            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
+            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">5</div>
+            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
+              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
+              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_5_title'] ?? 'Cave Adventures' }}</h5>
+              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_5_description'] ?? 'The ancient caves echo stories of the past.' }}</p>
             </div>
           </div>
         </div>
 
         <!-- Activity 6 -->
-        <div class="col-md-6 mb-4">
-          <div class="d-flex shadow" 
-               style="height: 200px; border-radius: 1rem; border: 2px solid #6FCF97; background: #ffffff; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease;"
-               onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 6px 24px rgba(0, 0, 0, 0.15)';"
-               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(0, 0, 0, 0.1)';">
-            <img src="{{ asset($content['travelguide_activity_6_image'] ?? 'images/rock climbing.jpg') }}" alt="{{ $content['travelguide_activity_6_title'] ?? 'Activity' }}" loading="lazy" style="width: 40%; height: 100%; object-fit: cover; flex-shrink: 0;">
-            <div class="d-flex flex-column justify-content-center flex-grow-1 p-3">
-              <div>
-                <h5 class="text-center fw-bold" style="font-family: 'Montserrat', sans-serif; font-weight: 600; font-size: 1.2rem; color: #228B22;">{{ $content['travelguide_activity_6_title'] ?? 'Rock Climbing' }}</h5>
-                <p style="font-family: 'Montserrat', sans-serif; font-size: 0.95rem; line-height: 1.5; color: #333333; border-left: 4px solid #228B22; padding-left: 1rem; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
-                  {{ $content['travelguide_activity_6_description'] ?? 'Challenge yourself on rugged cliffs with guided rock climbing adventures.' }}
-                </p>
-              </div>
+        <div class="col-md-4 col-lg-2">
+          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+            <img src="{{ asset($content['travelguide_activity_6_image'] ?? 'images/rock climbing.jpg') }}" alt="{{ $content['travelguide_activity_6_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
+            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
+            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">6</div>
+            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
+              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
+              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_6_title'] ?? 'Rock Climbing' }}</h5>
+              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_6_description'] ?? 'Challenge yourself on rugged cliffs with guided rock climbing adventures.' }}</p>
             </div>
           </div>
         </div>
@@ -238,7 +216,7 @@
 
   <!-- Map Section -->
   <section id="map" class="container py-5 reveal" style="background: linear-gradient(to bottom, #ffffff, rgba(111, 207, 151, 0.05)); padding: 3rem 0;">
-    <h2 class="text-center mb-4" style="font-family: 'Montserrat', sans-serif; font-size: 2.5rem; color: #228B22;">Find Sipi Falls</h2>
+    <h2 class="text-center mb-4" style="font-family: var(--font-display); font-size: 2.5rem; color: var(--primary-green);">Find Sipi Falls</h2>
     <div class="d-flex justify-content-center">
       <iframe
         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.601019857624!2d34.37416731475344!3d1.3341673629999986!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x177f7b2e2e2e2e2f%3A0x2e2e2e2e2e2e2e2e!2sSipi%20Falls!5e0!3m2!1sen!2sug!4v1693526400000!5m2!1sen!2sug"
@@ -257,9 +235,9 @@
          data-bs-placement="top"
          data-bs-title="Open Google Maps to get directions to Sipi Falls"
          aria-label="Get directions to Sipi Falls on Google Maps"
-         style="background-color: #E8B923; color: #333333; border: 2px solid #6FCF97; cursor: pointer; transition: all 0.3s ease; font-family: 'Montserrat', sans-serif;"
-         onmouseover="this.style.backgroundColor='#6FCF97'; this.style.color='#fff'; this.style.borderColor='#E8B923'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.3)';"
-         onmouseout="this.style.backgroundColor='#E8B923'; this.style.color='#333333'; this.style.borderColor='#6FCF97'; this.style.transform='scale(1)'; this.style.boxShadow='none';">
+         style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--primary-green); cursor: pointer; transition: all 0.3s ease; font-family: var(--font-body);"
+         onmouseover="this.style.backgroundColor='var(--primary-green)'; this.style.color='#fff'; this.style.borderColor='var(--accent-gold)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.3)';"
+         onmouseout="this.style.backgroundColor='var(--accent-gold)'; this.style.color='var(--neutral-gray)'; this.style.borderColor='var(--primary-green)'; this.style.transform='scale(1)'; this.style.boxShadow='none';">
         Get Directions on Google Maps
       </a>
     </div>

@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: var(--font-body);
             line-height: 1.6;
-            color: #333;
+            color: var(--neutral-gray);
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -21,7 +21,7 @@
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .header {
-            background: linear-gradient(135deg, #228B22 0%, #6FCF97 100%);
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%);
             color: white;
             padding: 30px 20px;
             text-align: center;
@@ -29,12 +29,14 @@
         .header h1 {
             margin: 0;
             font-size: 28px;
-            color: #E8B923;
+            color: var(--accent-gold);
+            font-family: var(--font-display);
         }
         .header p {
             margin: 5px 0 0;
             font-size: 14px;
             opacity: 0.9;
+            font-family: var(--font-body);
         }
         .content {
             padding: 30px 20px;
@@ -50,7 +52,7 @@
             font-size: 12px;
         }
         .footer a {
-            color: #6FCF97;
+            color: var(--primary-green);
             text-decoration: none;
         }
         .unsubscribe {
