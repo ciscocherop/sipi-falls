@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 
 @section('title', 'Travel Guide - Sipi Falls')
 
@@ -13,7 +13,7 @@
       <p class="lead" style="color: #ffffff; font-family: var(--font-body);">Everything you need to know before you explore Uganda's most breathtaking natural wonder.</p>
       <a href="#travel-tips" class="btn btn-lg mt-3" role="button" aria-label="Explore the Sipi Falls travel guide"
          style="background-color: transparent; color: white; border: 2px solid white; padding: 0.85rem 2.5rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.3s;"
-         onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-gray)';"
+         onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
          onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='white'; this.style.color='white';">
         Explore the Guide
       </a>
@@ -95,8 +95,8 @@
           <button type="button" class="btn btn-lg px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#extraTipsModal"
                   aria-label="View extra travel tips for Sipi Falls"
                   style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.75rem 2.5rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; border-radius: 0.25rem; transition: all 0.3s; cursor: pointer;"
-                  onmouseover="this.style.backgroundColor='var(--primary-green)'; this.style.color='white';"
-                  onmouseout="this.style.backgroundColor='transparent'; this.style.color='var(--primary-green)';">
+                  onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                  onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
             Extra Tips
           </button>
         </div>
@@ -106,13 +106,16 @@
 
   <!-- Extra Tips Modal -->
   <div class="modal fade" id="extraTipsModal" tabindex="-1" aria-labelledby="extraTipsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content" style="background: var(--neutral-offwhite); border-top: 4px solid var(--accent-gold); border-radius: 0.375rem;">
-        <div class="modal-header" style="background-color: var(--primary-green); border-radius: 0.25rem 0.25rem 0 0;">
-          <h5 class="modal-title" id="extraTipsModalLabel" style="color: var(--neutral-offwhite); font-family: var(--font-body);">Extra Tips for Sipi Falls</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="filter: invert(1);"></button>
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 92vw; width: 100%; margin: 1rem auto;">
+      <div class="modal-content" style="background: var(--neutral-offwhite); border-top: 4px solid var(--accent-gold); border-radius: 0.375rem; max-height: 80vh; display: flex; flex-direction: column;">
+        <div class="modal-header" style="background-color: var(--primary-green); border-radius: 0.25rem 0.25rem 0 0; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem;">
+          <h5 class="modal-title" id="extraTipsModalLabel" style="color: var(--neutral-offwhite); font-family: var(--font-body); margin: 0;">Extra Tips for Sipi Falls</h5>
+          <button type="button" onclick="bootstrap.Modal.getInstance(document.getElementById('extraTipsModal')).hide()" aria-label="Close"
+                  style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6); color: white; font-size: 1.25rem; line-height: 1; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 20; position: relative;">
+            &times;
+          </button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" style="overflow-y: auto; flex: 1 1 auto;">
           <ul id="extra-tips-list" class="list-unstyled mb-0" style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 1rem; line-height: 2;" role="list"></ul>
         </div>
       </div>
@@ -235,12 +238,159 @@
          data-bs-placement="top"
          data-bs-title="Open Google Maps to get directions to Sipi Falls"
          aria-label="Get directions to Sipi Falls on Google Maps"
-         style="background-color: var(--accent-gold); color: var(--neutral-gray); border: 2px solid var(--primary-green); cursor: pointer; transition: all 0.3s ease; font-family: var(--font-body);"
-         onmouseover="this.style.backgroundColor='var(--primary-green)'; this.style.color='#fff'; this.style.borderColor='var(--accent-gold)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.3)';"
-         onmouseout="this.style.backgroundColor='var(--accent-gold)'; this.style.color='var(--neutral-gray)'; this.style.borderColor='var(--primary-green)'; this.style.transform='scale(1)'; this.style.boxShadow='none';">
+         style="background-color: var(--primary-green); color: white; border: 2px solid var(--primary-green); cursor: pointer; transition: all 0.3s ease; font-family: var(--font-body);"
+         onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)'; this.style.borderColor='var(--accent-gold)'; this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 12px rgba(0, 0, 0, 0.3)';"
+         onmouseout="this.style.backgroundColor='var(--primary-green)'; this.style.color='white'; this.style.borderColor='var(--primary-green)'; this.style.transform='scale(1)'; this.style.boxShadow='none';">
         Get Directions on Google Maps
       </a>
     </div>
   </section>
 
+  <!-- Photo Gallery Section -->
+  <section class="reveal py-5" id="photo-gallery" style="background: #1a1a1a;">
+    <div class="container">
+      <h2 class="text-center mb-2" style="color: var(--accent-gold); font-family: var(--font-display); font-size: 2.5rem;">Photo Gallery</h2>
+      <p class="text-center mb-4" style="color: rgba(255,255,255,0.7); font-family: var(--font-body); font-size: 1.1rem;">Explore Sipi Falls through our lens</p>
+
+      <!-- Tabs -->
+      <div class="d-flex flex-wrap justify-content-center gap-2 mb-4" id="tg-tabs" role="tablist">
+        <button class="tg-tab active" data-tab="falls" role="tab" aria-selected="true">Falls</button>
+        <button class="tg-tab" data-tab="adventure" role="tab" aria-selected="false">Adventure</button>
+        <button class="tg-tab" data-tab="hiking" role="tab" aria-selected="false">Hiking</button>
+        <button class="tg-tab" data-tab="mountain" role="tab" aria-selected="false">Mountain</button>
+        <button class="tg-tab" data-tab="coffee" role="tab" aria-selected="false">Coffee</button>
+        <button class="tg-tab" data-tab="travel" role="tab" aria-selected="false">Travel</button>
+      </div>
+
+      <!-- Panels -->
+      <div id="tg-panel-falls" class="tg-panel active">
+        <div class="tg-grid" id="tg-grid-falls">
+          @php $fallsImages = ['BANNER.jpg','sipi.webp','water.jpg','xx.jpg','dwn.jpg','splash.jpg','fall2.jpg','fall3.jpg','falld1.jpg','f4.jpg','f5.jpg','f6.jpg','f7.jpg','f8.jpg','f10.jpg','f11.jpg','f12.jpg','f14.jpg','f15.jpg','f16.jpg','fall_1.jpg','fall_2.jpg','fall_3.jpg','fall_4.jpg','fall_5.jpg','fall_6.jpg','fall_7.jpg','fall_8.jpg','fall_9.jpg','fall_10.jpg','fall_11.jpg','fall_12.jpg','fall_13.jpg','fall_14.jpg','fall_15.jpg','fall_16.jpg','fall_17.jpg','fall_18.jpg','fall_19.jpg','fall_20.jpg','falls_and_dog.jpg','waterfall-base.jpg','waterfall-double.jpg','waterfall-hikers.jpg','waterfall-rainbow.jpg','waterfall-top.jpg','mens_pool.jpg','menpool.jpg']; @endphp
+          @foreach($fallsImages as $i => $img)
+            <div class="tg-item{{ $i >= 12 ? ' tg-hidden' : '' }}" onclick="openTgLightbox('{{ asset('images/gallery/falls/' . $img) }}')">
+              <img src="{{ asset('images/gallery/falls/' . $img) }}" alt="Sipi Falls" loading="lazy">
+              <div class="tg-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+          @endforeach
+        </div>
+        @if(count($fallsImages) > 12)
+          <div class="text-center mt-3"><button class="tg-load-more" data-grid="tg-grid-falls">Load More</button></div>
+        @endif
+      </div>
+
+      <div id="tg-panel-adventure" class="tg-panel">
+        <div class="tg-grid" id="tg-grid-adventure">
+          @php $adventureImages = ['abseil3.jpg','abseil5.jpg','abseil6.jpg','abseil7.jpg','abseil8.jpg','abseil-aerial.jpg','abseil-freedom.jpg','abseil 1.jpg','cave.jpg','cave2.jpg','cave3.jpg','cave4.jpg','cave5.jpg','clif2.jpg','clif3.jpg','clif4.jpg','clicf 1.jpg','rock climbing.jpg','rock-climbing.jpg','start.jpg','start-bridge.jpg']; @endphp
+          @foreach($adventureImages as $i => $img)
+            <div class="tg-item{{ $i >= 12 ? ' tg-hidden' : '' }}" onclick="openTgLightbox('{{ asset('images/gallery/adventure/' . $img) }}')">
+              <img src="{{ asset('images/gallery/adventure/' . $img) }}" alt="Adventure at Sipi" loading="lazy">
+              <div class="tg-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+          @endforeach
+        </div>
+        @if(count($adventureImages) > 12)
+          <div class="text-center mt-3"><button class="tg-load-more" data-grid="tg-grid-adventure">Load More</button></div>
+        @endif
+      </div>
+
+      <div id="tg-panel-hiking" class="tg-panel">
+        <div class="tg-grid" id="tg-grid-hiking">
+          @php $hikingImages = ['naturewalk.jpg','hiking.jpg','chamelon.jpg','chamelon1.jpg','chamelon3.jpeg','tourist.jpg','tourist_1.jpg','tourist_2.jpg','tourist_3.jpg','tourist-safari.jpg','waterfall-hikers.jpg','group.jpg']; @endphp
+          @foreach($hikingImages as $i => $img)
+            <div class="tg-item{{ $i >= 12 ? ' tg-hidden' : '' }}" onclick="openTgLightbox('{{ asset('images/gallery/hiking/' . $img) }}')">
+              <img src="{{ asset('images/gallery/hiking/' . $img) }}" alt="Hiking at Sipi" loading="lazy">
+              <div class="tg-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+          @endforeach
+        </div>
+        @if(count($hikingImages) > 12)
+          <div class="text-center mt-3"><button class="tg-load-more" data-grid="tg-grid-hiking">Load More</button></div>
+        @endif
+      </div>
+
+      <div id="tg-panel-mountain" class="tg-panel">
+        <div class="tg-grid" id="tg-grid-mountain">
+          @php $mountainImages = ['sunset.jpg','sunset2.jpg','sunset3.jpeg','sunset4.jpeg','sunset-friends.jpg','sunset-dinner.jpg','sunset-toast.jpg','sunset _cheers.jpeg','sunset-cheers.jpeg','mt Elgon.jpg','mt-elgon.jpg','sky.jpeg','mosesg.jpg','sample.jpg']; @endphp
+          @foreach($mountainImages as $i => $img)
+            <div class="tg-item{{ $i >= 12 ? ' tg-hidden' : '' }}" onclick="openTgLightbox('{{ asset('images/gallery/mountain/' . $img) }}')">
+              <img src="{{ asset('images/gallery/mountain/' . $img) }}" alt="Mountain views" loading="lazy">
+              <div class="tg-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+          @endforeach
+        </div>
+        @if(count($mountainImages) > 12)
+          <div class="text-center mt-3"><button class="tg-load-more" data-grid="tg-grid-mountain">Load More</button></div>
+        @endif
+      </div>
+
+      <div id="tg-panel-coffee" class="tg-panel">
+        <div class="tg-grid" id="tg-grid-coffee">
+          @php $coffeeImages = ['cofi.jpg','cofi1.jpg','coffee.jpg','coffee2.jpg','coffee-raw.jpg','coffee-ready.jpg','rawcofi.jpg','readycofi.jpg','raw_cofee.jpg','ready_coffee_berries.jpg','coffee_and_grinder.jpeg']; @endphp
+          @foreach($coffeeImages as $i => $img)
+            <div class="tg-item{{ $i >= 12 ? ' tg-hidden' : '' }}" onclick="openTgLightbox('{{ asset('images/gallery/coffee/' . $img) }}')">
+              <img src="{{ asset('images/gallery/coffee/' . $img) }}" alt="Sipi coffee" loading="lazy">
+              <div class="tg-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+          @endforeach
+        </div>
+        @if(count($coffeeImages) > 12)
+          <div class="text-center mt-3"><button class="tg-load-more" data-grid="tg-grid-coffee">Load More</button></div>
+        @endif
+      </div>
+
+      <div id="tg-panel-travel" class="tg-panel">
+        <div class="tg-grid" id="tg-grid-travel">
+          @php $travelImages = ['tourist-safari.jpg','FB_IMG_1741530853891.jpg','dog.jpg','falls_and_dog.jpg']; @endphp
+          @foreach($travelImages as $i => $img)
+            <div class="tg-item{{ $i >= 12 ? ' tg-hidden' : '' }}" onclick="openTgLightbox('{{ asset('images/gallery/travel/' . $img) }}')">
+              <img src="{{ asset('images/gallery/travel/' . $img) }}" alt="Travel at Sipi" loading="lazy">
+              <div class="tg-overlay"><i class="fas fa-expand"></i></div>
+            </div>
+          @endforeach
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="tg-lightbox" onclick="if(event.target===this) closeTgLightbox()" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center;">
+    <button onclick="closeTgLightbox()" style="position:fixed; top:1.25rem; right:1.5rem; background:rgba(0,0,0,0.6); border:2px solid rgba(255,255,255,0.5); color:white; font-size:1.75rem; line-height:1; width:2.5rem; height:2.5rem; border-radius:50%; cursor:pointer; z-index:10000; display:flex; align-items:center; justify-content:center;" aria-label="Close lightbox">&times;</button>
+    <img id="tg-lightbox-img" src="" alt="Gallery image" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:0.5rem;">
+  </div>
+
+  <script>
+    // Tabbed gallery
+    document.querySelectorAll('.tg-tab').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        document.querySelectorAll('.tg-tab').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        document.querySelectorAll('.tg-panel').forEach(function(p) { p.classList.remove('active'); });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected','true');
+        document.getElementById('tg-panel-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // Load more
+    document.querySelectorAll('.tg-load-more').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var grid = document.getElementById(btn.dataset.grid);
+        grid.querySelectorAll('.tg-hidden').forEach(function(item) { item.classList.remove('tg-hidden'); });
+        btn.parentElement.remove();
+      });
+    });
+
+    // Lightbox
+    function openTgLightbox(src) {
+      var lb = document.getElementById('tg-lightbox');
+      document.getElementById('tg-lightbox-img').src = src;
+      lb.style.display = 'flex';
+    }
+    function closeTgLightbox() {
+      document.getElementById('tg-lightbox').style.display = 'none';
+      document.getElementById('tg-lightbox-img').src = '';
+    }
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeTgLightbox(); });
+  </script>
+
   @endsection
+

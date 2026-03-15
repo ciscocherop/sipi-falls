@@ -18,13 +18,13 @@
           <div class="d-flex justify-content-center flex-wrap gap-3">
             <a href="#contact-form"
               style="background-color: transparent; color: white; border: 2px solid white; padding: 0.75rem 2rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; border-radius: 0.25rem;"
-              onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-gray)';"
+              onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
               onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='white'; this.style.color='white';">
               Contact Us
             </a>
             <a href="#booking-form"
               style="background-color: transparent; color: white; border: 2px solid white; padding: 0.75rem 2rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; text-decoration: none; transition: all 0.3s; border-radius: 0.25rem;"
-              onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-gray)';"
+              onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
               onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='white'; this.style.color='white';">
               Book Now
             </a>
@@ -36,12 +36,12 @@
 
 
   <!-- Contact Form -->
-  <section id="contact-form" class="container-fluid p-5 reveal" style="background: var(--neutral-light); border-radius: 1.5rem;">
+  <section id="contact-form" class="container-fluid p-5 reveal" style="background: var(--neutral-light);">
     <div class="row justify-content-center align-items-stretch g-4">
       
       <!-- Image Column -->
       <div class="col-lg-5 mb-4 mb-lg-0 contact-image d-flex">
-        <img src="{{ asset('images/group.jpg') }}" alt="Group of Sabiny guides at Sipi Falls" class="img-fluid w-100 d-block" style="object-fit: cover; border-radius: 0.375rem;" loading="lazy">
+        <img src="{{ asset('images/gallery/falls/fall_16.jpeg') }}" alt="Sipi Falls waterfall view" class="img-fluid w-100 d-block" style="object-fit: cover; border-radius: 0.375rem; min-height: 500px;" loading="lazy">
       </div>
 
       <!-- Form Column -->
@@ -128,7 +128,7 @@
               <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Type your message" style="font-family: var(--font-body); color: var(--neutral-gray);"
                         onfocus="this.style.borderColor='var(--primary-green)'; this.style.boxShadow='0 0 0 2px rgba(34,139,34,0.15)';"
                         onblur="this.style.borderColor=''; this.style.boxShadow='';">
-</textarea>
+  </textarea>
             </div>
 
             <!-- Feedback -->
@@ -136,10 +136,10 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-lg shadow-sm w-100" 
-                    style="background-color: var(--primary-green); color: white; border: none; padding: 0.85rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; width: 100%; transition: all 0.3s; cursor: pointer; border-radius: 0.25rem;"
-                    onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.color='var(--neutral-gray)';"
-                    onmouseout="this.style.backgroundColor='var(--primary-green)'; this.style.color='white';">
-              <i class="fas fa-paper-plane me-2" style="color: white;"></i> Submit Inquiry
+                    style="background-color: var(--primary-green); color: white; border: 2px solid var(--primary-green); padding: 0.85rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; width: 100%; transition: all 0.3s; cursor: pointer; border-radius: 0.25rem;"
+                    onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                    onmouseout="this.style.backgroundColor='var(--primary-green)'; this.style.borderColor='var(--primary-green)'; this.style.color='white';">
+              <i class="fas fa-paper-plane me-2" style="color: inherit;"></i> Submit Inquiry
             </button>
           </form>
         </div>
@@ -149,142 +149,123 @@
 
 
   <!-- Pricing Section -->
-  <section class="container py-5 reveal" style="background: var(--neutral-light); border-radius: 1.5rem;">
-    <div style="text-align: center; margin-bottom: 3rem;">
-      <h2 style="color: var(--primary-green); font-family: var(--font-display); font-weight: 700; font-size: 2.5rem; margin-bottom: 0.75rem;">
-        Adventure Pricing
-      </h2>
-      <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 1.1rem; opacity: 0.8;">
-        Transparent pricing for unforgettable experiences
-      </p>
-    </div>
+  <section class="reveal" style="background: linear-gradient(rgba(0,0,0,0.82), rgba(0,0,0,0.82)), url('{{ asset('images/gallery/adventure/abseil-freedom.jpg') }}') center/cover no-repeat fixed; padding: 5rem 0;">
+      <div class="container">
 
-    <div class="row g-4 mb-4">
-      <!-- Hiking -->
-      <div class="col-md-6 col-lg-3">
-        <div style="background: white; padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); height: 100%; border-top: 4px solid var(--primary-green);">
-          <div style="text-align: center; margin-bottom: 1.5rem;">
-            <i class="fas fa-hiking" style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem;"></i>
-            <h5 style="font-family: var(--font-body); font-weight: 700; color: var(--neutral-gray); margin-bottom: 0.5rem;">Hiking</h5>
-            <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--primary-green);">$30-50</div>
-            <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); opacity: 0.7;">per person</div>
-          </div>
-          <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray);">
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> 3 Waterfalls tour</li>
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> Expert guide included</li>
-            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> 3-4 hours duration</li>
-          </ul>
-        </div>
-      </div>
+          <!-- Header -->
+          <p class="text-center" style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.75rem;">No Hidden Costs</p>
+          <h2 class="text-center" style="font-family: var(--font-display); color: white; font-size: 2.75rem; margin-bottom: 0.5rem;">Adventure Pricing</h2>
+          <p class="text-center" style="font-family: var(--font-body); color: rgba(255,255,255,0.5); font-size: 1rem; margin-bottom: 3rem;">Transparent pricing for unforgettable experiences</p>
 
-      <!-- Abseiling -->
-      <div class="col-md-6 col-lg-3">
-        <div style="background: white; padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); height: 100%; border-top: 4px solid var(--accent-gold);">
-          <div style="text-align: center; margin-bottom: 1.5rem;">
-            <i class="fas fa-mountain" style="font-size: 2.5rem; color: var(--accent-gold); margin-bottom: 1rem;"></i>
-            <h5 style="font-family: var(--font-body); font-weight: 700; color: var(--neutral-gray); margin-bottom: 0.5rem;">Abseiling</h5>
-            <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent-gold);">$60-80</div>
-            <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); opacity: 0.7;">per person</div>
-          </div>
-          <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray);">
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i> Safety equipment</li>
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i> Professional instructor</li>
-            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i> 2-3 hours experience</li>
-          </ul>
-        </div>
-      </div>
+          <!-- Pricing Grid -->
+          <div class="row g-3 mb-4">
+              <!-- Hiking -->
+              <div class="col-md-6 col-lg-3">
+                  <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid var(--primary-green); border-radius: 0.5rem; padding: 1.75rem 1.5rem; height: 100%; transition: all 0.3s;"
+                      onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(-4px)';"
+                      onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.transform='translateY(0)';">
+                      <div style="text-align: center; margin-bottom: 1.25rem;">
+                          <i class="fas fa-hiking" style="font-size: 2rem; color: var(--primary-green); margin-bottom: 0.75rem; display: block;"></i>
+                          <h5 style="font-family: var(--font-body); font-weight: 700; color: white; margin-bottom: 0.25rem;">Hiking</h5>
+                          <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent-gold);">$30-50</div>
+                          <div style="font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,255,255,0.4);">per person</div>
+                      </div>
+                      <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>3 Waterfalls tour</li>
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Expert guide included</li>
+                          <li style="padding: 0.4rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>3-4 hours duration</li>
+                      </ul>
+                  </div>
+              </div>
 
-      <!-- Coffee Tour -->
-      <div class="col-md-6 col-lg-3">
-        <div style="background: white; padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); height: 100%; border-top: 4px solid var(--primary-green);">
-          <div style="text-align: center; margin-bottom: 1.5rem;">
-            <i class="fas fa-coffee" style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem;"></i>
-            <h5 style="font-family: var(--font-body); font-weight: 700; color: var(--neutral-gray); margin-bottom: 0.5rem;">Coffee Tour</h5>
-            <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--primary-green);">$25-40</div>
-            <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); opacity: 0.7;">per person</div>
-          </div>
-          <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray);">
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> Farm-to-cup experience</li>
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> Coffee tasting included</li>
-            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> 2 hours tour</li>
-          </ul>
-        </div>
-      </div>
+              <!-- Abseiling -->
+              <div class="col-md-6 col-lg-3">
+                  <div style="background: rgba(201,149,26,0.15); border: 1px solid rgba(201,149,26,0.3); border-top: 3px solid var(--accent-gold); border-radius: 0.5rem; padding: 1.75rem 1.5rem; height: 100%; transition: all 0.3s; position: relative;"
+                      onmouseover="this.style.background='rgba(201,149,26,0.22)'; this.style.transform='translateY(-4px)';"
+                      onmouseout="this.style.background='rgba(201,149,26,0.15)'; this.style.transform='translateY(0)';">
+                      <!-- Popular badge -->
+                      <div style="position: absolute; top: -1px; left: 50%; transform: translateX(-50%); background: var(--accent-gold); color: var(--neutral-dark); font-family: var(--font-body); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 0 0 0.25rem 0.25rem;">Most Popular</div>
+                      <div style="text-align: center; margin-bottom: 1.25rem; margin-top: 0.5rem;">
+                          <i class="fas fa-mountain" style="font-size: 2rem; color: var(--accent-gold); margin-bottom: 0.75rem; display: block;"></i>
+                          <h5 style="font-family: var(--font-body); font-weight: 700; color: white; margin-bottom: 0.25rem;">Abseiling</h5>
+                          <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent-gold);">$60-80</div>
+                          <div style="font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,255,255,0.4);">per person</div>
+                      </div>
+                      <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>Safety equipment</li>
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>Professional instructor</li>
+                          <li style="padding: 0.4rem 0;"><i class="fas fa-check" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>2-3 hours experience</li>
+                      </ul>
+                  </div>
+              </div>
 
-      <!-- Nature Walks -->
-      <div class="col-md-6 col-lg-3">
-        <div style="background: white; padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); height: 100%; border-top: 4px solid var(--primary-green);">
-          <div style="text-align: center; margin-bottom: 1.5rem;">
-            <i class="fas fa-leaf" style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem;"></i>
-            <h5 style="font-family: var(--font-body); font-weight: 700; color: var(--neutral-gray); margin-bottom: 0.5rem;">Nature Walks</h5>
-            <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--primary-green);">$20-35</div>
-            <div style="font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); opacity: 0.7;">per person</div>
-          </div>
-          <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray);">
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> Bird watching</li>
-            <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> Local flora & fauna</li>
-            <li style="padding: 0.5rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i> 1-2 hours walk</li>
-          </ul>
-        </div>
-      </div>
-    </div>
+              <!-- Coffee Tour -->
+              <div class="col-md-6 col-lg-3">
+                  <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid var(--primary-green); border-radius: 0.5rem; padding: 1.75rem 1.5rem; height: 100%; transition: all 0.3s;"
+                      onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(-4px)';"
+                      onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.transform='translateY(0)';">
+                      <div style="text-align: center; margin-bottom: 1.25rem;">
+                          <i class="fas fa-coffee" style="font-size: 2rem; color: var(--primary-green); margin-bottom: 0.75rem; display: block;"></i>
+                          <h5 style="font-family: var(--font-body); font-weight: 700; color: white; margin-bottom: 0.25rem;">Coffee Tour</h5>
+                          <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent-gold);">$25-40</div>
+                          <div style="font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,255,255,0.4);">per person</div>
+                      </div>
+                      <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Farm-to-cup experience</li>
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Coffee tasting included</li>
+                          <li style="padding: 0.4rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>2 hours tour</li>
+                      </ul>
+                  </div>
+              </div>
 
-    <!-- Payment Options -->
-    <div style="background: white; padding: 2.5rem; border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,0.08); margin-top: 2rem;">
-      <h4 style="font-family: var(--font-body); font-weight: 700; color: var(--primary-green); text-align: center; margin-bottom: 2rem; font-size: 1.5rem;">
-        <i class="fas fa-credit-card" style="margin-right: 0.5rem;"></i> Flexible Payment Options
-      </h4>
-      
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div style="text-align: center; padding: 1.5rem;">
-            <i class="fas fa-money-bill-wave" style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem;"></i>
-            <h6 style="font-family: var(--font-body); font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem;">Cash on Arrival</h6>
-            <p style="font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray); opacity: 0.7; margin: 0;">Pay when you arrive at Sipi Falls</p>
+              <!-- Nature Walks -->
+              <div class="col-md-6 col-lg-3">
+                  <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid var(--primary-green); border-radius: 0.5rem; padding: 1.75rem 1.5rem; height: 100%; transition: all 0.3s;"
+                      onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(-4px)';"
+                      onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.transform='translateY(0)';">
+                      <div style="text-align: center; margin-bottom: 1.25rem;">
+                          <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary-green); margin-bottom: 0.75rem; display: block;"></i>
+                          <h5 style="font-family: var(--font-body); font-weight: 700; color: white; margin-bottom: 0.25rem;">Nature Walks</h5>
+                          <div style="font-family: var(--font-display); font-size: 2rem; font-weight: 700; color: var(--accent-gold);">$20-35</div>
+                          <div style="font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,255,255,0.4);">per person</div>
+                      </div>
+                      <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Bird watching</li>
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Local flora & fauna</li>
+                          <li style="padding: 0.4rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>1-2 hours walk</li>
+                      </ul>
+                  </div>
+              </div>
           </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div style="text-align: center; padding: 1.5rem;">
-            <i class="fas fa-mobile-alt" style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem;"></i>
-            <h6 style="font-family: var(--font-body); font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem;">Mobile Money</h6>
-            <p style="font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray); opacity: 0.7; margin: 0;">MTN & Airtel Money accepted</p>
-          </div>
-        </div>
-        
-        <div class="col-md-4">
-          <div style="text-align: center; padding: 1.5rem;">
-            <i class="fas fa-university" style="font-size: 2.5rem; color: var(--primary-green); margin-bottom: 1rem;"></i>
-            <h6 style="font-family: var(--font-body); font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem;">Bank Transfer</h6>
-            <p style="font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray); opacity: 0.7; margin: 0;">Details sent after confirmation</p>
-          </div>
-        </div>
-      </div>
 
-      <!-- Trust Badges -->
-      <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #f0f0f0;">
-        <div class="row g-3">
-          <div class="col-md-4">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-              <i class="fas fa-shield-alt" style="color: var(--primary-green); font-size: 1.5rem;"></i>
-              <span style="font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray); font-weight: 600;">Secure Booking</span>
-            </div>
+          <!-- Payment Options — compact strip -->
+          <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 0.5rem; padding: 1.5rem 2rem; margin-top: 1rem;">
+              <div class="row g-3 align-items-center">
+                  <div class="col-12 col-md-3">
+                      <p style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent-gold); margin: 0; text-align: center;">Payment Options</p>
+                  </div>
+                  <div class="col-4 col-md-3">
+                      <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                          <i class="fas fa-money-bill-wave" style="color: var(--primary-green); font-size: 1.2rem;"></i>
+                          <span style="font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">Cash on Arrival</span>
+                      </div>
+                  </div>
+                  <div class="col-4 col-md-3">
+                      <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                          <i class="fas fa-mobile-alt" style="color: var(--primary-green); font-size: 1.2rem;"></i>
+                          <span style="font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">Mobile Money</span>
+                      </div>
+                  </div>
+                  <div class="col-4 col-md-3">
+                      <div style="display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+                          <i class="fas fa-university" style="color: var(--primary-green); font-size: 1.2rem;"></i>
+                          <span style="font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">Bank Transfer</span>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <div class="col-md-4">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-              <i class="fas fa-hand-holding-usd" style="color: var(--primary-green); font-size: 1.5rem;"></i>
-              <span style="font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray); font-weight: 600;">Pay on Arrival Available</span>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem;">
-              <i class="fas fa-clock" style="color: var(--primary-green); font-size: 1.5rem;"></i>
-              <span style="font-family: var(--font-body); font-size: 0.9rem; color: var(--neutral-gray); font-weight: 600;">24hr Price Confirmation</span>
-            </div>
-          </div>
-        </div>
+
       </div>
-    </div>
   </section>
 
 
@@ -293,7 +274,7 @@
     <div class="row g-0">
       
       <!-- Left Side - Background Image (Fixed) -->
-      <div class="col-lg-6 d-none d-lg-block" style="position: relative; background-image: url('{{ asset('images/f5.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 600px;">
+      <div class="col-lg-6 d-none d-lg-block" style="position: relative; background-image: url('{{ asset('images/gallery/falls/waterfall-base.jpg') }}'); background-size: cover; background-position: center; background-repeat: no-repeat; min-height: 600px;">
         
         <!-- Content on Image -->
         <div style="position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: center; padding: 2rem 2rem 0 2rem; text-align: center; color: white;">
@@ -343,8 +324,8 @@
       </div>
       
       <!-- Right Side - Booking Form -->
-      <div class="col-lg-6" style="background: #ffffff; display: flex; align-items: center; justify-content: center; padding: 2.5rem 2rem; min-height: 600px;">
-        <div style="width: 100%; max-width: 550px;">
+      <div class="col-lg-6" style="background: var(--neutral-light); display: flex; align-items: center; justify-content: center; padding: 2.5rem 2rem; min-height: 600px;">
+        <div style="width: 100%; max-width: 550px; border-top: 4px solid var(--accent-gold); background: white; border-radius: 0.5rem; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
           
           <!-- Form Header -->
           <div style="text-align: center; margin-bottom: 2rem;">
@@ -472,9 +453,9 @@
 
             <!-- Submit Button -->
             <button type="submit" class="btn btn-lg w-100 shadow-sm" 
-                    style="background-color: var(--primary-green); color: white; border: none; padding: 1rem; font-family: var(--font-body); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.05em; transition: all 0.3s; cursor: pointer; border-radius: 0.5rem;"
-                    onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(201,149,26,0.3)';"
-                    onmouseout="this.style.backgroundColor='var(--primary-green)'; this.style.transform='translateY(0)'; this.style.boxShadow='';">
+                    style="background-color: var(--primary-green); color: white; border: 2px solid var(--primary-green); padding: 1rem; font-family: var(--font-body); font-weight: 600; font-size: 1.1rem; letter-spacing: 0.05em; transition: all 0.3s; cursor: pointer; border-radius: 0.5rem;"
+                    onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 20px rgba(201,149,26,0.3)';"
+                    onmouseout="this.style.backgroundColor='var(--primary-green)'; this.style.borderColor='var(--primary-green)'; this.style.color='white'; this.style.transform='translateY(0)'; this.style.boxShadow='';">
               <i class="fas fa-calendar-check me-2"></i> Request Booking
             </button>
             
@@ -578,6 +559,71 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- Where to Stay Section -->
+  <section class="reveal" style="background: var(--neutral-light); padding: 5rem 0;">
+    <div class="container">
+
+      <!-- Header -->
+      <p class="text-center" style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.75rem;">Plan Your Stay</p>
+      <h2 class="text-center" style="font-family: var(--font-display); color: var(--primary-green); font-size: 2.75rem; margin-bottom: 0.5rem;">Where to Stay</h2>
+      <p class="text-center" style="font-family: var(--font-body); color: var(--neutral-gray); font-size: 1rem; margin-bottom: 3rem; opacity: 0.8;">Comfortable accommodation options near Sipi Falls for every budget</p>
+
+      <div class="row g-4">
+
+        @forelse($accommodations as $accommodation)
+        @php
+          $isGold = in_array($accommodation->type, ['Lodge', 'Campsite']);
+          $badgeBg = $isGold ? 'rgba(201,149,26,0.1)' : 'rgba(26,107,26,0.1)';
+          $badgeColor = $isGold ? 'var(--accent-gold)' : 'var(--primary-green)';
+        @endphp
+        <div class="col-md-6 col-lg-3">
+          <div style="background: white; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); height: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+               onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.12)';"
+               onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)';">
+            <div style="height: 180px; overflow: hidden;">
+              <img src="{{ asset($accommodation->image) }}" alt="{{ $accommodation->name }}" loading="lazy"
+                   style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"
+                   onmouseover="this.style.transform='scale(1.05)';"
+                   onmouseout="this.style.transform='scale(1)';">
+            </div>
+            <div style="padding: 1.5rem;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
+                <h5 style="font-family: var(--font-display); color: var(--primary-green); font-size: 1.1rem; margin: 0;">{{ $accommodation->name }}</h5>
+                <span style="font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: {{ $badgeBg }}; color: {{ $badgeColor }}; padding: 0.2rem 0.6rem; border-radius: 1rem;">{{ $accommodation->type }}</span>
+              </div>
+              <p style="font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); line-height: 1.6; margin-bottom: 1rem; opacity: 0.8;">{{ $accommodation->description }}</p>
+              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+                <i class="fas fa-map-marker-alt" style="color: var(--accent-gold); font-size: 0.85rem;"></i>
+                <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--neutral-gray); opacity: 0.7;">{{ $accommodation->location }}</span>
+              </div>
+              <a href="https://wa.me/256703558174?text={{ urlencode($accommodation->whatsapp_message) }}"
+                 target="_blank"
+                 style="display: block; text-align: center; font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.6rem 1rem; text-decoration: none; transition: all 0.3s; border-radius: 0.25rem;"
+                 onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                 onmouseout="this.style.background='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
+                Enquire Now
+              </a>
+            </div>
+          </div>
+        </div>
+        @empty
+        <div class="col-12 text-center">
+          <p style="color: var(--neutral-gray); font-size: 1.1rem; font-family: var(--font-body);">No accommodations listed yet.</p>
+        </div>
+        @endforelse
+
+      </div>
+
+      <!-- Bottom note -->
+      <p class="text-center mt-4" style="font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); opacity: 0.6;">
+        <i class="fas fa-info-circle" style="color: var(--accent-gold); margin-right: 0.5rem;"></i>
+        Prices and availability vary by season. Contact us for current rates and booking assistance.
+      </p>
+
     </div>
   </section>
 

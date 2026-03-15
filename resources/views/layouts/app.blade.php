@@ -62,7 +62,7 @@
     </nav>
     
     <!-- Sticky CTA Button (Desktop) -->
-    <a href="{{ route('contact') }}#booking-form" id="sticky-cta" style="position: fixed; bottom: 2rem; right: 2rem; background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%); color: white; padding: 1rem 2rem; border-radius: 3rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; font-size: 1.1rem; box-shadow: 0 8px 24px rgba(26,107,26,0.4); z-index: 999; display: none; align-items: center; gap: 0.75rem; transition: all 0.3s ease; border: 2px solid transparent;"
+    <a href="{{ route('contact') }}#booking-form" id="sticky-cta" style="position: fixed; bottom: 2rem; left: 2rem; background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%); color: white; padding: 1rem 2rem; border-radius: 3rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; font-size: 1.1rem; box-shadow: 0 8px 24px rgba(26,107,26,0.4); z-index: 999; display: none; align-items: center; gap: 0.75rem; transition: all 0.3s ease; border: 2px solid transparent;"
        onmouseover="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 12px 32px rgba(26,107,26,0.5)'; this.style.background='linear-gradient(135deg, var(--accent-gold) 0%, #e8b923 100%)'; this.style.borderColor='var(--accent-gold)';"
        onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 24px rgba(26,107,26,0.4)'; this.style.background='linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%)'; this.style.borderColor='transparent';">
         <i class="fas fa-calendar-check" style="font-size: 1.3rem;"></i>
@@ -110,6 +110,14 @@
             #main-content {
                 padding-bottom: 80px;
             }
+
+            /* Push modal above mobile bottom nav */
+            .modal {
+                z-index: 1100 !important;
+            }
+            .modal-backdrop {
+                z-index: 1099 !important;
+            }
         }
         
         @media (min-width: 769px) {
@@ -132,6 +140,14 @@
             } else {
                 stickyCta.style.display = 'none';
             }
+        });
+
+        // Hide mobile bottom nav when any Bootstrap modal is open
+        document.addEventListener('show.bs.modal', function() {
+            document.getElementById('mobile-bottom-nav').style.zIndex = '0';
+        });
+        document.addEventListener('hidden.bs.modal', function() {
+            document.getElementById('mobile-bottom-nav').style.zIndex = '1000';
         });
         
         // Add slide-in animation

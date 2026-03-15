@@ -17,7 +17,8 @@ Route::get('/about', function () {
 })->name('about');
 
 Route::get('/contact', function () {
-    return view('pages.contact');
+    $accommodations = \App\Models\Accommodation::active()->get();
+    return view('pages.contact', compact('accommodations'));
 })->name('contact');
 
 Route::get('/travelguide', function () {

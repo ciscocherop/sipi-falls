@@ -412,3 +412,131 @@ body {
         columns: 1 !important;
     }
 }
+
+/* ============ TRAVEL GUIDE TABBED GALLERY ============ */
+.tg-tab {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.4rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.tg-tab:hover,
+.tg-tab.active {
+    background: var(--accent-gold);
+    border-color: var(--accent-gold);
+    color: #1a1a1a;
+}
+
+.tg-panel {
+    display: none;
+    animation: tgFadeIn 0.35s ease;
+}
+
+.tg-panel.active {
+    display: block;
+}
+
+@keyframes tgFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tg-grid {
+    columns: 4;
+    column-gap: 0.75rem;
+}
+
+.tg-item {
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 0.375rem;
+}
+
+.tg-item img {
+    width: 100%;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.tg-item:hover img {
+    transform: scale(1.06);
+}
+
+.tg-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.4rem;
+}
+
+.tg-item:hover .tg-overlay {
+    opacity: 1;
+}
+
+.tg-hidden {
+    display: none;
+}
+
+.tg-load-more {
+    background: transparent;
+    border: 2px solid var(--accent-gold);
+    color: var(--accent-gold);
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.5rem 2rem;
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.tg-load-more:hover {
+    background: var(--accent-gold);
+    color: var(--neutral-gray);
+}
+
+@media (max-width: 992px) {
+    .tg-grid {
+        columns: 3;
+    }
+}
+
+@media (max-width: 768px) {
+    .tg-grid {
+        columns: 2;
+        column-gap: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tg-grid {
+        columns: 1;
+    }
+}
