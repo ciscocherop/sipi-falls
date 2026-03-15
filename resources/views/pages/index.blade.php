@@ -38,7 +38,7 @@
             </h1>
             
             <!-- CTA Button -->
-            <div class="pt-4">
+            <div class="pt-4 pb-20">
                 <a href="{{ route('about') }}" 
                    class="inline-block px-10 py-4 font-semibold text-base tracking-widest uppercase transition-all duration-300"
                    style="background-color: transparent; color: white; border: 2px solid white; font-family: var(--font-body); text-decoration: none; letter-spacing: 0.15em;"
@@ -49,13 +49,13 @@
                     Explore Sipi Falls
                 </a>
             </div>
-            
-            <!-- Scroll Indicator -->
-            <div style="margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.6;">
-                <span style="font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.3em; color: white; text-transform: uppercase;">Scroll to explore</span>
-                <div style="width: 1px; height: 40px; background: linear-gradient(180deg, white, transparent);"></div>
-            </div>
         </div>
+    </div>
+
+    <!-- Scroll Indicator — pinned to bottom of hero -->
+    <div class="absolute bottom-8 left-0 right-0 z-10" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.6;">
+        <span style="font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.3em; color: white; text-transform: uppercase;">Scroll to explore</span>
+        <div style="width: 1px; height: 40px; background: linear-gradient(180deg, white, transparent);"></div>
     </div>
 </section>
 
@@ -136,6 +136,82 @@
                 </div>
             </div>
         </div>
+    </div>
+</section>
+
+<!-- Masonry Gallery Section -->
+<section class="reveal" style="background: #1a1a1a; padding: 5rem 0;">
+    <div class="container">
+        <!-- Section Header -->
+        <p class="text-center" style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.75rem;">Through The Lens</p>
+        <h2 class="text-center" style="font-family: var(--font-display); color: white; font-size: 2.75rem; margin-bottom: 0.5rem;">Sipi Falls in Pictures</h2>
+        <p class="text-center" style="font-family: var(--font-body); color: rgba(255,255,255,0.5); font-size: 1rem; margin-bottom: 3rem;">Every image tells a story. Come write yours.</p>
+
+        <!-- Masonry Grid -->
+        <div id="masonry-gallery" style="columns: 3; column-gap: 1rem;">
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/falls/waterfall-base.jpg') }}', 'Sipi Main Falls — 100m drop')">
+                <img src="{{ asset('images/gallery/falls/waterfall-base.jpg') }}" alt="Sipi Main Falls" loading="lazy">
+                <div class="gallery-overlay"><span>Sipi Main Falls — 100m drop</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/mountain/sunset-toast.jpg') }}', 'Golden hour at the summit')">
+                <img src="{{ asset('images/gallery/mountain/sunset-toast.jpg') }}" alt="Golden hour sunset" loading="lazy">
+                <div class="gallery-overlay"><span>Golden hour at the summit</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/adventure/abseil-freedom.jpg') }}', 'Abseiling the main falls')">
+                <img src="{{ asset('images/gallery/adventure/abseil-freedom.jpg') }}" alt="Abseiling Sipi Falls" loading="lazy">
+                <div class="gallery-overlay"><span>Abseiling the main falls</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/falls/waterfall-rainbow.jpg') }}', 'Rainbow over Sipi Falls')">
+                <img src="{{ asset('images/gallery/falls/waterfall-rainbow.jpg') }}" alt="Rainbow over Sipi Falls" loading="lazy">
+                <div class="gallery-overlay"><span>Rainbow over Sipi Falls</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/adventure/rock-climbing.jpg') }}', 'Rock climbing adventure')">
+                <img src="{{ asset('images/gallery/adventure/rock-climbing.jpg') }}" alt="Rock climbing Sipi Falls" loading="lazy">
+                <div class="gallery-overlay"><span>Rock climbing adventure</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/mountain/sunset-friends.jpg') }}', 'Sunset views from Mount Elgon')">
+                <img src="{{ asset('images/gallery/mountain/sunset-friends.jpg') }}" alt="Sunset Mount Elgon" loading="lazy">
+                <div class="gallery-overlay"><span>Sunset views from Mount Elgon</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/falls/waterfall-hikers.jpg') }}', 'Hiking to the base of the falls')">
+                <img src="{{ asset('images/gallery/falls/waterfall-hikers.jpg') }}" alt="Hikers at Sipi Falls" loading="lazy">
+                <div class="gallery-overlay"><span>Hiking to the base of the falls</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/mountain/mt-elgon.jpg') }}', 'Mount Elgon peak')">
+                <img src="{{ asset('images/gallery/mountain/mt-elgon.jpg') }}" alt="Mount Elgon peak" loading="lazy">
+                <div class="gallery-overlay"><span>Mount Elgon peak</span></div>
+            </div>
+
+            <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/falls/BANNER.jpg') }}', 'The triple falls of Sipi')">
+                <img src="{{ asset('images/gallery/falls/BANNER.jpg') }}" alt="Triple falls Sipi" loading="lazy">
+                <div class="gallery-overlay"><span>The triple falls of Sipi</span></div>
+            </div>
+
+        </div>
+
+        <!-- View All Button -->
+        <div class="text-center mt-5">
+            <a href="{{ route('travelguide') }}" style="font-family: var(--font-body); font-size: 0.875rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: white; border: 2px solid white; padding: 0.875rem 2.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border-radius: 0.25rem;"
+               onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+               onmouseout="this.style.background='transparent'; this.style.borderColor='white'; this.style.color='white';">
+                Explore Full Gallery
+            </a>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div id="lightbox" onclick="if(event.target===this) closeLightbox()" style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; flex-direction: column;">
+        <button onclick="closeLightbox()" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: white; font-size: 2rem; cursor: pointer; line-height: 1;">✕</button>
+        <img id="lightbox-img" src="" alt="" style="max-width: 90vw; max-height: 80vh; object-fit: contain;">
+        <p id="lightbox-caption" style="font-family: var(--font-body); color: rgba(255,255,255,0.7); font-size: 0.9rem; margin-top: 1rem; letter-spacing: 0.1em;"></p>
     </div>
 </section>
 
@@ -418,33 +494,44 @@
 </section>
 
 <script>
-let testimonialCurrentIndex = 0;
-const testimonialSlidesPerView = 2;
+// Testimonials Carousel
+let testimonialIndex = 0;
+
+function getSlidesPerView() {
+    return window.innerWidth < 768 ? 1 : 2;
+}
 
 function moveTestimonialCarousel(direction) {
-    const track = document.querySelector('.testimonial-carousel-inner');
     const slides = document.querySelectorAll('.testimonial-slide');
-    const totalSlides = slides.length;
-    
-    if (totalSlides === 0) return;
-    
-    // Calculate max index (how many "pages" of 2 cards we have)
-    const maxIndex = Math.ceil(totalSlides / testimonialSlidesPerView) - 1;
-    
-    // Update index
-    testimonialCurrentIndex += direction;
-    
-    // Loop around
-    if (testimonialCurrentIndex < 0) {
-        testimonialCurrentIndex = maxIndex;
-    } else if (testimonialCurrentIndex > maxIndex) {
-        testimonialCurrentIndex = 0;
-    }
-    
-    // Calculate transform (move by 100% to show next 2 cards)
-    const translateX = -(testimonialCurrentIndex * 100);
-    track.style.transform = `translateX(${translateX}%)`;
+    const total = slides.length;
+    if (total === 0) return;
+
+    const perView = getSlidesPerView();
+    const maxIndex = Math.ceil(total / perView) - 1;
+
+    testimonialIndex += direction;
+    if (testimonialIndex < 0) testimonialIndex = maxIndex;
+    if (testimonialIndex > maxIndex) testimonialIndex = 0;
+
+    const inner = document.querySelector('.testimonial-carousel-inner');
+    const slideWidth = 100 / perView;
+    inner.style.transform = `translateX(-${testimonialIndex * slideWidth * perView}%)`;
 }
+
+// Update slide width on resize
+function updateSlideWidths() {
+    const perView = getSlidesPerView();
+    const slideWidth = 100 / perView;
+    document.querySelectorAll('.testimonial-slide').forEach(slide => {
+        slide.style.minWidth = slideWidth + '%';
+    });
+    // Reset position on resize
+    testimonialIndex = 0;
+    document.querySelector('.testimonial-carousel-inner').style.transform = 'translateX(0)';
+}
+
+window.addEventListener('resize', updateSlideWidths);
+updateSlideWidths();
 </script>
 
 <!-- Testimonials Modal -->
@@ -563,5 +650,18 @@ document.addEventListener('keydown', function(event) {
         closeTestimonialsModal();
     }
 });
+</script>
+<script>
+function openLightbox(src, caption) {
+    const lb = document.getElementById('lightbox');
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox-caption').textContent = caption;
+    lb.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+    document.body.style.overflow = '';
+}
 </script>
 @endsection
