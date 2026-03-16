@@ -127,7 +127,7 @@
     </section>
 
     <!-- Masonry Gallery Section -->
-    <section class="reveal" style="background: #1a1a1a; padding: 5rem 0;">
+    <section class="reveal" style="background: #1a1a1a; padding: 3rem 0;">
         <div class="container">
             <!-- Section Header -->
             <p class="text-center" style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.75rem;">Through The Lens</p>
@@ -135,7 +135,7 @@
             <p class="text-center" style="font-family: var(--font-body); color: rgba(255,255,255,0.5); font-size: 1rem; margin-bottom: 3rem;">Every image tells a story. Come write yours.</p>
 
             <!-- Masonry Grid -->
-            <div id="masonry-gallery" style="columns: 3; column-gap: 1rem;">
+            <div id="masonry-gallery" style="columns: 3; column-gap: 0.5rem;">
 
                 <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/falls/waterfall-base.jpg') }}', 'Sipi Main Falls — 100m drop')">
                     <img src="{{ asset('images/gallery/falls/waterfall-base.jpg') }}" alt="Sipi Main Falls" loading="lazy">
@@ -202,47 +202,6 @@
         </div>
     </section>
 
-    <!-- CTA Banner -->
-    <section class="reveal" style="background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)), url('{{ asset('images/gallery/falls/waterfall-base.jpg') }}') center/cover no-repeat fixed; padding: 7rem 0;">
-        <div class="container text-center">
-            <!-- Label -->
-            <p style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 1rem;">Your Adventure Awaits</p>
-
-            <!-- Heading -->
-            <h2 style="font-family: var(--font-display); color: white; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">
-                Ready to Experience<br>
-                <span style="color: var(--accent-gold); font-style: italic;">Sipi Falls?</span>
-            </h2>
-
-            <!-- Subtext -->
-            <p style="font-family: var(--font-body); color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8;">
-                Three magnificent waterfalls. Endless adventures. One unforgettable destination in the heart of Uganda.
-            </p>
-
-            <!-- Buttons -->
-            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                <a href="{{ route('travelguide') }}#book-tour"
-                style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: var(--primary-green); color: white; border: 2px solid var(--primary-green); padding: 1rem 2.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border-radius: 0.25rem;"
-                onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-                onmouseout="this.style.background='var(--primary-green)'; this.style.borderColor='var(--primary-green)'; this.style.color='white';">
-                    Plan My Trip
-                </a>
-                <a href="{{ route('travelguide') }}"
-                style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: transparent; color: white; border: 2px solid white; padding: 1rem 2.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border-radius: 0.25rem;"
-                onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-                onmouseout="this.style.background='transparent'; this.style.borderColor='white'; this.style.color='white';">
-                    View Travel Guide
-                </a>
-                <a href="{{ route('about') }}"
-                style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: transparent; color: white; border: 2px solid rgba(255,255,255,0.4); padding: 1rem 2.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border-radius: 0.25rem;"
-                onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-                onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.4)'; this.style.color='white';">
-                    Explore Sipi Falls
-                </a>
-            </div>
-        </div>
-    </section>
-
     <!-- Stats Counter Section -->
     <section class="reveal" style="background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('{{ asset('images/BANNER.jpg') }}') center/cover no-repeat fixed; padding: 5rem 0;">
         <div class="container">
@@ -287,6 +246,41 @@
                         <p style="font-family: var(--font-body); font-size: var(--text-sm); letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.8); margin: 0;">Happy Adventurers</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner -->
+    <section class="reveal" style="background: linear-gradient(rgba(0,0,0,0.72), rgba(0,0,0,0.72)), url('{{ asset('images/gallery/falls/waterfall-base.jpg') }}') center/cover no-repeat fixed; padding: 4rem 0;">
+        <div class="container text-center">
+            <!-- Label -->
+            <p style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 1rem;">Your Adventure Awaits</p>
+
+            <!-- Heading -->
+            <h2 style="font-family: var(--font-display); color: white; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">
+                Ready to Experience<br>
+                <span style="color: var(--accent-gold); font-style: italic;">Sipi Falls?</span>
+            </h2>
+
+            <!-- Subtext -->
+            <p style="font-family: var(--font-body); color: rgba(255,255,255,0.7); font-size: 1rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.8;">
+                Three magnificent waterfalls. Endless adventures. One unforgettable destination in the heart of Uganda.
+            </p>
+
+            <!-- Buttons -->
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="{{ route('travelguide') }}#book-tour"
+                style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: var(--primary-green); color: white; border: 2px solid var(--primary-green); padding: 1rem 2.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border-radius: 0.25rem;"
+                onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                onmouseout="this.style.background='var(--primary-green)'; this.style.borderColor='var(--primary-green)'; this.style.color='white';">
+                    Plan My Trip
+                </a>
+                <a href="{{ route('travelguide') }}"
+                style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: transparent; color: white; border: 2px solid white; padding: 1rem 2.5rem; text-decoration: none; display: inline-block; transition: all 0.3s; border-radius: 0.25rem;"
+                onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                onmouseout="this.style.background='transparent'; this.style.borderColor='white'; this.style.color='white';">
+                    View Travel Guide
+                </a>
             </div>
         </div>
     </section>

@@ -110,17 +110,93 @@
       <div class="modal-content" style="background: var(--neutral-offwhite); border-top: 4px solid var(--accent-gold); border-radius: 0.375rem; max-height: 80vh; display: flex; flex-direction: column;">
         <div class="modal-header" style="background-color: var(--primary-green); border-radius: 0.25rem 0.25rem 0 0; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem;">
           <h5 class="modal-title" id="extraTipsModalLabel" style="color: var(--neutral-offwhite); font-family: var(--font-body); margin: 0;">Extra Tips for Sipi Falls</h5>
-          <button type="button" onclick="bootstrap.Modal.getInstance(document.getElementById('extraTipsModal')).hide()" aria-label="Close"
+          <button type="button"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
                   style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6); color: white; font-size: 1.25rem; line-height: 1; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 20; position: relative;">
             &times;
           </button>
         </div>
-        <div class="modal-body" style="overflow-y: auto; flex: 1 1 auto;">
-          <ul id="extra-tips-list" class="list-unstyled mb-0" style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 1rem; line-height: 2;" role="list"></ul>
+        <div class="modal-body" style="overflow-y: auto; flex: 1 1 auto; padding: 1.5rem;">
+          <ul class="list-unstyled mb-0" style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8;" role="list">
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Carry cash — ATMs are scarce in Sipi. Withdraw in Mbale or Kampala before arriving.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Start hikes early morning — trails are cooler and the light is best for photography.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Wear waterproof shoes — the paths near the falls are almost always wet and slippery.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Bring a light rain jacket even in dry season — mist from the falls will soak you.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Hire a local Sabiny guide — they know hidden viewpoints tourists never find on their own.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Respect the local culture — ask permission before photographing community members.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Mobile data is limited — download offline maps (Maps.me or Google Maps) before you go.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Try the local Arabica coffee — Sipi is one of Uganda's top coffee-growing regions.</li>
+            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Book accommodation in advance during peak season (Dec–Feb, Jul–Aug) — lodges fill up fast.</li>
+            <li style="padding: 0.6rem 0;"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Pack a headlamp — power cuts are common in the evenings.</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
+
+  <!-- Travel Guide Stats Strip -->
+  <section class="reveal" style="background: #0d1f0d; padding: 3rem 0;">
+    <div class="container">
+        <div class="row text-center g-4">
+
+            <!-- Stat 1 -->
+            <div class="col-6 col-md-2">
+                <div style="padding: 1rem;">
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); line-height: 1; margin-bottom: 0.25rem;">3</h3>
+                    <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0.5rem auto; opacity: 0.4;"></div>
+                    <p style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 0;">Waterfalls</p>
+                </div>
+            </div>
+
+            <!-- Stat 2 -->
+            <div class="col-6 col-md-2">
+                <div style="padding: 1rem;">
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); line-height: 1; margin-bottom: 0.25rem;">6+</h3>
+                    <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0.5rem auto; opacity: 0.4;"></div>
+                    <p style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 0;">Activities</p>
+                </div>
+            </div>
+
+            <!-- Stat 3 -->
+            <div class="col-6 col-md-2">
+                <div style="padding: 1rem;">
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); line-height: 1; margin-bottom: 0.25rem;">100m</h3>
+                    <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0.5rem auto; opacity: 0.4;"></div>
+                    <p style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 0;">Main Fall Height</p>
+                </div>
+            </div>
+
+            <!-- Stat 4 -->
+            <div class="col-6 col-md-2">
+                <div style="padding: 1rem;">
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); line-height: 1; margin-bottom: 0.25rem;">6hrs</h3>
+                    <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0.5rem auto; opacity: 0.4;"></div>
+                    <p style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 0;">From Kampala</p>
+                </div>
+            </div>
+
+            <!-- Stat 5 -->
+            <div class="col-6 col-md-2">
+                <div style="padding: 1rem;">
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); line-height: 1; margin-bottom: 0.25rem;">300+</h3>
+                    <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0.5rem auto; opacity: 0.4;"></div>
+                    <p style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 0;">Bird Species</p>
+                </div>
+            </div>
+
+            <!-- Stat 6 -->
+            <div class="col-6 col-md-2">
+                <div style="padding: 1rem;">
+                    <h3 style="font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); line-height: 1; margin-bottom: 0.25rem;">2</h3>
+                    <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0.5rem auto; opacity: 0.4;"></div>
+                    <p style="font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin: 0;">Best Seasons</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+  </section>
 
   <!-- Activities Section -->
   <section class="reveal py-5" id="activities" style="background: var(--neutral-offwhite); padding: 3rem 0;">

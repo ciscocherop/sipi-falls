@@ -103,7 +103,7 @@
   </section>
 
 <!-- Tour Guide Team — Card Grid Layout -->
-<section class="reveal py-5" style="background: var(--neutral-light); padding-top: 3rem !important; padding-bottom: 4rem !important;">
+<section class="reveal py-5" style="background: var(--neutral-light); padding-top: 1.5rem !important; padding-bottom: 2rem !important;">
     <div class="container">
         <p class="text-center" style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.75rem;">The People Behind The Experience</p>
         <h2 class="text-center mb-5" style="color: var(--primary-green); font-family: var(--font-display); font-size: 2.5rem;">Meet Our Tour Guides</h2>
@@ -118,18 +118,18 @@
                     <!-- Top color bar -->
                     <div style="height: 4px; background: var(--accent-gold);"></div>
 
-                    <div style="padding: 2rem; text-align: center;">
+                    <div style="padding: 1.25rem; text-align: center;">
                         <!-- Photo -->
-                        <div style="margin-bottom: 1.25rem;">
+                        <div style="margin-bottom: 0.75rem;">
                             @if($guide->photo)
                             <img src="{{ asset($guide->photo) }}"
                                  alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls"
-                                 style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
                                  loading="lazy">
                             @else
                             <img src="{{ asset('images/tourguide1.jpg') }}"
                                  alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls"
-                                 style="width: 110px; height: 110px; border-radius: 50%; object-fit: cover; border: 4px solid var(--accent-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
+                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
                                  loading="lazy">
                             @endif
                         </div>
@@ -139,17 +139,17 @@
 
                         <!-- Title & Experience -->
                         <p style="color: var(--accent-gold); font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem;">{{ $guide->title }}</p>
-                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.8rem; opacity: 0.6; margin-bottom: 1rem;">{{ $guide->years_experience }} years experience</p>
+                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.8rem; opacity: 0.6; margin-bottom: 0.5rem;">{{ $guide->years_experience }} years experience</p>
 
                         <!-- Divider -->
-                        <div style="width: 40px; height: 2px; background: var(--accent-gold); margin: 0 auto 1rem; opacity: 0.5;"></div>
+                        <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0 auto 0.5rem; opacity: 0.5;"></div>
 
                         <!-- Bio -->
-                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem;">{{ $guide->bio }}</p>
+                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.75rem;">{{ $guide->bio }}</p>
 
                         <!-- Contact Icons -->
                         @if($guide->phone || $guide->email)
-                        <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.25rem;">
+                        <div style="display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 0.75rem;">
                             @if($guide->phone)
                             <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $guide->phone) }}"
                                style="color: var(--accent-gold); font-size: 1.4rem; text-decoration: none; transition: transform 0.2s;"
@@ -204,7 +204,7 @@
           </video>
         </div>
         <div class="text-center mt-3">
-          <a href="../pages/travelguide.html#activities" role="button" aria-label="Explore activities at Sipi Falls"
+          <a href="{{ route('travelguide') }}#activities" role="button" aria-label="Explore activities at Sipi Falls"
             style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.6rem 2rem; font-family: var(--font-body); font-weight: 600; border-radius: 0.25rem; transition: all 0.3s; text-decoration: none;"
             onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
             onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
