@@ -9,8 +9,8 @@
            style="position: relative; background-image: url('{{ asset('images/water.jpg') }}'); height: 80vh; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; width: 100%;">
     <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.2) 100%); z-index: 1;"></div>
     <div class="p-4 p-md-5" style="position: relative; z-index: 2;">
-      <h1 class="display-3 fw-bold" style="color: #ffffff; font-family: var(--font-display); letter-spacing: 0.02em;">Your Travel Guide to Sipi Falls</h1>
-      <p class="lead" style="color: #ffffff; font-family: var(--font-body);">Everything you need to know before you explore Uganda's most breathtaking natural wonder.</p>
+      <h1 class="display-3 fw-bold" style="color: #ffffff; font-family: var(--font-display); letter-spacing: 0.02em;">Your Sipi Falls Travel Guide</h1>
+      <p class="lead" style="color: #ffffff; font-family: var(--font-body);">Plan your perfect adventure — tips, activities, maps and everything in between.</p>
       <a href="#travel-tips" class="btn btn-lg mt-3" role="button" aria-label="Explore the Sipi Falls travel guide"
          style="background-color: transparent; color: white; border: 2px solid white; padding: 0.85rem 2.5rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; transition: all 0.3s;"
          onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"

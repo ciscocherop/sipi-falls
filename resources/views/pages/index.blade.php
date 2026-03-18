@@ -79,7 +79,7 @@
                                         style="left: -2rem; width: 16px; height: 16px; background: var(--accent-gold, #E8B923); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent-gold, #E8B923); z-index: 10;"></div>
                                     <!-- Content -->
                                     <span style="font-size: 1.125rem; color: var(--neutral-gray); font-weight: 500; font-family: var(--font-body); line-height: 1.6;">
-                                        Experience the breathtaking triple waterfall
+                                        Experience three breathtaking waterfalls cascading down Mount Elgon
                                     </span>
                                 </div>
                                 
@@ -87,7 +87,7 @@
                                     <div class="absolute rounded-full" 
                                         style="left: -2rem; width: 16px; height: 16px; background: var(--accent-gold, #E8B923); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent-gold, #E8B923); z-index: 10;"></div>
                                     <span style="font-size: 1.125rem; color: var(--neutral-gray); font-weight: 500; font-family: var(--font-body); line-height: 1.6;">
-                                        Hike through scenic mountain trails
+                                        Hike scenic mountain trails with stunning panoramic views
                                     </span>
                                 </div>
                                 
@@ -95,7 +95,7 @@
                                     <div class="absolute rounded-full" 
                                         style="left: -2rem; width: 16px; height: 16px; background: var(--accent-gold, #E8B923); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent-gold, #E8B923); z-index: 10;"></div>
                                     <span style="font-size: 1.125rem; color: var(--neutral-gray); font-weight: 500; font-family: var(--font-body); line-height: 1.6;">
-                                        Engage with the local Sabiny culture
+                                        Immerse yourself in the rich culture of the Sabiny people
                                     </span>
                                 </div>
                                 
@@ -103,7 +103,7 @@
                                     <div class="absolute rounded-full" 
                                         style="left: -2rem; width: 16px; height: 16px; background: var(--accent-gold, #E8B923); border: 3px solid #fff; box-shadow: 0 0 0 2px var(--accent-gold, #E8B923); z-index: 10;"></div>
                                     <span style="font-size: 1.125rem; color: var(--neutral-gray); font-weight: 500; font-family: var(--font-body); line-height: 1.6;">
-                                        Enjoy the best Thrills at the falls that heal your spine
+                                        Abseil 100m down East Africa's most thrilling waterfall
                                     </span>
                                 </div>
                             </div>
@@ -446,123 +446,6 @@ window.addEventListener('resize', updateSlideWidths);
 updateSlideWidths();
 </script>
 
-<!-- Testimonials Modal -->
-<div id="testimonialsModal" class="modal fade" tabindex="-1" aria-labelledby="testimonialsModalLabel" aria-hidden="true" style="display: none;">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
-        <div class="modal-content" style="border-radius: 1rem; border: none;">
-            <div class="modal-header" style="background: linear-gradient(135deg, #228B22 0%, var(--primary-green) 100%); color: white; border-top-left-radius: 1rem; border-top-right-radius: 1rem;">
-                <h3 class="modal-title fw-bold" id="testimonialsModalLabel" style="font-family: var(--font-display);">
-                    <i class="fas fa-comments me-2"></i>All Testimonials
-                </h3>
-                <button type="button" class="btn-close btn-close-white" onclick="closeTestimonialsModal()" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="background: #f8f9fa; max-height: 70vh; overflow-y: auto;">
-                <div class="row g-4" id="allTestimonialsContainer">
-                    <!-- Testimonials will be loaded here via JavaScript -->
-                </div>
-            </div>
-            <div class="modal-footer" style="background: #ffffff; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;">
-                <button type="button" class="btn btn-secondary" onclick="closeTestimonialsModal()">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-// Store all testimonials data
-const allTestimonials = @json(\App\Models\Testimonial::active()->ordered()->get());
-const displayedCount = {{ $testimonials->count() }}; // Number of testimonials shown on page
-
-function openTestimonialsModal() {
-    const modal = document.getElementById('testimonialsModal');
-    const container = document.getElementById('allTestimonialsContainer');
-    
-    // Clear existing content
-    container.innerHTML = '';
-    
-    // Get only testimonials not shown on the page (skip first 3)
-    const remainingTestimonials = allTestimonials.slice(displayedCount);
-    
-    // Check if there are additional testimonials
-    if (remainingTestimonials.length === 0) {
-        container.innerHTML = `
-            <div class="col-12 text-center py-5">
-                <i class="fas fa-check-circle fa-3x text-success mb-3"></i>
-                <p class="text-muted">You've seen all our testimonials!</p>
-            </div>
-        `;
-    } else {
-        // Add remaining testimonials
-        remainingTestimonials.forEach(testimonial => {
-            const stars = Array.from({length: 5}, (_, i) => 
-                i < testimonial.rating 
-                    ? '<i class="fas fa-star"></i>' 
-                    : '<i class="far fa-star"></i>'
-            ).join('');
-            
-            const photoUrl = testimonial.photo || '{{ asset("images/group.jpg") }}';
-            
-            container.innerHTML += `
-                <div class="col-md-6 col-lg-4">
-                    <div class="card h-100 shadow-sm border-0 rounded-3 p-3" style="background: #ffffff;">
-                        <img src="${photoUrl}" alt="${testimonial.name} at Sipi Falls" 
-                             class="rounded-circle mx-auto d-block mb-2" 
-                             style="width: 100px; height: 100px; object-fit: cover;" 
-                             loading="lazy">
-                        <h5 class="fw-bold text-center mb-1" style="color: var(--primary-green);">${testimonial.name}</h5>
-                        <p class="text-muted small text-center mb-2">${testimonial.country}</p>
-                        <div class="mb-2 text-warning text-center" role="img" aria-label="${testimonial.rating} star rating">
-                            ${stars}
-                        </div>
-                        <p class="fst-italic text-center mb-0" style="color: var(--neutral-gray); font-size: 1rem;">
-                            "${testimonial.message}"
-                        </p>
-                    </div>
-                </div>
-            `;
-        });
-    }
-    
-    // Show modal with Bootstrap 5 API
-    modal.style.display = 'block';
-    modal.classList.add('show');
-    document.body.classList.add('modal-open');
-    
-    // Add backdrop
-    const backdrop = document.createElement('div');
-    backdrop.className = 'modal-backdrop fade show';
-    backdrop.id = 'testimonialsBackdrop';
-    document.body.appendChild(backdrop);
-}
-
-function closeTestimonialsModal() {
-    const modal = document.getElementById('testimonialsModal');
-    const backdrop = document.getElementById('testimonialsBackdrop');
-    
-    modal.style.display = 'none';
-    modal.classList.remove('show');
-    document.body.classList.remove('modal-open');
-    
-    if (backdrop) {
-        backdrop.remove();
-    }
-}
-
-// Close modal when clicking outside
-document.addEventListener('click', function(event) {
-    const modal = document.getElementById('testimonialsModal');
-    if (event.target === modal) {
-        closeTestimonialsModal();
-    }
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeTestimonialsModal();
-    }
-});
-</script>
 <script>
 function openLightbox(src, caption) {
     const lb = document.getElementById('lightbox');

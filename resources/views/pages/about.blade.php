@@ -78,7 +78,7 @@
                           To share Sipi Falls' natural beauty and cultural richness with the world, offering authentic experiences while supporting the Sabiny community through sustainable tourism.
                       </p>
                       <p class="card-text small" style="font-size: 1rem; color: var(--neutral-gray); line-height: 1.6;">
-                          We partner with local guides and artisans to create eco-friendly adventures that uplift the community and preserve the environment.
+                          To become East Africa's most celebrated eco-tourism destination, where the Sabiny people thrive and every visitor leaves transformed.
                       </p>
                   </div>
                   
