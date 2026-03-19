@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS (compiled) -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     
     <!-- Custom CSS (legacy - will be gradually replaced) -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -127,45 +127,7 @@
         }
     </style>
     
-    <script>
-        // Sticky CTA Button - Show after scrolling past hero
-        window.addEventListener('scroll', function() {
-            const stickyCta = document.getElementById('sticky-cta');
-            const scrollPosition = window.scrollY;
-            
-            // Show after scrolling 600px (past hero section)
-            if (scrollPosition > 600) {
-                stickyCta.style.display = 'flex';
-                stickyCta.style.animation = 'slideInRight 0.5s ease';
-            } else {
-                stickyCta.style.display = 'none';
-            }
-        });
 
-        // Hide mobile bottom nav when any Bootstrap modal is open
-        document.addEventListener('show.bs.modal', function() {
-            document.getElementById('mobile-bottom-nav').style.zIndex = '0';
-        });
-        document.addEventListener('hidden.bs.modal', function() {
-            document.getElementById('mobile-bottom-nav').style.zIndex = '1000';
-        });
-        
-        // Add slide-in animation
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideInRight {
-                from {
-                    opacity: 0;
-                    transform: translateX(100px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateX(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
     
     <!-- Main Content -->
     <div id="main-content" style="position: relative; z-index: 1; background: var(--neutral-offwhite);">
@@ -184,48 +146,7 @@
     <script src="{{ asset('js/script.js') }}"></script>
     
     <!-- Scroll Reveal Animation -->
-    <script>
-    // Scroll Reveal Animation
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-            }
-        });
-    }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -50px 0px'
-    });
 
-    // Observe all reveal elements
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-children')
-        .forEach(el => revealObserver.observe(el));
-
-    // Stats Counter Animation
-    const counters = document.querySelectorAll('.counter');
-    const counterObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
-                entry.target.classList.add('counted');
-                const target = parseInt(entry.target.dataset.target);
-                const suffix = entry.target.dataset.suffix || '';
-                const duration = 2000;
-                const step = target / (duration / 16);
-                let current = 0;
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    entry.target.textContent = Math.floor(current).toLocaleString() + suffix;
-                }, 16);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    counters.forEach(counter => counterObserver.observe(counter));
-    </script>
     
     <!-- Page-specific scripts -->
     @stack('scripts')

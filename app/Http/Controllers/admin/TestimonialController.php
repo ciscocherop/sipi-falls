@@ -79,4 +79,37 @@ class TestimonialController extends Controller
 
         return redirect()->back()->with('success', 'Testimonial deleted successfully');
     }
+
+    public function publicSubmit(Request $request)
+    {
+        $validated = $request->validate([
+            'name'       => 'required|string|max:100',
+            'country'    => 'required|string|max:100',
+            'message'    => 'required|string|min:20|max:500',
+            'rating'     => 'required|integer|min:1|max:5',
+            'visit_date' => 'nullable|date|before:today',
+        ]);
+
+        Testimonial::create([
+            'name'        => $validated['name'],
+            'country'     => $validated['country'],
+            'message'     => $validated['message'],
+            'rating'      => $validated['rating'],
+            'visit_date'  => $validated['visit_date'] ?? null,
+            'is_active'   => true,
+            'is_approved' => false,
+            'is_featured' => false,
+            'order'       => 0,
+        ]);
+
+        return back()->with('testimonial_success', 'Thank you! Your review has been submitted and will appear after approval.');
+    }
+
+    public function toggleApproval($id)
+    {
+        $testimonial = Testimonial::findOrFail($id);
+        $testimonial->update(['is_approved' => !$testimonial->is_approved]);
+
+        return redirect()->back()->with('success', 'Testimonial approval status updated.');
+    }
 }

@@ -7,7 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 
 // Public pages
 Route::get('/', function () {
-    $testimonials = \App\Models\Testimonial::active()->ordered()->limit(3)->get();
+    $testimonials = \App\Models\Testimonial::approved()->ordered()->limit(6)->get();
     return view('pages.index', compact('testimonials'));
 })->name('home');
 
@@ -30,6 +30,7 @@ Route::get('/travelguide', function () {
 Route::post('/booking', [PublicFormController::class, 'booking'])->name('booking.submit');
 Route::post('/contact', [PublicFormController::class, 'contact'])->name('contact.submit');
 Route::post('/newsletter', [PublicFormController::class, 'newsletter'])->name('newsletter.submit');
+Route::post('/testimonials/submit', [App\Http\Controllers\Admin\TestimonialController::class, 'publicSubmit'])->name('testimonial.submit');
 
 // Auth routes
 Route::get('/login', [LoginController::class, 'show'])->name('login');
@@ -72,4 +73,5 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/content/testimonials', [App\Http\Controllers\Admin\ContentController::class, 'storeTestimonial'])->name('admin.content.testimonials.store');
     Route::post('/content/testimonials/{id}', [App\Http\Controllers\Admin\ContentController::class, 'updateTestimonial'])->name('admin.content.testimonials.update');
     Route::delete('/content/testimonials/{id}/delete', [App\Http\Controllers\Admin\ContentController::class, 'destroyTestimonial'])->name('admin.content.testimonials.destroy');
+    Route::post('/content/testimonials/{id}/toggle-approval', [App\Http\Controllers\Admin\TestimonialController::class, 'toggleApproval'])->name('admin.testimonials.toggle-approval');
 });

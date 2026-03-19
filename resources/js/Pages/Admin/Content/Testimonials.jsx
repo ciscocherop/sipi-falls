@@ -112,15 +112,31 @@ function Testimonials({ pageName, testimonials = [] }) {
             label: 'Status',
             render: (value, testimonial) => {
                 const isActive = testimonial.is_active;
-                const className = 'inline-flex px-2 py-1 text-xs font-semibold rounded-full ' + (isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800');
-                return <span className={className}>{isActive ? 'Active' : 'Inactive'}</span>;
+                const isApproved = testimonial.is_approved;
+                return (
+                    <div className="flex flex-col gap-1">
+                        <span className={'inline-flex px-2 py-1 text-xs font-semibold rounded-full ' + (isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800')}>
+                            {isActive ? 'Active' : 'Inactive'}
+                        </span>
+                        <span className={'inline-flex px-2 py-1 text-xs font-semibold rounded-full ' + (isApproved ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800')}>
+                            {isApproved ? 'Approved' : 'Pending'}
+                        </span>
+                    </div>
+                );
             }
         },
         {
             key: 'actions',
             label: 'Actions',
             render: (value, testimonial) => (
-                <div className="flex space-x-2">
+                <div className="flex flex-wrap gap-2">
+                    <Button
+                        variant={testimonial.is_approved ? 'secondary' : 'primary'}
+                        size="sm"
+                        onClick={() => handleToggleApproval(testimonial.id)}
+                    >
+                        {testimonial.is_approved ? 'Reject' : 'Approve'}
+                    </Button>
                     <Button variant="secondary" size="sm" onClick={() => openEditForm(testimonial)}>Edit</Button>
                     <Button variant="danger" size="sm" onClick={() => handleDelete(testimonial.id)}>Delete</Button>
                 </div>
@@ -134,6 +150,12 @@ function Testimonials({ pageName, testimonials = [] }) {
                 preserveScroll: true
             });
         }
+    };
+
+    const handleToggleApproval = (id) => {
+        router.post(`/admin/content/testimonials/${id}/toggle-approval`, {}, {
+            preserveScroll: true
+        });
     };
 
     return (

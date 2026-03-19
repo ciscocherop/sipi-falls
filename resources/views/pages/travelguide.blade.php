@@ -200,15 +200,15 @@
 
   <!-- Activities Section -->
   <section class="reveal py-5" id="activities" style="background: var(--neutral-offwhite); padding: 3rem 0;">
-    <div class="container" style="padding: 2rem 1rem; background: transparent;">
+    <div class="container-fluid px-0" style="background: transparent;">
       <h2 class="text-center mb-5" style="color: var(--primary-green); font-family: var(--font-display);">
         Activities at Sipi Falls
       </h2>
 
       <div class="row g-0">
         <!-- Activity 1 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
+          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
             <img src="{{ asset($content['travelguide_activity_1_image'] ?? 'images/naturewalk.jpg') }}" alt="{{ $content['travelguide_activity_1_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
             <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
             <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">1</div>
@@ -221,8 +221,8 @@
         </div>
 
         <!-- Activity 2 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
+          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
             <img src="{{ asset($content['travelguide_activity_2_image'] ?? 'images/abseil3.jpg') }}" alt="{{ $content['travelguide_activity_2_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
             <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
             <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">2</div>
@@ -235,8 +235,8 @@
         </div>
 
         <!-- Activity 3 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
+          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
             <img src="{{ asset($content['travelguide_activity_3_image'] ?? 'images/cofi.jpg') }}" alt="{{ $content['travelguide_activity_3_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
             <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
             <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">3</div>
@@ -249,8 +249,8 @@
         </div>
 
         <!-- Activity 4 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
+          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
             <img src="{{ asset($content['travelguide_activity_4_image'] ?? 'images/chamelon.jpg') }}" alt="{{ $content['travelguide_activity_4_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
             <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
             <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">4</div>
@@ -263,8 +263,8 @@
         </div>
 
         <!-- Activity 5 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
+          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
             <img src="{{ asset($content['travelguide_activity_5_image'] ?? 'images/clif2.jpg') }}" alt="{{ $content['travelguide_activity_5_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
             <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
             <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">5</div>
@@ -277,8 +277,8 @@
         </div>
 
         <!-- Activity 6 -->
-        <div class="col-md-4 col-lg-2">
-          <div class="activity-card" style="position: relative; height: 480px; overflow: hidden; cursor: pointer;">
+        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
+          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
             <img src="{{ asset($content['travelguide_activity_6_image'] ?? 'images/rock climbing.jpg') }}" alt="{{ $content['travelguide_activity_6_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
             <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
             <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">6</div>
@@ -434,39 +434,7 @@
     <img id="tg-lightbox-img" src="" alt="Gallery image" style="max-width:90vw; max-height:90vh; object-fit:contain; border-radius:0.5rem;">
   </div>
 
-  <script>
-    // Tabbed gallery
-    document.querySelectorAll('.tg-tab').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        document.querySelectorAll('.tg-tab').forEach(function(b) { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
-        document.querySelectorAll('.tg-panel').forEach(function(p) { p.classList.remove('active'); });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected','true');
-        document.getElementById('tg-panel-' + btn.dataset.tab).classList.add('active');
-      });
-    });
 
-    // Load more
-    document.querySelectorAll('.tg-load-more').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        var grid = document.getElementById(btn.dataset.grid);
-        grid.querySelectorAll('.tg-hidden').forEach(function(item) { item.classList.remove('tg-hidden'); });
-        btn.parentElement.remove();
-      });
-    });
-
-    // Lightbox
-    function openTgLightbox(src) {
-      var lb = document.getElementById('tg-lightbox');
-      document.getElementById('tg-lightbox-img').src = src;
-      lb.style.display = 'flex';
-    }
-    function closeTgLightbox() {
-      document.getElementById('tg-lightbox').style.display = 'none';
-      document.getElementById('tg-lightbox-img').src = '';
-    }
-    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeTgLightbox(); });
-  </script>
 
   @endsection
 

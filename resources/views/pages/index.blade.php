@@ -405,58 +405,125 @@
         </div>
     </section>
 
-<script>
-// Testimonials Carousel
-let testimonialIndex = 0;
+    <!-- Share Your Experience Button -->
+    <div class="text-center py-4" style="background: #F5F6F9;">
+        <button onclick="document.getElementById('testimonialModal').style.display='flex'; document.body.style.overflow='hidden';"
+                style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.875rem 2.5rem; cursor: pointer; transition: all 0.3s; border-radius: 0.25rem;"
+                onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                onmouseout="this.style.background='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
+            <i class="fas fa-pen" style="margin-right: 0.5rem;"></i> Share Your Experience
+        </button>
+        @if(session('testimonial_success'))
+        <script>
+            window.addEventListener('load', function() {
+                setTimeout(function() {
+                    document.getElementById('testimonialModal').style.display = 'flex';
+                    document.body.style.overflow = 'hidden';
+                }, 300);
+            });
+        </script>
+        @endif
+    </div>
 
-function getSlidesPerView() {
-    return window.innerWidth < 768 ? 1 : 2;
-}
+    <!-- Testimonial Submission Modal -->
+    <div id="testimonialModal"
+         onclick="if(event.target===this){ this.style.display='none'; document.body.style.overflow=''; }"
+         style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; align-items: center; justify-content: center; padding: 1rem;">
+        <div style="background: white; border-radius: 0.5rem; border-top: 4px solid var(--accent-gold); width: 100%; max-width: 580px; max-height: 90vh; overflow-y: auto; position: relative;">
 
-function moveTestimonialCarousel(direction) {
-    const slides = document.querySelectorAll('.testimonial-slide');
-    const total = slides.length;
-    if (total === 0) return;
+            <!-- Modal Header -->
+            <div style="background: var(--primary-green); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+                <h5 style="font-family: var(--font-display); color: white; margin: 0; font-size: 1.3rem;">Share Your Sipi Falls Experience</h5>
+                <button onclick="document.getElementById('testimonialModal').style.display='none'; document.body.style.overflow='';"
+                        style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6); color: white; font-size: 1.25rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
+                    &times;
+                </button>
+            </div>
 
-    const perView = getSlidesPerView();
-    const maxIndex = Math.ceil(total / perView) - 1;
+            <!-- Modal Body -->
+            <div style="padding: 2rem;">
 
-    testimonialIndex += direction;
-    if (testimonialIndex < 0) testimonialIndex = maxIndex;
-    if (testimonialIndex > maxIndex) testimonialIndex = 0;
+                @if(session('testimonial_success'))
+                <div style="text-align: center; padding: 2rem 1rem;">
+                    <div style="width: 70px; height: 70px; background: rgba(26,107,26,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                        <i class="fas fa-check-circle" style="color: var(--primary-green); font-size: 2.5rem;"></i>
+                    </div>
+                    <h4 style="font-family: var(--font-display); color: var(--primary-green); margin-bottom: 0.5rem;">Thank You!</h4>
+                    <p style="font-family: var(--font-body); color: var(--neutral-gray); margin-bottom: 1.5rem; line-height: 1.7;">Your experience has been successfully submitted! It will appear on our site after a quick review by our team.</p>
+                    <button onclick="document.getElementById('testimonialModal').style.display='none'; document.body.style.overflow='';"
+                            style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: var(--primary-green); color: white; border: none; padding: 0.75rem 2rem; cursor: pointer; transition: all 0.3s; border-radius: 0.25rem;"
+                            onmouseover="this.style.background='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                            onmouseout="this.style.background='var(--primary-green)'; this.style.color='white';">
+                        Close
+                    </button>
+                </div>
+                @else
 
-    const inner = document.querySelector('.testimonial-carousel-inner');
-    const slideWidth = 100 / perView;
-    inner.style.transform = `translateX(-${testimonialIndex * slideWidth * perView}%)`;
-}
+                <form action="{{ route('testimonial.submit') }}" method="POST">
+                    @csrf
 
-// Update slide width on resize
-function updateSlideWidths() {
-    const perView = getSlidesPerView();
-    const slideWidth = 100 / perView;
-    document.querySelectorAll('.testimonial-slide').forEach(slide => {
-        slide.style.minWidth = slideWidth + '%';
-    });
-    // Reset position on resize
-    testimonialIndex = 0;
-    document.querySelector('.testimonial-carousel-inner').style.transform = 'translateX(0)';
-}
+                    <!-- Name & Country -->
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-6">
+                            <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Your Name *</label>
+                            <input type="text" name="name" required placeholder="John Doe"
+                                   style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray);"
+                                   onfocus="this.style.borderColor='var(--primary-green)';"
+                                   onblur="this.style.borderColor='#e0e0e0';">
+                        </div>
+                        <div class="col-md-6">
+                            <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Country *</label>
+                            <input type="text" name="country" required placeholder="United Kingdom"
+                                   style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray);"
+                                   onfocus="this.style.borderColor='var(--primary-green)';"
+                                   onblur="this.style.borderColor='#e0e0e0';">
+                        </div>
+                    </div>
 
-window.addEventListener('resize', updateSlideWidths);
-updateSlideWidths();
-</script>
+                    <!-- Rating -->
+                    <div class="mb-3">
+                        <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Your Rating *</label>
+                        <div style="display: flex; gap: 0.5rem;" id="star-rating">
+                            @for($i = 1; $i <= 5; $i++)
+                            <button type="button" class="star-btn" data-value="{{ $i }}"
+                                    style="background: none; border: none; font-size: 2rem; color: #e0e0e0; cursor: pointer; transition: color 0.2s; padding: 0;">
+                                ★
+                            </button>
+                            @endfor
+                        </div>
+                        <input type="hidden" name="rating" id="rating-value" value="5">
+                    </div>
 
-<script>
-function openLightbox(src, caption) {
-    const lb = document.getElementById('lightbox');
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox-caption').textContent = caption;
-    lb.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-function closeLightbox() {
-    document.getElementById('lightbox').style.display = 'none';
-    document.body.style.overflow = '';
-}
-</script>
+                    <!-- Visit Date -->
+                    <div class="mb-3">
+                        <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">When did you visit?</label>
+                        <input type="date" name="visit_date"
+                               style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray);"
+                               onfocus="this.style.borderColor='var(--primary-green)';"
+                               onblur="this.style.borderColor='#e0e0e0';">
+                    </div>
+
+                    <!-- Message -->
+                    <div class="mb-4">
+                        <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Your Experience *</label>
+                        <textarea name="message" required rows="4" placeholder="Tell us about your Sipi Falls experience..."
+                                  style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray); resize: vertical;"
+                                  onfocus="this.style.borderColor='var(--primary-green)';"
+                                  onblur="this.style.borderColor='#e0e0e0';"></textarea>
+                        <p style="font-family: var(--font-body); font-size: 0.75rem; color: var(--neutral-gray); opacity: 0.6; margin-top: 0.25rem;">Minimum 20 characters</p>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit"
+                            style="width: 100%; background: var(--primary-green); color: white; border: none; padding: 1rem; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 0.375rem; cursor: pointer; transition: all 0.3s;"
+                            onmouseover="this.style.background='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                            onmouseout="this.style.background='var(--primary-green)'; this.style.color='white';">
+                        <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Submit My Review
+                    </button>
+                </form>
+                @endif
+            </div>
+        </div>
+    </div>
+
 @endsection

@@ -65,36 +65,3 @@
   </nav>
 </header>
 
-<script>
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
-  const navbar = document.getElementById('mainNavbar');
-  if (window.scrollY > 80) {
-    navbar.style.backgroundColor = 'rgba(10, 26, 10, 0.95)';
-  } else {
-    navbar.style.backgroundColor = 'rgba(10, 26, 10, 0.7)';
-  }
-});
-
-// Mobile menu toggle
-function toggleMobileMenu() {
-  const menu = document.getElementById('navbarNav');
-  const menuIcon = document.getElementById('menuIcon');
-  const closeIcon = document.getElementById('closeIcon');
-  const isOpen = menu.style.display === 'flex';
-  
-  if (isOpen) {
-    menu.style.display = 'none';
-    menuIcon.classList.remove('hidden');
-    closeIcon.classList.add('hidden');
-    document.documentElement.style.overflow = '';
-    document.body.style.overflow = '';
-  } else {
-    menu.style.display = 'flex';
-    menuIcon.classList.add('hidden');
-    closeIcon.classList.remove('hidden');
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-  }
-}
-</script>
