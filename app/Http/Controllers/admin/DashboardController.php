@@ -73,4 +73,18 @@ class DashboardController extends Controller
             ]
         ]);
     }
+
+    public function notifications()
+    {
+        $pendingTestimonials = \App\Models\Testimonial::where('is_approved', false)->where('is_active', true)->count();
+        $newBookings = \App\Models\Booking::where('status', 'pending')->count();
+        $newMessages = \App\Models\ContactMessage::where('is_read', false)->count();
+
+        return response()->json([
+            'pending_testimonials' => $pendingTestimonials,
+            'new_bookings'         => $newBookings,
+            'new_messages'         => $newMessages,
+            'total'                => $pendingTestimonials + $newBookings + $newMessages,
+        ]);
+    }
 }

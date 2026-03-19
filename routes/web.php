@@ -40,6 +40,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 // Admin routes (protected by auth and admin middleware)
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/notifications', [App\Http\Controllers\Admin\DashboardController::class, 'notifications'])->name('admin.notifications');
     
     // Contact Messages
     Route::get('/contact-messages', [App\Http\Controllers\Admin\ContactMessageController::class, 'index'])->name('admin.contact-messages.index');
@@ -73,5 +74,6 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::post('/content/testimonials', [App\Http\Controllers\Admin\ContentController::class, 'storeTestimonial'])->name('admin.content.testimonials.store');
     Route::post('/content/testimonials/{id}', [App\Http\Controllers\Admin\ContentController::class, 'updateTestimonial'])->name('admin.content.testimonials.update');
     Route::delete('/content/testimonials/{id}/delete', [App\Http\Controllers\Admin\ContentController::class, 'destroyTestimonial'])->name('admin.content.testimonials.destroy');
+    Route::patch('/testimonials/{testimonial}/approve', [App\Http\Controllers\Admin\TestimonialController::class, 'toggleApproval'])->name('admin.testimonials.approve');
     Route::post('/content/testimonials/{id}/toggle-approval', [App\Http\Controllers\Admin\TestimonialController::class, 'toggleApproval'])->name('admin.testimonials.toggle-approval');
 });

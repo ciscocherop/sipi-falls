@@ -107,9 +107,10 @@ class TestimonialController extends Controller
 
     public function toggleApproval($id)
     {
-        $testimonial = Testimonial::findOrFail($id);
+        $testimonial = $id instanceof Testimonial ? $id : Testimonial::findOrFail($id);
         $testimonial->update(['is_approved' => !$testimonial->is_approved]);
 
-        return redirect()->back()->with('success', 'Testimonial approval status updated.');
+        $msg = $testimonial->is_approved ? 'Testimonial approved!' : 'Testimonial unapproved!';
+        return redirect()->back()->with('success', $msg);
     }
 }
