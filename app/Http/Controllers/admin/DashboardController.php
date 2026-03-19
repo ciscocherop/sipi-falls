@@ -65,6 +65,8 @@ class DashboardController extends Controller
                 'totalUsers' => $totalUsers,
                 'recentMessages' => $recentMessages,
                 'recentBookings' => $recentBookings,
+                'pendingTestimonials' => \App\Models\Testimonial::where('is_approved', false)->where('is_active', true)->count(),
+                'pendingBookings' => \App\Models\Booking::where('status', 'pending')->count(),
             ],
             'chartData' => $chartData,
             'recentActivity' => [

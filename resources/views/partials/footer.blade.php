@@ -1,4 +1,4 @@
-<footer class="bg-[var(--primary-green)] border-t border-white/10" style="background-color: #0d1f0d; border-top: 1px solid rgba(255, 255, 255, 0.1); font-family: var(--font-body);">
+<footer class="bg-[var(--primary-green)] border-t border-white/10" style="background-color: var(--primary-green-deep); border-top: 1px solid rgba(255, 255, 255, 0.1); font-family: var(--font-body);">
   <div class="container mx-auto px-4 py-6">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       <!-- Brand & Slogan -->

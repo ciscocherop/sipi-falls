@@ -76,4 +76,11 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::delete('/content/testimonials/{id}/delete', [App\Http\Controllers\Admin\ContentController::class, 'destroyTestimonial'])->name('admin.content.testimonials.destroy');
     Route::patch('/testimonials/{testimonial}/approve', [App\Http\Controllers\Admin\TestimonialController::class, 'toggleApproval'])->name('admin.testimonials.approve');
     Route::post('/content/testimonials/{id}/toggle-approval', [App\Http\Controllers\Admin\TestimonialController::class, 'toggleApproval'])->name('admin.testimonials.toggle-approval');
+
+    // Accommodations
+    Route::get('/accommodations', [App\Http\Controllers\Admin\AccommodationController::class, 'index'])->name('admin.accommodations.index');
+    Route::post('/accommodations', [App\Http\Controllers\Admin\AccommodationController::class, 'store'])->name('admin.accommodations.store');
+    Route::put('/accommodations/{accommodation}', [App\Http\Controllers\Admin\AccommodationController::class, 'update'])->name('admin.accommodations.update');
+    Route::delete('/accommodations/{accommodation}', [App\Http\Controllers\Admin\AccommodationController::class, 'destroy'])->name('admin.accommodations.destroy');
+    Route::patch('/accommodations/{accommodation}/toggle', [App\Http\Controllers\Admin\AccommodationController::class, 'toggle'])->name('admin.accommodations.toggle');
 });

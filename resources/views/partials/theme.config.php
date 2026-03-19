@@ -12,6 +12,8 @@ return [
         // Primary Brand Colors
         'primary' => [
             'green' => '#228B22',      // Forest Green - Main brand color
+            'green-dark' => '#1a6b1a', // Dark Green - Hover states
+            'green-deep' => '#0d1f0d', // Deep Green - Footer & dark UI backgrounds
         ],
         
         // Secondary Colors

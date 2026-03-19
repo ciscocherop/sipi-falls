@@ -12,7 +12,8 @@ class Accommodation extends Model
         'description',
         'location',
         'image',
-        'whatsapp_message',
+        'website_url',
+        'whatsapp_number',
         'is_active',
     ];
 
