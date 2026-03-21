@@ -50,17 +50,14 @@ class ContactMessageController extends Controller
         ]);
     }
 
-    public function show($id)
+    public function show(ContactMessage $message)
     {
-        $message = ContactMessage::findOrFail($id);
-
-        // Mark as read when viewing
         if (!$message->is_read) {
             $message->update(['is_read' => true]);
         }
 
         return Inertia::render('Admin/ContactMessages/Show', [
-            'message' => $message
+            'message' => $message,
         ]);
     }
 

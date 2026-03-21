@@ -1,5 +1,14 @@
 ﻿@extends('layouts.app')
 
+@push('seo')
+<title>Travel Guide — Sipi Falls Uganda | Tips, Activities & Booking</title>
+<meta property="og:title" content="Travel Guide — Sipi Falls Uganda">
+<meta property="og:description" content="Everything you need to plan your Sipi Falls visit. Activities, essential tips, pricing, booking and maps for Uganda's most stunning waterfall destination.">
+<meta property="og:url" content="{{ url('/travel-guide') }}">
+<meta name="twitter:title" content="Travel Guide — Sipi Falls Uganda">
+<meta name="twitter:description" content="Everything you need to plan your Sipi Falls visit. Activities, tips, pricing and booking.">
+@endpush
+
 @section('title', 'Travel Guide - Sipi Falls')
 
 @section('content')

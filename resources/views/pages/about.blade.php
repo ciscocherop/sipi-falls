@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@push('seo')
+<title>About Us — Sipi Falls Uganda | Our Story & Tour Guides</title>
+<meta property="og:title" content="About Us — Sipi Falls Uganda">
+<meta property="og:description" content="Meet the Sabiny team behind Sipi Falls adventures. Learn our story, our mission and the expert local guides who make every visit unforgettable.">
+<meta property="og:url" content="{{ url('/about') }}">
+<meta name="twitter:title" content="About Us — Sipi Falls Uganda">
+<meta name="twitter:description" content="Meet the Sabiny team behind Sipi Falls adventures and our expert local guides.">
+@endpush
+
 @section('title', 'About Us - Sipi Falls')
 
 @section('content')

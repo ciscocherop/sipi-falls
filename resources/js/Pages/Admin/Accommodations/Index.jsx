@@ -67,22 +67,49 @@ function AccommodationsIndex({ accommodations }) {
         <AdminLayout title="Accommodations">
             <div style={{ padding: '2rem', background: '#F5F6F9', minHeight: '100%' }}>
 
-                {/* Header */}
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
-                    <div>
-                        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', fontWeight: '700', color: '#0d1f0d', margin: '0 0 0.25rem' }}>
-                            Accommodations
-                        </h1>
-                        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#888', margin: 0 }}>
-                            Manage "Where to Stay" listings shown on the contact page
-                        </p>
+                {/* Hero Header */}
+                <div style={{
+                    background: 'linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url(/images/gallery/falls/waterfall-base.jpg) center/cover no-repeat',
+                    borderRadius: '16px',
+                    padding: '2.5rem',
+                    marginBottom: '1.5rem',
+                    color: 'white',
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.5rem' }}>
+                        <div>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', letterSpacing: '0.25em', textTransform: 'uppercase', color: '#c9951a', margin: '0 0 0.5rem' }}>Contact Page</p>
+                            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '32px', fontWeight: '700', color: 'white', margin: '0 0 0.5rem' }}>Where to Stay</h1>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: 'rgba(255,255,255,0.65)', margin: 0 }}>Manage accommodation listings shown to visitors on the contact page</p>
+                        </div>
+                        <button
+                            onClick={() => { setShowForm(!showForm); setEditing(null); resetForm(); }}
+                            style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', background: showForm && !editing ? 'rgba(255,255,255,0.15)' : '#c9951a', color: 'white', border: `2px solid ${showForm && !editing ? 'rgba(255,255,255,0.4)' : '#c9951a'}`, borderRadius: '8px', padding: '0.7rem 1.5rem', cursor: 'pointer', transition: 'all 0.2s' }}
+                        >
+                            {showForm && !editing ? '✕ Cancel' : '+ Add Accommodation'}
+                        </button>
                     </div>
-                    <button
-                        onClick={() => { setShowForm(!showForm); setEditing(null); resetForm(); }}
-                        style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', background: '#1a6b1a', color: 'white', border: 'none', borderRadius: '8px', padding: '0.6rem 1.5rem', cursor: 'pointer' }}
-                    >
-                        {showForm && !editing ? 'Cancel' : '+ Add Accommodation'}
-                    </button>
+                    {/* Stats Strip */}
+                    <div style={{ display: 'flex', gap: '2rem', marginTop: '2rem', flexWrap: 'wrap' }}>
+                        <div>
+                            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: '700', color: '#c9951a', margin: 0, lineHeight: 1 }}>{accommodations.length}</p>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.6)', margin: '0.25rem 0 0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Total Listed</p>
+                        </div>
+                        <div style={{ width: '1px', background: 'rgba(255,255,255,0.2)' }} />
+                        <div>
+                            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: '700', color: '#c9951a', margin: 0, lineHeight: 1 }}>{accommodations.filter(a => a.is_active).length}</p>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.6)', margin: '0.25rem 0 0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Active</p>
+                        </div>
+                        <div style={{ width: '1px', background: 'rgba(255,255,255,0.2)' }} />
+                        <div>
+                            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: '700', color: '#c9951a', margin: 0, lineHeight: 1 }}>{accommodations.filter(a => !a.is_active).length}</p>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.6)', margin: '0.25rem 0 0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Hidden</p>
+                        </div>
+                        <div style={{ width: '1px', background: 'rgba(255,255,255,0.2)' }} />
+                        <div>
+                            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '2rem', fontWeight: '700', color: '#c9951a', margin: 0, lineHeight: 1 }}>{[...new Set(accommodations.map(a => a.type))].length}</p>
+                            <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: 'rgba(255,255,255,0.6)', margin: '0.25rem 0 0', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Types</p>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Form */}

@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@push('seo')
+<title>Sipi Falls Uganda — Waterfalls, Adventure & Coffee Tours</title>
+<meta property="og:title" content="Sipi Falls Uganda — Waterfalls, Adventure & Coffee Tours">
+<meta property="og:description" content="Discover three breathtaking waterfalls, abseil 100m cliffs, explore coffee farms and immerse yourself in Sabiny culture. Book your Sipi Falls adventure today.">
+<meta property="og:url" content="{{ url('/') }}">
+<meta name="twitter:title" content="Sipi Falls Uganda — Waterfalls, Adventure & Coffee Tours">
+<meta name="twitter:description" content="Discover three breathtaking waterfalls, abseil 100m cliffs, explore coffee farms and immerse yourself in Sabiny culture.">
+@endpush
+
 @section('title', 'Sipi Falls - Keep Sipping!!')
 
 @section('content')

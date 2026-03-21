@@ -1,5 +1,14 @@
 @extends('layouts.app')
 
+@push('seo')
+<title>Contact & Book — Sipi Falls Uganda | Plan Your Adventure</title>
+<meta property="og:title" content="Contact & Book — Sipi Falls Uganda">
+<meta property="og:description" content="Ready to visit Sipi Falls? Contact our team, book your adventure, find accommodation and get answers to all your questions about visiting Kapchorwa, Uganda.">
+<meta property="og:url" content="{{ url('/contact') }}">
+<meta name="twitter:title" content="Contact & Book — Sipi Falls Uganda">
+<meta name="twitter:description" content="Ready to visit Sipi Falls? Book your adventure and plan your trip to Kapchorwa, Uganda.">
+@endpush
+
 @section('title', 'Contact Us - Sipi Falls')
 
 @section('content')

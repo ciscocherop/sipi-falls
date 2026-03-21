@@ -1,330 +1,230 @@
 import AdminLayout from '../../../Layouts/AdminLayout';
-import Table from '../../../Components/Admin/Table';
-import Button from '../../../Components/Admin/Button';
 import { useState, useEffect } from 'react';
 import { router, useForm, usePage } from '@inertiajs/react';
 
-function Testimonials({ pageName, testimonials = [] }) {
-    const [showAddForm, setShowAddForm] = useState(false);
-    const [editingTestimonial, setEditingTestimonial] = useState(null);
-    const [showFlash, setShowFlash] = useState(false);
-    const safeTestimonials = Array.isArray(testimonials) ? testimonials : [];
-    const { flash } = usePage().props;
+const inputStyle = { width: '100%', padding: '0.75rem 1rem', border: '2px solid #e0e0e0', borderRadius: '8px', fontFamily: "'Montserrat', sans-serif", fontSize: '14px', color: '#333', outline: 'none', boxSizing: 'border-box' };
+const labelStyle = { fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', color: '#555', display: 'block', marginBottom: '0.5rem' };
 
-    // Show flash message when it exists
+function Testimonials({ pageName, testimonials = [] }) {
+    const [drawerOpen, setDrawerOpen] = useState(false);
+    const [editingItem, setEditingItem] = useState(null);
+    const [filter, setFilter] = useState('all');
+    const { flash } = usePage().props;
+    const [flashMsg, setFlashMsg] = useState(null);
+    const safeTestimonials = Array.isArray(testimonials) ? testimonials : [];
+
     useEffect(() => {
         if (flash?.success) {
-            setShowFlash(true);
-            const timer = setTimeout(() => setShowFlash(false), 3000);
-            return () => clearTimeout(timer);
+            setFlashMsg(flash.success);
+            const t = setTimeout(() => setFlashMsg(null), 3000);
+            return () => clearTimeout(t);
         }
     }, [flash]);
 
-    // Form state
     const { data, setData, post, processing, errors, reset } = useForm({
-        name: '',
-        country: '',
-        message: '',
-        rating: 5,
-        is_active: true,
-        order: 0
+        name: '', country: '', message: '', rating: 5, is_active: true, order: 0
     });
 
-    // Open add form
-    const openAddForm = () => {
+    const openDrawer = (item = null) => {
+        if (item) {
+            setData({ name: item.name || '', country: item.country || '', message: item.message || '', rating: item.rating || 5, is_active: item.is_active ?? true, order: item.order || 0 });
+            setEditingItem(item);
+        } else {
+            reset();
+            setEditingItem(null);
+        }
+        setDrawerOpen(true);
+        document.body.style.overflow = 'hidden';
+    };
+
+    const closeDrawer = () => {
+        setDrawerOpen(false);
+        setEditingItem(null);
         reset();
-        setEditingTestimonial(null);
-        setShowAddForm(true);
+        document.body.style.overflow = '';
     };
 
-    // Open edit form
-    const openEditForm = (testimonial) => {
-        setData({
-            name: testimonial.name || '',
-            country: testimonial.country || '',
-            message: testimonial.message || '',
-            rating: testimonial.rating || 5,
-            is_active: testimonial.is_active ?? true,
-            order: testimonial.order || 0
-        });
-        setEditingTestimonial(testimonial);
-        setShowAddForm(true);
-    };
-
-    // Close form
-    const closeForm = () => {
-        setShowAddForm(false);
-        setEditingTestimonial(null);
-        reset();
-    };
-
-    // Submit form
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        if (editingTestimonial) {
-            post(`/admin/content/testimonials/${editingTestimonial.id}`, {
-                preserveScroll: true,
-                onSuccess: () => closeForm()
-            });
+        if (editingItem) {
+            post(`/admin/content/testimonials/${editingItem.id}`, { preserveScroll: true, onSuccess: closeDrawer });
         } else {
-            post('/admin/content/testimonials', {
-                preserveScroll: true,
-                onSuccess: () => closeForm()
-            });
+            post('/admin/content/testimonials', { preserveScroll: true, onSuccess: closeDrawer });
         }
     };
 
-    const columns = [
-        {
-            key: 'name',
-            label: 'Name/Country',
-            render: (value, testimonial) => (
-                <div>
-                    <div className="font-medium">{testimonial.name || 'No name'}</div>
-                    <div className="text-sm text-gray-500">{testimonial.country || 'No country'}</div>
-                </div>
-            )
-        },
-        {
-            key: 'rating',
-            label: 'Rating',
-            render: (value, testimonial) => {
-                const rating = testimonial.rating || 0;
-                const stars = [];
-                for (let i = 0; i < 5; i++) {
-                    stars.push(<span key={i} className={i < rating ? 'text-yellow-400' : 'text-gray-300'}>★</span>);
-                }
-                return <div className="flex items-center">{stars}</div>;
-            }
-        },
-        {
-            key: 'message',
-            label: 'Message',
-            render: (value, testimonial) => {
-                const message = testimonial.message || '';
-                const display = message.length > 100 ? message.substring(0, 100) + '...' : message;
-                return <div className="text-sm text-gray-600">{display}</div>;
-            }
-        },
-        {
-            key: 'status',
-            label: 'Status',
-            render: (value, testimonial) => {
-                const isActive = testimonial.is_active;
-                const isApproved = testimonial.is_approved;
-                return (
-                    <div className="flex flex-col gap-1">
-                        <span className={'inline-flex px-2 py-1 text-xs font-semibold rounded-full ' + (isActive ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800')}>
-                            {isActive ? 'Active' : 'Inactive'}
-                        </span>
-                        <span className={'inline-flex px-2 py-1 text-xs font-semibold rounded-full ' + (isApproved ? 'bg-blue-100 text-blue-800' : 'bg-yellow-100 text-yellow-800')}>
-                            {isApproved ? 'Approved' : 'Pending'}
-                        </span>
-                    </div>
-                );
-            }
-        },
-        {
-            key: 'actions',
-            label: 'Actions',
-            render: (value, testimonial) => (
-                <div className="flex flex-wrap gap-2">
-                    <Button
-                        variant={testimonial.is_approved ? 'secondary' : 'primary'}
-                        size="sm"
-                        onClick={() => handleToggleApproval(testimonial.id)}
-                    >
-                        {testimonial.is_approved ? 'Reject' : 'Approve'}
-                    </Button>
-                    <Button variant="secondary" size="sm" onClick={() => openEditForm(testimonial)}>Edit</Button>
-                    <Button variant="danger" size="sm" onClick={() => handleDelete(testimonial.id)}>Delete</Button>
-                </div>
-            )
-        }
-    ];
-
     const handleDelete = (id) => {
-        if (confirm('Are you sure you want to delete this testimonial?')) {
-            router.delete(`/admin/content/testimonials/${id}/delete`, {
-                preserveScroll: true
-            });
+        if (confirm('Delete this testimonial?')) {
+            router.delete(`/admin/content/testimonials/${id}/delete`, { preserveScroll: true });
         }
     };
 
     const handleToggleApproval = (id) => {
-        router.post(`/admin/content/testimonials/${id}/toggle-approval`, {}, {
-            preserveScroll: true
-        });
+        router.post(`/admin/content/testimonials/${id}/toggle-approval`, {}, { preserveScroll: true });
     };
+
+    const filtered = safeTestimonials.filter(t => {
+        if (filter === 'pending') return !t.is_approved;
+        if (filter === 'approved') return t.is_approved;
+        return true;
+    });
+
+    const pendingCount = safeTestimonials.filter(t => !t.is_approved).length;
 
     return (
         <AdminLayout title={pageName}>
-            {/* Flash Message */}
-            {showFlash && flash?.success && (
-                <div className="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
-                    <span className="block sm:inline">{flash.success}</span>
-                    <button
-                        onClick={() => setShowFlash(false)}
-                        className="absolute top-0 bottom-0 right-0 px-4 py-3"
-                    >
-                        <span className="text-2xl">&times;</span>
+            <div style={{ padding: '2rem', background: '#F5F6F9', minHeight: '100%' }}>
+
+                {/* Flash */}
+                {flashMsg && (
+                    <div style={{ background: '#F0FDF4', borderLeft: '4px solid #1a6b1a', borderRadius: '8px', padding: '1rem 1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', fontWeight: '600', color: '#1a6b1a', margin: 0 }}>✓ {flashMsg}</p>
+                        <button onClick={() => setFlashMsg(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#888', fontSize: '1.2rem' }}>×</button>
+                    </div>
+                )}
+
+                {/* Header */}
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                    <div>
+                        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', fontWeight: '700', color: '#0d1f0d', margin: '0 0 0.25rem' }}>Testimonials</h1>
+                        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#888', margin: 0 }}>
+                            {safeTestimonials.length} total
+                            {pendingCount > 0 && <span style={{ color: '#c9951a', fontWeight: '600' }}> · {pendingCount} pending approval</span>}
+                        </p>
+                    </div>
+                    <button onClick={() => openDrawer()} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', background: '#1a6b1a', color: 'white', border: 'none', borderRadius: '8px', padding: '0.6rem 1.5rem', cursor: 'pointer' }}>
+                        + Add Testimonial
                     </button>
                 </div>
-            )}
 
-            <div className="space-y-6">
-                <div className="bg-white rounded-lg shadow p-6">
-                    <div className="flex justify-between items-center">
-                        <div>
-                            <h2 className="text-2xl font-bold text-gray-800">{pageName}</h2>
-                            <p className="text-gray-600">Manage testimonials</p>
-                        </div>
-                        <Button variant="primary" onClick={() => openAddForm()}>Add Testimonial</Button>
-                    </div>
+                {/* Filter Tabs */}
+                <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1.5rem' }}>
+                    {[
+                        { key: 'all', label: `All (${safeTestimonials.length})` },
+                        { key: 'pending', label: `Pending (${pendingCount})` },
+                        { key: 'approved', label: `Approved (${safeTestimonials.length - pendingCount})` },
+                    ].map(f => (
+                        <button key={f.key} onClick={() => setFilter(f.key)} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', fontWeight: '600', padding: '0.5rem 1rem', borderRadius: '8px', cursor: 'pointer', border: '2px solid', borderColor: filter === f.key ? '#1a6b1a' : '#e0e0e0', background: filter === f.key ? '#1a6b1a' : 'white', color: filter === f.key ? 'white' : '#666', transition: 'all 0.2s' }}>
+                            {f.label}
+                        </button>
+                    ))}
                 </div>
-                <div className="bg-white rounded-lg shadow">
-                    <div className="p-6 border-b">
-                        <h3 className="text-lg font-semibold">Current Testimonials ({safeTestimonials.length})</h3>
+
+                {/* List */}
+                <div style={{ background: 'white', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', overflow: 'hidden' }}>
+                    <div style={{ padding: '1.25rem 1.5rem', borderBottom: '1px solid #f0f0f0' }}>
+                        <h3 style={{ fontFamily: "'Montserrat', sans-serif", fontWeight: '600', fontSize: '15px', color: '#333', margin: 0 }}>
+                            {filter === 'all' ? 'All Testimonials' : filter === 'pending' ? 'Pending Approval' : 'Approved'} ({filtered.length})
+                        </h3>
                     </div>
-                    {safeTestimonials.length > 0 ? (
-                        <Table data={safeTestimonials} columns={columns} emptyMessage="No testimonials found" />
+                    {filtered.length === 0 ? (
+                        <p style={{ padding: '3rem', textAlign: 'center', color: '#aaa', fontFamily: "'Montserrat', sans-serif", fontSize: '14px' }}>No testimonials found</p>
                     ) : (
-                        <div className="p-8 text-center text-gray-500">
-                            <p>No testimonials found.</p>
-                            <Button variant="primary" className="mt-4" onClick={() => openAddForm()}>Add Your First Testimonial</Button>
-                        </div>
+                        filtered.map((t, i) => (
+                            <div key={t.id} style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem', padding: '1.25rem 1.5rem', borderBottom: i < filtered.length - 1 ? '1px solid #f5f5f5' : 'none', transition: 'background 0.15s' }}
+                                onMouseEnter={e => e.currentTarget.style.background = '#F5F6F9'}
+                                onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                            >
+                                {/* Avatar */}
+                                <div style={{ width: '42px', height: '42px', borderRadius: '50%', background: '#1a6b1a', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                                    <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', fontWeight: '700', color: 'white' }}>{t.name?.[0]}</span>
+                                </div>
+
+                                {/* Content */}
+                                <div style={{ flex: 1, minWidth: 0 }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
+                                        <p style={{ margin: 0, fontFamily: "'Montserrat', sans-serif", fontSize: '14px', fontWeight: '600', color: '#333' }}>{t.name}</p>
+                                        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', color: '#aaa' }}>{t.country}</span>
+                                        <span style={{ color: '#c9951a', fontSize: '13px' }}>{'★'.repeat(t.rating)}{'☆'.repeat(5 - t.rating)}</span>
+                                    </div>
+                                    <p style={{ margin: '0 0 0.5rem', fontFamily: "'Montserrat', sans-serif", fontSize: '13px', color: '#666', lineHeight: '1.5' }}>
+                                        {t.message?.length > 120 ? t.message.substring(0, 120) + '...' : t.message}
+                                    </p>
+                                    <div style={{ display: 'flex', gap: '0.5rem' }}>
+                                        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', fontWeight: '600', background: t.is_approved ? '#F0FDF4' : '#FFFBEB', color: t.is_approved ? '#1a6b1a' : '#c9951a', border: `1px solid ${t.is_approved ? '#1a6b1a' : '#c9951a'}`, borderRadius: '999px', padding: '2px 8px' }}>
+                                            {t.is_approved ? '✓ Approved' : '⏳ Pending'}
+                                        </span>
+                                        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '11px', fontWeight: '600', background: t.is_active ? '#F0FDF4' : '#f5f5f5', color: t.is_active ? '#1a6b1a' : '#888', border: `1px solid ${t.is_active ? '#1a6b1a' : '#e0e0e0'}`, borderRadius: '999px', padding: '2px 8px' }}>
+                                            {t.is_active ? 'Active' : 'Inactive'}
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {/* Actions */}
+                                <div style={{ display: 'flex', gap: '0.4rem', flexShrink: 0 }}>
+                                    <button onClick={() => handleToggleApproval(t.id)} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', fontWeight: '600', background: t.is_approved ? '#FFFBEB' : '#F0FDF4', color: t.is_approved ? '#c9951a' : '#1a6b1a', border: `1px solid ${t.is_approved ? '#c9951a' : '#1a6b1a'}`, borderRadius: '6px', padding: '0.4rem 0.75rem', cursor: 'pointer' }}>
+                                        {t.is_approved ? 'Reject' : 'Approve'}
+                                    </button>
+                                    <button onClick={() => openDrawer(t)} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', fontWeight: '600', background: '#EFF6FF', color: '#3B82F6', border: '1px solid #3B82F6', borderRadius: '6px', padding: '0.4rem 0.75rem', cursor: 'pointer' }}>Edit</button>
+                                    <button onClick={() => handleDelete(t.id)} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', fontWeight: '600', background: '#FEE2E2', color: '#dc3545', border: '1px solid #dc3545', borderRadius: '6px', padding: '0.4rem 0.75rem', cursor: 'pointer' }}>🗑️</button>
+                                </div>
+                            </div>
+                        ))
                     )}
                 </div>
 
-                {/* Add/Edit Form Modal */}
-                {(showAddForm || editingTestimonial) && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                        <div className="bg-white rounded-lg p-6 w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-                            <h3 className="text-lg font-semibold mb-4">
-                                {editingTestimonial ? 'Edit Testimonial' : 'Add Testimonial'}
+                {/* Slide-in Drawer */}
+                <>
+                    {/* Overlay */}
+                    <div onClick={closeDrawer} style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.5)', zIndex: 9998, opacity: drawerOpen ? 1 : 0, pointerEvents: drawerOpen ? 'auto' : 'none', transition: 'opacity 0.3s ease' }} />
+                    {/* Drawer */}
+                    <div style={{ position: 'fixed', top: 0, right: 0, bottom: 0, width: '100%', maxWidth: '480px', background: 'white', zIndex: 9999, overflowY: 'auto', boxShadow: '-8px 0 32px rgba(0,0,0,0.15)', display: 'flex', flexDirection: 'column', transform: drawerOpen ? 'translateX(0)' : 'translateX(100%)', transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)' }}>
+                        <div style={{ padding: '1.5rem 2rem', borderBottom: '1px solid #f0f0f0', display: 'flex', alignItems: 'center', justifyContent: 'space-between', background: '#0d1f0d', flexShrink: 0 }}>
+                            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: '700', color: 'white', margin: 0 }}>
+                                {editingItem ? 'Edit Testimonial' : 'Add Testimonial'}
                             </h3>
-
-                            <form onSubmit={handleSubmit} className="space-y-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <button onClick={closeDrawer} style={{ background: 'rgba(255,255,255,0.15)', border: '2px solid rgba(255,255,255,0.4)', color: 'white', width: '2rem', height: '2rem', borderRadius: '50%', cursor: 'pointer', fontSize: '1.1rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
+                        </div>
+                        <div style={{ padding: '2rem', flex: 1 }}>
+                            <form onSubmit={handleSubmit}>
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Name <span className="text-red-500">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={data.name}
-                                            onChange={e => setData('name', e.target.value)}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                            required
-                                        />
-                                        {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
+                                        <label style={labelStyle}>Name *</label>
+                                        <input value={data.name} onChange={e => setData('name', e.target.value)} required placeholder="John Doe" style={inputStyle}
+                                            onFocus={e => e.target.style.borderColor = '#1a6b1a'} onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
+                                        {errors.name && <p style={{ color: '#dc3545', fontSize: '12px', margin: '0.25rem 0 0' }}>{errors.name}</p>}
                                     </div>
-
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Country <span className="text-red-500">*</span>
-                                        </label>
-                                        <input
-                                            type="text"
-                                            value={data.country}
-                                            onChange={e => setData('country', e.target.value)}
-                                            placeholder="e.g., USA"
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                            required
-                                        />
-                                        {errors.country && <p className="text-red-500 text-sm mt-1">{errors.country}</p>}
+                                        <label style={labelStyle}>Country *</label>
+                                        <input value={data.country} onChange={e => setData('country', e.target.value)} required placeholder="United Kingdom" style={inputStyle}
+                                            onFocus={e => e.target.style.borderColor = '#1a6b1a'} onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
+                                        {errors.country && <p style={{ color: '#dc3545', fontSize: '12px', margin: '0.25rem 0 0' }}>{errors.country}</p>}
                                     </div>
                                 </div>
-
-                                <div>
-                                    <label className="block text-sm font-medium text-gray-700 mb-1">
-                                        Message <span className="text-red-500">*</span>
-                                    </label>
-                                    <textarea
-                                        value={data.message}
-                                        onChange={e => setData('message', e.target.value)}
-                                        rows="4"
-                                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                        required
-                                    />
-                                    {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
+                                <div style={{ marginBottom: '1rem' }}>
+                                    <label style={labelStyle}>Message *</label>
+                                    <textarea value={data.message} onChange={e => setData('message', e.target.value)} required rows={4} style={{ ...inputStyle, resize: 'vertical' }}
+                                        onFocus={e => e.target.style.borderColor = '#1a6b1a'} onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
+                                    {errors.message && <p style={{ color: '#dc3545', fontSize: '12px', margin: '0.25rem 0 0' }}>{errors.message}</p>}
                                 </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginBottom: '1rem' }}>
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Rating <span className="text-red-500">*</span>
-                                        </label>
-                                        <select
-                                            value={data.rating}
-                                            onChange={e => setData('rating', parseInt(e.target.value))}
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                            required
-                                        >
-                                            <option value="5">5 Stars</option>
-                                            <option value="4">4 Stars</option>
-                                            <option value="3">3 Stars</option>
-                                            <option value="2">2 Stars</option>
-                                            <option value="1">1 Star</option>
+                                        <label style={labelStyle}>Rating *</label>
+                                        <select value={data.rating} onChange={e => setData('rating', parseInt(e.target.value))} style={inputStyle}>
+                                            {[5, 4, 3, 2, 1].map(r => <option key={r} value={r}>{r} Star{r !== 1 ? 's' : ''}</option>)}
                                         </select>
-                                        {errors.rating && <p className="text-red-500 text-sm mt-1">{errors.rating}</p>}
                                     </div>
-
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Display Order
-                                        </label>
-                                        <input
-                                            type="number"
-                                            value={data.order}
-                                            onChange={e => setData('order', parseInt(e.target.value) || 0)}
-                                            min="0"
-                                            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                                        />
-                                        {errors.order && <p className="text-red-500 text-sm mt-1">{errors.order}</p>}
-                                    </div>
-
-                                    <div>
-                                        <label className="block text-sm font-medium text-gray-700 mb-1">
-                                            Status
-                                        </label>
-                                        <div className="flex items-center h-10">
-                                            <input
-                                                type="checkbox"
-                                                checked={data.is_active}
-                                                onChange={e => setData('is_active', e.target.checked)}
-                                                className="w-4 h-4 text-green-600 border-gray-300 rounded focus:ring-green-500"
-                                            />
-                                            <label className="ml-2 text-sm text-gray-700">
-                                                Active
-                                            </label>
-                                        </div>
+                                        <label style={labelStyle}>Display Order</label>
+                                        <input type="number" value={data.order} onChange={e => setData('order', parseInt(e.target.value) || 0)} min="0" style={inputStyle}
+                                            onFocus={e => e.target.style.borderColor = '#1a6b1a'} onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
                                     </div>
                                 </div>
-
-                                <div className="flex justify-end space-x-2 pt-4 border-t">
-                                    <Button
-                                        type="button"
-                                        variant="secondary"
-                                        onClick={closeForm}
-                                        disabled={processing}
-                                    >
-                                        Cancel
-                                    </Button>
-                                    <Button
-                                        type="submit"
-                                        variant="primary"
-                                        loading={processing}
-                                        disabled={processing}
-                                    >
-                                        {editingTestimonial ? 'Update' : 'Create'}
-                                    </Button>
+                                <div style={{ marginBottom: '1.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                    <input type="checkbox" id="is_active" checked={data.is_active} onChange={e => setData('is_active', e.target.checked)} style={{ width: '16px', height: '16px', accentColor: '#1a6b1a' }} />
+                                    <label htmlFor="is_active" style={{ ...labelStyle, margin: 0 }}>Active</label>
+                                </div>
+                                <div style={{ display: 'flex', gap: '0.75rem' }}>
+                                    <button type="submit" disabled={processing} style={{ flex: 1, fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', background: processing ? '#aaa' : '#1a6b1a', color: 'white', border: 'none', borderRadius: '8px', padding: '0.75rem', cursor: processing ? 'not-allowed' : 'pointer' }}>
+                                        {processing ? 'Saving...' : editingItem ? 'Update Testimonial' : 'Add Testimonial'}
+                                    </button>
+                                    <button type="button" onClick={closeDrawer} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', background: 'white', color: '#666', border: '2px solid #e0e0e0', borderRadius: '8px', padding: '0.75rem 1.25rem', cursor: 'pointer' }}>Cancel</button>
                                 </div>
                             </form>
                         </div>
                     </div>
-                )}
+                </>
+
             </div>
         </AdminLayout>
     );

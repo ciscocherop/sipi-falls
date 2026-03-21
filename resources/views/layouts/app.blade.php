@@ -17,6 +17,27 @@
     <!-- Custom CSS (legacy - will be gradually replaced) -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+
+    <!-- Primary SEO -->
+    <meta name="description" content="Experience the magic of Sipi Falls, Uganda. Three magnificent waterfalls, abseiling, coffee tours, hiking and cultural experiences in Kapchorwa, Eastern Uganda.">
+    <meta name="keywords" content="Sipi Falls Uganda, Sipi Falls tour, abseiling Uganda, Kapchorwa waterfalls, Uganda adventure tourism, coffee tours Uganda, Mount Elgon hiking">
+    <meta name="author" content="Sipi Falls Uganda">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph — for WhatsApp, Facebook sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sipi Falls Uganda">
+    <meta property="og:image" content="{{ asset('images/gallery/falls/waterfall-base.jpg') }}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sipifalls">
+    <meta name="twitter:image" content="{{ asset('images/gallery/falls/waterfall-base.jpg') }}">
+
+    <!-- Yield for page specific overrides -->
+    @stack('seo')
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">

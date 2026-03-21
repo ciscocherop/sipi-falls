@@ -1,27 +1,21 @@
 import { useForm, usePage } from '@inertiajs/react';
 import { useState, useEffect } from 'react';
 import AdminLayout from '../../../Layouts/AdminLayout';
-import Button from '../../../Components/Admin/Button';
 
 function Edit({ page, pageName, contents }) {
     const { data, setData, post, processing, errors } = useForm({
         contents: contents.map(c => ({ key: c.key, value: c.value }))
     });
 
-    // State for accordion sections
     const [openSections, setOpenSections] = useState({});
-
-    // Flash message state
     const { flash } = usePage().props;
-    const [showFlash, setShowFlash] = useState(false);
+    const [flashMsg, setFlashMsg] = useState(null);
 
     useEffect(() => {
         if (flash.success) {
-            setShowFlash(true);
-            const timer = setTimeout(() => {
-                setShowFlash(false);
-            }, 3000);
-            return () => clearTimeout(timer);
+            setFlashMsg(flash.success);
+            const t = setTimeout(() => setFlashMsg(null), 3000);
+            return () => clearTimeout(t);
         }
     }, [flash]);
 
@@ -37,146 +31,88 @@ function Edit({ page, pageName, contents }) {
     };
 
     const toggleSection = (section) => {
-        setOpenSections(prev => ({
-            ...prev,
-            [section]: !prev[section]
-        }));
+        setOpenSections(prev => ({ ...prev, [section]: !prev[section] }));
     };
 
-    // Group contents by category for travel guide
     const groupedContents = () => {
-        if (page !== 'travelguide') {
-            // For non-travel guide pages, don't group - show all fields normally
-            return null;
-        }
-
-        const groups = {
-            'Essential Tips': [],
-            'Activities': []
-        };
-
+        if (page !== 'travelguide') return null;
+        const groups = { 'Essential Tips': [], 'Activities': [] };
         contents.forEach((content, index) => {
-            if (content.key.includes('activity')) {
-                groups['Activities'].push({ content, index });
-            } else {
-                groups['Essential Tips'].push({ content, index });
-            }
+            if (content.key.includes('activity')) groups['Activities'].push({ content, index });
+            else groups['Essential Tips'].push({ content, index });
         });
-
         return groups;
     };
 
     const groups = groupedContents();
 
+    const inputStyle = {
+        width: '100%', padding: '0.75rem 1rem',
+        border: '2px solid #e0e0e0', borderRadius: '8px',
+        fontFamily: "'Montserrat', sans-serif", fontSize: '14px',
+        color: '#333', outline: 'none', boxSizing: 'border-box',
+    };
+
+    const labelStyle = {
+        fontFamily: "'Montserrat', sans-serif", fontSize: '13px',
+        fontWeight: '600', color: '#555', display: 'block', marginBottom: '0.5rem',
+    };
+
     return (
         <AdminLayout title={`Edit ${pageName}`}>
-            <div className="space-y-6">
-                {/* Flash Message */}
-                {showFlash && flash.success && (
-                    <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded-lg shadow-sm animate-fade-in">
-                        <div className="flex items-center justify-between">
-                            <div className="flex items-center">
-                                <svg className="w-5 h-5 text-green-500 mr-3" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                                </svg>
-                                <p className="text-green-700 font-medium">{flash.success}</p>
-                            </div>
-                            <button
-                                onClick={() => setShowFlash(false)}
-                                className="text-green-500 hover:text-green-700"
-                            >
-                                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
-                                </svg>
-                            </button>
-                        </div>
+            <div style={{ padding: '2rem', background: '#F5F6F9', minHeight: '100%' }}>
+
+                {/* Flash */}
+                {flashMsg && (
+                    <div style={{ background: '#F0FDF4', borderLeft: '4px solid #1a6b1a', borderRadius: '8px', padding: '1rem 1.5rem', marginBottom: '1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                        <p style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '14px', fontWeight: '600', color: '#1a6b1a', margin: 0 }}>✓ {flashMsg}</p>
+                        <button onClick={() => setFlashMsg(null)} style={{ background: 'none', border: 'none', cursor: 'pointer', color: '#888', fontSize: '1.2rem' }}>×</button>
                     </div>
                 )}
 
                 {/* Header */}
-                <div className="bg-white rounded-lg shadow p-6">
-                    <h2 className="text-2xl font-bold" style={{ color: 'var(--neutral-dark)' }}>
-                        Edit {pageName}
-                    </h2>
-                    <p className="mt-1" style={{ color: 'var(--neutral-gray)' }}>
-                        Update the content that appears on your website
-                    </p>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                    <div>
+                        <button onClick={() => window.history.back()} style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', color: '#1a6b1a', background: 'none', border: 'none', cursor: 'pointer', padding: 0, marginBottom: '0.5rem', display: 'block' }}>
+                            ← Back to Content
+                        </button>
+                        <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', fontWeight: '700', color: '#0d1f0d', margin: 0 }}>
+                            Edit {pageName}
+                        </h1>
+                    </div>
+                    <button type="button" onClick={handleSubmit} disabled={processing}
+                        style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', background: processing ? '#aaa' : '#1a6b1a', color: 'white', border: 'none', borderRadius: '8px', padding: '0.7rem 1.5rem', cursor: processing ? 'not-allowed' : 'pointer' }}>
+                        {processing ? 'Saving...' : '💾 Save Changes'}
+                    </button>
                 </div>
 
-                {/* Edit Form */}
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit}>
                     {groups ? (
-                        // Travel Guide: Show accordion sections
                         Object.entries(groups).map(([groupName, items]) => (
-                            <div key={groupName} className="bg-white rounded-lg shadow overflow-hidden">
-                                {/* Accordion Header */}
-                                <button
-                                    type="button"
-                                    onClick={() => toggleSection(groupName)}
-                                    className="w-full px-6 py-4 flex justify-between items-center hover:bg-gray-50 transition-colors"
-                                    style={{ borderBottom: openSections[groupName] ? '1px solid #e5e7eb' : 'none' }}
-                                >
-                                    <div className="flex items-center gap-3">
-                                        <span className="text-lg font-semibold" style={{ color: 'var(--primary-green)' }}>
-                                            {groupName}
-                                        </span>
-                                        <span className="text-sm px-2 py-1 rounded-full bg-gray-100" style={{ color: 'var(--neutral-gray)' }}>
-                                            {items.length} {items.length === 1 ? 'field' : 'fields'}
-                                        </span>
+                            <div key={groupName} style={{ background: 'white', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', marginBottom: '1rem', overflow: 'hidden' }}>
+                                <button type="button" onClick={() => toggleSection(groupName)}
+                                    style={{ width: '100%', padding: '1.25rem 1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', background: 'none', border: 'none', cursor: 'pointer', borderBottom: openSections[groupName] ? '1px solid #f0f0f0' : 'none' }}>
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                                        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '15px', fontWeight: '600', color: '#1a6b1a' }}>{groupName}</span>
+                                        <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '12px', background: '#f0f0f0', color: '#888', borderRadius: '999px', padding: '2px 10px' }}>{items.length} fields</span>
                                     </div>
-                                    <svg
-                                        className={`w-5 h-5 transition-transform ${openSections[groupName] ? 'rotate-180' : ''}`}
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                    </svg>
+                                    <span style={{ color: '#888', transition: 'transform 0.2s', display: 'inline-block', transform: openSections[groupName] ? 'rotate(180deg)' : 'rotate(0)' }}>▼</span>
                                 </button>
-
-                                {/* Accordion Content */}
                                 {openSections[groupName] && (
-                                    <div className="p-6 space-y-6">
+                                    <div style={{ padding: '1.5rem' }}>
                                         {items.map(({ content, index }) => (
-                                            <div key={content.key} className="pb-6 border-b last:border-b-0">
-                                                <label
-                                                    htmlFor={content.key}
-                                                    className="block text-sm font-medium mb-2"
-                                                    style={{ color: 'var(--neutral-dark)' }}
-                                                >
-                                                    {content.label} <span style={{ color: 'var(--accent-coral)' }}>*</span>
-                                                </label>
-
+                                            <div key={content.key} style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid #f5f5f5' }}>
+                                                <label style={labelStyle}>{content.label} *</label>
                                                 {content.type === 'textarea' ? (
-                                                    <textarea
-                                                        id={content.key}
-                                                        value={data.contents[index].value}
-                                                        onChange={(e) => updateContent(index, e.target.value)}
-                                                        rows="4"
-                                                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
-                                                        style={{
-                                                            borderColor: errors[`contents.${index}.value`] ? 'var(--accent-coral)' : '#d1d5db',
-                                                            '--tw-ring-color': 'var(--primary-green)'
-                                                        }}
-                                                    />
+                                                    <textarea value={data.contents[index].value} onChange={e => updateContent(index, e.target.value)} rows={4}
+                                                        style={{ ...inputStyle, resize: 'vertical' }}
+                                                        onFocus={e => e.target.style.borderColor = '#1a6b1a'}
+                                                        onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
                                                 ) : (
-                                                    <input
-                                                        type={content.type}
-                                                        id={content.key}
-                                                        value={data.contents[index].value}
-                                                        onChange={(e) => updateContent(index, e.target.value)}
-                                                        className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
-                                                        style={{
-                                                            borderColor: errors[`contents.${index}.value`] ? 'var(--accent-coral)' : '#d1d5db',
-                                                            '--tw-ring-color': 'var(--primary-green)'
-                                                        }}
-                                                    />
-                                                )}
-
-                                                {errors[`contents.${index}.value`] && (
-                                                    <p className="mt-1 text-sm" style={{ color: 'var(--accent-coral)' }}>
-                                                        {errors[`contents.${index}.value`]}
-                                                    </p>
+                                                    <input type={content.type} value={data.contents[index].value} onChange={e => updateContent(index, e.target.value)}
+                                                        style={inputStyle}
+                                                        onFocus={e => e.target.style.borderColor = '#1a6b1a'}
+                                                        onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
                                                 )}
                                             </div>
                                         ))}
@@ -185,75 +121,27 @@ function Edit({ page, pageName, contents }) {
                             </div>
                         ))
                     ) : (
-                        // Other pages: Show regular form
-                        <div className="bg-white rounded-lg shadow p-6 space-y-6">
+                        <div style={{ background: 'white', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', padding: '2rem' }}>
                             {contents.map((content, index) => (
-                                <div key={content.key}>
-                                    <label
-                                        htmlFor={content.key}
-                                        className="block text-sm font-medium mb-2"
-                                        style={{ color: 'var(--neutral-dark)' }}
-                                    >
-                                        {content.label} <span style={{ color: 'var(--accent-coral)' }}>*</span>
-                                    </label>
-
+                                <div key={content.key} style={{ marginBottom: '1.5rem', paddingBottom: '1.5rem', borderBottom: index < contents.length - 1 ? '1px solid #f5f5f5' : 'none' }}>
+                                    <label style={labelStyle}>{content.label} *</label>
                                     {content.type === 'textarea' ? (
-                                        <textarea
-                                            id={content.key}
-                                            value={data.contents[index].value}
-                                            onChange={(e) => updateContent(index, e.target.value)}
-                                            rows="4"
-                                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
-                                            style={{
-                                                borderColor: errors[`contents.${index}.value`] ? 'var(--accent-coral)' : '#d1d5db',
-                                                '--tw-ring-color': 'var(--primary-green)'
-                                            }}
-                                        />
+                                        <textarea value={data.contents[index].value} onChange={e => updateContent(index, e.target.value)} rows={4}
+                                            style={{ ...inputStyle, resize: 'vertical' }}
+                                            onFocus={e => e.target.style.borderColor = '#1a6b1a'}
+                                            onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
                                     ) : (
-                                        <input
-                                            type={content.type}
-                                            id={content.key}
-                                            value={data.contents[index].value}
-                                            onChange={(e) => updateContent(index, e.target.value)}
-                                            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2"
-                                            style={{
-                                                borderColor: errors[`contents.${index}.value`] ? 'var(--accent-coral)' : '#d1d5db',
-                                                '--tw-ring-color': 'var(--primary-green)'
-                                            }}
-                                        />
-                                    )}
-
-                                    {errors[`contents.${index}.value`] && (
-                                        <p className="mt-1 text-sm" style={{ color: 'var(--accent-coral)' }}>
-                                            {errors[`contents.${index}.value`]}
-                                        </p>
+                                        <input type={content.type} value={data.contents[index].value} onChange={e => updateContent(index, e.target.value)}
+                                            style={inputStyle}
+                                            onFocus={e => e.target.style.borderColor = '#1a6b1a'}
+                                            onBlur={e => e.target.style.borderColor = '#e0e0e0'} />
                                     )}
                                 </div>
                             ))}
                         </div>
                     )}
-
-                    {/* Action Buttons - Sticky at bottom */}
-                    <div className="bg-white rounded-lg shadow p-6 sticky bottom-4">
-                        <div className="flex gap-4">
-                            <Button
-                                type="submit"
-                                variant="primary"
-                                loading={processing}
-                            >
-                                💾 Save Changes
-                            </Button>
-                            <Button
-                                type="button"
-                                variant="secondary"
-                                onClick={() => window.history.back()}
-                                disabled={processing}
-                            >
-                                Cancel
-                            </Button>
-                        </div>
-                    </div>
                 </form>
+
             </div>
         </AdminLayout>
     );
