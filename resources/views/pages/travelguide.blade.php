@@ -101,8 +101,8 @@
 
         <!-- Extra Tips Button -->
         <div class="text-center mt-4">
-          <button type="button" class="btn btn-lg px-4 shadow-sm" data-bs-toggle="modal" data-bs-target="#extraTipsModal"
-                  aria-label="View extra travel tips for Sipi Falls"
+          <button type="button"
+                  onclick="document.getElementById('extraTipsDrawer').style.transform='translateX(0)'; document.getElementById('extraTipsOverlay').style.display='block'; document.body.style.overflow='hidden';"
                   style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.75rem 2.5rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; border-radius: 0.25rem; transition: all 0.3s; cursor: pointer;"
                   onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
                   onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
@@ -113,35 +113,64 @@
     </section>
   </section>
 
-  <!-- Extra Tips Modal -->
-  <div class="modal fade" id="extraTipsModal" tabindex="-1" aria-labelledby="extraTipsModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="max-width: 92vw; width: 100%; margin: 1rem auto;">
-      <div class="modal-content" style="background: var(--neutral-offwhite); border-top: 4px solid var(--accent-gold); border-radius: 0.375rem; max-height: 80vh; display: flex; flex-direction: column;">
-        <div class="modal-header" style="background-color: var(--primary-green); border-radius: 0.25rem 0.25rem 0 0; flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem;">
-          <h5 class="modal-title" id="extraTipsModalLabel" style="color: var(--neutral-offwhite); font-family: var(--font-body); margin: 0;">Extra Tips for Sipi Falls</h5>
-          <button type="button"
-                  data-bs-dismiss="modal"
-                  aria-label="Close"
-                  style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6); color: white; font-size: 1.25rem; line-height: 1; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; z-index: 20; position: relative;">
-            &times;
+  <!-- Extra Tips Overlay -->
+  <div id="extraTipsOverlay"
+       onclick="document.getElementById('extraTipsDrawer').style.transform='translateX(100%)'; document.getElementById('extraTipsOverlay').style.display='none'; document.body.style.overflow='';"
+       style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9998;">
+  </div>
+
+  <!-- Extra Tips Drawer -->
+  <div id="extraTipsDrawer"
+       style="position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 480px; background: white; z-index: 9999; transform: translateX(100%); transition: transform 0.35s ease; display: flex; flex-direction: column; box-shadow: -8px 0 32px rgba(0,0,0,0.15);">
+
+      <!-- Drawer Header -->
+      <div style="background: var(--primary-green); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;">
+          <h5 style="font-family: var(--font-display); color: white; margin: 0; font-size: 1.2rem; font-weight: 700;">Extra Tips for Sipi Falls</h5>
+          <button onclick="document.getElementById('extraTipsDrawer').style.transform='translateX(100%)'; document.getElementById('extraTipsOverlay').style.display='none'; document.body.style.overflow='';"
+                  style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6); color: white; font-size: 1.25rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              &times;
           </button>
-        </div>
-        <div class="modal-body" style="overflow-y: auto; flex: 1 1 auto; padding: 1.5rem;">
-          <ul class="list-unstyled mb-0" style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.95rem; line-height: 1.8;" role="list">
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Carry cash — ATMs are scarce in Sipi. Withdraw in Mbale or Kampala before arriving.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Start hikes early morning — trails are cooler and the light is best for photography.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Wear waterproof shoes — the paths near the falls are almost always wet and slippery.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Bring a light rain jacket even in dry season — mist from the falls will soak you.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Hire a local Sabiny guide — they know hidden viewpoints tourists never find on their own.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Respect the local culture — ask permission before photographing community members.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Mobile data is limited — download offline maps (Maps.me or Google Maps) before you go.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Try the local Arabica coffee — Sipi is one of Uganda's top coffee-growing regions.</li>
-            <li style="padding: 0.6rem 0; border-bottom: 1px solid rgba(0,0,0,0.07);"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Book accommodation in advance during peak season (Dec–Feb, Jul–Aug) — lodges fill up fast.</li>
-            <li style="padding: 0.6rem 0;"><i class="fas fa-check-circle" style="color: var(--primary-green); margin-right: 0.6rem;"></i>Pack a headlamp — power cuts are common in the evenings.</li>
-          </ul>
-        </div>
       </div>
-    </div>
+
+      <!-- Drawer Body -->
+      <div style="overflow-y: auto; flex: 1; padding: 1.5rem;">
+          <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.95rem; color: var(--neutral-gray); line-height: 1.8;">
+              @foreach($extraTips ?? [] as $tip)
+              <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; gap: 0.75rem;">
+                  <span style="color: var(--accent-gold); font-size: 1rem; flex-shrink: 0; margin-top: 0.2rem;">🌿</span>
+                  <span>{{ $tip }}</span>
+              </li>
+              @endforeach
+
+              {{-- Fallback if no tips from database --}}
+              @if(empty($extraTips))
+              @foreach([
+                  'Carry cash — ATMs are scarce in Sipi. Stock up in Mbale or Kampala before arrival.',
+                  'Start hikes early morning — mist clears by 9am giving the best waterfall views.',
+                  'Wear sturdy hiking shoes with good grip — the trails can be slippery especially after rain.',
+                  'Bring a light rain jacket — weather changes quickly on Mount Elgon.',
+                  'Hire a local Sabiny guide — they know hidden trails and cultural stories you won\'t find anywhere else.',
+                  'Book abseiling at least a day in advance — equipment and instructors need to be arranged.',
+                  'The best coffee is bought directly from local farmers — ask your guide to connect you.',
+                  'Respect local customs — ask before photographing people or sacred sites.',
+                  'Carry enough water for hikes — at least 2 litres per person.',
+                  'Mobile network is limited — MTN works best in the area.',
+              ] as $tip)
+              <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; gap: 0.75rem;">
+                  <span style="color: var(--accent-gold); font-size: 1rem; flex-shrink: 0; margin-top: 0.2rem;">🌿</span>
+                  <span>{{ $tip }}</span>
+              </li>
+              @endforeach
+              @endif
+          </ul>
+      </div>
+
+      <!-- Drawer Footer -->
+      <div style="padding: 1rem 1.5rem; border-top: 1px solid #f0f0f0; background: var(--neutral-light); flex-shrink: 0;">
+          <p style="font-family: var(--font-body); font-size: 0.8rem; color: var(--neutral-gray); margin: 0; opacity: 0.7; text-align: center;">
+              🌊 Sipi Falls — Keep Sipping
+          </p>
+      </div>
   </div>
 
   <!-- Travel Guide Stats Strip -->
