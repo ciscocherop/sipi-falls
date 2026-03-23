@@ -137,7 +137,6 @@
           <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.95rem; color: var(--neutral-gray); line-height: 1.8;">
               @foreach($extraTips ?? [] as $tip)
               <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; gap: 0.75rem;">
-                  <span style="color: var(--accent-gold); font-size: 1rem; flex-shrink: 0; margin-top: 0.2rem;">🌿</span>
                   <span>{{ $tip }}</span>
               </li>
               @endforeach
@@ -157,7 +156,6 @@
                   'Mobile network is limited — MTN works best in the area.',
               ] as $tip)
               <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; gap: 0.75rem;">
-                  <span style="color: var(--accent-gold); font-size: 1rem; flex-shrink: 0; margin-top: 0.2rem;">🌿</span>
                   <span>{{ $tip }}</span>
               </li>
               @endforeach
@@ -254,6 +252,12 @@
               <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
               <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_1_title'] ?? 'Hiking the Waterfalls' }}</h5>
               <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_1_description'] ?? 'Explore scenic trails to all three waterfalls.' }}</p>
+              <div class="activity-reactions" data-activity="travelguide_activity_1" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
+              </div>
             </div>
           </div>
         </div>
@@ -268,6 +272,12 @@
               <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
               <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_2_title'] ?? 'Abseiling' }}</h5>
               <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_2_description'] ?? 'Descend a 100m cliff beside the main waterfall.' }}</p>
+              <div class="activity-reactions" data-activity="travelguide_activity_2" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
+              </div>
             </div>
           </div>
         </div>
@@ -282,6 +292,12 @@
               <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
               <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_3_title'] ?? 'Coffee Tours' }}</h5>
               <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_3_description'] ?? 'Visit local farms and taste freshly brewed Sipi coffee.' }}</p>
+              <div class="activity-reactions" data-activity="travelguide_activity_3" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
+              </div>
             </div>
           </div>
         </div>
@@ -296,6 +312,12 @@
               <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
               <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_4_title'] ?? 'Bird Watching' }}</h5>
               <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_4_description'] ?? 'Discover over 300 bird species in the Mount Elgon region.' }}</p>
+              <div class="activity-reactions" data-activity="travelguide_activity_4" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
+              </div>
             </div>
           </div>
         </div>
@@ -310,6 +332,12 @@
               <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
               <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_5_title'] ?? 'Cave Adventures' }}</h5>
               <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_5_description'] ?? 'The ancient caves echo stories of the past.' }}</p>
+              <div class="activity-reactions" data-activity="travelguide_activity_5" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
+              </div>
             </div>
           </div>
         </div>
@@ -324,6 +352,12 @@
               <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
               <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_6_title'] ?? 'Rock Climbing' }}</h5>
               <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_6_description'] ?? 'Challenge yourself on rugged cliffs with guided rock climbing adventures.' }}</p>
+              <div class="activity-reactions" data-activity="travelguide_activity_6" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
+                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
+              </div>
             </div>
           </div>
         </div>

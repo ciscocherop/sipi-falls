@@ -21,6 +21,7 @@ const NAV_GROUPS = [
         label: 'Site',
         items: [
             { name: 'Content', href: '/admin/content', icon: FileText },
+            { name: 'Admin Users', href: '/admin/users', icon: Users },
         ]
     },
 ];

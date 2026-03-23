@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PublicFormController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ActivityReactionController;
 
 // Public pages
 Route::get('/', function () {
@@ -31,6 +33,10 @@ Route::post('/booking', [PublicFormController::class, 'booking'])->name('booking
 Route::post('/contact', [PublicFormController::class, 'contact'])->name('contact.submit');
 Route::post('/newsletter', [PublicFormController::class, 'newsletter'])->name('newsletter.submit');
 Route::post('/testimonials/submit', [App\Http\Controllers\Admin\TestimonialController::class, 'publicSubmit'])->name('testimonial.submit');
+
+// Activity Reactions
+Route::post('/reactions/{activityKey}/{emoji}', [ActivityReactionController::class, 'toggle'])->name('reactions.toggle');
+Route::get('/reactions/{activityKey}', [ActivityReactionController::class, 'counts'])->name('reactions.counts');
 
 // Auth routes
 Route::get('/login', [LoginController::class, 'show'])->name('login');
@@ -83,4 +89,10 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
     Route::put('/accommodations/{accommodation}', [App\Http\Controllers\Admin\AccommodationController::class, 'update'])->name('admin.accommodations.update');
     Route::delete('/accommodations/{accommodation}', [App\Http\Controllers\Admin\AccommodationController::class, 'destroy'])->name('admin.accommodations.destroy');
     Route::patch('/accommodations/{accommodation}/toggle', [App\Http\Controllers\Admin\AccommodationController::class, 'toggle'])->name('admin.accommodations.toggle');
+
+    // Users
+    Route::get('/users', [UserController::class, 'index'])->name('admin.users.index');
+    Route::post('/users', [UserController::class, 'store'])->name('admin.users.store');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('admin.users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('admin.users.destroy');
 });

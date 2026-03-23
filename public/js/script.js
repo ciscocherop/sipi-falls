@@ -973,3 +973,69 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+// =============================================================================
+// 28. ACTIVITY REACTIONS
+// Loads reaction counts on page load and handles toggle clicks on each
+// activity card's reaction buttons. Uses session-based tracking via the
+// /reactions/{activityKey}/{emoji} API endpoints.
+// =============================================================================
+async function loadReactions() {
+  var groups = document.querySelectorAll('.activity-reactions');
+  for (var i = 0; i < groups.length; i++) {
+    var group = groups[i];
+    var activityKey = group.dataset.activity;
+    try {
+      var res = await fetch('/reactions/' + activityKey);
+      var data = await res.json();
+      group.querySelectorAll('.reaction-btn').forEach(function (btn) {
+        var emoji = btn.dataset.emoji;
+        if (data[emoji]) {
+          btn.querySelector('.reaction-count').textContent = data[emoji].count;
+          if (data[emoji].reacted) {
+            btn.style.background = 'rgba(201,149,26,0.4)';
+            btn.style.borderColor = 'var(--accent-gold)';
+          }
+        }
+      });
+    } catch (e) { }
+  }
+}
+
+async function toggleReaction(btn, activityKey, emoji) {
+  btn.disabled = true;
+  try {
+    var res = await fetch('/reactions/' + activityKey + '/' + emoji, {
+      method: 'POST',
+      headers: {
+        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+        'Content-Type': 'application/json',
+      }
+    });
+    var data = await res.json();
+    btn.querySelector('.reaction-count').textContent = data.count;
+    if (data.reacted) {
+      btn.style.background = 'rgba(201,149,26,0.4)';
+      btn.style.borderColor = 'var(--accent-gold)';
+    } else {
+      btn.style.background = 'rgba(255,255,255,0.15)';
+      btn.style.borderColor = 'rgba(255,255,255,0.3)';
+    }
+  } catch (e) { }
+  btn.disabled = false;
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.reaction-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var group = this.closest('.activity-reactions');
+      var activityKey = group.dataset.activity;
+      var emoji = this.dataset.emoji;
+      toggleReaction(this, activityKey, emoji);
+    });
+  });
+
+  if (document.querySelector('.activity-reactions')) {
+    loadReactions();
+  }
+});

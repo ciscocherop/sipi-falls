@@ -114,10 +114,33 @@ function Dashboard({ stats, recentActivity }) {
                             fontSize: '22px',
                             fontWeight: '700',
                             color: '#c9951a',
-                            margin: 0,
+                            margin: '0 0 0.75rem',
                         }}>
                             Sipi Falls 🌊
                         </p>
+                        <a
+                            href="/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                                fontFamily: "'Montserrat', sans-serif",
+                                fontSize: '12px',
+                                fontWeight: '600',
+                                color: '#0d1f0d',
+                                background: '#c9951a',
+                                borderRadius: '6px',
+                                padding: '0.4rem 1rem',
+                                textDecoration: 'none',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                gap: '0.4rem',
+                                transition: 'opacity 0.2s',
+                            }}
+                            onMouseEnter={e => e.currentTarget.style.opacity = '0.85'}
+                            onMouseLeave={e => e.currentTarget.style.opacity = '1'}
+                        >
+                            🌐 View Site
+                        </a>
                     </div>
                 </div>
 
