@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: var(--font-body);
+            font-family: 'Montserrat', Arial, sans-serif;
             line-height: 1.6;
-            color: var(--neutral-gray);
+            color: #4a4a4a;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
@@ -15,78 +15,111 @@
         .container {
             max-width: 600px;
             margin: 20px auto;
-            background: white;
+            background: #ffffff;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
         .header {
-            background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%);
-            color: white;
-            padding: 30px 20px;
+            background-color: #0d1f0d;
+            padding: 28px 24px;
             text-align: center;
         }
         .header h1 {
-            margin: 0;
-            font-size: 28px;
-            color: var(--accent-gold);
-            font-family: var(--font-display);
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #E8B923;
+            margin: 0 0 4px;
+            letter-spacing: 0.05em;
         }
         .header p {
-            margin: 5px 0 0;
-            font-size: 14px;
-            opacity: 0.9;
-            font-family: var(--font-body);
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 12px;
+            color: rgba(255,255,255,0.65);
+            margin: 0;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
         }
         .content {
-            padding: 30px 20px;
+            padding: 32px 28px;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 15px;
+            color: #4a4a4a;
+            line-height: 1.8;
         }
         .content p {
-            margin: 0 0 15px;
+            margin: 0 0 16px;
         }
         .footer {
-            background: #2C3E50;
-            color: #F5F5F5;
-            padding: 20px;
+            background-color: #0d1f0d;
+            padding: 24px 20px;
             text-align: center;
+        }
+        .footer p {
+            font-family: 'Montserrat', Arial, sans-serif;
             font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin: 4px 0;
         }
         .footer a {
-            color: var(--primary-green);
+            color: #E8B923;
             text-decoration: none;
         }
-        .unsubscribe {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid #444;
-            color: #999;
+        .unsubscribe-section {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            margin-top: 16px;
+            padding-top: 14px;
+        }
+        .unsubscribe-section p {
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-size: 11px;
+            color: rgba(255,255,255,0.35);
+            margin: 4px 0;
+        }
+        .unsubscribe-section a {
+            color: rgba(255,255,255,0.5);
+            text-decoration: underline;
+            font-size: 11px;
+        }
+        .unsubscribe-section a:hover {
+            color: #E8B923;
         }
     </style>
 </head>
 <body>
     <div class="container">
+
         <div class="header">
             <h1>🏞️ Sipi Falls</h1>
-            <p>Experience the Beauty of Uganda</p>
+            <p>Keep Sipping</p>
         </div>
-        
+
         <div class="content">
             {!! nl2br(e($content)) !!}
         </div>
-        
+
         <div class="footer">
-            <p><strong>Sipi Falls Tourism</strong></p>
+            <p><strong style="color: rgba(255,255,255,0.8);">Sipi Falls Tourism</strong></p>
             <p>{{ $contactInfo['contact_address'] ?? 'Kapchorwa, Uganda' }}</p>
             <p>
-                <a href="mailto:{{ $contactInfo['contact_email'] ?? 'info@sipifalls.com' }}">{{ $contactInfo['contact_email'] ?? 'info@sipifalls.com' }}</a> | 
-                <a href="tel:{{ str_replace(' ', '', $contactInfo['contact_phone'] ?? '+256703558174') }}">{{ $contactInfo['contact_phone'] ?? '+256 703558174' }}</a>
+                <a href="mailto:{{ $contactInfo['contact_email'] ?? 'info@sipifalls.com' }}">
+                    {{ $contactInfo['contact_email'] ?? 'info@sipifalls.com' }}
+                </a>
+                &nbsp;|&nbsp;
+                <a href="tel:{{ str_replace(' ', '', $contactInfo['contact_phone'] ?? '+256703558174') }}">
+                    {{ $contactInfo['contact_phone'] ?? '+256 703558174' }}
+                </a>
             </p>
-            
-            <div class="unsubscribe">
-                <p>You're receiving this email because you subscribed to our newsletter.</p>
-                <p>If you no longer wish to receive these emails, you can unsubscribe at any time.</p>
+
+            <div class="unsubscribe-section">
+                <p>You're receiving this because you subscribed to the Sipi Falls newsletter.</p>
+                <p>
+                    <a href="{{ $unsubscribeUrl }}">Unsubscribe</a>
+                </p>
             </div>
         </div>
+
     </div>
 </body>
 </html>

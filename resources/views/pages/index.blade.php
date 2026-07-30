@@ -12,45 +12,78 @@
 @section('title', 'Sipi Falls - Keep Sipping!!')
 
 @section('content')
-    <!-- Hero Section - Video Background -->
-    <section class="relative h-screen overflow-hidden w-full reveal">
-        <!-- Video Background -->
-        <div class="absolute inset-0 z-0">
-            <video 
-                autoplay 
-                loop 
-                muted 
-                playsinline
-                class="absolute inset-0 w-full h-full object-cover"
-                aria-label="Sipi Falls video background">
-                <source src="{{ asset('images/banner.mp4') }}" type="video/mp4">
-                <!-- Fallback image if video doesn't load -->
-                <img src="{{ asset('images/BANNER.jpg') }}" alt="Sipi Falls" class="w-full h-full object-cover">
-            </video>
-            <!-- Dark overlay for better text readability -->
-            <div class="absolute inset-0 bg-black opacity-30"></div>
+    <section id="hero-section" class="relative h-screen overflow-hidden w-full reveal">
+        <!-- Image Background -->
+        <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('/images/Sipi-Falls.jpg');">
+            <img src="/images/Sipi-Falls.jpg" alt="Sipi Falls" class="sr-only">
+            <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(120,80,0,0.55) 0%, rgba(20,50,10,0.35) 50%, rgba(10,35,10,0.55) 100%);"></div>
         </div>
-        
+
         <!-- Hero Content Overlay -->
-        <div class="absolute inset-0 flex items-center justify-center z-10 p-8 max-w-[90%] mx-auto">
-            <div class="text-center space-y-6">
-                <!-- Mood Setter -->
-                <p class="text-[var(--accent-gold)] font-light text-lg md:text-xl tracking-widest uppercase drop-shadow-lg" 
-                style="font-family: var(--font-body);">
-                    In Nature, Nothing is perfect,
-                </p>
-                
-                <!-- Hero Statement -->
-                <h1 class="text-white font-bold text-6xl md:text-7xl lg:text-8xl tracking-wide drop-shadow-xl" 
-                    style="font-family: var(--font-display);">
-                    And Everything Is Perfect.
-                </h1>
+        <div class="absolute inset-0 flex items-center z-10 px-8 md:px-16">
+            <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
+
+                <!-- Left: Text content -->
+                <div class="max-w-3xl space-y-6 text-left">
+
+                    <!-- Eastern Uganda pill -->
+                    <div style="display: flex; align-items: center; max-width: 480px;">
+                        <span style="background: rgba(100,70,0,0.55); color: rgba(255,255,255,0.95); font-family: var(--font-primary); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 999px; white-space: nowrap; flex-shrink: 0; border: 1px solid rgba(255,200,50,0.35);">
+                            Eastern Uganda
+                        </span>
+                        <div style="flex: 1; height: 1px; background: linear-gradient(to right, rgba(255,200,50,0.5), transparent); margin-left: 0.75rem;"></div>
+                    </div>
+
+                    <!-- Hero Statement -->
+                    <h1 class="text-white font-bold text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-xl"
+                        style="font-family: var(--font-primary);">
+                        Where Waterfalls, Coffee Trails, and Cliffs Meet Adventure
+                    </h1>
+
+                    <!-- Supporting paragraph -->
+                    <p class="text-white/90 text-base md:text-lg" style="font-family: var(--font-primary);">
+                        Plan your Sipi Falls experience with guided hikes, abseiling thrills, and unforgettable mountain views.
+                    </p>
+
+                    <!-- CTA buttons -->
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="/travelguide"
+                           style="font-family: var(--font-primary); font-weight: 700; font-size: 0.95rem; text-decoration: none; background: var(--accent-gold); color: #1a1a0a; padding: 0.75rem 1.75rem; border-radius: 999px; display: inline-block; transition: all 0.25s; border: 2px solid var(--accent-gold);"
+                           onmouseover="this.style.background='#fff'; this.style.color='#1a1a0a'; this.style.borderColor='#fff';"
+                           onmouseout="this.style.background='var(--accent-gold)'; this.style.color='#1a1a0a'; this.style.borderColor='var(--accent-gold)';">
+                            Explore Activities
+                        </a>
+                        <a href="/contact"
+                           style="font-family: var(--font-primary); font-weight: 700; font-size: 0.95rem; text-decoration: none; background: transparent; color: white; padding: 0.75rem 1.75rem; border-radius: 999px; display: inline-block; transition: all 0.25s; border: 2px solid rgba(255,255,255,0.7);"
+                           onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.borderColor='white';"
+                           onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.7)';">
+                            Talk to a Guide
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Stat cards -->
+                <div class="flex flex-col gap-3 hero-stat-cards" style="width: 220px;">
+                    <div class="hero-stat-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.5rem;">
+                        <p style="color: white; font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.2rem;">3</p>
+                        <p style="color: rgba(255,255,255,0.8); font-family: var(--font-primary); font-size: 0.78rem; margin: 0; font-weight: 400;">Waterfall levels</p>
+                    </div>
+                    <div class="hero-stat-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.5rem;">
+                        <p style="color: white; font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.2rem;">4.5h</p>
+                        <p style="color: rgba(255,255,255,0.8); font-family: var(--font-primary); font-size: 0.78rem; margin: 0; font-weight: 400;">Guided trail loop</p>
+                    </div>
+                    <div class="hero-stat-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.5rem;">
+                        <p style="color: white; font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.2rem;">1,775m</p>
+                        <p style="color: rgba(255,255,255,0.8); font-family: var(--font-primary); font-size: 0.78rem; margin: 0; font-weight: 400;">Mt. Elgon slopes</p>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- Scroll Indicator — pinned to bottom of hero -->
+        <!-- Scroll Indicator -->
         <div class="absolute bottom-8 left-0 right-0 z-10" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.6;">
-            <span style="font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.3em; color: white; text-transform: uppercase;">Scroll to explore</span>
+            <span style="font-family: var(--font-primary); font-size: 0.65rem; letter-spacing: 0.3em; color: white; text-transform: uppercase;">Scroll to explore</span>
             <div style="width: 1px; height: 40px; background: linear-gradient(180deg, white, transparent);"></div>
         </div>
     </section>

@@ -14,8 +14,10 @@
 @section('content')
 
   <!-- CONTACT HERO SECTION -->
-  <section class="reveal" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('{{ asset('images/gallery/adventure/abseil9.jpg') }}') center/cover no-repeat fixed; padding: 7rem 0;">
-    <div class="container text-center">
+  <section class="reveal" style="position: relative; overflow: hidden; padding: 7rem 0;">
+      <div class="kenburns-bg" style="position: absolute; inset: 0; background: url('{{ asset('images/gallery/adventure/abseil9.jpg') }}') center/cover no-repeat; animation: kenburns 12s ease-in-out infinite; z-index: 0;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)); z-index: 1;"></div>
+    <div class="container text-center" style="position: relative; z-index: 2;">
         <p style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 1rem;">We'd Love To Hear From You</p>
         <h1 style="font-family: var(--font-display); color: white; font-size: 3.5rem; font-weight: 700; margin-bottom: 1rem; line-height: 1.2;">
             Ready for Sipi? Let's Begin<br>
@@ -112,21 +114,21 @@
                   </div>
               </div>
 
-              <!-- Nature Walks -->
+              <!-- Mount Elgon Hike -->
               <div class="col-md-6 col-lg-3">
                   <div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-top: 3px solid var(--primary-green); border-radius: 0.5rem; padding: 1rem 1.25rem; height: 100%; transition: all 0.3s;"
                       onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.transform='translateY(-4px)';"
                       onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.transform='translateY(0)';">
                       <div style="text-align: center; margin-bottom: 1.25rem;">
-                          <i class="fas fa-leaf" style="font-size: 2rem; color: var(--primary-green); margin-bottom: 0.75rem; display: block;"></i>
-                          <h5 style="font-family: var(--font-body); font-weight: 700; color: white; margin-bottom: 0.25rem;">Nature Walks</h5>
-                          <div style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--accent-gold);">$20-35</div>
-                          <div style="font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,255,255,0.4);">per person</div>
+                          <i class="fas fa-mountain" style="font-size: 2rem; color: var(--primary-green); margin-bottom: 0.75rem; display: block;"></i>
+                          <h5 style="font-family: var(--font-body); font-weight: 700; color: white; margin-bottom: 0.25rem;">Mount Elgon Hike</h5>
+                          <div style="font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--accent-gold);">$100</div>
+                          <div style="font-family: var(--font-body); font-size: 0.8rem; color: rgba(255,255,255,0.4);">per person · 3-day tour</div>
                       </div>
                       <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.85rem; color: rgba(255,255,255,0.7);">
-                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Bird watching</li>
-                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Local flora & fauna</li>
-                          <li style="padding: 0.4rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>1-2 hours walk</li>
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>3-day trek to the peak</li>
+                          <li style="padding: 0.4rem 0; border-bottom: 1px solid rgba(255,255,255,0.07);"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Through montane forest</li>
+                          <li style="padding: 0.4rem 0;"><i class="fas fa-check" style="color: var(--primary-green); margin-right: 0.5rem;"></i>Wildlife & bird watching</li>
                       </ul>
                   </div>
               </div>
@@ -285,21 +287,29 @@
                        onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none';">
               </div>
 
-              <div class="col-md-6">
-                <label for="activities" class="form-label" style="color: var(--neutral-gray); font-family: var(--font-body); font-weight: 600; font-size: 0.9rem;">Activity *</label>
-                <select id="activities" name="preferred_activities" class="form-select" required 
-                        style="font-family: var(--font-body); color: var(--neutral-gray); padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.5rem;"
-                        onfocus="this.style.borderColor='var(--primary-green)'; this.style.boxShadow='0 0 0 3px rgba(26,107,26,0.1)';"
-                        onblur="this.style.borderColor='#e0e0e0'; this.style.boxShadow='none';">
-                  <option value="" disabled selected>Select activity</option>
-                  <option value="hiking">Hiking the Waterfalls</option>
-                  <option value="abseiling">Abseiling</option>
-                  <option value="coffee-tour">Coffee Tour</option>
-                  <option value="nature-walks">Nature Walks</option>
-                  <option value="bird-watching">Bird Watching</option>
-                  <option value="rock-climbing">Rock Climbing</option>
-                  <option value="cultural">Cultural Experiences</option>
-                </select>
+              <div class="col-12">
+                <label style="color: var(--neutral-gray); font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Select Activities *</label>
+                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem;">
+                    @foreach([
+                        'hiking'          => '🥾 Hiking',
+                        'abseiling'       => '🧗 Abseiling',
+                        'coffee-tour'     => '☕ Coffee Tour',
+                        'nature-walks'    => '🌿 Nature Walks',
+                        'bird-watching'   => '🦅 Bird Watching',
+                        'rock-climbing'   => '⛰️ Rock Climbing',
+                        'cave-adventures' => '🕳️ Cave Adventures',
+                        'mt-elgon-hike'   => '🏔️ Mt Elgon Hike',
+                    ] as $value => $label)
+                    <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); background: white;"
+                           onmouseover="this.style.borderColor='var(--primary-green)'; this.style.background='rgba(26,107,26,0.04)';"
+                           onmouseout="if(!this.querySelector('input').checked){ this.style.borderColor='#e0e0e0'; this.style.background='white'; }">
+                        <input type="checkbox" name="preferred_activities[]" value="{{ $value }}"
+                               style="width: 15px; height: 15px; accent-color: var(--primary-green); flex-shrink: 0; cursor: pointer;"
+                               onchange="this.closest('label').style.borderColor=this.checked?'var(--primary-green)':'#e0e0e0'; this.closest('label').style.background=this.checked?'rgba(26,107,26,0.08)':'white';">
+                        {{ $label }}
+                    </label>
+                    @endforeach
+                </div>
               </div>
             </div>
 
@@ -581,7 +591,8 @@
 
 
   <!-- FAQs Section with Accordion -->
-  <section class="container py-5 reveal">
+  <section class="container-fluid py-5 reveal" style="background: var(--neutral-light);">
+    <div class="container">
     <h2 class="text-center mb-5 fw-bold" style="color: var(--primary-green); font-family: var(--font-display); font-size: 2.5rem;">
       Frequently Asked Questions
     </h2>
@@ -661,6 +672,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </section>
 

@@ -6,41 +6,48 @@ use Illuminate\Http\Request;
 use App\Models\Booking;
 use App\Models\ContactMessage;
 use App\Models\NewsletterSubscriber;
+use App\Mail\BookingRequestReceived;
+use Illuminate\Support\Facades\Mail;
 
 class PublicFormController extends Controller
 {
     /**
      * Handle booking form submission
-     * 
-     * @param Request $request
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function booking(Request $request)
     {
-        // Validate booking form data
         $validated = $request->validate([
-            'fullname'             => ['required', 'string', 'max:255'],
-            'email-booking'        => ['required', 'email', 'max:255'],
-            'travel-date'          => ['required', 'date'],
-            'num_adults'           => ['required', 'integer', 'min:1'],
-            'num_children'         => ['nullable', 'integer', 'min:0'],
-            'preferred_activities' => ['required', 'string'],
+            'fullname'               => ['required', 'string', 'max:255'],
+            'email-booking'          => ['required', 'email', 'max:255'],
+            'travel-date'            => ['required', 'date'],
+            'num_adults'             => ['required', 'integer', 'min:1'],
+            'num_children'           => ['nullable', 'integer', 'min:0'],
+            'preferred_activities'   => ['required', 'array', 'min:1'],
+            'preferred_activities.*' => ['string'],
         ]);
 
         $email = $validated['email-booking'];
 
-        // Create booking record
-        Booking::create([
+        $booking = Booking::create([
             'fullname'             => $validated['fullname'],
             'email'                => $email,
             'date_of_travel'       => $validated['travel-date'],
             'num_adults'           => (int) $validated['num_adults'],
             'num_children'         => (int) ($validated['num_children'] ?? 0),
-            'preferred_activities' => $validated['preferred_activities'],
+            'preferred_activities' => is_array($validated['preferred_activities'])
+                ? implode(', ', $validated['preferred_activities'])
+                : $validated['preferred_activities'],
             'budget'               => null,
         ]);
 
-        $msg = "Booking confirmed! We've sent a confirmation email to {$email}. Our team will contact you soon!";
+        // Send acknowledgment email to customer
+        try {
+            Mail::to($email)->send(new BookingRequestReceived($booking));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send booking request email: ' . $e->getMessage());
+        }
+
+        $msg = "Your booking request has been received! Check your email for a confirmation, and our team will be in touch shortly to finalize payment.";
 
         return redirect()
             ->route('contact')

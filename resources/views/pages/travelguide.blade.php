@@ -15,7 +15,8 @@
 
   <!-- Hero Section -->
   <section class="reveal text-center text-light d-flex align-items-center justify-content-center" 
-           style="position: relative; background-image: url('{{ asset('images/water.jpg') }}'); height: 80vh; background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; width: 100%;">
+           style="position: relative; overflow: hidden; height: 80vh; width: 100%;">
+    <div class="kenburns-bg" style="position: absolute; inset: 0; background: url('{{ asset('images/water.jpg') }}') center/cover no-repeat; animation: kenburns 12s ease-in-out infinite; z-index: 0;"></div>
     <div style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.2) 100%); z-index: 1;"></div>
     <div class="p-4 p-md-5" style="position: relative; z-index: 2;">
       <h1 class="display-3 fw-bold" style="color: #ffffff; font-family: var(--font-display); letter-spacing: 0.02em;">Your Sipi Falls Travel Guide</h1>

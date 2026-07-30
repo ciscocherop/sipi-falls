@@ -13,8 +13,10 @@
 
 @section('content')
   <!-- Header Section -->
-  <section class="reveal" style="background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)), url('{{ asset('images/BANNER.jpg') }}') center/cover no-repeat; background-attachment: fixed; color: white; padding: 6rem 0;">
-      <div class="container-fluid px-4">
+  <section class="reveal" style="position: relative; overflow: hidden; color: white; padding: 6rem 0;">
+      <div class="kenburns-bg" style="position: absolute; inset: 0; background: url('{{ asset('images/BANNER.jpg') }}') center/cover no-repeat; animation: kenburns 12s ease-in-out infinite; z-index: 0;"></div>
+      <div style="position: absolute; inset: 0; background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.55)); z-index: 1;"></div>
+      <div class="container-fluid px-4" style="position: relative; z-index: 2;">
           <h2 class="text-center" style="font-family: var(--font-display); font-size: 3rem; font-weight: 800; color: white;">
               Every waterfall has a story — <br><span style="font-style: italic; color: var(--accent-gold);">and ours begins at Sipi!</span>
           </h2>
@@ -112,56 +114,45 @@
   </section>
 
 <!-- Tour Guide Team — Card Grid Layout -->
-<section class="reveal py-5" style="background: var(--neutral-light); padding-top: 1.5rem !important; padding-bottom: 2rem !important;">
+<section class="reveal py-3" style="background: var(--neutral-light); padding-top: 1rem !important; padding-bottom: 1.25rem !important;">
     <div class="container">
-        <p class="text-center" style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.75rem;">The People Behind The Experience</p>
-        <h2 class="text-center mb-5" style="color: var(--primary-green); font-family: var(--font-display); font-size: 2.5rem;">Meet Our Tour Guides</h2>
+        <p class="text-center" style="font-family: var(--font-body); font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.5rem;">The People Behind The Experience</p>
+        <h2 class="text-center mb-3" style="color: var(--primary-green); font-family: var(--font-display); font-size: 2.5rem;">Meet Our Tour Guides</h2>
 
-        <div class="row g-4">
+        <div class="row g-3">
             @forelse($tourGuides as $guide)
             <div class="col-md-4">
                 <div style="background: white; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); transition: transform 0.3s ease, box-shadow 0.3s ease; height: 100%;"
-                     onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.12)';"
+                     onmouseover="this.style.transform='translateY(-4px)'; this.style.boxShadow='0 10px 28px rgba(0,0,0,0.12)';"
                      onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)';">
 
-                    <!-- Top color bar -->
                     <div style="height: 4px; background: var(--accent-gold);"></div>
 
-                    <div style="padding: 1.25rem; text-align: center;">
+                    <div style="padding: 0.85rem 1rem; text-align: center;">
                         <!-- Photo -->
-                        <div style="margin-bottom: 0.75rem;">
+                        <div style="margin-bottom: 0.5rem;">
                             @if($guide->photo)
-                            <img src="{{ asset($guide->photo) }}"
-                                 alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls"
-                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
-                                 loading="lazy">
+                            <img src="{{ asset($guide->photo) }}" alt="{{ $guide->name }}"
+                                 style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold);" loading="lazy">
                             @else
-                            <img src="{{ asset('images/tourguide1.jpg') }}"
-                                 alt="{{ $guide->name }}, {{ $guide->title }} at Sipi Falls"
-                                 style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold); box-shadow: 0 4px 12px rgba(0,0,0,0.1);"
-                                 loading="lazy">
+                            <img src="{{ asset('images/tourguide1.jpg') }}" alt="{{ $guide->name }}"
+                                 style="width: 70px; height: 70px; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent-gold);" loading="lazy">
                             @endif
                         </div>
 
-                        <!-- Name -->
-                        <h4 style="color: var(--primary-green); font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem;">{{ $guide->name }}</h4>
+                        <h4 style="color: var(--primary-green); font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem;">{{ $guide->name }}</h4>
+                        <p style="color: var(--accent-gold); font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.15rem;">{{ $guide->title }}</p>
+                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.75rem; opacity: 0.6; margin-bottom: 0.4rem;">{{ $guide->years_experience }} years experience</p>
 
-                        <!-- Title & Experience -->
-                        <p style="color: var(--accent-gold); font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem;">{{ $guide->title }}</p>
-                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.8rem; opacity: 0.6; margin-bottom: 0.5rem;">{{ $guide->years_experience }} years experience</p>
+                        <div style="width: 28px; height: 2px; background: var(--accent-gold); margin: 0 auto 0.4rem; opacity: 0.5;"></div>
 
-                        <!-- Divider -->
-                        <div style="width: 30px; height: 2px; background: var(--accent-gold); margin: 0 auto 0.5rem; opacity: 0.5;"></div>
+                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.82rem; line-height: 1.5; margin-bottom: 0.6rem;">{{ $guide->bio }}</p>
 
-                        <!-- Bio -->
-                        <p style="color: var(--neutral-gray); font-family: var(--font-body); font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.75rem;">{{ $guide->bio }}</p>
-
-                        <!-- Contact Icons -->
                         @if($guide->phone || $guide->email)
-                        <div style="display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 0.75rem;">
+                        <div style="display: flex; gap: 0.75rem; justify-content: center; margin-bottom: 0.6rem;">
                             @if($guide->phone)
                             <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', $guide->phone) }}"
-                               style="color: var(--accent-gold); font-size: 1.4rem; text-decoration: none; transition: transform 0.2s;"
+                               style="color: var(--accent-gold); font-size: 1.3rem; text-decoration: none; transition: transform 0.2s;"
                                aria-label="{{ $guide->name }}'s WhatsApp"
                                onmouseover="this.style.transform='scale(1.2)';"
                                onmouseout="this.style.transform='scale(1)';">
@@ -170,7 +161,7 @@
                             @endif
                             @if($guide->email)
                             <a href="mailto:{{ $guide->email }}"
-                               style="color: var(--accent-gold); font-size: 1.4rem; text-decoration: none; transition: transform 0.2s;"
+                               style="color: var(--accent-gold); font-size: 1.3rem; text-decoration: none; transition: transform 0.2s;"
                                aria-label="{{ $guide->name }}'s Email"
                                onmouseover="this.style.transform='scale(1.2)';"
                                onmouseout="this.style.transform='scale(1)';">
@@ -180,11 +171,8 @@
                         </div>
                         @endif
 
-                        <!-- Book Button -->
                         <a href="{{ route('travelguide') }}#book-tour"
-                           role="button"
-                           aria-label="Book a tour with {{ $guide->name }}"
-                           style="display: inline-block; background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.6rem 1.5rem; font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; border-radius: 0.25rem; transition: all 0.3s; text-decoration: none; width: 100%;"
+                           style="display: inline-block; background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.45rem 1.25rem; font-family: var(--font-body); font-size: 0.82rem; font-weight: 600; border-radius: 0.25rem; transition: all 0.3s; text-decoration: none; width: 100%;"
                            onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
                            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
                             Book with {{ $guide->name }}
@@ -194,7 +182,7 @@
             </div>
             @empty
             <div class="col-12 text-center">
-                <p style="color: var(--neutral-gray); font-size: 1.1rem; font-family: var(--font-body);">No tour guides available at the moment. Add guides from the admin panel.</p>
+                <p style="color: var(--neutral-gray); font-size: 1.1rem; font-family: var(--font-body);">No tour guides available at the moment.</p>
             </div>
             @endforelse
         </div>
@@ -204,23 +192,44 @@
   <!-- Video Section -->
   <section class="video-section reveal py-3" style="background: var(--neutral-light); position: relative; z-index: 1;">
     <div class="container-fluid" style="padding-left: 1.5rem; padding-right: 1.5rem;">
-      <div class="video-wrapper" style="background: var(--neutral-offwhite); border-radius: 1.2rem; box-shadow: 0 2px 16px rgba(34,139,34,0.10); padding: 1.5rem; max-width: 750px; margin: 0 auto;" role="region" aria-label="Video showcasing Sipi Falls">
-        <h2 style="color: var(--primary-green); font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 0.75rem;">Watch Our Story</h2>
-        <p style="font-size: 1rem; color: var(--neutral-gray); line-height: 1.7; margin-bottom: 0.75rem;">Experience the magic of Sipi Falls through this captivating video.</p>
-        <div class="video-container" style="position: relative; width: 100%; max-width: 100%; height: 0; padding-bottom: 56.25%; border-radius: 0.7rem; overflow: hidden; background: var(--neutral-gray);">
-          <video src="{{ asset('images/VID-20250305-WA0000.mp4') }}" controls autoplay muted loop style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; object-position: center;" aria-label="Video tour of Sipi Falls' waterfalls and Sabiny culture">
-            <p>Your browser does not support the video tag.</p>
-          </video>
+      <h2 class="text-center" style="color: var(--primary-green); font-family: var(--font-display); font-weight: 700; font-size: 1.8rem; letter-spacing: 1px; margin-bottom: 0.5rem;">Watch Our Story</h2>
+      <p class="text-center" style="font-size: 1rem; color: var(--neutral-gray); line-height: 1.7; margin-bottom: 1.5rem;">Experience the magic of Sipi Falls through these captivating videos.</p>
+
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; max-width: 1100px; margin: 0 auto;" role="region" aria-label="Videos showcasing Sipi Falls">
+
+        <!-- Video 1 -->
+        <div style="background: var(--neutral-offwhite); border-radius: 1.2rem; box-shadow: 0 2px 16px rgba(34,139,34,0.10); overflow: hidden;">
+          <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+            <video src="{{ asset('images/VID-20250305-WA0000.mp4') }}" controls autoplay muted loop
+                   style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+                   aria-label="Video tour of Sipi Falls' waterfalls and Sabiny culture">
+              <p>Your browser does not support the video tag.</p>
+            </video>
+          </div>
         </div>
-        <div class="text-center mt-3">
-          <a href="{{ route('travelguide') }}#activities" role="button" aria-label="Explore activities at Sipi Falls"
-            style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.6rem 2rem; font-family: var(--font-body); font-weight: 600; border-radius: 0.25rem; transition: all 0.3s; text-decoration: none;"
-            onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-            onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
-            Explore Activities
-          </a>
+
+        <!-- Video 2 -->
+        <div style="background: var(--neutral-offwhite); border-radius: 1.2rem; box-shadow: 0 2px 16px rgba(34,139,34,0.10); overflow: hidden;">
+          <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+            <video src="{{ asset('images/banner.mp4') }}" controls autoplay muted loop
+                   style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;"
+                   aria-label="Sipi Falls scenery and adventure highlights">
+              <p>Your browser does not support the video tag.</p>
+            </video>
+          </div>
         </div>
+
       </div>
+
+      <div class="text-center mt-4">
+        <a href="{{ route('travelguide') }}#activities" role="button" aria-label="Explore activities at Sipi Falls"
+          style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.6rem 2rem; font-family: var(--font-body); font-weight: 600; border-radius: 0.25rem; transition: all 0.3s; text-decoration: none;"
+          onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+          onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
+          Explore Activities
+        </a>
+      </div>
+    </div>
     </div>
   </section>
 

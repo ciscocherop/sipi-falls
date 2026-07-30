@@ -50,6 +50,27 @@ class NewsletterSubscriberController extends Controller
         return redirect()->back()->with('success', 'Subscriber deleted successfully');
     }
 
+    /**
+     * Handle one-click unsubscribe via signed URL from email link.
+     * No login required — the signed URL proves the request is legitimate.
+     */
+    public function unsubscribe(Request $request, $id)
+    {
+        if (! $request->hasValidSignature()) {
+            abort(403, 'This unsubscribe link is invalid or has expired.');
+        }
+
+        $subscriber = NewsletterSubscriber::findOrFail($id);
+
+        if ($subscriber->status === 'unsubscribed') {
+            return view('newsletter.unsubscribed', ['alreadyDone' => true]);
+        }
+
+        $subscriber->update(['status' => 'unsubscribed']);
+
+        return view('newsletter.unsubscribed', ['alreadyDone' => false]);
+    }
+
     public function compose()
     {
         $activeCount = NewsletterSubscriber::active()->count();
@@ -73,14 +94,14 @@ class NewsletterSubscriberController extends Controller
             return redirect()->back()->with('error', 'No active subscribers to send to');
         }
 
-        // Send email to each subscriber
+        // Dispatch each email as a queued job — returns immediately, processes in background
         foreach ($subscribers as $subscriber) {
-            Mail::to($subscriber->email)->send(
-                new NewsletterBroadcast($request->subject, $request->content)
+            Mail::to($subscriber->email)->queue(
+                new NewsletterBroadcast($request->subject, $request->content, $subscriber)
             );
         }
 
         return redirect()->route('admin.newsletter-subscribers.index')
-            ->with('success', "Newsletter sent to {$subscribers->count()} subscribers");
+            ->with('success', "Newsletter queued for {$subscribers->count()} subscriber" . ($subscribers->count() === 1 ? '' : 's') . ". Emails will be sent in the background.");
     }
 }

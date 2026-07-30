@@ -38,6 +38,9 @@ Route::post('/testimonials/submit', [App\Http\Controllers\Admin\TestimonialContr
 Route::post('/reactions/{activityKey}/{emoji}', [ActivityReactionController::class, 'toggle'])->name('reactions.toggle');
 Route::get('/reactions/{activityKey}', [ActivityReactionController::class, 'counts'])->name('reactions.counts');
 
+// Newsletter unsubscribe (signed URL — no auth required)
+Route::get('/newsletter/unsubscribe/{id}', [App\Http\Controllers\Admin\NewsletterSubscriberController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+
 // Auth routes
 Route::get('/login', [LoginController::class, 'show'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);

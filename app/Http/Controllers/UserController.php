@@ -12,7 +12,7 @@ class UserController extends Controller
     public function index()
     {
         return Inertia::render('Admin/Users/Index', [
-            'users' => User::orderBy('created_at', 'desc')->get(),
+            'users' => User::where('is_admin', true)->orderBy('created_at', 'desc')->get(),
         ]);
     }
 
@@ -28,6 +28,7 @@ class UserController extends Controller
             'name'     => $validated['name'],
             'email'    => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'is_admin' => true,
         ]);
 
         return back()->with('success', 'Admin user created successfully!');
@@ -52,7 +53,7 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
-        if (User::count() === 1) {
+        if (User::where('is_admin', true)->count() === 1) {
             return back()->with('error', 'Cannot delete the last admin user!');
         }
 

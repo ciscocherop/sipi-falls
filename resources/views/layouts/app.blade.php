@@ -16,7 +16,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.jsx'])
     
     <!-- Custom CSS (legacy - will be gradually replaced) -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {{-- style.css unlinked — all rules migrated to app.css. Delete this line once confirmed. --}}
+    {{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
 
     <!-- Primary SEO -->
@@ -83,14 +84,15 @@
         </div>
     </nav>
     
-    <!-- Sticky CTA Button (Desktop) -->
-    <a href="{{ route('contact') }}#booking-form" id="sticky-cta" style="position: fixed; bottom: 2rem; left: 2rem; background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%); color: white; padding: 1rem 2rem; border-radius: 3rem; text-decoration: none; font-family: var(--font-body); font-weight: 600; font-size: 1.1rem; box-shadow: 0 8px 24px rgba(26,107,26,0.4); z-index: 999; display: none; align-items: center; gap: 0.75rem; transition: all 0.3s ease; border: 2px solid transparent;"
-       onmouseover="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 12px 32px rgba(26,107,26,0.5)'; this.style.background='linear-gradient(135deg, var(--accent-gold) 0%, #e8b923 100%)'; this.style.borderColor='var(--accent-gold)';"
-       onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 24px rgba(26,107,26,0.4)'; this.style.background='linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-hover) 100%)'; this.style.borderColor='transparent';">
-        <i class="fas fa-calendar-check" style="font-size: 1.3rem;"></i>
-        <span>Book Your Adventure</span>
-        <div style="width: 8px; height: 8px; background: var(--accent-gold); border-radius: 50%; animation: pulse 2s infinite;"></div>
-    </a>
+        <!-- Sticky CTA Button (Desktop) -->
+        <a href="{{ route('contact') }}#booking-form" id="sticky-cta"
+        style="position: fixed; bottom: 2rem; left: 2rem; background: linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%); color: white; padding: 1rem 2rem; border-radius: 3rem; text-decoration: none; font-family: var(--font-primary); font-weight: 600; font-size: 1.1rem; box-shadow: 0 8px 24px rgba(26,107,26,0.4); z-index: 999; display: none; align-items: center; gap: 0.75rem; transition: all 0.3s ease; border: 2px solid transparent;"
+        onmouseover="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 12px 32px rgba(26,107,26,0.5)'; this.style.background='linear-gradient(135deg, var(--accent-gold) 0%, #e8b923 100%)'; this.style.borderColor='var(--accent-gold)';"
+        onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 8px 24px rgba(26,107,26,0.4)'; this.style.background='linear-gradient(135deg, var(--primary-green) 0%, var(--primary-green-dark) 100%)'; this.style.borderColor='transparent';">
+            <i class="fas fa-calendar-check" style="font-size: 1.3rem;"></i>
+            <span>Book Your Adventure</span>
+            <div style="width: 8px; height: 8px; background: var(--accent-gold); border-radius: 50%; animation: pulse 2s infinite;"></div>
+        </a>
     
     <style>
         @keyframes pulse {
@@ -152,7 +154,7 @@
 
     
     <!-- Main Content -->
-    <div id="main-content" style="position: relative; z-index: 1; background: var(--neutral-offwhite);">
+    <div id="main-content" style="position: relative; z-index: 1; background: transparent;">
         @yield('content')
     </div>
     

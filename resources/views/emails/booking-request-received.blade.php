@@ -49,29 +49,16 @@
             font-size: 15px;
             color: #4a4a4a;
         }
-        .status-badge {
+        .ref-badge {
             display: inline-block;
-            padding: 6px 16px;
-            border-radius: 999px;
+            background-color: #f5f5f0;
+            border-left: 4px solid #E8B923;
+            padding: 10px 16px;
+            margin: 4px 0 20px;
             font-weight: 700;
-            font-size: 13px;
-            text-transform: uppercase;
-            margin: 4px 0;
-        }
-        .status-confirmed {
-            background-color: #F0FDF4;
+            font-size: 15px;
             color: #1a6b1a;
-            border: 1px solid #1a6b1a;
-        }
-        .status-pending {
-            background-color: #FFFBEB;
-            color: #c9951a;
-            border: 1px solid #c9951a;
-        }
-        .status-cancelled {
-            background-color: #FEE2E2;
-            color: #dc3545;
-            border: 1px solid #dc3545;
+            border-radius: 0 4px 4px 0;
         }
         .booking-details {
             background-color: #f9f9f9;
@@ -91,12 +78,28 @@
             letter-spacing: 0.1em;
         }
         .detail-row {
+            display: flex;
             margin: 8px 0;
             font-size: 14px;
         }
         .detail-label {
             font-weight: 600;
             color: #666;
+            min-width: 140px;
+        }
+        .detail-value {
+            color: #333;
+        }
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            background-color: #FFFBEB;
+            color: #c9951a;
+            border: 1px solid #c9951a;
         }
         .next-steps {
             background-color: #F0FDF4;
@@ -149,62 +152,59 @@
         <div class="content">
             <p>Hello <strong>{{ $booking->fullname }}</strong>,</p>
 
-            @if($booking->status === 'confirmed')
-                <p>Great news! Your booking has been <strong>confirmed</strong>! 🎉</p>
-                <p>We're excited to welcome you to Sipi Falls. Your adventure awaits!</p>
-            @elseif($booking->status === 'cancelled')
-                <p>Your booking has been <strong>cancelled</strong>.</p>
-                <p>If this was a mistake or you'd like to reschedule, please contact us and we'll be happy to help.</p>
-            @else
-                <p>Your booking status has been updated to:
-                    <span class="status-badge status-{{ $booking->status }}">{{ ucfirst($booking->status) }}</span>
-                </p>
-            @endif
+            <p>Thank you for your booking request! We have received it and our team will contact you shortly to arrange payment and confirm your trip details.</p>
+
+            <p>Your booking reference:</p>
+            <div class="ref-badge">#{{ $booking->id }}</div>
 
             <div class="booking-details">
-                <h3>Booking Details</h3>
+                <h3>Your Booking Summary</h3>
 
                 <div class="detail-row">
-                    <span class="detail-label">Reference:</span> #{{ $booking->id }}
+                    <span class="detail-label">Reference:</span>
+                    <span class="detail-value">#{{ $booking->id }}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Name:</span> {{ $booking->fullname }}
+                    <span class="detail-label">Name:</span>
+                    <span class="detail-value">{{ $booking->fullname }}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Email:</span> {{ $booking->email }}
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value">{{ $booking->email }}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Travel Date:</span>
-                    {{ \Carbon\Carbon::parse($booking->date_of_travel)->format('F j, Y') }}
+                    <span class="detail-value">{{ \Carbon\Carbon::parse($booking->date_of_travel)->format('F j, Y') }}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Group Size:</span>
-                    {{ $booking->num_adults }} adult{{ $booking->num_adults != 1 ? 's' : '' }}{{ $booking->num_children > 0 ? ', ' . $booking->num_children . ' child' . ($booking->num_children != 1 ? 'ren' : '') : '' }}
+                    <span class="detail-value">{{ $booking->num_adults }} adult{{ $booking->num_adults != 1 ? 's' : '' }}{{ $booking->num_children > 0 ? ', ' . $booking->num_children . ' child' . ($booking->num_children != 1 ? 'ren' : '') : '' }}</span>
                 </div>
                 <div class="detail-row">
-                    <span class="detail-label">Activities:</span> {{ $booking->preferred_activities }}
+                    <span class="detail-label">Activities:</span>
+                    <span class="detail-value">{{ $booking->preferred_activities }}</span>
                 </div>
                 <div class="detail-row">
                     <span class="detail-label">Status:</span>
-                    <span class="status-badge status-{{ $booking->status }}">{{ ucfirst($booking->status) }}</span>
+                    <span class="status-badge">Pending</span>
                 </div>
             </div>
 
-            @if($booking->status === 'confirmed')
-                <div class="next-steps">
-                    <h3>What's Next?</h3>
-                    <ul>
-                        <li>We'll contact you 2 days before your visit with final details</li>
-                        <li>Please arrive 15 minutes before your scheduled time</li>
-                        <li>Bring comfortable hiking shoes and plenty of water</li>
-                        <li>Don't forget your camera! 📸</li>
-                    </ul>
-                </div>
-            @endif
+            <div class="next-steps">
+                <h3>What happens next?</h3>
+                <ul>
+                    <li>Our team will review your request and contact you within 24 hours</li>
+                    <li>We will discuss payment options and finalize your booking</li>
+                    <li>Once payment is confirmed, you'll receive a full confirmation email</li>
+                    <li>We'll also send you a detailed guide for what to bring and expect</li>
+                </ul>
+            </div>
 
-            <p>If you have any questions, feel free to reply to this email or contact us directly.</p>
+            <p>If you have any questions in the meantime, feel free to reply to this email or reach us directly.</p>
 
-            <p>Best regards,<br>
+            <p>We look forward to welcoming you to Sipi Falls! 🌊</p>
+
+            <p>Warm regards,<br>
             <strong>The Sipi Falls Team</strong></p>
         </div>
 
@@ -212,7 +212,7 @@
             <p>Sipi Falls, Kapchorwa, Uganda</p>
             <p><a href="mailto:info@sipifalls.com">info@sipifalls.com</a></p>
             <p style="margin-top: 12px; font-size: 11px; color: rgba(255,255,255,0.3);">
-                This is an automated message from sipifalls.com
+                This email was sent in response to a booking request on sipifalls.com
             </p>
         </div>
 
