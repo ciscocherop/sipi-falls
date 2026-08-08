@@ -7,6 +7,9 @@ use App\Models\Booking;
 use App\Models\ContactMessage;
 use App\Models\NewsletterSubscriber;
 use App\Mail\BookingRequestReceived;
+use App\Mail\ContactMessageReceived;
+use App\Mail\NewContactMessageNotification;
+use App\Mail\NewsletterWelcome;
 use Illuminate\Support\Facades\Mail;
 
 class PublicFormController extends Controller
@@ -73,13 +76,28 @@ class PublicFormController extends Controller
         ]);
 
         // Save contact message
-        ContactMessage::create([
+        $contactMessage = ContactMessage::create([
             'first_name' => $validated['firstname'],
             'last_name'  => $validated['lastname'],
             'email'      => $validated['email'],
             'subject'    => $validated['subject'],
             'message'    => $validated['message'],
         ]);
+
+        // Send acknowledgment to the customer
+        try {
+            Mail::to($contactMessage->email)->send(new ContactMessageReceived($contactMessage));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send contact acknowledgment email: ' . $e->getMessage());
+        }
+
+        // Notify the admin independently
+        try {
+            $adminEmail = config('mail.admin_address');
+            Mail::to($adminEmail)->send(new NewContactMessageNotification($contactMessage));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send admin contact notification email: ' . $e->getMessage());
+        }
 
         return redirect()
             ->route('contact')
@@ -101,9 +119,16 @@ class PublicFormController extends Controller
         ]);
 
         // Create newsletter subscription
-        NewsletterSubscriber::create([
+        $subscriber = NewsletterSubscriber::create([
             'email' => $validated['email'],
         ]);
+
+        // Send welcome email
+        try {
+            Mail::to($subscriber->email)->send(new NewsletterWelcome($subscriber));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send newsletter welcome email: ' . $e->getMessage());
+        }
 
         return back()
             ->with('status', 'success')

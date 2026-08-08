@@ -79,7 +79,9 @@ function Show({ message }) {
                     {/* Actions */}
                     <div style={{ padding: '1.5rem 2rem', borderTop: '1px solid #f0f0f0', background: '#fafafa', display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
                         <a
-                            href={`mailto:${message.email}?subject=Re: ${encodeURIComponent(message.subject)}&body=Hi ${encodeURIComponent(message.first_name)},%0A%0A`}
+                            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(message.email)}&su=${encodeURIComponent('Re: ' + message.subject)}&body=${encodeURIComponent('Hi ' + message.first_name + ',\n\n')}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             style={{ fontFamily: "'Montserrat', sans-serif", fontSize: '13px', fontWeight: '600', background: '#1a6b1a', color: 'white', border: 'none', borderRadius: '8px', padding: '0.6rem 1.5rem', textDecoration: 'none', display: 'inline-block', transition: 'all 0.2s' }}
                             onMouseEnter={e => e.currentTarget.style.background = '#c9951a'}
                             onMouseLeave={e => e.currentTarget.style.background = '#1a6b1a'}
