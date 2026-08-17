@@ -1,36 +1,36 @@
-/**
+﻿/**
  * public/js/script.js
  * =============================================
  * Main JavaScript file for the Sipi Falls website.
  * Handles all front-end interactivity across every public page.
  *
  * Sections (in order):
- *  1.  URL Status Alert Handler       — shows success/error toasts after form submissions
- *  2.  Active Nav Link Highlighter    — marks the current page link as active
- *  3.  Navbar Body Padding Sync       — keeps content below the fixed navbar
- *  4.  Image Slider                   — auto-rotates hero slides
- *  5.  Back to Top Button             — shows/hides and scrolls to top
- *  6.  Newsletter Form (footer)       — validates and submits the newsletter signup
- *  7.  Extra Tips Modal               — populates the travel guide tips modal
- *  8.  Scroll Reveal (legacy)         — adds .active class when elements enter viewport
- *  9.  Navbar Collapse Class Toggle   — adds .mobile-open to navbar on Bootstrap collapse
- * 10.  Dynamic Copyright Year         — writes the current year into the footer
- *  11. AJAX Newsletter Submission     — handles the newsletter form via fetch
- *  12. Delete Booking                 — AJAX delete for booking rows
- *  13. Delete Contact                 — AJAX delete for contact rows
- *  14. Delete Subscriber              — AJAX delete for subscriber rows
- *  15. Sticky CTA Button              — shows the floating "Book" button after scrolling
- *  16. Modal / Bottom Nav z-index     — hides mobile nav behind Bootstrap modals
- *  17. slideInRight Keyframe          — injects the CSS animation used by the sticky CTA
- *  18. Scroll Reveal (IntersectionObserver) — adds .visible class for CSS transitions
- *  19. Stats Counter Animation        — animates number counters when they scroll into view
- *  20. Testimonials Carousel          — prev/next carousel on the homepage
- *  21. Homepage Lightbox              — full-screen image viewer for the masonry gallery
- *  22. Travel Guide Tabbed Gallery    — tab switching + load-more for the gallery page
- *  23. Travel Guide Lightbox          — full-screen viewer for the travel guide gallery
+ *  1.  URL Status Alert Handler       â€” shows success/error toasts after form submissions
+ *  2.  Active Nav Link Highlighter    â€” marks the current page link as active
+ *  3.  Navbar Body Padding Sync       â€” keeps content below the fixed navbar
+ *  4.  Image Slider                   â€” auto-rotates hero slides
+ *  5.  Back to Top Button             â€” shows/hides and scrolls to top
+ *  6.  Newsletter Form (footer)       â€” validates and submits the newsletter signup
+ *  7.  Extra Tips Modal               â€” populates the travel guide tips modal
+ *  8.  Scroll Reveal (legacy)         â€” adds .active class when elements enter viewport
+ *  9.  Navbar Collapse Class Toggle   â€” adds .mobile-open to navbar on Bootstrap collapse
+ * 10.  Dynamic Copyright Year         â€” writes the current year into the footer
+ *  11. AJAX Newsletter Submission     â€” handles the newsletter form via fetch
+ *  12. Delete Booking                 â€” AJAX delete for booking rows
+ *  13. Delete Contact                 â€” AJAX delete for contact rows
+ *  14. Delete Subscriber              â€” AJAX delete for subscriber rows
+ *  15. Sticky CTA Button              â€” shows the floating "Book" button after scrolling
+ *  16. Modal / Bottom Nav z-index     â€” hides mobile nav behind Bootstrap modals
+ *  17. slideInRight Keyframe          â€” injects the CSS animation used by the sticky CTA
+ *  18. Scroll Reveal (IntersectionObserver) â€” adds .visible class for CSS transitions
+ *  19. Stats Counter Animation        â€” animates number counters when they scroll into view
+ *  20. Testimonials Carousel          â€” prev/next carousel on the homepage
+ *  21. Homepage Lightbox              â€” full-screen image viewer for the masonry gallery
+ *  22. Travel Guide Tabbed Gallery    â€” tab switching + load-more for the gallery page
+ *  23. Travel Guide Lightbox          â€” full-screen viewer for the travel guide gallery
  *  24. Contact Page: Alerts + Validation + Price Calculator
- *  25. Navbar Scroll Effect           — darkens the navbar background on scroll
- *  26. Mobile Menu Toggle             — opens/closes the hamburger menu on small screens
+ *  25. Navbar Scroll Effect           â€” darkens the navbar background on scroll
+ *  26. Mobile Menu Toggle             â€” opens/closes the hamburger menu on small screens
  * =============================================
  */
 
@@ -114,14 +114,24 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // =============================================================================
 // 3. NAVBAR BODY PADDING SYNC
-// When the navbar is fixed-top it overlaps page content. This reads the
-// navbar's actual height and applies it as padding-top on <body> so nothing
-// gets hidden underneath. Re-runs on window resize in case the navbar reflows.
+// When regular (non-hero) pages have a fixed navbar, this adds padding-top
+// to body so content is not hidden. For full-screen hero sections the hero
+// itself handles internal padding via .hero-overlay-content.
 // =============================================================================
 function syncBodyPaddingWithNavbar() {
-  var navbar = document.querySelector('.navbar.fixed-top');
+  // Only apply body padding when the first section is NOT a full-screen hero
+  var heroSection = document.getElementById('hero-section');
+  var navbar = document.querySelector('.navbar.fixed-top') || document.getElementById('mainNavbar');
   if (!navbar) return;
-  document.body.style.paddingTop = navbar.offsetHeight + 'px';
+
+  if (heroSection) {
+    // Hero handles its own top padding internally â€” reset body padding
+    document.body.style.paddingTop = '0';
+  } else {
+    var style = window.getComputedStyle(navbar);
+    var marginTop = parseFloat(style.marginTop) || 0;
+    document.body.style.paddingTop = (navbar.offsetHeight + marginTop) + 'px';
+  }
 }
 document.addEventListener('DOMContentLoaded', syncBodyPaddingWithNavbar);
 window.addEventListener('resize', syncBodyPaddingWithNavbar);
@@ -191,7 +201,7 @@ document.addEventListener('DOMContentLoaded', function () {
         feedback.style.display = 'block';
         newsletterForm.reset();
       } catch (err) {
-        // Network error or non-JSON response — still show a friendly message
+        // Network error or non-JSON response â€” still show a friendly message
         feedback.textContent = 'You have Successfully Subscribed.';
         feedback.style.color = 'var(--highlight-coral)';
         feedback.style.display = 'block';
@@ -208,13 +218,13 @@ document.addEventListener('DOMContentLoaded', function () {
 if (document.getElementById('extraTipsModal')) {
   document.addEventListener('DOMContentLoaded', function () {
     var tips = [
-      'Carry some cash – ATMs are limited in the Sipi area.',
+      'Carry some cash â€“ ATMs are limited in the Sipi area.',
       'Start hikes early in the morning for the best weather and fewer crowds.',
       'Hire a local guide for safety and to learn hidden stories about the falls.',
       'Bring a waterproof bag for your electronics and valuables.',
-      'Respect local customs – ask before taking photos of people.',
-      'Try the local coffee – it\'s some of the best in Uganda!',
-      'Wear layers – weather can change quickly in the mountains.',
+      'Respect local customs â€“ ask before taking photos of people.',
+      'Try the local coffee â€“ it\'s some of the best in Uganda!',
+      'Wear layers â€“ weather can change quickly in the mountains.',
       'Stay on marked trails to protect the environment and for your safety.',
       'Book your accommodation in advance during peak season.',
       'Don\'t forget insect repellent and sunscreen!'
@@ -240,7 +250,7 @@ if (document.getElementById('extraTipsModal')) {
 
 
 // =============================================================================
-// 8. SCROLL REVEAL — LEGACY (.active class version)
+// 8. SCROLL REVEAL â€” LEGACY (.active class version)
 // Watches all .reveal elements with an IntersectionObserver. When an element
 // enters the viewport it gets the .active class, which CSS uses to trigger
 // fade/slide-in transitions. Once revealed, the element is unobserved so the
@@ -287,13 +297,13 @@ document.addEventListener('DOMContentLoaded', function () {
 document.addEventListener('DOMContentLoaded', function () {
   var copyrightSpan = document.getElementById('copyright');
   if (copyrightSpan) {
-    copyrightSpan.textContent = '© ' + new Date().getFullYear() + ' Sipi Falls. All Rights Reserved.';
+    copyrightSpan.textContent = 'Â© ' + new Date().getFullYear() + ' Sipi Falls. All Rights Reserved.';
   }
 });
 
 
 // =============================================================================
-// 11. AJAX NEWSLETTER SUBMISSION (second handler — validates before submitting)
+// 11. AJAX NEWSLETTER SUBMISSION (second handler â€” validates before submitting)
 // This version validates the email client-side first, then shows a success
 // message. It works alongside the fetch-based handler above; both target the
 // same #newsletter-form but this one handles the #newsletter-success element.
@@ -493,7 +503,7 @@ document.addEventListener('hidden.bs.modal', function () {
 })();
 
 // =============================================================================
-// 18. SCROLL REVEAL — INTERSECTIONOBSERVER (.visible class version)
+// 18. SCROLL REVEAL â€” INTERSECTIONOBSERVER (.visible class version)
 // A second, more modern reveal system that adds .visible to elements as they
 // scroll into view. CSS transitions on .reveal, .reveal-left, .reveal-right,
 // and .reveal-children use this class to animate in. Runs immediately (not
@@ -552,64 +562,125 @@ document.addEventListener('hidden.bs.modal', function () {
 
 
 // =============================================================================
-// 20. TESTIMONIALS CAROUSEL (Homepage)
-// A simple manual carousel for the testimonials section. Shows 2 slides on
-// desktop and 1 on mobile. The prev/next arrows call moveTestimonialCarousel()
-// with -1 or +1. updateSlideWidths() recalculates slide widths on resize and
-// resets the position to the first slide.
+// 20. TESTIMONIALS CAROUSEL (Homepage) â€” NEW
+// 3-up on desktop (â‰¥768px), 1-up on mobile. Prev/next buttons + dot indicators
+// centred below the cards. tToggleExpand() handles "Read more / Show less".
 // =============================================================================
-var testimonialIndex = 0; // tracks which "page" of slides is currently visible
 
-/** Returns how many slides should be visible at once based on screen width. */
-function getSlidesPerView() {
-  return window.innerWidth < 768 ? 1 : 2;
-}
+(function () {
+  var tIndex = 0;
 
-/**
- * Moves the carousel forward (direction = 1) or backward (direction = -1).
- * Wraps around at both ends.
- */
-function moveTestimonialCarousel(direction) {
-  var slides = document.querySelectorAll('.testimonial-slide');
-  var total = slides.length;
-  if (total === 0) return;
+  function tPerView() {
+    return window.innerWidth >= 768 ? 3 : 1;
+  }
 
-  var perView = getSlidesPerView();
-  var maxIndex = Math.ceil(total / perView) - 1; // last valid page index
+  function tSlides() {
+    return document.querySelectorAll('.t-slide');
+  }
 
-  testimonialIndex += direction;
-  if (testimonialIndex < 0) testimonialIndex = maxIndex; // wrap to end
-  if (testimonialIndex > maxIndex) testimonialIndex = 0;        // wrap to start
+  function tTotal() {
+    return tSlides().length;
+  }
 
-  // Slide the inner track using CSS transform
-  var inner = document.querySelector('.testimonial-carousel-inner');
-  var slideWidth = 100 / perView; // each slide takes up (100/perView)% of the track
-  inner.style.transform = 'translateX(-' + (testimonialIndex * slideWidth * perView) + '%)';
-}
+  function tPages() {
+    return Math.ceil(tTotal() / tPerView());
+  }
 
-/** Recalculates slide widths and resets to slide 0. Called on load and resize. */
-function updateSlideWidths() {
-  var perView = getSlidesPerView();
-  var slideWidth = 100 / perView;
+  function tSetWidths() {
+    var pv = tPerView();
+    tSlides().forEach(function (s) {
+      s.style.width = (100 / pv) + '%';
+    });
+  }
 
-  document.querySelectorAll('.testimonial-slide').forEach(function (slide) {
-    slide.style.minWidth = slideWidth + '%';
+  function tRenderDots() {
+    var container = document.getElementById('tDots');
+    if (!container) return;
+    container.innerHTML = '';
+    var pages = tPages();
+    for (var i = 0; i < pages; i++) {
+      var d = document.createElement('button');
+      d.setAttribute('aria-label', 'Go to page ' + (i + 1));
+      d.dataset.page = i;
+      d.style.cssText = 'width:8px;height:8px;border-radius:50%;border:none;cursor:pointer;padding:0;transition:all 0.25s;background:' +
+        (i === tIndex ? 'var(--primary-green)' : '#ccc') + ';' +
+        (i === tIndex ? 'width:22px;border-radius:4px;' : '');
+      d.addEventListener('click', function () {
+        tIndex = parseInt(this.dataset.page);
+        tApply();
+      });
+      container.appendChild(d);
+    }
+  }
+
+  function tApply() {
+    var inner = document.getElementById('tCarouselInner');
+    if (!inner) return;
+    var pages = tPages();
+    if (tIndex < 0) tIndex = pages - 1;
+    if (tIndex >= pages) tIndex = 0;
+    var pv = tPerView();
+    inner.style.transform = 'translateX(-' + (tIndex * 100) + '%)';
+    tRenderDots();
+  }
+
+  window.tMove = function (dir) {
+    tIndex += dir;
+    tApply();
+  };
+
+  function tInit() {
+    tSetWidths();
+    tIndex = 0;
+    tApply();
+  }
+
+  window.addEventListener('resize', function () {
+    tSetWidths();
+    tIndex = 0;
+    tApply();
   });
 
-  // Reset position so we don't land mid-track after a resize
-  testimonialIndex = 0;
-  var inner = document.querySelector('.testimonial-carousel-inner');
-  if (inner) inner.style.transform = 'translateX(0)';
-}
+  document.addEventListener('DOMContentLoaded', tInit);
+})();
 
-window.addEventListener('resize', updateSlideWidths);
-document.addEventListener('DOMContentLoaded', updateSlideWidths);
+// Toggle "Read more / Show less" on testimonial cards
+window.tToggleExpand = function (btn) {
+  var card = btn.closest('.t-card');
+  var short = card.querySelector('.t-body-text');
+  var full = card.querySelector('.t-full-text');
+  if (!full) return;
+
+  // data-expanded is the single source of truth
+  var expanded = btn.dataset.expanded === '1';
+  if (expanded) {
+    // Collapse back
+    full.style.display = 'none';
+    short.style.display = '';
+    btn.textContent = 'Read more';
+    btn.dataset.expanded = '0';
+  } else {
+    // Expand
+    short.style.display = 'none';
+    full.style.display = '';
+    btn.textContent = 'Show less';
+    btn.dataset.expanded = '1';
+  }
+};
+
+// closeTModal â€” restores scroll and hides the review modal
+window.closeTModal = function () {
+  var m = document.getElementById('testimonialModal');
+  if (m) m.style.display = 'none';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+};
 
 // =============================================================================
 // 21. HOMEPAGE LIGHTBOX (Masonry Gallery)
 // Opens a full-screen overlay showing a larger version of a gallery image.
 // Called via onclick="openLightbox(src, caption)" on each gallery item.
-// Clicking the overlay background or the ✕ button calls closeLightbox().
+// Clicking the overlay background or the âœ• button calls closeLightbox().
 // =============================================================================
 
 /** Opens the lightbox with the given image src and caption text. */
@@ -632,7 +703,7 @@ function closeLightbox() {
 
 
 // =============================================================================
-// 22. TRAVEL GUIDE — TABBED GALLERY
+// 22. TRAVEL GUIDE â€” TABBED GALLERY
 // The gallery on travelguide.blade.php is split into tabs (Falls, Adventure,
 // Hiking, etc.). Clicking a .tg-tab button hides all .tg-panel divs and shows
 // only the one matching the button's data-tab attribute.
@@ -659,7 +730,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Load More — reveals all .tg-hidden items in the grid, then removes the button
+  // Load More â€” reveals all .tg-hidden items in the grid, then removes the button
   document.querySelectorAll('.tg-load-more').forEach(function (btn) {
     btn.addEventListener('click', function () {
       var grid = document.getElementById(btn.dataset.grid);
@@ -702,15 +773,15 @@ document.addEventListener('keydown', function (e) {
 
 
 // =============================================================================
-// 24. CONTACT PAGE — ALERTS, FORM VALIDATION & PRICE CALCULATOR
+// 24. CONTACT PAGE â€” ALERTS, FORM VALIDATION & PRICE CALCULATOR
 // Three things bundled in one DOMContentLoaded block (all contact-page only):
 //
-//  a) Auto-hide alerts — scrolls to any .alert-success and closes it after 5s.
-//  b) Real-time validation — validates required fields on blur for both the
+//  a) Auto-hide alerts â€” scrolls to any .alert-success and closes it after 5s.
+//  b) Real-time validation â€” validates required fields on blur for both the
 //     contact form (#contact-form) and the booking form (#booking-form).
 //     Shows a green tick on success or a red error message on failure.
 //     Clears the error as soon as the user starts typing again.
-//  c) Price calculator — listens to the activity dropdown and guest count
+//  c) Price calculator â€” listens to the activity dropdown and guest count
 //     inputs and shows a live price estimate range in the booking form.
 // =============================================================================
 document.addEventListener('DOMContentLoaded', function () {
@@ -872,8 +943,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (activity && adults > 0 && activityPrices[activity]) {
       var prices = activityPrices[activity];
       var totalPeople = adults + children;
-      // Show the min–max range for the total group size
-      priceRangeSpan.textContent = '$' + (prices.min * totalPeople) + '–$' + (prices.max * totalPeople);
+      // Show the minâ€“max range for the total group size
+      priceRangeSpan.textContent = '$' + (prices.min * totalPeople) + 'â€“$' + (prices.max * totalPeople);
       priceEstimateDiv.style.display = 'block';
       priceEstimateDiv.style.animation = 'fadeIn 0.3s ease-in';
     } else if (priceEstimateDiv) {
@@ -907,31 +978,66 @@ window.addEventListener('scroll', function () {
 // =============================================================================
 // 26. MOBILE MENU TOGGLE
 // Toggles the mobile navigation drawer open/closed when the hamburger button
-// is tapped. Also swaps the hamburger ☰ and close ✕ icons, and locks/unlocks
+// is tapped. Also swaps the hamburger â˜° and close âœ• icons, and locks/unlocks
 // page scrolling while the menu is open so the background doesn't scroll.
 // =============================================================================
+// =============================================================================
+// 26. MOBILE MENU TOGGLE â€” slide-in drawer (right side, 1/3 width)
+// Opens a glassmorphism drawer from the right and blurs the backdrop.
+// Closes on backdrop click, close button click, or Escape key.
+// =============================================================================
 function toggleMobileMenu() {
-  var menu = document.getElementById('navbarNav');
-  var menuIcon = document.getElementById('menuIcon');
-  var closeIcon = document.getElementById('closeIcon');
-  var isOpen = menu.style.display === 'flex';
+  var drawer = document.getElementById('mobileDrawer');
+  var backdrop = document.getElementById('drawerBackdrop');
+  var btn = document.getElementById('hamburgerBtn');
+  if (!drawer || !backdrop) return;
+
+  var isOpen = drawer.getAttribute('data-open') === 'true';
 
   if (isOpen) {
-    // Close the menu
-    menu.style.display = 'none';
-    menuIcon.classList.remove('hidden');
-    closeIcon.classList.add('hidden');
-    document.documentElement.style.overflow = ''; // restore scrolling
+    // â€” CLOSE â€”
+    drawer.style.transform = 'translateX(100%)';
+    backdrop.style.opacity = '0';
+    btn && btn.classList.remove('is-open');
+    btn && btn.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+
+    // Hide backdrop after transition finishes
+    setTimeout(function () {
+      backdrop.style.display = 'none';
+    }, 380);
+
+    drawer.setAttribute('data-open', 'false');
   } else {
-    // Open the menu
-    menu.style.display = 'flex';
-    menuIcon.classList.add('hidden');
-    closeIcon.classList.remove('hidden');
-    document.documentElement.style.overflow = 'hidden'; // lock scrolling
+    // â€” OPEN â€”
+    backdrop.style.display = 'block';
+    backdrop.style.opacity = '0';
+    drawer.setAttribute('data-open', 'true');
+    btn && btn.classList.add('is-open');
+    btn && btn.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    // Trigger transitions on next frame
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        drawer.style.transform = 'translateX(0)';
+        backdrop.style.opacity = '1';
+      });
+    });
   }
 }
+
+// Close drawer on Escape key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    var drawer = document.getElementById('mobileDrawer');
+    if (drawer && drawer.getAttribute('data-open') === 'true') {
+      toggleMobileMenu();
+    }
+  }
+});
 
 
 // =============================================================================
@@ -1039,3 +1145,163 @@ document.addEventListener('DOMContentLoaded', function () {
     loadReactions();
   }
 });
+
+// =============================================================================
+// 29. ACTIVITIES CAROUSEL (Travel Guide page)
+// Mobile-only auto-advancing carousel with dot indicators and a progress bar.
+// On desktop (â‰¥768px) the track reverts to the full side-by-side layout.
+// =============================================================================
+(function () {
+  var INTERVAL = 3500;   // ms between auto-advances
+  var PROGRESS_TRANSITION = INTERVAL + 'ms';
+
+  var actIdx = 0;
+  var actTimer = null;
+  var progTimer = null;
+
+  function isMobile() { return window.innerWidth < 768; }
+
+  function actSlides() { return document.querySelectorAll('.act-slide'); }
+  function actTrack() { return document.getElementById('actCarouselTrack'); }
+  function actDots() { return document.getElementById('actDots'); }
+  function actProgress() { return document.getElementById('actProgressBar'); }
+
+  function actSetWidths() {
+    var mobile = isMobile();
+    actSlides().forEach(function (s) {
+      s.style.width = mobile ? '100vw' : '';   // CSS handles desktop
+    });
+  }
+
+  function actRenderDots() {
+    var container = actDots();
+    if (!container) return;
+    container.innerHTML = '';
+    var total = actSlides().length;
+    for (var i = 0; i < total; i++) {
+      var d = document.createElement('button');
+      d.style.cssText = 'border:none; cursor:pointer; border-radius:50%; padding:0; transition:all 0.25s;' +
+        'background:' + (i === actIdx ? 'var(--primary-green)' : '#ccc') + ';' +
+        'width:' + (i === actIdx ? '20px' : '8px') + '; height:8px; border-radius:4px;';
+      (function (idx) { d.addEventListener('click', function () { actGoTo(idx, true); }); })(i);
+      container.appendChild(d);
+    }
+  }
+
+  function actGoTo(idx, manual) {
+    var slides = actSlides();
+    var track = actTrack();
+    if (!track || !slides.length) return;
+    actIdx = ((idx % slides.length) + slides.length) % slides.length;
+    if (isMobile()) {
+      track.style.transform = 'translateX(-' + (actIdx * 100) + 'vw)';
+    } else {
+      track.style.transform = '';
+    }
+    actRenderDots();
+    if (manual) {
+      actStopAuto();
+      actStartAuto();
+    }
+  }
+
+  function actStartProgress() {
+    var bar = actProgress();
+    if (!bar) return;
+    bar.style.transition = 'none';
+    bar.style.width = '0%';
+    // force reflow so transition starts fresh
+    bar.getBoundingClientRect();
+    bar.style.transition = 'width ' + PROGRESS_TRANSITION + ' linear';
+    bar.style.width = '100%';
+  }
+
+  function actStartAuto() {
+    actStopAuto();
+    actStartProgress();
+    actTimer = setInterval(function () {
+      if (!isMobile()) { actStopAuto(); return; }
+      actGoTo(actIdx + 1, false);
+      actStartProgress();
+    }, INTERVAL);
+  }
+
+  function actStopAuto() {
+    clearInterval(actTimer);
+    clearTimeout(progTimer);
+  }
+
+  function actInit() {
+    if (!document.getElementById('actCarouselTrack')) return;
+    actSetWidths();
+    actIdx = 0;
+    actRenderDots();
+    if (isMobile()) {
+      actTrack().style.transform = 'translateX(0)';
+      actStartAuto();
+    } else {
+      actTrack().style.transform = '';
+    }
+  }
+
+  window.addEventListener('resize', function () {
+    actSetWidths();
+    actGoTo(0, false);
+    if (isMobile()) {
+      actStartAuto();
+    } else {
+      actStopAuto();
+      actTrack().style.transform = '';
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', actInit);
+})();
+
+// =============================================================================
+// 30. CLOSE EXTRA TIPS MODAL
+// =============================================================================
+window.closeExtraTips = function () {
+  var m = document.getElementById('extraTipsModal');
+  if (m) m.style.display = 'none';
+  document.body.style.overflow = '';
+  document.documentElement.style.overflow = '';
+};
+
+// Close on Escape key
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    closeExtraTips();
+  }
+});
+
+// =============================================================================
+// 31. ACTIVITIES COLLAPSIBLE CHECKBOX LIST (Contact / Booking form)
+// Mobile only: the list is hidden by default behind a toggle button.
+// Tapping the button expands/collapses it with a smooth max-height transition.
+// The button label updates to show how many activities are selected.
+// =============================================================================
+window.toggleActivityList = function () {
+  var list = document.getElementById('actCheckboxList');
+  var chevron = document.getElementById('actToggleChevron');
+  var btn = document.getElementById('actToggleBtn');
+  if (!list) return;
+
+  var isOpen = list.classList.contains('act-open');
+  if (isOpen) {
+    list.classList.remove('act-open');
+    if (chevron) chevron.style.transform = 'rotate(0deg)';
+    if (btn) btn.style.borderColor = '#e0e0e0';
+  } else {
+    list.classList.add('act-open');
+    if (chevron) chevron.style.transform = 'rotate(180deg)';
+    if (btn) btn.style.borderColor = 'var(--primary-green)';
+  }
+};
+
+window.updateActivityCount = function () {
+  var countEl = document.getElementById('actSelectedCount');
+  if (!countEl) return;
+  var checked = document.querySelectorAll('input[name="preferred_activities[]"]:checked').length;
+  countEl.textContent = checked > 0 ? '(' + checked + ' selected)' : '';
+};

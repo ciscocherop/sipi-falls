@@ -26,9 +26,13 @@
     <meta name="author" content="Sipi Falls Uganda">
     <meta name="robots" content="index, follow">
 
+    <!-- Canonical URL -->
+    <link rel="canonical" href="{{ url()->current() }}">
+
     <!-- Open Graph — for WhatsApp, Facebook sharing -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Sipi Falls Uganda">
+    <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ asset('images/gallery/falls/waterfall-base.jpg') }}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -37,6 +41,36 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@sipifalls">
     <meta name="twitter:image" content="{{ asset('images/gallery/falls/waterfall-base.jpg') }}">
+
+    <!-- JSON-LD Structured Data — Tourist Attraction -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TouristAttraction",
+      "name": "Sipi Falls Uganda",
+      "description": "Three breathtaking waterfalls on the slopes of Mount Elgon in Kapchorwa, Eastern Uganda. Offering abseiling, hiking, coffee tours, bird watching and cultural experiences.",
+      "url": "https://www.sipifalls.com",
+      "image": "{{ asset('images/gallery/falls/waterfall-base.jpg') }}",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Kapchorwa",
+        "addressRegion": "Eastern Uganda",
+        "addressCountry": "UG"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "1.3341674",
+        "longitude": "34.3741673"
+      },
+      "telephone": "+256703558174",
+      "openingHours": "Mo-Su 06:00-18:00",
+      "touristType": ["Adventure", "Nature", "Cultural"],
+      "sameAs": [
+        "https://www.facebook.com/sipifalls",
+        "https://www.instagram.com/sipifalls"
+      ]
+    }
+    </script>
 
     <!-- Yield for page specific overrides -->
     @stack('seo')
@@ -154,14 +188,12 @@
 
     
     <!-- Main Content -->
-    <div id="main-content" style="position: relative; z-index: 1; background: transparent;">
+    <div id="main-content">
         @yield('content')
     </div>
-    
+
     <!-- Footer -->
-    <div id="sticky-footer-wrapper" style="position: sticky; bottom: 0; z-index: 0;">
-        @include('partials.footer')
-    </div>
+    @include('partials.footer')
     
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

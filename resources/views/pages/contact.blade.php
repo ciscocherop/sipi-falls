@@ -289,7 +289,22 @@
 
               <div class="col-12">
                 <label style="color: var(--neutral-gray); font-family: var(--font-body); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; display: block;">Select Activities *</label>
-                <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem;">
+
+                <!-- Mobile toggle button — controlled by CSS, hidden on desktop -->
+                <button type="button" id="actToggleBtn" onclick="toggleActivityList()"
+                        style="width:100%; text-align:left; background:#f8f8f8;
+                               border:1.5px solid #e0e0e0; border-radius:8px; padding:0.65rem 1rem;
+                               font-family:var(--font-body); font-size:0.875rem; color:var(--neutral-gray);
+                               cursor:pointer; align-items:center; justify-content:space-between; gap:0.5rem;
+                               margin-bottom:0.35rem; transition:border-color 0.2s;">
+                    <span id="actToggleLabel">Choose activities <span id="actSelectedCount" style="color:var(--primary-green); font-weight:700;"></span></span>
+                    <i id="actToggleChevron" class="fas fa-chevron-down"
+                       style="font-size:0.75rem; transition:transform 0.25s; flex-shrink:0;"></i>
+                </button>
+
+                <!-- The actual checkbox list -->
+                <div id="actCheckboxList" class="activities-checkbox-grid"
+                     style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem;">
                     @foreach([
                         'hiking'          => '🥾 Hiking',
                         'abseiling'       => '🧗 Abseiling',
@@ -300,12 +315,13 @@
                         'cave-adventures' => '🕳️ Cave Adventures',
                         'mt-elgon-hike'   => '🏔️ Mt Elgon Hike',
                     ] as $value => $label)
-                    <label style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); background: white;"
+                    <label class="activity-checkbox-item"
+                           style="display: flex; align-items: center; gap: 0.5rem; padding: 0.5rem 0.75rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; cursor: pointer; transition: all 0.2s; font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); background: white;"
                            onmouseover="this.style.borderColor='var(--primary-green)'; this.style.background='rgba(26,107,26,0.04)';"
                            onmouseout="if(!this.querySelector('input').checked){ this.style.borderColor='#e0e0e0'; this.style.background='white'; }">
                         <input type="checkbox" name="preferred_activities[]" value="{{ $value }}"
                                style="width: 15px; height: 15px; accent-color: var(--primary-green); flex-shrink: 0; cursor: pointer;"
-                               onchange="this.closest('label').style.borderColor=this.checked?'var(--primary-green)':'#e0e0e0'; this.closest('label').style.background=this.checked?'rgba(26,107,26,0.08)':'white';">
+                               onchange="this.closest('label').style.borderColor=this.checked?'var(--primary-green)':'#e0e0e0'; this.closest('label').style.background=this.checked?'rgba(26,107,26,0.08)':'white'; updateActivityCount();">
                         {{ $label }}
                     </label>
                     @endforeach

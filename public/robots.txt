@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /login
+Disallow: /logout
+Disallow: /admin/*
+
+# Replace with your actual domain after hosting
+Sitemap: https://www.sipifalls.com/sitemap.xml

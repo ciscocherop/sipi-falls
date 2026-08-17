@@ -103,73 +103,90 @@
         <!-- Extra Tips Button -->
         <div class="text-center mt-4">
           <button type="button"
-                  onclick="document.getElementById('extraTipsDrawer').style.transform='translateX(0)'; document.getElementById('extraTipsOverlay').style.display='block'; document.body.style.overflow='hidden';"
+                  onclick="document.getElementById('extraTipsModal').style.display='flex'; document.body.style.overflow='hidden';"
                   style="background-color: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.75rem 2.5rem; font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; border-radius: 0.25rem; transition: all 0.3s; cursor: pointer;"
                   onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
                   onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
-            Extra Tips
+            <i class="fas fa-lightbulb" style="margin-right:0.4rem;"></i> Extra Tips
           </button>
         </div>
       </section>
     </section>
   </section>
 
-  <!-- Extra Tips Overlay -->
-  <div id="extraTipsOverlay"
-       onclick="document.getElementById('extraTipsDrawer').style.transform='translateX(100%)'; document.getElementById('extraTipsOverlay').style.display='none'; document.body.style.overflow='';"
-       style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9998;">
-  </div>
+  <!-- Extra Tips Modal -->
+  <div id="extraTipsModal"
+       onclick="if(event.target===this) closeExtraTips();"
+       style="display:none; position:fixed; inset:0; z-index:9999;
+              background:rgba(0,0,0,0.6); backdrop-filter:blur(4px);
+              align-items:center; justify-content:center; padding:1rem; overflow-y:auto;">
+    <div style="background:white; border-radius:16px; border-top:4px solid var(--accent-gold);
+                width:100%; max-width:520px; margin:auto;
+                box-shadow:0 24px 64px rgba(0,0,0,0.25); display:flex; flex-direction:column;">
 
-  <!-- Extra Tips Drawer -->
-  <div id="extraTipsDrawer"
-       style="position: fixed; top: 0; right: 0; bottom: 0; width: 100%; max-width: 480px; background: white; z-index: 9999; transform: translateX(100%); transition: transform 0.35s ease; display: flex; flex-direction: column; box-shadow: -8px 0 32px rgba(0,0,0,0.15);">
-
-      <!-- Drawer Header -->
-      <div style="background: var(--primary-green); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0;">
-          <h5 style="font-family: var(--font-display); color: white; margin: 0; font-size: 1.2rem; font-weight: 700;">Extra Tips for Sipi Falls</h5>
-          <button onclick="document.getElementById('extraTipsDrawer').style.transform='translateX(100%)'; document.getElementById('extraTipsOverlay').style.display='none'; document.body.style.overflow='';"
-                  style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6); color: white; font-size: 1.25rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              &times;
-          </button>
-      </div>
-
-      <!-- Drawer Body -->
-      <div style="overflow-y: auto; flex: 1; padding: 1.5rem;">
-          <ul style="list-style: none; padding: 0; margin: 0; font-family: var(--font-body); font-size: 0.95rem; color: var(--neutral-gray); line-height: 1.8;">
-              @foreach($extraTips ?? [] as $tip)
-              <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; gap: 0.75rem;">
-                  <span>{{ $tip }}</span>
-              </li>
-              @endforeach
-
-              {{-- Fallback if no tips from database --}}
-              @if(empty($extraTips))
-              @foreach([
-                  'Carry cash — ATMs are scarce in Sipi. Stock up in Mbale or Kampala before arrival.',
-                  'Start hikes early morning — mist clears by 9am giving the best waterfall views.',
-                  'Wear sturdy hiking shoes with good grip — the trails can be slippery especially after rain.',
-                  'Bring a light rain jacket — weather changes quickly on Mount Elgon.',
-                  'Hire a local Sabiny guide — they know hidden trails and cultural stories you won\'t find anywhere else.',
-                  'Book abseiling at least a day in advance — equipment and instructors need to be arranged.',
-                  'The best coffee is bought directly from local farmers — ask your guide to connect you.',
-                  'Respect local customs — ask before photographing people or sacred sites.',
-                  'Carry enough water for hikes — at least 2 litres per person.',
-                  'Mobile network is limited — MTN works best in the area.',
-              ] as $tip)
-              <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(0,0,0,0.06); display: flex; align-items: flex-start; gap: 0.75rem;">
-                  <span>{{ $tip }}</span>
-              </li>
-              @endforeach
-              @endif
-          </ul>
-      </div>
-
-      <!-- Drawer Footer -->
-      <div style="padding: 1rem 1.5rem; border-top: 1px solid #f0f0f0; background: var(--neutral-light); flex-shrink: 0;">
-          <p style="font-family: var(--font-body); font-size: 0.8rem; color: var(--neutral-gray); margin: 0; opacity: 0.7; text-align: center;">
-              🌊 Sipi Falls — Keep Sipping
+      <!-- Header -->
+      <div style="background:var(--primary-green); padding:1rem 1.25rem; border-radius:12px 12px 0 0;
+                  display:flex; align-items:center; justify-content:space-between; gap:0.75rem; flex-shrink:0;">
+        <div>
+          <h5 style="font-family:var(--font-display); color:white; margin:0; font-size:1.1rem; font-weight:700;">
+            <i class="fas fa-lightbulb" style="color:var(--accent-gold); margin-right:0.5rem;"></i>Extra Tips for Sipi Falls
+          </h5>
+          <p style="font-family:var(--font-body); color:rgba(255,255,255,0.65); font-size:0.72rem; margin:0;">
+            Practical advice from seasoned visitors
           </p>
+        </div>
+        <button onclick="closeExtraTips();"
+                aria-label="Close tips"
+                style="background:rgba(255,255,255,0.2); border:2px solid rgba(255,255,255,0.5);
+                       color:white; font-size:1.25rem; min-width:2.75rem; width:2.75rem; height:2.75rem;
+                       border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center;
+                       flex-shrink:0; transition:background 0.2s; touch-action:manipulation;
+                       -webkit-tap-highlight-color:transparent;"
+                onmouseover="this.style.background='rgba(255,255,255,0.35)';"
+                onmouseout="this.style.background='rgba(255,255,255,0.2)';">
+          &times;
+        </button>
       </div>
+
+      <!-- Body — scrollable -->
+      <div style="overflow-y:auto; max-height:60vh; padding:1.25rem 1.5rem;">
+        <ul style="list-style:none; padding:0; margin:0;">
+          @php $tips = $extraTips ?? [
+            'Carry cash — ATMs are scarce in Sipi. Stock up in Mbale or Kampala before arrival.',
+            'Start hikes early morning — mist clears by 9am giving the best waterfall views.',
+            'Wear sturdy hiking shoes — trails can be slippery after rain.',
+            'Bring a light rain jacket — weather changes quickly on Mount Elgon.',
+            'Hire a local Sabiny guide — they know hidden trails and cultural stories.',
+            'Book abseiling at least a day in advance — equipment needs to be arranged.',
+            'The best coffee is bought directly from local farmers — ask your guide.',
+            'Respect local customs — ask before photographing people or sacred sites.',
+            'Carry at least 2 litres of water per person for hikes.',
+            'Mobile network is limited — MTN works best in the area.',
+          ]; @endphp
+          @foreach($tips as $tip)
+          <li style="display:flex; align-items:flex-start; gap:0.75rem; padding:0.7rem 0;
+                     border-bottom:1px solid #f0f0f0; font-family:var(--font-body);
+                     font-size:0.9rem; color:var(--neutral-gray); line-height:1.7;">
+            <i class="fas fa-leaf" style="color:var(--accent-gold); margin-top:3px; flex-shrink:0;"></i>
+            <span>{{ $tip }}</span>
+          </li>
+          @endforeach
+        </ul>
+      </div>
+
+      <!-- Footer -->
+      <div style="padding:0.85rem 1.5rem; border-top:1px solid #f0f0f0; text-align:center; flex-shrink:0;">
+        <button onclick="closeExtraTips();"
+                style="font-family:var(--font-body); font-size:0.85rem; font-weight:600;
+                       background:var(--primary-green); color:white; border:none;
+                       padding:0.6rem 2rem; border-radius:8px; cursor:pointer; transition:all 0.25s;
+                       touch-action:manipulation;"
+                onmouseover="this.style.background='var(--accent-gold)'; this.style.color='#1a1a0a';"
+                onmouseout="this.style.background='var(--primary-green)'; this.style.color='white';">
+          Got it — Close
+        </button>
+      </div>
+    </div>
   </div>
 
   <!-- Travel Guide Stats Strip -->
@@ -238,131 +255,89 @@
   <!-- Activities Section -->
   <section class="reveal py-5" id="activities" style="background: var(--neutral-offwhite); padding: 3rem 0;">
     <div class="container-fluid px-0" style="background: transparent;">
-      <h2 class="text-center mb-5" style="color: var(--primary-green); font-family: var(--font-display);">
+      <h2 class="text-center mb-2" style="color: var(--primary-green); font-family: var(--font-display);">
         Activities at Sipi Falls
       </h2>
+      <!-- Mobile swipe hint -->
+      <p id="actSwipeHint" style="text-align:center; font-family:var(--font-body); font-size:0.75rem; color:#aaa; margin-bottom:0.75rem; display:none;">
+        <i class="fas fa-hand-point-right" style="margin-right:4px;"></i> Swipe or wait for auto-advance
+      </p>
 
-      <div class="row g-0">
-        <!-- Activity 1 -->
-        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
-          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
-            <img src="{{ asset($content['travelguide_activity_1_image'] ?? 'images/naturewalk.jpg') }}" alt="{{ $content['travelguide_activity_1_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
-            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
-            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">1</div>
-            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
-              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
-              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_1_title'] ?? 'Hiking the Waterfalls' }}</h5>
-              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_1_description'] ?? 'Explore scenic trails to all three waterfalls.' }}</p>
-              <div class="activity-reactions" data-activity="travelguide_activity_1" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
-                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
+      <!-- Carousel track wrapper -->
+      <div id="actCarouselWrap" style="position:relative; overflow:hidden;">
+        <div id="actCarouselTrack" style="display:flex; transition:transform 0.55s cubic-bezier(0.4,0,0.2,1); will-change:transform;">
+
+          @php
+            $activities = [
+              ['num'=>1, 'img_key'=>'travelguide_activity_1_image', 'img_default'=>'images/naturewalk.jpg',
+               'title_key'=>'travelguide_activity_1_title', 'title_default'=>'Hiking the Waterfalls',
+               'desc_key'=>'travelguide_activity_1_description', 'desc_default'=>'Explore scenic trails to all three waterfalls.',
+               'act_key'=>'travelguide_activity_1'],
+              ['num'=>2, 'img_key'=>'travelguide_activity_2_image', 'img_default'=>'images/abseil3.jpg',
+               'title_key'=>'travelguide_activity_2_title', 'title_default'=>'Abseiling',
+               'desc_key'=>'travelguide_activity_2_description', 'desc_default'=>'Descend a 100m cliff beside the main waterfall.',
+               'act_key'=>'travelguide_activity_2'],
+              ['num'=>3, 'img_key'=>'travelguide_activity_3_image', 'img_default'=>'images/cofi.jpg',
+               'title_key'=>'travelguide_activity_3_title', 'title_default'=>'Coffee Tours',
+               'desc_key'=>'travelguide_activity_3_description', 'desc_default'=>'Visit local farms and taste freshly brewed Sipi coffee.',
+               'act_key'=>'travelguide_activity_3'],
+              ['num'=>4, 'img_key'=>'travelguide_activity_4_image', 'img_default'=>'images/chamelon.jpg',
+               'title_key'=>'travelguide_activity_4_title', 'title_default'=>'Bird Watching',
+               'desc_key'=>'travelguide_activity_4_description', 'desc_default'=>'Discover over 300 bird species in the Mount Elgon region.',
+               'act_key'=>'travelguide_activity_4'],
+              ['num'=>5, 'img_key'=>'travelguide_activity_5_image', 'img_default'=>'images/clif2.jpg',
+               'title_key'=>'travelguide_activity_5_title', 'title_default'=>'Cave Adventures',
+               'desc_key'=>'travelguide_activity_5_description', 'desc_default'=>'The ancient caves echo stories of the past.',
+               'act_key'=>'travelguide_activity_5'],
+              ['num'=>6, 'img_key'=>'travelguide_activity_6_image', 'img_default'=>'images/rock climbing.jpg',
+               'title_key'=>'travelguide_activity_6_title', 'title_default'=>'Rock Climbing',
+               'desc_key'=>'travelguide_activity_6_description', 'desc_default'=>'Challenge yourself on rugged cliffs with guided rock climbing adventures.',
+               'act_key'=>'travelguide_activity_6'],
+            ];
+          @endphp
+
+          @foreach($activities as $act)
+          <div class="act-slide" style="flex-shrink:0; position:relative; overflow:hidden; cursor:pointer; height:560px;">
+            <img src="{{ asset($content[$act['img_key']] ?? $act['img_default']) }}"
+                 alt="{{ $content[$act['title_key']] ?? $act['title_default'] }}"
+                 loading="lazy" class="activity-img"
+                 style="position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease;">
+            <div class="activity-overlay"
+                 style="position:absolute; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); transition:background 0.4s ease;"></div>
+            <div class="activity-number"
+                 style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-family:var(--font-display); font-size:12rem; font-weight:700; color:rgba(255,255,255,0.08); line-height:1; pointer-events:none; transition:opacity 0.4s ease;">{{ $act['num'] }}</div>
+            <div class="activity-body"
+                 style="position:absolute; bottom:0; left:0; right:0; padding:2rem 1.5rem; color:white; transform:translateY(20px); transition:transform 0.4s ease;">
+              <div style="width:40px; height:2px; background:var(--accent-gold); margin-bottom:1rem;"></div>
+              <h5 style="font-family:var(--font-body); font-weight:600; font-size:1.25rem; color:white; margin-bottom:0.75rem;">
+                {{ $content[$act['title_key']] ?? $act['title_default'] }}
+              </h5>
+              <p style="font-family:var(--font-body); font-size:0.9rem; line-height:1.6; color:rgba(255,255,255,0.9); margin:0;">
+                {{ $content[$act['desc_key']] ?? $act['desc_default'] }}
+              </p>
+              <div class="activity-reactions" data-activity="{{ $act['act_key'] }}"
+                   style="display:flex; gap:0.5rem; margin-top:0.75rem; flex-wrap:wrap;">
+                <button class="reaction-btn" data-emoji="thumbs_up" style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:0.25rem 0.65rem; cursor:pointer; font-size:0.8rem; color:white; font-family:var(--font-body); transition:all 0.2s; display:flex; align-items:center; gap:0.3rem;">👍 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="love"      style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:0.25rem 0.65rem; cursor:pointer; font-size:0.8rem; color:white; font-family:var(--font-body); transition:all 0.2s; display:flex; align-items:center; gap:0.3rem;">❤️ <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="fire"      style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:0.25rem 0.65rem; cursor:pointer; font-size:0.8rem; color:white; font-family:var(--font-body); transition:all 0.2s; display:flex; align-items:center; gap:0.3rem;">🔥 <span class="reaction-count">0</span></button>
+                <button class="reaction-btn" data-emoji="wow"       style="background:rgba(255,255,255,0.15); border:1px solid rgba(255,255,255,0.3); border-radius:999px; padding:0.25rem 0.65rem; cursor:pointer; font-size:0.8rem; color:white; font-family:var(--font-body); transition:all 0.2s; display:flex; align-items:center; gap:0.3rem;">⭐ <span class="reaction-count">0</span></button>
               </div>
             </div>
           </div>
-        </div>
+          @endforeach
 
-        <!-- Activity 2 -->
-        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
-          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
-            <img src="{{ asset($content['travelguide_activity_2_image'] ?? 'images/abseil3.jpg') }}" alt="{{ $content['travelguide_activity_2_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
-            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
-            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">2</div>
-            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
-              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
-              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_2_title'] ?? 'Abseiling' }}</h5>
-              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_2_description'] ?? 'Descend a 100m cliff beside the main waterfall.' }}</p>
-              <div class="activity-reactions" data-activity="travelguide_activity_2" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
-                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
-              </div>
-            </div>
-          </div>
-        </div>
+        </div>{{-- /actCarouselTrack --}}
+      </div>{{-- /actCarouselWrap --}}
 
-        <!-- Activity 3 -->
-        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
-          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
-            <img src="{{ asset($content['travelguide_activity_3_image'] ?? 'images/cofi.jpg') }}" alt="{{ $content['travelguide_activity_3_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
-            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
-            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">3</div>
-            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
-              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
-              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_3_title'] ?? 'Coffee Tours' }}</h5>
-              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_3_description'] ?? 'Visit local farms and taste freshly brewed Sipi coffee.' }}</p>
-              <div class="activity-reactions" data-activity="travelguide_activity_3" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
-                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Activity 4 -->
-        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
-          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
-            <img src="{{ asset($content['travelguide_activity_4_image'] ?? 'images/chamelon.jpg') }}" alt="{{ $content['travelguide_activity_4_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
-            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
-            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">4</div>
-            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
-              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
-              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_4_title'] ?? 'Bird Watching' }}</h5>
-              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_4_description'] ?? 'Discover over 300 bird species in the Mount Elgon region.' }}</p>
-              <div class="activity-reactions" data-activity="travelguide_activity_4" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
-                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Activity 5 -->
-        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
-          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
-            <img src="{{ asset($content['travelguide_activity_5_image'] ?? 'images/clif2.jpg') }}" alt="{{ $content['travelguide_activity_5_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
-            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
-            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">5</div>
-            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
-              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
-              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_5_title'] ?? 'Cave Adventures' }}</h5>
-              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_5_description'] ?? 'The ancient caves echo stories of the past.' }}</p>
-              <div class="activity-reactions" data-activity="travelguide_activity_5" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
-                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Activity 6 -->
-        <div class="col-md-4 col-lg-2" style="flex: 1 1 0; max-width: none;">
-          <div class="activity-card" style="position: relative; height: 560px; overflow: hidden; cursor: pointer;">
-            <img src="{{ asset($content['travelguide_activity_6_image'] ?? 'images/rock climbing.jpg') }}" alt="{{ $content['travelguide_activity_6_title'] ?? 'Activity' }}" loading="lazy" class="activity-img" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;">
-            <div class="activity-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); transition: background 0.4s ease;"></div>
-            <div class="activity-number" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: var(--font-display); font-size: 12rem; font-weight: 700; color: rgba(255,255,255,0.08); line-height: 1; pointer-events: none; transition: opacity 0.4s ease;">6</div>
-            <div class="activity-body" style="position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem 1.5rem; color: white; transform: translateY(20px); transition: transform 0.4s ease;">
-              <div style="width: 40px; height: 2px; background: var(--accent-gold); margin-bottom: 1rem;"></div>
-              <h5 style="font-family: var(--font-body); font-weight: 600; font-size: 1.25rem; color: white; margin-bottom: 0.75rem;">{{ $content['travelguide_activity_6_title'] ?? 'Rock Climbing' }}</h5>
-              <p style="font-family: var(--font-body); font-size: 0.9rem; line-height: 1.6; color: rgba(255,255,255,0.9); margin: 0;">{{ $content['travelguide_activity_6_description'] ?? 'Challenge yourself on rugged cliffs with guided rock climbing adventures.' }}</p>
-              <div class="activity-reactions" data-activity="travelguide_activity_6" style="display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap;">
-                <button class="reaction-btn" data-emoji="thumbs_up" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">👍 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="love" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">❤️ <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="fire" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">🔥 <span class="reaction-count">0</span></button>
-                <button class="reaction-btn" data-emoji="wow" style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 999px; padding: 0.25rem 0.65rem; cursor: pointer; font-size: 0.8rem; color: white; font-family: var(--font-body); transition: all 0.2s; display: flex; align-items: center; gap: 0.3rem;">⭐ <span class="reaction-count">0</span></button>
-              </div>
-            </div>
-          </div>
+      <!-- Mobile controls: dots + progress bar -->
+      <div id="actControls" style="display:none; flex-direction:column; align-items:center; gap:0.5rem; padding:0.85rem 0 0.25rem;">
+        <div id="actDots" style="display:flex; gap:6px; align-items:center;"></div>
+        <!-- Auto-advance progress bar -->
+        <div style="width:120px; height:3px; background:rgba(0,0,0,0.1); border-radius:2px; overflow:hidden;">
+          <div id="actProgressBar" style="height:100%; width:0%; background:var(--primary-green); border-radius:2px; transition:width linear;"></div>
         </div>
       </div>
+
     </div>
   </section>
 

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 @import 'tailwindcss';
 
@@ -231,59 +231,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-#sticky-footer-wrapper {
-    position: sticky;
-    bottom: 0;
-    z-index: 0;
-}
-
 #main-content {
     position: relative;
     z-index: 1;
-    background: transparent;
-    box-shadow: none;
 }
 
-#main-content>section:first-child {
-    margin-top: 0;
-}
-
-@media (max-width: 1023px) {
-    #navbarNav[style*="flex"] {
-        position: fixed !important;
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        background: #0a1a0a !important;
-        z-index: 9998 !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: 100vw !important;
-        height: 100vh !important;
-        padding: 0 !important;
-        gap: 0 !important;
-    }
-
-    #navbarNav[style*="flex"] ul {
-        flex-direction: column !important;
-        gap: 0.75rem !important;
-        text-align: center !important;
-        width: 100% !important;
-        padding: 0 !important;
-        margin: 0 !important;
-    }
-
-    #navbarNav[style*="flex"] a {
-        font-size: 1.25rem !important;
-        color: white !important;
-
-        display: block !important;
-    }
-
-    /* Make close button sit above menu */
-}
+/* Mobile drawer replaces the old full-screen menu â€” no override needed */
 
 /* ============ FORM VALIDATION STYLES ============ */
 .has-success input,
@@ -314,7 +267,59 @@ body {
     }
 }
 
-/* ============ MOBILE RESPONSIVE STYLES ============ */
+/* =============================================
+   TESTIMONIALS CAROUSEL
+   ============================================= */
+
+/* Slide widths: 1-up mobile, 3-up desktop */
+.t-slide {
+    width: 100%;
+}
+
+@media (min-width: 768px) {
+    .t-slide {
+        width: 33.3333%;
+    }
+}
+
+/* Card hover lift + mobile compact */
+.t-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.t-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.11) !important;
+}
+
+@media (max-width: 767px) {
+    .t-card {
+        min-height: 0 !important;
+        padding: 1rem !important;
+    }
+
+    .t-body-text,
+    .t-full-text {
+        font-size: 0.83rem !important;
+        line-height: 1.65 !important;
+    }
+}
+
+/* Share button: square corners */
+.tShareBtn {
+    font-size: 0.8rem;
+    padding: 0.55rem 1.2rem;
+    border-radius: 6px !important;
+}
+
+@media (min-width: 768px) {
+    .tShareBtn {
+        font-size: 0.85rem;
+        padding: 0.7rem 1.75rem;
+    }
+}
+
+/* ============ MOBILE RESPONSIVE STYLES (â‰¤ 768px) ============ */
 @media (max-width: 768px) {
 
     /* Stats counter - prevent clipping */
@@ -359,12 +364,12 @@ body {
         margin-top: 1.5rem !important;
     }
 
-    /* Hero headings smaller on mobile */
-    h1 {
+    /* Hero headings smaller on mobile â€” use clamp on hero, limit only generic h1/h2 */
+    h1:not(.hero-heading) {
         font-size: 2.2rem !important;
     }
 
-    h2 {
+    h2:not(.cta-banner-heading):not(.description-section-heading) {
         font-size: 1.8rem !important;
     }
 
@@ -374,19 +379,6 @@ body {
         overflow-x: hidden !important;
     }
 
-    /* Show 1 testimonial card on mobile */
-    .testimonial-slide {
-        min-width: 100% !important;
-    }
-
-    /* Move arrows inside on mobile */
-    .testimonial-arrow-prev {
-        left: 10px !important;
-    }
-
-    .testimonial-arrow-next {
-        right: 10px !important;
-    }
 }
 
 /* Masonry Gallery */
@@ -576,7 +568,7 @@ body {
 }
 
 /* ============================================================
-   MIGRATED FROM style.css — single source of truth merge
+   MIGRATED FROM style.css â€” single source of truth merge
    All rules below were unique to style.css or required as
    aliases. app.css's existing rules take precedence for any
    variables or selectors defined above.
@@ -677,7 +669,7 @@ a:hover {
     color: var(--accent-gold);
 }
 
-/* ---- Category A→B: @keyframes (unique to style.css) ---- */
+/* ---- Category Aâ†’B: @keyframes (unique to style.css) ---- */
 @keyframes kenburns {
     0% {
         transform: scale(1) translate(0, 0);
@@ -934,7 +926,7 @@ a:hover {
     }
 }
 
-/* ---- Category A→B: #mainNavbar (floating pill — only in style.css) ---- */
+/* ---- Category Aâ†’B: #mainNavbar (floating pill â€” only in style.css) ---- */
 #mainNavbar {
     margin-top: 1rem;
     background: rgba(12, 54, 30, 0.65) !important;
@@ -969,13 +961,12 @@ a:hover {
     padding-bottom: 0.35rem;
 }
 
-/* ---- Category A→B: #hero-section (only in style.css) ---- */
+/* ---- Category Aâ†’B: #hero-section (only in style.css) ---- */
 #hero-section {
     position: relative;
-    min-height: 92vh;
-    display: flex;
-    align-items: center;
+    min-height: 100svh;
     overflow: hidden;
+    /* Do NOT set display:flex here â€” content uses absolute overlay positioning */
 }
 
 #hero-section .bg-cover {
@@ -1206,9 +1197,102 @@ a:hover {
     }
 }
 
-/* ============ VIDEO SECTION — side-by-side responsive ============ */
+/* ============ VIDEO SECTION â€” side-by-side responsive ============ */
 @media (max-width: 768px) {
     .video-section [style*="grid-template-columns: 1fr 1fr"] {
         grid-template-columns: 1fr !important;
+    }
+}
+
+/* ============ ACTIVITIES CAROUSEL ============ */
+
+/* Desktop: all 6 side by side — no overflow clipping */
+#actCarouselWrap {
+    overflow: visible;
+}
+
+.act-slide {
+    width: calc(100% / 6);
+    height: 560px;
+    flex-shrink: 0;
+}
+
+/* Tablet: 2 at a time */
+@media (min-width: 768px) and (max-width: 1023px) {
+    #actCarouselWrap {
+        overflow: hidden;
+    }
+
+    .act-slide {
+        width: 50%;
+    }
+}
+
+/* Mobile: 1 card fills the screen, auto-advances */
+@media (max-width: 767px) {
+    #actCarouselWrap {
+        overflow: hidden;
+    }
+
+    #actSwipeHint {
+        display: block !important;
+    }
+
+    #actControls {
+        display: flex !important;
+    }
+
+    .act-slide {
+        width: 100vw !important;
+        height: 72vh !important;
+        min-height: 320px;
+    }
+}
+
+/* ============ ACTIVITIES CHECKBOX — collapsible on mobile ============ */
+
+/* Desktop: hide the toggle button, always show the grid normally */
+#actToggleBtn {
+    display: none;
+}
+
+#actCheckboxList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.4rem;
+}
+
+/* Mobile overrides */
+@media (max-width: 767px) {
+    /* Show the toggle button as a flex row */
+    #actToggleBtn {
+        display: flex !important;
+    }
+
+    /* Collapsed by default on mobile */
+    #actCheckboxList {
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        overflow: hidden;
+        max-height: 0 !important;
+        transition: max-height 0.35s ease;
+    }
+
+    /* Expanded state toggled by JS */
+    #actCheckboxList.act-open {
+        max-height: 700px !important;
+    }
+
+    .activity-checkbox-item {
+        border-radius: 0 !important;
+        border: none !important;
+        border-bottom: 1px solid #ebebeb !important;
+        padding: 0.7rem 0.25rem !important;
+        background: transparent !important;
+        font-size: 0.9rem !important;
+    }
+
+    .activity-checkbox-item:first-child {
+        border-top: 1px solid #ebebeb !important;
     }
 }

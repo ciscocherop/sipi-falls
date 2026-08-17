@@ -11,8 +11,156 @@
 
 @section('title', 'Sipi Falls - Keep Sipping!!')
 
+@push('styles')
+<style>
+/* =============================================
+   HOME PAGE — RESPONSIVE HERO STYLES
+   ============================================= */
+
+/* The overlay div that holds hero text — padding-top clears the fixed navbar */
+.hero-overlay-content {
+    /* navbar ~60px + 1rem margin-top (~16px) + 14px breathing = 90px */
+    padding-top: 90px;
+    padding-bottom: 2rem;
+    /* align-items: center is set inline — padding-top shifts the centering zone down */
+}
+
+/* Hero heading — scales fluidly, never overridden by global h1 rule */
+.hero-heading {
+    font-size: clamp(1.6rem, 4.5vw, 3.25rem) !important;
+    line-height: 1.15 !important;
+    color: white !important;
+    margin: 0 !important;
+}
+
+/* Hero subtext */
+.hero-subtext {
+    font-size: clamp(0.875rem, 2.2vw, 1.05rem);
+    line-height: 1.7;
+    color: rgba(255,255,255,0.9);
+    margin: 0;
+}
+
+/* CTA row — always side by side */
+.hero-cta-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+}
+
+.hero-btn-primary,
+.hero-btn-secondary {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    padding: 0.7rem 1.25rem;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    transition: all 0.25s;
+    white-space: nowrap;
+    flex: 1;
+    text-align: center;
+}
+
+.hero-btn-primary {
+    background: var(--accent-gold);
+    color: #1a1a0a;
+    border: 2px solid var(--accent-gold);
+}
+
+.hero-btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255,255,255,0.65);
+}
+
+/* Stat cards grid */
+.hero-stat-cards-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    flex-shrink: 0;
+    width: 100%;
+}
+
+.hero-stat-card-item {
+    min-width: 0;
+}
+
+/* Scroll hint */
+.hero-scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.6;
+}
+
+/* =============================================
+   TESTIMONIALS ARROWS — inside container on small screens
+   ============================================= */
+@media (max-width: 900px) {
+    .testimonial-arrow-prev { left: 0 !important; }
+    .testimonial-arrow-next { right: 0 !important; }
+}
+
+/* =============================================
+   MOBILE — phones (≤ 480px)
+   ============================================= */
+@media (max-width: 480px) {
+    .hero-overlay-content {
+        padding-top: 75px;
+    }
+
+    .hero-scroll-hint {
+        display: none !important;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        font-size: 0.78rem;
+        padding: 0.6rem 0.7rem;
+    }
+
+    .hero-stat-cards-wrap {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-stat-card-item p:first-child {
+        font-size: 1.05rem !important;
+    }
+}
+
+/* =============================================
+   DESKTOP (≥ 1024px) — stat cards single column
+   ============================================= */
+@media (min-width: 1024px) {
+    .hero-stat-cards-wrap {
+        grid-template-columns: 1fr;
+        width: 200px;
+    }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        flex: none;
+        font-size: 0.95rem;
+        padding: 0.75rem 1.75rem;
+    }
+
+    .hero-overlay-content {
+        padding-top: 95px;
+    }
+}
+</style>
+@endpush
+
 @section('content')
-    <section id="hero-section" class="relative h-screen overflow-hidden w-full reveal">
+    <section id="hero-section" class="relative overflow-hidden w-full reveal" style="min-height: 100svh;">
         <!-- Image Background -->
         <div class="absolute inset-0 z-0 bg-cover bg-center" style="background-image: url('/images/Sipi-Falls.jpg');">
             <img src="/images/Sipi-Falls.jpg" alt="Sipi Falls" class="sr-only">
@@ -20,14 +168,14 @@
         </div>
 
         <!-- Hero Content Overlay -->
-        <div class="absolute inset-0 flex items-center z-10 px-8 md:px-16">
-            <div class="w-full max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
+        <div class="absolute inset-0 flex z-10 hero-overlay-content" style="align-items: center;">
+            <div class="w-full max-w-7xl mx-auto" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 2rem; padding: 0 1.25rem;">
 
                 <!-- Left: Text content -->
-                <div class="max-w-3xl space-y-6 text-left">
+                <div style="flex: 1 1 300px; max-width: 640px; display: flex; flex-direction: column; gap: 1.25rem;">
 
                     <!-- Eastern Uganda pill -->
-                    <div style="display: flex; align-items: center; max-width: 480px;">
+                    <div style="display: flex; align-items: center; max-width: 340px;">
                         <span style="background: rgba(100,70,0,0.55); color: rgba(255,255,255,0.95); font-family: var(--font-primary); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 0.3rem 1rem; border-radius: 999px; white-space: nowrap; flex-shrink: 0; border: 1px solid rgba(255,200,50,0.35);">
                             Eastern Uganda
                         </span>
@@ -35,46 +183,48 @@
                     </div>
 
                     <!-- Hero Statement -->
-                    <h1 class="text-white font-bold text-4xl md:text-5xl lg:text-6xl leading-tight drop-shadow-xl"
-                        style="font-family: var(--font-primary);">
+                    <h1 class="text-white font-bold leading-tight drop-shadow-xl hero-heading"
+                        style="font-family: var(--font-primary); margin: 0;">
                         Where Waterfalls, Coffee Trails, and Cliffs Meet Adventure
                     </h1>
 
                     <!-- Supporting paragraph -->
-                    <p class="text-white/90 text-base md:text-lg" style="font-family: var(--font-primary);">
+                    <p class="text-white/90 hero-subtext" style="font-family: var(--font-primary); margin: 0;">
                         Plan your Sipi Falls experience with guided hikes, abseiling thrills, and unforgettable mountain views.
                     </p>
 
-                    <!-- CTA buttons -->
-                    <div class="flex flex-wrap gap-4 pt-2">
-                        <a href="/travelguide"
-                           style="font-family: var(--font-primary); font-weight: 700; font-size: 0.95rem; text-decoration: none; background: var(--accent-gold); color: #1a1a0a; padding: 0.75rem 1.75rem; border-radius: 999px; display: inline-block; transition: all 0.25s; border: 2px solid var(--accent-gold);"
+                    <!-- CTA buttons — side-by-side on all screens -->
+                    <div class="hero-cta-row">
+                        <a href="/travelguide" class="hero-btn-primary"
                            onmouseover="this.style.background='#fff'; this.style.color='#1a1a0a'; this.style.borderColor='#fff';"
                            onmouseout="this.style.background='var(--accent-gold)'; this.style.color='#1a1a0a'; this.style.borderColor='var(--accent-gold)';">
-                            Explore Activities
+                            🏞️ Explore Activities
                         </a>
-                        <a href="/contact"
-                           style="font-family: var(--font-primary); font-weight: 700; font-size: 0.95rem; text-decoration: none; background: transparent; color: white; padding: 0.75rem 1.75rem; border-radius: 999px; display: inline-block; transition: all 0.25s; border: 2px solid rgba(255,255,255,0.7);"
+                        <a href="/contact" class="hero-btn-secondary"
                            onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.borderColor='white';"
                            onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,0.7)';">
-                            Talk to a Guide
+                            🧭 Talk to a Guide
                         </a>
                     </div>
                 </div>
 
-                <!-- Right: Stat cards -->
-                <div class="flex flex-col gap-3 hero-stat-cards" style="width: 220px;">
-                    <div class="hero-stat-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.5rem;">
-                        <p style="color: white; font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.2rem;">3</p>
-                        <p style="color: rgba(255,255,255,0.8); font-family: var(--font-primary); font-size: 0.78rem; margin: 0; font-weight: 400;">Waterfall levels</p>
+                <!-- Right: Stat cards — 2-column grid on mobile, column on desktop -->
+                <div class="hero-stat-cards-wrap">
+                    <div class="hero-stat-card-item" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.25rem;">
+                        <p style="color: var(--accent-gold); font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.25rem;">3</p>
+                        <p style="color: rgba(255,255,255,0.85); font-family: var(--font-primary); font-size: 0.75rem; margin: 0; font-weight: 400;">Waterfall levels</p>
                     </div>
-                    <div class="hero-stat-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.5rem;">
-                        <p style="color: white; font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.2rem;">4.5h</p>
-                        <p style="color: rgba(255,255,255,0.8); font-family: var(--font-primary); font-size: 0.78rem; margin: 0; font-weight: 400;">Guided trail loop</p>
+                    <div class="hero-stat-card-item" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.25rem;">
+                        <p style="color: var(--accent-gold); font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.25rem;">4.5h</p>
+                        <p style="color: rgba(255,255,255,0.85); font-family: var(--font-primary); font-size: 0.75rem; margin: 0; font-weight: 400;">Guided trail loop</p>
                     </div>
-                    <div class="hero-stat-card" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.5rem;">
-                        <p style="color: white; font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.2rem;">1,775m</p>
-                        <p style="color: rgba(255,255,255,0.8); font-family: var(--font-primary); font-size: 0.78rem; margin: 0; font-weight: 400;">Mt. Elgon slopes</p>
+                    <div class="hero-stat-card-item" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.25rem;">
+                        <p style="color: var(--accent-gold); font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.25rem;">100m</p>
+                        <p style="color: rgba(255,255,255,0.85); font-family: var(--font-primary); font-size: 0.75rem; margin: 0; font-weight: 400;">Main waterfall drop</p>
+                    </div>
+                    <div class="hero-stat-card-item" style="backdrop-filter: blur(10px); background: rgba(255,255,255,0.18); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 0.85rem 1.25rem;">
+                        <p style="color: var(--accent-gold); font-family: var(--font-primary); font-size: 1.35rem; font-weight: 700; line-height: 1; margin: 0 0 0.25rem;">1,775m</p>
+                        <p style="color: rgba(255,255,255,0.85); font-family: var(--font-primary); font-size: 0.75rem; margin: 0; font-weight: 400;">Mt. Elgon slopes</p>
                     </div>
                 </div>
 
@@ -82,7 +232,7 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-0 right-0 z-10" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.6;">
+        <div class="absolute bottom-6 left-0 right-0 z-10 hero-scroll-hint" style="display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0.6;">
             <span style="font-family: var(--font-primary); font-size: 0.65rem; letter-spacing: 0.3em; color: white; text-transform: uppercase;">Scroll to explore</span>
             <div style="width: 1px; height: 40px; background: linear-gradient(180deg, white, transparent);"></div>
         </div>
@@ -327,243 +477,279 @@
         </div>
     </section>
 
-    <!-- Testimonial Section -->
-    <section class="container-fluid py-4 reveal" style="background: #F5F6F9;">
+    <!-- =====================================================
+         TESTIMONIALS SECTION — Modern redesign
+         3-up desktop · 1-up mobile · truncated text · dots nav
+         ===================================================== -->
+    <section id="reviews" class="reveal" style="background: #F5F6F9; padding: 4rem 0 2rem;">
         <div class="container">
-            <h2 class="text-center mb-4 fw-bold" style="color: var(--primary-green); font-family: var(--font-display); font-size: 2.5rem;">
-                Hear From Our Adventurers
-            </h2>
-            
-            <!-- Testimonial Carousel Container -->
-            <div style="position: relative; max-width: 1200px; margin: 0 auto;">
-                <!-- Previous Arrow -->
-                <button onclick="moveTestimonialCarousel(-1)" 
-                        class="testimonial-arrow testimonial-arrow-prev" 
-                        aria-label="Previous testimonials"
-                        style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); background: var(--primary-green); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
-                        onmouseover="this.style.background='var(--accent-gold)'; this.style.transform='translateY(-50%) scale(1.1)';"
-                        onmouseout="this.style.background='var(--primary-green)'; this.style.transform='translateY(-50%) scale(1)';">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                
-                <!-- Carousel Track -->
-                <div class="testimonial-carousel-track" style="overflow: hidden;">
-                    <div class="testimonial-carousel-inner" style="display: flex; transition: transform 0.5s ease;">
-                        @forelse($testimonials as $testimonial)
-                        <!-- Testimonial Card -->
-                        <div class="testimonial-slide" style="min-width: 50%; padding: 0 15px; box-sizing: border-box;">
-                            <div class="card h-100 shadow-lg border-0 p-4 testimonial-card" style="background: #ffffff; border-left: 4px solid var(--accent-gold, #E8B923); border-radius: 0.5rem; text-align: left; padding: 2rem;">
-                                <!-- Decorative Quote Mark -->
-                                <div style="font-size: 4rem; line-height: 0.5; color: var(--accent-gold, #E8B923); font-family: Georgia, serif; margin-bottom: 1rem;">"</div>
-                                
-                                <!-- Quote Text -->
-                                <p class="mb-0" style="color: var(--neutral-gray); font-size: 1rem; line-height: 1.8; font-style: italic;">
-                                    {{ $testimonial->message }}
-                                </p>
-                                
-                                <!-- Star Rating -->
-                                <div class="mb-2 text-warning mt-3" role="img" aria-label="{{ $testimonial->rating }} star rating" style="text-align: left;">
+
+            <!-- Section header -->
+            <div style="text-align: center; margin-bottom: 2.5rem;">
+                <p style="font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 0.5rem;">What People Say</p>
+                <h2 style="font-family: var(--font-display); color: var(--primary-green); font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 0.5rem;">Hear From Our Adventurers</h2>
+                <p style="font-family: var(--font-body); color: #888; font-size: 0.95rem; max-width: 480px; margin: 0 auto;">Real stories from real visitors who explored Sipi Falls.</p>
+            </div>
+
+            <!-- Carousel wrapper -->
+            <div style="position: relative; overflow: hidden;" id="tCarouselWrap">
+                <div id="tCarouselInner" style="display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change: transform;">
+
+                    @php $tIdx = 0; @endphp
+                    @forelse($testimonials as $testimonial)
+                    @php
+                        $nameParts = explode(' ', $testimonial->name);
+                        $initials  = '';
+                        foreach($nameParts as $p){ $initials .= strtoupper(substr($p,0,1)); if(strlen($initials)>=2) break; }
+                        $palette   = ['#1a6b1a','#c9951a','#2d8b2d','#1a5276','#6c3483'];
+                        $bg        = $palette[ord($testimonial->name[0]) % count($palette)];
+                        $msgShort  = mb_strlen($testimonial->message) > 160
+                                     ? mb_substr($testimonial->message, 0, 160) . '…'
+                                     : $testimonial->message;
+                        $hasMore   = mb_strlen($testimonial->message) > 160;
+                    @endphp
+
+                    <!-- Single slide -->
+                    <div class="t-slide" style="flex-shrink: 0; padding: 0 10px; box-sizing: border-box;">
+                        <div class="t-card" style="background: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 16px rgba(0,0,0,0.07); border: 1px solid #ebebeb; display: flex; flex-direction: column; height: 100%; min-height: 260px;">
+
+                            <!-- Top row: avatar + name + stars -->
+                            <div style="display: flex; align-items: center; gap: 0.85rem; margin-bottom: 1rem;">
+                                <div style="width: 46px; height: 46px; border-radius: 50%; background: {{ $bg }}; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1rem; font-family: var(--font-body); flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+                                    {{ $initials }}
+                                </div>
+                                <div style="flex: 1; min-width: 0;">
+                                    <div style="font-weight: 700; color: var(--neutral-dark); font-family: var(--font-body); font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $testimonial->name }}</div>
+                                    <div style="font-size: 0.75rem; color: #aaa; font-family: var(--font-body);">{{ $testimonial->country }}</div>
+                                </div>
+                                <!-- Stars flush right -->
+                                <div style="display: flex; gap: 2px; flex-shrink: 0;" role="img" aria-label="{{ $testimonial->rating }} star rating">
                                     @for($i = 1; $i <= 5; $i++)
-                                        @if($i <= $testimonial->rating)
-                                            <i class="fas fa-star"></i>
-                                        @else
-                                            <i class="far fa-star"></i>
-                                        @endif
+                                        <i class="{{ $i <= $testimonial->rating ? 'fas' : 'far' }} fa-star" style="color: var(--accent-gold); font-size: 0.75rem;"></i>
                                     @endfor
                                 </div>
-                                
-                                <!-- Avatar + Name Row -->
-                                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem;">
-                                    @php
-                                        // Get initials from name
-                                        $nameParts = explode(' ', $testimonial->name);
-                                        $initials = '';
-                                        foreach($nameParts as $part) {
-                                            $initials .= strtoupper(substr($part, 0, 1));
-                                            if(strlen($initials) >= 2) break;
-                                        }
-                                        // Generate color based on name
-                                        $colors = ['#1a6b1a', '#c9951a', '#2d8b2d', '#e8b923', '#228B22'];
-                                        $colorIndex = ord($testimonial->name[0]) % count($colors);
-                                        $bgColor = $colors[$colorIndex];
-                                    @endphp
-                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: {{ $bgColor }}; display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem; font-family: var(--font-body); flex-shrink: 0;">
-                                        {{ $initials }}
-                                    </div>
-                                    <div>
-                                        <div style="font-weight: 700; color: var(--primary-green); font-family: var(--font-body);">{{ $testimonial->name }}</div>
-                                        <div style="font-size: 0.8rem; color: #888; font-family: var(--font-body);">{{ $testimonial->country }}</div>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        @empty
-                        <!-- Default Testimonial if none in database -->
-                        <div class="testimonial-slide" style="min-width: 50%; padding: 0 15px; box-sizing: border-box;">
-                            <div class="card h-100 shadow-lg border-0 p-4 testimonial-card" style="background: #ffffff; border-left: 4px solid var(--accent-gold, #E8B923); border-radius: 0.5rem; text-align: left; padding: 2rem;">
-                                <!-- Decorative Quote Mark -->
-                                <div style="font-size: 4rem; line-height: 0.5; color: var(--accent-gold, #E8B923); font-family: Georgia, serif; margin-bottom: 1rem;">"</div>
-                                
-                                <!-- Quote Text -->
-                                <p class="mb-0" style="color: var(--neutral-gray); font-size: 1rem; line-height: 1.8; font-style: italic;">
-                                    Add testimonials from the admin panel to showcase visitor experiences!
+
+                            <!-- Quote body — inline opening mark -->
+                            <div style="flex: 1;">
+                                <p class="t-body-text" style="font-family: var(--font-body); font-size: 0.9rem; color: #555; line-height: 1.75; margin: 0; font-style: italic;">
+                                    <span style="color: var(--accent-gold); font-family: Georgia, serif; font-size: 1.6rem; line-height: 0; vertical-align: -0.4rem; margin-right: 2px;">"</span>{{ $msgShort }}<span style="color: var(--accent-gold); font-family: Georgia, serif; font-size: 1.6rem; line-height: 0; vertical-align: -0.4rem; margin-left: 2px;">"</span>
                                 </p>
-                                
-                                <!-- Star Rating -->
-                                <div class="mb-2 text-warning mt-3" role="img" aria-label="5 star rating" style="text-align: left;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                
-                                <!-- Avatar + Name Row -->
-                                <div style="display: flex; align-items: center; gap: 1rem; margin-top: 1.5rem;">
-                                    <div style="width: 50px; height: 50px; border-radius: 50%; background: var(--primary-green); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 1.2rem; font-family: var(--font-body); flex-shrink: 0;">
-                                        <i class="fas fa-users"></i>
-                                    </div>
-                                    <div>
-                                        <div style="font-weight: 700; color: var(--primary-green); font-family: var(--font-body);">Our Visitors</div>
-                                        <div style="font-size: 0.8rem; color: #888; font-family: var(--font-body);">Worldwide</div>
-                                    </div>
-                                </div>
+                                @if($hasMore)
+                                <p class="t-full-text" style="display: none; font-family: var(--font-body); font-size: 0.9rem; color: #555; line-height: 1.75; margin: 0; font-style: italic;">
+                                    <span style="color: var(--accent-gold); font-family: Georgia, serif; font-size: 1.6rem; line-height: 0; vertical-align: -0.4rem; margin-right: 2px;">"</span>{{ $testimonial->message }}<span style="color: var(--accent-gold); font-family: Georgia, serif; font-size: 1.6rem; line-height: 0; vertical-align: -0.4rem; margin-left: 2px;">"</span>
+                                </p>
+                                <button onclick="tToggleExpand(this)"
+                                        style="margin-top: 0.5rem; background: none; border: none; padding: 0; font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; color: var(--primary-green); cursor: pointer; text-decoration: underline; text-underline-offset: 2px;">
+                                    Read more
+                                </button>
+                                @endif
                             </div>
+
+                            <!-- Visit date if available -->
+                            @if($testimonial->visit_date)
+                            <div style="margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid #f0f0f0;">
+                                <span style="font-family: var(--font-body); font-size: 0.72rem; color: #bbb; letter-spacing: 0.05em;">
+                                    <i class="fas fa-calendar-alt" style="margin-right: 4px;"></i>
+                                    Visited {{ \Carbon\Carbon::parse($testimonial->visit_date)->format('M Y') }}
+                                </span>
+                            </div>
+                            @endif
                         </div>
-                        @endforelse
                     </div>
-                </div>
-                
-                <!-- Next Arrow -->
-                <button onclick="moveTestimonialCarousel(1)" 
-                        class="testimonial-arrow testimonial-arrow-next" 
-                        aria-label="Next testimonials"
-                        style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); background: var(--primary-green); color: white; border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.15);"
-                        onmouseover="this.style.background='var(--accent-gold)'; this.style.transform='translateY(-50%) scale(1.1)';"
-                        onmouseout="this.style.background='var(--primary-green)'; this.style.transform='translateY(-50%) scale(1)';">
-                    <i class="fas fa-chevron-right"></i>
+                    @php $tIdx++; @endphp
+
+                    @empty
+                    <!-- Fallback when no testimonials -->
+                    <div class="t-slide" style="flex-shrink: 0; padding: 0 10px; box-sizing: border-box;">
+                        <div class="t-card" style="background: #fff; border-radius: 16px; padding: 1.5rem; box-shadow: 0 2px 16px rgba(0,0,0,0.07); border: 1px solid #ebebeb; display: flex; flex-direction: column; min-height: 220px; align-items: center; justify-content: center; text-align: center;">
+                            <i class="fas fa-star" style="color: var(--accent-gold); font-size: 2rem; margin-bottom: 1rem;"></i>
+                            <p style="font-family: var(--font-body); color: #aaa; font-size: 0.9rem; font-style: italic; margin: 0;">Be the first to share your Sipi Falls adventure!</p>
+                        </div>
+                    </div>
+                    @endforelse
+
+                </div><!-- /tCarouselInner -->
+            </div><!-- /tCarouselWrap -->
+
+            <!-- Controls: prev · dots · next — centred below cards -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-top: 1.75rem;">
+
+                <!-- Prev -->
+                <button onclick="tMove(-1)" aria-label="Previous"
+                        style="width: 40px; height: 40px; border-radius: 50%; background: white; border: 2px solid var(--primary-green); color: var(--primary-green); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08);"
+                        onmouseover="this.style.background='var(--primary-green)'; this.style.color='white';"
+                        onmouseout="this.style.background='white'; this.style.color='var(--primary-green)';">
+                    <i class="fas fa-chevron-left" style="font-size: 0.8rem;"></i>
+                </button>
+
+                <!-- Dots -->
+                <div id="tDots" style="display: flex; gap: 6px; align-items: center;"></div>
+
+                <!-- Next -->
+                <button onclick="tMove(1)" aria-label="Next"
+                        style="width: 40px; height: 40px; border-radius: 50%; background: var(--primary-green); border: 2px solid var(--primary-green); color: white; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.25s; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08);"
+                        onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)';"
+                        onmouseout="this.style.background='var(--primary-green)'; this.style.borderColor='var(--primary-green)';">
+                    <i class="fas fa-chevron-right" style="font-size: 0.8rem;"></i>
                 </button>
             </div>
-        </div>
+
+            <!-- Share Your Experience CTA -->
+            <div style="text-align: center; margin-top: 2rem; padding-bottom: 1rem;">
+                <button onclick="document.getElementById('testimonialModal').style.display='flex'; document.body.style.overflow='hidden';"
+                        class="tShareBtn"
+                        style="font-family: var(--font-body); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); cursor: pointer; transition: all 0.25s; display: inline-flex; align-items: center; gap: 0.5rem;"
+                        onmouseover="this.style.background='var(--primary-green)'; this.style.color='white';"
+                        onmouseout="this.style.background='transparent'; this.style.color='var(--primary-green)';">
+                    <i class="fas fa-pen"></i> <span>Share Your Experience</span>
+                </button>
+                @if(session('testimonial_success'))
+                <script>
+                    window.addEventListener('load', function() {
+                        setTimeout(function() {
+                            // Don't auto-open modal on success — show toast instead
+                        }, 300);
+                    });
+                </script>
+                @endif
+            </div>
+
+        </div><!-- /container -->
     </section>
 
-    <!-- Share Your Experience Button -->
-    <div class="text-center py-4" style="background: #F5F6F9;">
-        <button onclick="document.getElementById('testimonialModal').style.display='flex'; document.body.style.overflow='hidden';"
-                style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.875rem 2.5rem; cursor: pointer; transition: all 0.3s; border-radius: 0.25rem;"
-                onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-                onmouseout="this.style.background='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
-            <i class="fas fa-pen" style="margin-right: 0.5rem;"></i> Share Your Experience
-        </button>
-        @if(session('testimonial_success'))
-        <script>
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    document.getElementById('testimonialModal').style.display = 'flex';
-                    document.body.style.overflow = 'hidden';
-                }, 300);
-            });
-        </script>
-        @endif
+    <!-- =====================================================
+         SUCCESS TOAST — shown when review submitted
+         ===================================================== -->
+    @if(session('testimonial_success'))
+    <div id="tSuccessToast"
+         style="position: fixed; top: 80px; left: 50%; transform: translateX(-50%); z-index: 10000;
+                background: #fff; border-left: 4px solid var(--primary-green); border-radius: 10px;
+                padding: 1rem 1.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+                display: flex; align-items: center; gap: 0.85rem; max-width: 92vw; width: 420px;
+                animation: toastSlideIn 0.4s ease;">
+        <div style="width: 38px; height: 38px; border-radius: 50%; background: rgba(26,107,26,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            <i class="fas fa-check-circle" style="color: var(--primary-green); font-size: 1.2rem;"></i>
+        </div>
+        <div style="flex: 1; min-width: 0;">
+            <p style="font-family: var(--font-body); font-weight: 700; color: var(--neutral-dark); margin: 0; font-size: 0.875rem;">Review submitted!</p>
+            <p style="font-family: var(--font-body); color: #888; margin: 0; font-size: 0.78rem; line-height: 1.5;">Thanks — it'll appear after our team approves it.</p>
+        </div>
+        <button onclick="document.getElementById('tSuccessToast').remove();"
+                style="background: none; border: none; color: #bbb; font-size: 1.1rem; cursor: pointer; flex-shrink: 0; padding: 0; line-height: 1;">✕</button>
     </div>
+    <style>
+        @keyframes toastSlideIn {
+            from { opacity: 0; transform: translateX(-50%) translateY(-16px); }
+            to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+        }
+    </style>
+    <script>
+        // Auto-dismiss toast after 6 seconds
+        setTimeout(function() {
+            var t = document.getElementById('tSuccessToast');
+            if (t) { t.style.transition = 'opacity 0.4s'; t.style.opacity = '0'; setTimeout(function(){ t && t.remove(); }, 400); }
+        }, 6000);
 
-    <!-- Testimonial Submission Modal -->
+        // Scroll to reviews section smoothly on load
+        window.addEventListener('load', function () {
+            var el = document.getElementById('reviews');
+            if (el) {
+                setTimeout(function () {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
+            }
+        });
+    </script>
+    @endif
+
+    <!-- =====================================================
+         TESTIMONIAL SUBMISSION MODAL
+         ===================================================== -->
     <div id="testimonialModal"
-         onclick="if(event.target===this){ this.style.display='none'; document.body.style.overflow=''; }"
-         style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 9999; align-items: center; justify-content: center; padding: 1rem;">
-        <div style="background: white; border-radius: 0.5rem; border-top: 4px solid var(--accent-gold); width: 100%; max-width: 580px; max-height: 90vh; overflow-y: auto; position: relative;">
+         onclick="if(event.target===this){ closeTModal(); }"
+         style="display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65);
+                z-index: 9999; align-items: flex-start; justify-content: center;
+                padding: 1rem; overflow-y: auto; backdrop-filter: blur(4px);">
+        <div style="background: white; border-radius: 14px; border-top: 4px solid var(--accent-gold);
+                    width: 100%; max-width: 540px; margin: auto; position: relative;
+                    box-shadow: 0 24px 64px rgba(0,0,0,0.25);">
 
             <!-- Modal Header -->
-            <div style="background: var(--primary-green); padding: 1.25rem 1.5rem; display: flex; align-items: center; justify-content: space-between;">
-                <h5 style="font-family: var(--font-display); color: white; margin: 0; font-size: 1.3rem;">Share Your Sipi Falls Experience</h5>
-                <button onclick="document.getElementById('testimonialModal').style.display='none'; document.body.style.overflow='';"
-                        style="background: rgba(255,255,255,0.2); border: 2px solid rgba(255,255,255,0.6); color: white; font-size: 1.25rem; width: 2.2rem; height: 2.2rem; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;">
-                    &times;
-                </button>
+            <div style="background: var(--primary-green); padding: 1rem 1.25rem; border-radius: 10px 10px 0 0;
+                        display: flex; align-items: center; justify-content: space-between; gap: 0.75rem;">
+                <div>
+                    <h5 style="font-family: var(--font-display); color: white; margin: 0; font-size: 1.05rem;">Share Your Experience</h5>
+                    <p style="font-family: var(--font-body); color: rgba(255,255,255,0.65); font-size: 0.72rem; margin: 0;">Your story inspires others to visit Sipi Falls</p>
+                </div>
+                <button onclick="closeTModal();"
+                        style="background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+                               color: white; font-size: 1.1rem; width: 32px; height: 32px; border-radius: 50%;
+                               cursor: pointer; display: flex; align-items: center; justify-content: center;
+                               flex-shrink: 0; transition: background 0.2s;"
+                        onmouseover="this.style.background='rgba(255,255,255,0.3)';"
+                        onmouseout="this.style.background='rgba(255,255,255,0.15)';">✕</button>
             </div>
 
             <!-- Modal Body -->
-            <div style="padding: 2rem;">
-
-                @if(session('testimonial_success'))
-                <div style="text-align: center; padding: 2rem 1rem;">
-                    <div style="width: 70px; height: 70px; background: rgba(26,107,26,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
-                        <i class="fas fa-check-circle" style="color: var(--primary-green); font-size: 2.5rem;"></i>
-                    </div>
-                    <h4 style="font-family: var(--font-display); color: var(--primary-green); margin-bottom: 0.5rem;">Thank You!</h4>
-                    <p style="font-family: var(--font-body); color: var(--neutral-gray); margin-bottom: 1.5rem; line-height: 1.7;">Your experience has been successfully submitted! It will appear on our site after a quick review by our team.</p>
-                    <button onclick="document.getElementById('testimonialModal').style.display='none'; document.body.style.overflow='';"
-                            style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; background: var(--primary-green); color: white; border: none; padding: 0.75rem 2rem; cursor: pointer; transition: all 0.3s; border-radius: 0.25rem;"
-                            onmouseover="this.style.background='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-                            onmouseout="this.style.background='var(--primary-green)'; this.style.color='white';">
-                        Close
-                    </button>
-                </div>
-                @else
-
+            <div style="padding: 1.5rem 1.25rem;">
                 <form action="{{ route('testimonial.submit') }}" method="POST">
                     @csrf
-
-                    <!-- Name & Country -->
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-6">
-                            <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Your Name *</label>
-                            <input type="text" name="name" required placeholder="John Doe"
-                                   style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray);"
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 0.85rem;">
+                        <div>
+                            <label style="font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.35rem; display: block;">Name *</label>
+                            <input type="text" name="name" required placeholder="Jane Doe"
+                                   style="width: 100%; padding: 0.6rem 0.85rem; border: 1.5px solid #e0e0e0; border-radius: 8px; font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); outline: none; box-sizing: border-box;"
                                    onfocus="this.style.borderColor='var(--primary-green)';"
                                    onblur="this.style.borderColor='#e0e0e0';">
                         </div>
-                        <div class="col-md-6">
-                            <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Country *</label>
-                            <input type="text" name="country" required placeholder="United Kingdom"
-                                   style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray);"
+                        <div>
+                            <label style="font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.35rem; display: block;">Country *</label>
+                            <input type="text" name="country" required placeholder="Uganda"
+                                   style="width: 100%; padding: 0.6rem 0.85rem; border: 1.5px solid #e0e0e0; border-radius: 8px; font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); outline: none; box-sizing: border-box;"
                                    onfocus="this.style.borderColor='var(--primary-green)';"
                                    onblur="this.style.borderColor='#e0e0e0';">
                         </div>
                     </div>
 
-                    <!-- Rating -->
-                    <div class="mb-3">
-                        <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Your Rating *</label>
-                        <div style="display: flex; gap: 0.5rem;" id="star-rating">
+                    <div style="margin-bottom: 0.85rem;">
+                        <label style="font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.35rem; display: block;">Rating *</label>
+                        <div style="display: flex; gap: 0.3rem;" id="star-rating">
                             @for($i = 1; $i <= 5; $i++)
                             <button type="button" class="star-btn" data-value="{{ $i }}"
-                                    style="background: none; border: none; font-size: 2rem; color: #e0e0e0; cursor: pointer; transition: color 0.2s; padding: 0;">
-                                ★
-                            </button>
+                                    style="background: none; border: none; font-size: 1.6rem; color: #e0e0e0; cursor: pointer; padding: 0; transition: color 0.15s; line-height: 1;">★</button>
                             @endfor
                         </div>
                         <input type="hidden" name="rating" id="rating-value" value="5">
                     </div>
 
-                    <!-- Visit Date -->
-                    <div class="mb-3">
-                        <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">When did you visit?</label>
+                    <div style="margin-bottom: 0.85rem;">
+                        <label style="font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.35rem; display: block;">Visit Date</label>
                         <input type="date" name="visit_date"
-                               style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray);"
+                               style="width: 100%; padding: 0.6rem 0.85rem; border: 1.5px solid #e0e0e0; border-radius: 8px; font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); outline: none; box-sizing: border-box;"
                                onfocus="this.style.borderColor='var(--primary-green)';"
                                onblur="this.style.borderColor='#e0e0e0';">
                     </div>
 
-                    <!-- Message -->
-                    <div class="mb-4">
-                        <label style="font-family: var(--font-body); font-size: 0.85rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.5rem; display: block;">Your Experience *</label>
-                        <textarea name="message" required rows="4" placeholder="Tell us about your Sipi Falls experience..."
-                                  style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #e0e0e0; border-radius: 0.375rem; font-family: var(--font-body); color: var(--neutral-gray); resize: vertical;"
+                    <div style="margin-bottom: 1.1rem;">
+                        <label style="font-family: var(--font-body); font-size: 0.78rem; font-weight: 600; color: var(--neutral-gray); margin-bottom: 0.35rem; display: block;">Your Experience *</label>
+                        <textarea name="message" required rows="4" placeholder="Tell us about your adventure at Sipi Falls…"
+                                  style="width: 100%; padding: 0.6rem 0.85rem; border: 1.5px solid #e0e0e0; border-radius: 8px; font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); resize: vertical; outline: none; box-sizing: border-box;"
                                   onfocus="this.style.borderColor='var(--primary-green)';"
                                   onblur="this.style.borderColor='#e0e0e0';"></textarea>
-                        <p style="font-family: var(--font-body); font-size: 0.75rem; color: var(--neutral-gray); opacity: 0.6; margin-top: 0.25rem;">Minimum 20 characters</p>
+                        <p style="font-family: var(--font-body); font-size: 0.7rem; color: #bbb; margin: 0.2rem 0 0;">Minimum 20 characters</p>
                     </div>
 
-                    <!-- Submit -->
                     <button type="submit"
-                            style="width: 100%; background: var(--primary-green); color: white; border: none; padding: 1rem; font-family: var(--font-body); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; border-radius: 0.375rem; cursor: pointer; transition: all 0.3s;"
-                            onmouseover="this.style.background='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                            style="width: 100%; background: var(--primary-green); color: white; border: none;
+                                   padding: 0.8rem; font-family: var(--font-body); font-size: 0.875rem;
+                                   font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+                                   border-radius: 8px; cursor: pointer; transition: all 0.25s;"
+                            onmouseover="this.style.background='var(--accent-gold)'; this.style.color='#1a1a0a';"
                             onmouseout="this.style.background='var(--primary-green)'; this.style.color='white';">
-                        <i class="fas fa-paper-plane" style="margin-right: 0.5rem;"></i> Submit My Review
+                        <i class="fas fa-paper-plane" style="margin-right: 0.4rem;"></i> Submit My Review
                     </button>
                 </form>
-                @endif
             </div>
         </div>
     </div>

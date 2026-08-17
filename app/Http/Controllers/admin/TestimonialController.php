@@ -102,7 +102,8 @@ class TestimonialController extends Controller
             'order'       => 0,
         ]);
 
-        return back()->with('testimonial_success', 'Thank you! Your review has been submitted and will appear after approval.');
+        return redirect(route('home') . '#reviews')
+            ->with('testimonial_success', 'Thank you! Your review has been submitted and will appear after approval.');
     }
 
     public function toggleApproval($id)

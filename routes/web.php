@@ -28,6 +28,19 @@ Route::get('/travelguide', function () {
     return view('pages.travelguide', compact('content'));
 })->name('travelguide');
 
+// XML Sitemap — dynamically generated with correct APP_URL
+Route::get('/sitemap.xml', function () {
+    $pages = [
+        ['url' => url('/'),             'priority' => '1.0', 'changefreq' => 'weekly'],
+        ['url' => url('/travelguide'),  'priority' => '0.9', 'changefreq' => 'monthly'],
+        ['url' => url('/about'),        'priority' => '0.8', 'changefreq' => 'monthly'],
+        ['url' => url('/contact'),      'priority' => '0.7', 'changefreq' => 'monthly'],
+    ];
+    $lastmod = now()->toDateString();
+    $xml = view('sitemap', compact('pages', 'lastmod'));
+    return response($xml, 200)->header('Content-Type', 'application/xml');
+})->name('sitemap');
+
 // Form submissions
 Route::post('/booking', [PublicFormController::class, 'booking'])->name('booking.submit');
 Route::post('/contact', [PublicFormController::class, 'contact'])->name('contact.submit');
