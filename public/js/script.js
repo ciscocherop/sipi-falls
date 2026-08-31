@@ -1188,6 +1188,12 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  function actSetControlsVisibility() {
+    var controls = document.getElementById('actControls');
+    if (!controls) return;
+    controls.style.display = isMobile() ? 'flex' : 'none';
+  }
+
   function actGoTo(idx, manual) {
     var slides = actSlides();
     var track = actTrack();
@@ -1204,6 +1210,11 @@ document.addEventListener('DOMContentLoaded', function () {
       actStartAuto();
     }
   }
+
+  window.actMove = function (direction) {
+    if (!isMobile()) return;
+    actGoTo(actIdx + direction, true);
+  };
 
   function actStartProgress() {
     var bar = actProgress();
@@ -1234,18 +1245,22 @@ document.addEventListener('DOMContentLoaded', function () {
   function actInit() {
     if (!document.getElementById('actCarouselTrack')) return;
     actSetWidths();
+    actSetControlsVisibility();
     actIdx = 0;
     actRenderDots();
     if (isMobile()) {
       actTrack().style.transform = 'translateX(0)';
       actStartAuto();
     } else {
+      actStopAuto();
       actTrack().style.transform = '';
     }
   }
 
   window.addEventListener('resize', function () {
+    if (!actTrack()) return; // only run on pages with the activities carousel
     actSetWidths();
+    actSetControlsVisibility();
     actGoTo(0, false);
     if (isMobile()) {
       actStartAuto();

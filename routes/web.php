@@ -35,6 +35,8 @@ Route::get('/sitemap.xml', function () {
         ['url' => url('/travelguide'),  'priority' => '0.9', 'changefreq' => 'monthly'],
         ['url' => url('/about'),        'priority' => '0.8', 'changefreq' => 'monthly'],
         ['url' => url('/contact'),      'priority' => '0.7', 'changefreq' => 'monthly'],
+        ['url' => url('/#reviews'),     'priority' => '0.6', 'changefreq' => 'weekly'],
+        ['url' => url('/#activities'),  'priority' => '0.6', 'changefreq' => 'monthly'],
     ];
     $lastmod = now()->toDateString();
     $xml = view('sitemap', compact('pages', 'lastmod'));

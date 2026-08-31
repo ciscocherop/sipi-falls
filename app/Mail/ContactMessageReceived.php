@@ -24,6 +24,13 @@ class ContactMessageReceived extends Mailable
     {
         return new Envelope(
             subject: 'We received your message — Sipi Falls',
+            // When visitor hits Reply, it goes to the admin inbox
+            replyTo: [
+                new \Illuminate\Mail\Mailables\Address(
+                    config('mail.admin_address'),
+                    'Sipi Falls Uganda'
+                ),
+            ],
         );
     }
 

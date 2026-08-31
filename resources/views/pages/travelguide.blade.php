@@ -329,9 +329,26 @@
         </div>{{-- /actCarouselTrack --}}
       </div>{{-- /actCarouselWrap --}}
 
-      <!-- Mobile controls: dots + progress bar -->
-      <div id="actControls" style="display:none; flex-direction:column; align-items:center; gap:0.5rem; padding:0.85rem 0 0.25rem;">
-        <div id="actDots" style="display:flex; gap:6px; align-items:center;"></div>
+      <!-- Carousel controls: prev · dots · next + progress bar -->
+      <div id="actControls" style="display:none; flex-direction:column; align-items:center; gap:0.75rem; padding:0.85rem 0 0.25rem;">
+        <div style="display:flex; align-items:center; justify-content:center; gap:1rem;">
+          <button type="button" onclick="actMove(-1)" aria-label="Previous activity"
+                  style="width:40px; height:40px; border-radius:50%; background:white; border:2px solid var(--primary-green); color:var(--primary-green); cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.08); transition:all 0.25s;"
+                  onmouseover="this.style.background='var(--primary-green)'; this.style.color='white';"
+                  onmouseout="this.style.background='white'; this.style.color='var(--primary-green)';">
+            <i class="fas fa-chevron-left" style="font-size:0.8rem;"></i>
+          </button>
+
+          <div id="actDots" style="display:flex; gap:6px; align-items:center;"></div>
+
+          <button type="button" onclick="actMove(1)" aria-label="Next activity"
+                  style="width:40px; height:40px; border-radius:50%; background:var(--primary-green); border:2px solid var(--primary-green); color:white; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.08); transition:all 0.25s;"
+                  onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
+                  onmouseout="this.style.background='var(--primary-green)'; this.style.borderColor='var(--primary-green)'; this.style.color='white';">
+            <i class="fas fa-chevron-right" style="font-size:0.8rem;"></i>
+          </button>
+        </div>
+
         <!-- Auto-advance progress bar -->
         <div style="width:120px; height:3px; background:rgba(0,0,0,0.1); border-radius:2px; overflow:hidden;">
           <div id="actProgressBar" style="height:100%; width:0%; background:var(--primary-green); border-radius:2px; transition:width linear;"></div>

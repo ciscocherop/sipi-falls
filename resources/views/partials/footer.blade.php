@@ -47,29 +47,23 @@
           </li>
         </ul>
         <div class="flex gap-3 mt-4" style="display: flex; gap: 0.75rem; margin-top: 1rem;">
-          <a href="https://facebook.com" aria-label="Facebook" 
+          <a href="https://x.com/Sipifallss" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer"
              style="color: rgba(255, 255, 255, 0.65); font-size: 1.25rem; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.5rem; border-radius: 0.25rem; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center;"
              onmouseover="this.style.borderColor='var(--accent-gold)'; this.style.color='var(--accent-gold)'"
              onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.color='rgba(255, 255, 255, 0.65)'">
-             <i class="fab fa-facebook-f"></i>
+             <i class="fa-brands fa-x-twitter"></i>
           </a>
-          <a href="https://twitter.com" aria-label="Twitter" 
-             style="color: rgba(255, 255, 255, 0.65); font-size: 1.25rem; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.5rem; border-radius: 0.25rem; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center;"
-             onmouseover="this.style.borderColor='var(--accent-gold)'; this.style.color='var(--accent-gold)'"
-             onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.color='rgba(255, 255, 255, 0.65)'">
-             <i class="fab fa-twitter"></i>
-          </a>
-          <a href="https://instagram.com" aria-label="Instagram" 
+          <a href="https://www.instagram.com/sipifalls8/" aria-label="Instagram" target="_blank" rel="noopener noreferrer"
              style="color: rgba(255, 255, 255, 0.65); font-size: 1.25rem; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.5rem; border-radius: 0.25rem; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center;"
              onmouseover="this.style.borderColor='var(--accent-gold)'; this.style.color='var(--accent-gold)'"
              onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.color='rgba(255, 255, 255, 0.65)'">
              <i class="fab fa-instagram"></i>
           </a>
-          <a href="https://youtube.com" aria-label="YouTube" 
+          <a href="https://wa.me/256703558174" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer"
              style="color: rgba(255, 255, 255, 0.65); font-size: 1.25rem; border: 1px solid rgba(255, 255, 255, 0.2); padding: 0.5rem; border-radius: 0.25rem; transition: all 0.3s; display: inline-flex; align-items: center; justify-content: center;"
              onmouseover="this.style.borderColor='var(--accent-gold)'; this.style.color='var(--accent-gold)'"
              onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'; this.style.color='rgba(255, 255, 255, 0.65)'">
-             <i class="fab fa-youtube"></i>
+             <i class="fab fa-whatsapp"></i>
           </a>
         </div>
       </div>

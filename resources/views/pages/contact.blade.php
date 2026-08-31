@@ -535,7 +535,7 @@
             'Moses Campsite'      => 'images/gallery/hotels/moses campsite.jpg',
           ];
           $hotelWebsites = [
-            'Sipi Valley Resort' => 'https://sipivalleyresort.com/',
+            'Sipi Valley Resort' => 'https://bystays.com/properties/sipi-valley-resort/',
             'Rafiki Lodge'        => 'https://rafikilodgesipi.com/',
             'Noahs Ark Hotel'     => 'https://www.vacationcottage.com/property/noah-s-ark-hotel-kapchorwa/BC-13342897',
             'Moses Campsite'      => 'https://mosescampsitesipifalls.com/',
@@ -551,38 +551,41 @@
           $websiteUrl  = $hotelWebsites[$accommodation->name] ?? '#';
           $waMessage   = $hotelWhatsapp[$accommodation->name] ?? $accommodation->whatsapp_message;
         @endphp
-        <div class="col-md-6 col-lg-3">
-          <div style="background: white; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); height: 100%; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+        <div class="col-md-6 col-lg-3 d-flex">
+          <div style="background: white; border-radius: 0.5rem; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,0.08); height: 100%; width: 100%; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; min-height: 360px;"
                onmouseover="this.style.transform='translateY(-6px)'; this.style.boxShadow='0 12px 32px rgba(0,0,0,0.12)';"
                onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.08)';">
-            <div style="height: 180px; overflow: hidden;">
+            <div style="height: 145px; overflow: hidden; flex-shrink: 0;">
               <img src="{{ asset($cardImage) }}" alt="{{ $accommodation->name }}" loading="lazy"
                    style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease;"
                    onmouseover="this.style.transform='scale(1.05)';"
                    onmouseout="this.style.transform='scale(1)';">
             </div>
-            <div style="padding: 1.5rem;">
-              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem;">
-                <h5 style="font-family: var(--font-display); color: var(--primary-green); font-size: 1.1rem; margin: 0;">{{ $accommodation->name }}</h5>
-                <span style="font-family: var(--font-body); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: {{ $badgeBg }}; color: {{ $badgeColor }}; padding: 0.2rem 0.6rem; border-radius: 1rem;">{{ $accommodation->type }}</span>
+            <div style="padding: 1rem 1rem 0.9rem; display: flex; flex-direction: column; flex: 1;">
+              <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.45rem; gap: 0.5rem;">
+                <h5 style="font-family: var(--font-display); color: var(--primary-green); font-size: 1rem; margin: 0; line-height: 1.2;">{{ $accommodation->name }}</h5>
+                <span style="font-family: var(--font-body); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; background: {{ $badgeBg }}; color: {{ $badgeColor }}; padding: 0.2rem 0.5rem; border-radius: 1rem; white-space: nowrap;">{{ $accommodation->type }}</span>
               </div>
-              <p style="font-family: var(--font-body); font-size: 0.85rem; color: var(--neutral-gray); line-height: 1.6; margin-bottom: 1rem; opacity: 0.8;">{{ $accommodation->description }}</p>
-              <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
-                <i class="fas fa-map-marker-alt" style="color: var(--accent-gold); font-size: 0.85rem;"></i>
-                <span style="font-family: var(--font-body); font-size: 0.8rem; color: var(--neutral-gray); opacity: 0.7;">{{ $accommodation->location }}</span>
+              <p style="font-family: var(--font-body); font-size: 0.8rem; color: var(--neutral-gray); line-height: 1.5; margin-bottom: 0.7rem; opacity: 0.8; flex: 1; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">{{ $accommodation->description }}</p>
+              <div style="display: flex; align-items: center; gap: 0.4rem; margin-bottom: 0.7rem; min-height: 18px;">
+                <i class="fas fa-map-marker-alt" style="color: var(--accent-gold); font-size: 0.75rem;"></i>
+                <span style="font-family: var(--font-body); font-size: 0.75rem; color: var(--neutral-gray); opacity: 0.7;">{{ $accommodation->location }}</span>
               </div>
-              <div style="display: flex; gap: 0.5rem;">
-                <a href="{{ $websiteUrl }}" target="_blank"
-                   style="flex: 1; display: block; text-align: center; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: var(--primary-green); color: white; border: 2px solid var(--primary-green); padding: 0.6rem 0.5rem; text-decoration: none; transition: all 0.3s; border-radius: 0.25rem;"
-                   onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-                   onmouseout="this.style.background='var(--primary-green)'; this.style.borderColor='var(--primary-green)'; this.style.color='white';">
-                  Visit Website
+              <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: auto;">
+                <a href="{{ $websiteUrl }}" target="_blank" rel="noopener noreferrer"
+                   style="display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-body); font-size: 0.8rem; font-weight: 600; color: var(--primary-green); text-decoration: none; transition: color 0.2s ease;"
+                   onmouseover="this.style.color='var(--accent-gold)';"
+                   onmouseout="this.style.color='var(--primary-green)';">
+                  <span>View website</span>
+                  <i class="fas fa-arrow-right" style="font-size: 0.72rem;"></i>
                 </a>
-                <a href="https://wa.me/256703558174?text={{ urlencode($waMessage) }}" target="_blank"
-                   style="flex: 1; display: block; text-align: center; font-family: var(--font-body); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; background: transparent; color: var(--primary-green); border: 2px solid var(--primary-green); padding: 0.6rem 0.5rem; text-decoration: none; transition: all 0.3s; border-radius: 0.25rem;"
-                   onmouseover="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)'; this.style.color='var(--neutral-dark)';"
-                   onmouseout="this.style.background='transparent'; this.style.borderColor='var(--primary-green)'; this.style.color='var(--primary-green)';">
-                  <i class="fab fa-whatsapp"></i> WhatsApp
+
+                <a href="https://wa.me/256703558174?text={{ urlencode($waMessage) }}" target="_blank" rel="noopener noreferrer"
+                   aria-label="WhatsApp {{ $accommodation->name }}"
+                   style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: rgba(37, 211, 102, 0.12); color: #25D366; text-decoration: none; transition: all 0.2s ease; flex-shrink: 0;"
+                   onmouseover="this.style.background='rgba(37, 211, 102, 0.2)'; this.style.transform='translateY(-1px)';"
+                   onmouseout="this.style.background='rgba(37, 211, 102, 0.12)'; this.style.transform='translateY(0)';">
+                  <i class="fab fa-whatsapp" style="font-size: 1rem;"></i>
                 </a>
               </div>
             </div>
@@ -692,5 +695,16 @@
     </div>
   </section>
 
+  <style>
+      @media (max-width: 768px) {
+          #booking-form button[type="submit"],
+          #contact-form button[type="submit"] {
+              padding: 0.7rem 0.9rem !important;
+              font-size: 0.82rem !important;
+              letter-spacing: 0.06em !important;
+              border-radius: 0.4rem !important;
+          }
+      }
+  </style>
 
   @endsection

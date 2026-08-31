@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'default' => env('MAIL_MAILER', 'log'),
+    'default' => env('MAIL_MAILER', 'resend'),
 
     /*
     |--------------------------------------------------------------------------
@@ -47,6 +47,18 @@ return [
             'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN', parse_url((string) env('APP_URL', 'http://localhost'), PHP_URL_HOST)),
+        ],
+
+        // Dedicated mailer for booking emails — sends from bookings@
+        'booking' => [
+            'transport' => 'smtp',
+            'scheme' => env('MAIL_SCHEME'),
+            'host' => env('MAIL_HOST', '127.0.0.1'),
+            'port' => env('MAIL_PORT', 465),
+            'username' => env('BOOKING_MAIL_USERNAME'),
+            'password' => env('BOOKING_MAIL_PASSWORD'),
+            'encryption' => env('MAIL_ENCRYPTION', 'ssl'),
+            'timeout' => null,
         ],
 
         'ses' => [

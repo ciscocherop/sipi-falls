@@ -24,6 +24,13 @@ class NewContactMessageNotification extends Mailable
     {
         return new Envelope(
             subject: 'New Contact Message — ' . $this->contactMessage->subject,
+            // Reply-to the visitor so you can reply directly from your inbox
+            replyTo: [
+                new \Illuminate\Mail\Mailables\Address(
+                    $this->contactMessage->email,
+                    $this->contactMessage->first_name . ' ' . $this->contactMessage->last_name
+                ),
+            ],
         );
     }
 

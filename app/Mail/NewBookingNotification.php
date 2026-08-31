@@ -7,9 +7,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Mail\Mailables\Address;
 use App\Models\Booking;
 
-class BookingRequestReceived extends Mailable
+class NewBookingNotification extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -23,13 +24,10 @@ class BookingRequestReceived extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Booking Request Received — Sipi Falls',
-            // When guest hits Reply, it goes to the admin inbox
+            subject: 'New Booking Request — ' . $this->booking->fullname,
+            // Reply directly to the guest from your inbox
             replyTo: [
-                new \Illuminate\Mail\Mailables\Address(
-                    config('mail.admin_address'),
-                    'Sipi Falls Uganda'
-                ),
+                new Address($this->booking->email, $this->booking->fullname),
             ],
         );
     }
@@ -37,7 +35,7 @@ class BookingRequestReceived extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'emails.booking-request-received',
+            view: 'emails.new-booking-notification',
         );
     }
 

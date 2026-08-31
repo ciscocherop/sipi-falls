@@ -1,59 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sipi Falls Uganda — Tourism Website
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A full-stack tourism web application for **Sipi Falls Uganda**, built to handle online bookings, visitor inquiries, newsletter subscriptions, and content management for a real adventure tourism business in Kapchorwa, Eastern Uganda.
 
-## About Laravel
+**Live site:** ipifalls.resnetsystems.site
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## What It Does
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**Public-facing site:**
+- Homepage with activities showcase, testimonials, and photo gallery
+- Travel guide page with dynamic content managed from the admin panel
+- About page with tour guide profiles
+- Contact & booking page with real-time price estimation based on selected activities and group size
+- Newsletter subscription with welcome email and unsubscribe flow
+- Activity reactions (emoji responses on activity cards)
+- Fully responsive design across all devices
 
-## Learning Laravel
+**Admin dashboard (protected):**
+- Manage incoming bookings — view, update status (pending/confirmed/cancelled), delete
+- Read and respond to contact messages — mark as read/unread
+- Approve or reject visitor-submitted testimonials
+- Manage newsletter subscribers — compose and broadcast newsletters
+- Manage accommodation listings
+- Manage tour guide profiles
+- Edit site content (travel guide page, contact details) without touching code
+- User management for admin accounts
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Tech Stack
 
-## Laravel Sponsors
+| Layer | Technology |
+|---|---|
+| Backend | PHP 8.2, Laravel 11 |
+| Frontend | Blade templates, Bootstrap 5, vanilla JS |
+| Database | MySQL (production), SQLite (local dev) |
+| Mail | SMTP via resend |
+| Auth | Laravel session-based auth with admin middleware |
+| Hosting | Shared hosting (cPanel) |
+| SEO | Google Search Console, Google Analytics (GA4), XML sitemap |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## Key Features Built
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+- **Booking system** — form submission, email notification to admin, confirmation email to visitor, status management from dashboard
+- **Newsletter system** — subscribe/unsubscribe with signed URLs, broadcast composer in admin
+- **Dynamic content** — site content editable from admin panel stored in DB, no redeploy needed
+- **Email notifications** — multiple Mailable classes for bookings, contact messages, newsletter welcome and broadcast
+- **Activity price estimator** — JS-based real-time price range calculator on the booking form
+- **Testimonials moderation** — visitors submit, admin approves before public display
+- **SEO ready** — meta tags, Open Graph, Twitter Card, XML sitemap, Google Analytics, Google Site Verification
 
-## Contributing
+---
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Local Setup
 
-## Code of Conduct
+```bash
+git clone https://github.com/ciscocherop/sipi-falls
+cd sipi-falls
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Update `.env` with your database and mail credentials before running.
 
-## Security Vulnerabilities
+---
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Project Structure
 
-## License
+```
+app/
+  Http/Controllers/
+    admin/          # All admin panel controllers
+    Auth/           # Login controller
+  Mail/             # Mailable classes for all email types
+  Models/           # Eloquent models
+resources/
+  views/
+    layouts/        # Main Blade layout with SEO tags
+    pages/          # Public pages (home, about, contact, travelguide)
+    partials/       # Reusable components (nav, footer)
+    admin/          # Admin dashboard views
+    emails/         # Email templates
+routes/
+  web.php           # All routes (public, auth, admin)
+database/
+  migrations/       # All table migrations
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+---
+
+## Author
+
+Built by Cherop Sisco — a full-stack web application developed for a real tourism business, covering everything from frontend UI to backend admin tooling, email automation, and production deployment.

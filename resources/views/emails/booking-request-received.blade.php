@@ -210,9 +210,9 @@
 
         <div class="footer">
             <p>Sipi Falls, Kapchorwa, Uganda</p>
-            <p><a href="mailto:info@sipifalls.com">info@sipifalls.com</a></p>
+            <p><a href="mailto:info@sipifalls.resnetsystems.site">info@sipifalls.resnetsystems.site</a></p>
             <p style="margin-top: 12px; font-size: 11px; color: rgba(255,255,255,0.3);">
-                This email was sent in response to a booking request on sipifalls.com
+                This email was sent in response to a booking request on sipifalls.resnetsystems.site
             </p>
         </div>
 

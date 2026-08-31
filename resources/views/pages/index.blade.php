@@ -14,85 +14,76 @@
 @push('styles')
 <style>
 /* =============================================
-   HOME PAGE — RESPONSIVE HERO STYLES
+   HOME PAGE — RESPONSIVE STYLES
    ============================================= */
 
-/* The overlay div that holds hero text — padding-top clears the fixed navbar */
+/* ---- HERO ---- */
 .hero-overlay-content {
-    /* navbar ~60px + 1rem margin-top (~16px) + 14px breathing = 90px */
-    padding-top: 90px;
-    padding-bottom: 2rem;
-    /* align-items: center is set inline — padding-top shifts the centering zone down */
+    padding-top: 85px;
+    padding-bottom: 1.5rem;
 }
 
-/* Hero heading — scales fluidly, never overridden by global h1 rule */
 .hero-heading {
-    font-size: clamp(1.6rem, 4.5vw, 3.25rem) !important;
+    font-size: clamp(1.35rem, 4vw, 2.6rem) !important;
     line-height: 1.15 !important;
     color: white !important;
     margin: 0 !important;
 }
 
-/* Hero subtext */
+.hero-tagline {
+    display: inline-block;
+    margin-top: 0.35rem;
+    font-size: 0.62em;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
 .hero-subtext {
-    font-size: clamp(0.875rem, 2.2vw, 1.05rem);
-    line-height: 1.7;
+    font-size: clamp(0.82rem, 2.5vw, 1.05rem);
+    line-height: 1.65;
     color: rgba(255,255,255,0.9);
     margin: 0;
 }
 
-/* CTA row — always side by side */
 .hero-cta-row {
     display: flex;
     flex-direction: row;
-    gap: 0.75rem;
-    padding-top: 0.5rem;
+    gap: 0.6rem;
+    padding-top: 0.35rem;
 }
 
 .hero-btn-primary,
 .hero-btn-secondary {
     font-family: var(--font-primary);
     font-weight: 700;
-    font-size: 0.875rem;
+    font-size: 0.82rem;
     text-decoration: none;
-    padding: 0.7rem 1.25rem;
+    padding: 0.65rem 1rem;
     border-radius: 999px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.35rem;
+    gap: 0.3rem;
     transition: all 0.25s;
     white-space: nowrap;
     flex: 1;
     text-align: center;
 }
 
-.hero-btn-primary {
-    background: var(--accent-gold);
-    color: #1a1a0a;
-    border: 2px solid var(--accent-gold);
-}
+.hero-btn-primary  { background: var(--accent-gold); color: #1a1a0a; border: 2px solid var(--accent-gold); }
+.hero-btn-secondary { background: transparent; color: white; border: 2px solid rgba(255,255,255,0.65); }
 
-.hero-btn-secondary {
-    background: transparent;
-    color: white;
-    border: 2px solid rgba(255,255,255,0.65);
-}
-
-/* Stat cards grid */
+/* Stat cards — 2-col on mobile/tablet, 1-col on desktop */
 .hero-stat-cards-wrap {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
+    gap: 0.5rem;
     flex-shrink: 0;
     width: 100%;
 }
 
-.hero-stat-card-item {
-    min-width: 0;
-}
+.hero-stat-card-item { min-width: 0; }
 
-/* Scroll hint */
 .hero-scroll-hint {
     display: flex;
     flex-direction: column;
@@ -101,43 +92,71 @@
     opacity: 0.6;
 }
 
-/* =============================================
-   TESTIMONIALS ARROWS — inside container on small screens
-   ============================================= */
-@media (max-width: 900px) {
-    .testimonial-arrow-prev { left: 0 !important; }
-    .testimonial-arrow-next { right: 0 !important; }
+/* ---- DESCRIPTION SECTION ---- */
+.desc-heading {
+    font-size: clamp(1.4rem, 5vw, 3rem) !important;
+}
+.desc-timeline-text {
+    font-size: clamp(0.875rem, 2.5vw, 1.125rem) !important;
 }
 
 /* =============================================
-   MOBILE — phones (≤ 480px)
+   SMALL PHONES (≤ 480px)
    ============================================= */
 @media (max-width: 480px) {
+
+    /* Hero: stack text on top, stat cards below */
     .hero-overlay-content {
-        padding-top: 75px;
+        padding-top: 72px;
+        padding-bottom: 1rem;
+        align-items: flex-start !important;
     }
 
-    .hero-scroll-hint {
-        display: none !important;
+    /* Inner layout: column on phone */
+    .hero-overlay-content > div {
+        flex-direction: column !important;
+        gap: 1rem !important;
     }
+
+    .hero-scroll-hint { display: none !important; }
 
     .hero-btn-primary,
     .hero-btn-secondary {
-        font-size: 0.78rem;
-        padding: 0.6rem 0.7rem;
+        font-size: 0.75rem;
+        padding: 0.55rem 0.6rem;
     }
 
-    .hero-stat-cards-wrap {
-        grid-template-columns: 1fr 1fr;
-    }
+    /* Stat card values smaller on tiny phones */
+    .hero-stat-card-item p:first-child { font-size: 1rem !important; }
+    .hero-stat-card-item p:last-child  { font-size: 0.68rem !important; }
+    .hero-stat-card-item               { padding: 0.6rem 0.85rem !important; }
 
-    .hero-stat-card-item p:first-child {
-        font-size: 1.05rem !important;
+    /* Description heading */
+    .desc-heading { font-size: 1.4rem !important; }
+    .desc-timeline-text { font-size: 0.875rem !important; }
+
+    /* Stats counter smaller */
+    .counter { font-size: 2rem !important; }
+
+    /* CTA banner heading */
+    h2[style*="font-size: 3rem"] { font-size: 1.75rem !important; }
+}
+
+/* =============================================
+   TABLET (481–1023px)
+   ============================================= */
+@media (min-width: 481px) and (max-width: 1023px) {
+    .hero-overlay-content { padding-top: 85px; }
+
+    .hero-btn-primary,
+    .hero-btn-secondary {
+        font-size: 0.875rem;
+        padding: 0.7rem 1.25rem;
     }
 }
 
 /* =============================================
-   DESKTOP (≥ 1024px) — stat cards single column
+   DESKTOP (≥ 1024px)
    ============================================= */
 @media (min-width: 1024px) {
     .hero-stat-cards-wrap {
@@ -145,16 +164,22 @@
         width: 200px;
     }
 
+    .hero-overlay-content { padding-top: 95px; }
+
     .hero-btn-primary,
     .hero-btn-secondary {
         flex: none;
         font-size: 0.95rem;
         padding: 0.75rem 1.75rem;
     }
+}
 
-    .hero-overlay-content {
-        padding-top: 95px;
-    }
+/* =============================================
+   TESTIMONIALS ARROWS — inside on small screens
+   ============================================= */
+@media (max-width: 900px) {
+    .testimonial-arrow-prev { left: 0 !important; }
+    .testimonial-arrow-next { right: 0 !important; }
 }
 </style>
 @endpush
@@ -185,7 +210,8 @@
                     <!-- Hero Statement -->
                     <h1 class="text-white font-bold leading-tight drop-shadow-xl hero-heading"
                         style="font-family: var(--font-primary); margin: 0;">
-                        Where Waterfalls, Coffee Trails, and Cliffs Meet Adventure
+                        Where Waterfalls, Coffee Trails, and Cliffs Meet Adventure<br>
+                        <span class="hero-tagline" style="color: var(--accent-gold);">Let's sip together</span>
                     </h1>
 
                     <!-- Supporting paragraph -->
@@ -334,8 +360,8 @@
                     <div class="gallery-overlay"><span>Sipi Main Falls — 100m drop</span></div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/mountain/sunset-toast.jpg') }}', 'Golden hour at the summit')">
-                    <img src="{{ asset('images/gallery/mountain/sunset-toast.jpg') }}" alt="Golden hour sunset" loading="lazy">
+                <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/falls/falls_and_dog.jpg') }}', 'Golden hour at the summit')">
+                    <img src="{{ asset('images/gallery/falls/falls_and_dog.jpg') }}" alt="Golden hour sunset" loading="lazy">
                     <div class="gallery-overlay"><span>Golden hour at the summit</span></div>
                 </div>
 
@@ -354,8 +380,8 @@
                     <div class="gallery-overlay"><span>Rock climbing adventure</span></div>
                 </div>
 
-                <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/mountain/sunset-friends.jpg') }}', 'Sunset views from Mount Elgon')">
-                    <img src="{{ asset('images/gallery/mountain/sunset-friends.jpg') }}" alt="Sunset Mount Elgon" loading="lazy">
+                <div class="gallery-item" onclick="openLightbox('{{ asset('images/gallery/mountain/sky.jpeg') }}', 'Sunset views from Mount Elgon')">
+                    <img src="{{ asset('images/gallery/sunsets/best-sunset.jpeg') }}" alt="Sunset Mount Elgon" loading="lazy">
                     <div class="gallery-overlay"><span>Sunset views from Mount Elgon</span></div>
                 </div>
 

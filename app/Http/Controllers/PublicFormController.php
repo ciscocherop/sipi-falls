@@ -47,7 +47,15 @@ class PublicFormController extends Controller
         try {
             Mail::to($email)->send(new BookingRequestReceived($booking));
         } catch (\Exception $e) {
-            \Log::error('Failed to send booking request email: ' . $e->getMessage());
+            \Log::error('Failed to send booking confirmation to customer: ' . $e->getMessage());
+        }
+
+        // Notify admin of new booking
+        try {
+            $adminEmail = config('mail.admin_address');
+            Mail::to($adminEmail)->send(new \App\Mail\NewBookingNotification($booking));
+        } catch (\Exception $e) {
+            \Log::error('Failed to send booking admin notification: ' . $e->getMessage());
         }
 
         $msg = "Your booking request has been received! Check your email for a confirmation, and our team will be in touch shortly to finalize payment.";

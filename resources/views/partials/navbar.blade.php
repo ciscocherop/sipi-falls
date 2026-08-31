@@ -29,7 +29,9 @@
           <ul class="flex flex-row items-center gap-3">
             <li>
               <a href="/" class="font-semibold px-4 py-2 rounded-full"
-                 style="background-color: var(--accent-gold); color: #0a1a0a; font-family: var(--font-primary); text-decoration: none; transition: all 0.3s;">
+                 style="background-color: {{ request()->is('/') ? 'var(--accent-gold)' : 'transparent' }}; color: {{ request()->is('/') ? '#0a1a0a' : 'rgba(255,255,255,0.85)' }}; font-family: var(--font-primary); text-decoration: none; transition: all 0.3s;"
+                 onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.color='#0a1a0a';"
+                 onmouseout="this.style.backgroundColor='{{ request()->is('/') ? 'var(--accent-gold)' : 'transparent' }}'; this.style.color='{{ request()->is('/') ? '#0a1a0a' : 'rgba(255,255,255,0.85)' }}';">
                 Home
               </a>
             </li>
@@ -53,8 +55,10 @@
             </li>
             <li>
               <a href="/contact" class="font-bold px-5 py-2 rounded-full"
-                 style="background-color: var(--accent-gold); color: #0a1a0a; font-family: var(--font-primary); text-decoration: none;">
-                Book Visit
+                 style="background-color: {{ request()->is('contact') ? 'var(--accent-gold)' : 'transparent' }}; color: {{ request()->is('contact') ? '#0a1a0a' : 'rgba(255,255,255,0.85)' }}; font-family: var(--font-primary); text-decoration: none; transition: all 0.3s;"
+                 onmouseover="this.style.backgroundColor='var(--accent-gold)'; this.style.color='#0a1a0a';"
+                 onmouseout="this.style.backgroundColor='{{ request()->is('contact') ? 'var(--accent-gold)' : 'transparent' }}'; this.style.color='{{ request()->is('contact') ? '#0a1a0a' : 'rgba(255,255,255,0.85)' }}';">
+                Book a Visit
               </a>
             </li>
           </ul>
@@ -120,7 +124,9 @@
     <nav style="flex: 1; padding: 1.5rem 1.25rem; display: flex; flex-direction: column; gap: 0.35rem;">
 
       <a href="/" class="drawer-link"
-         style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; text-decoration: none; color: white; font-family: var(--font-primary); font-size: 1rem; font-weight: 600; transition: all 0.25s; background: rgba(232,185,35,0.18); border: 1px solid rgba(232,185,35,0.3);">
+        style="display: flex; align-items: center; gap: 0.85rem; padding: 0.85rem 1rem; border-radius: 10px; text-decoration: none; color: white; font-family: var(--font-primary); font-size: 1rem; font-weight: 600; transition: all 0.25s; background: {{ request()->is('/') ? 'rgba(232,185,35,0.18)' : 'transparent' }}; border: 1px solid {{ request()->is('/') ? 'rgba(232,185,35,0.3)' : 'transparent' }};"
+        onmouseover="this.style.background='rgba(255,255,255,0.1)'; this.style.borderColor='rgba(255,255,255,0.15)'; this.style.color='white';"
+        onmouseout="this.style.background='{{ request()->is('/') ? 'rgba(232,185,35,0.18)' : 'transparent' }}'; this.style.borderColor='{{ request()->is('/') ? 'rgba(232,185,35,0.3)' : 'transparent' }}'; this.style.color='white';">
         <span style="font-size: 1.1rem;">🏠</span> Home
       </a>
 
@@ -150,9 +156,9 @@
 
       <!-- Book CTA inside drawer -->
       <a href="/contact" class="drawer-link"
-         style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.95rem 1rem; border-radius: 10px; text-decoration: none; color: #0a1a0a; font-family: var(--font-primary); font-size: 1rem; font-weight: 700; background: var(--accent-gold); border: 1px solid var(--accent-gold); transition: all 0.25s; margin-top: 0.25rem;"
+        style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.95rem 1rem; border-radius: 10px; text-decoration: none; color: {{ request()->is('contact') ? '#0a1a0a' : 'rgba(255,255,255,0.85)' }}; font-family: var(--font-primary); font-size: 1rem; font-weight: 700; background: {{ request()->is('contact') ? 'var(--accent-gold)' : 'transparent' }}; border: 1px solid {{ request()->is('contact') ? 'var(--accent-gold)' : 'transparent' }}; transition: all 0.25s; margin-top: 0.25rem;"
          onmouseover="this.style.background='#fff'; this.style.borderColor='#fff';"
-         onmouseout="this.style.background='var(--accent-gold)'; this.style.borderColor='var(--accent-gold)';">
+        onmouseout="this.style.background='{{ request()->is('contact') ? 'var(--accent-gold)' : 'transparent' }}'; this.style.borderColor='{{ request()->is('contact') ? 'var(--accent-gold)' : 'transparent' }}';">
         <span style="font-size: 1.1rem;">📅</span> Book a Visit
       </a>
     </nav>
